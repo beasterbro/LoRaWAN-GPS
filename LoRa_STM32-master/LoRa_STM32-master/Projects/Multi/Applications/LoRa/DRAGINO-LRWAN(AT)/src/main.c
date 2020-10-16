@@ -264,7 +264,22 @@ void CalibrateToZero(void);
 	float ax_old,ay_old,az_old;
 	float mx_old,my_old,mz_old;
 	
-	uint8_t flag_2=1;																		
+	uint8_t flag_2=1;	
+	
+	void mem_avail(void)
+{
+  char *cmd = "awk '{ if (NR == 2) { print $4 }}' /proc/meminfo";
+
+  FILE *cmdfile = popen(cmd, "r");
+  char result[256] = { 0 };
+
+  while (fgets(result, sizeof(result), cmdfile) != NULL) {
+    printf("%s\n", result);
+  }
+
+  pclose(cmdfile);
+}
+	
 /* Private functions ---------------------------------------------------------*/
 
 /**
