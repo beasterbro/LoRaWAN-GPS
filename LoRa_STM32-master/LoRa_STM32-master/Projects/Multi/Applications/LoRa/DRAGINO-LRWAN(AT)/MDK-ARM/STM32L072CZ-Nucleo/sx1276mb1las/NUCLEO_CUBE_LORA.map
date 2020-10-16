@@ -1469,7 +1469,6 @@ Section Cross References
     main.o(i.main) refers to low_power_manager.o(i.LPM_SetOffMode) for LPM_SetOffMode
     main.o(i.main) refers to lora.o(i.LORA_Init) for LORA_Init
     main.o(i.main) refers to command.o(i.CMD_Process) for CMD_Process
-    main.o(i.main) refers to main.o(i.Send) for Send
     main.o(i.main) refers to main.o(i.lora_send) for lora_send
     main.o(i.main) refers to mpu9250.o(i.MPU_Write_Byte) for MPU_Write_Byte
     main.o(i.main) refers to low_power_manager.o(i.LPM_EnterLowPower) for LPM_EnterLowPower
@@ -5371,99 +5370,99 @@ Image Symbol Table
     i.lora_state_INT                         0x08010188   Section        0  lora.o(i.lora_state_INT)
     i.lora_state_Led                         0x080101dc   Section        0  lora.o(i.lora_state_Led)
     i.main                                   0x080101e8   Section        0  main.o(i.main)
-    i.memcpy1                                0x080102b8   Section        0  utilities.o(i.memcpy1)
-    i.memcpyr                                0x080102ce   Section        0  utilities.o(i.memcpyr)
-    i.memset1                                0x080102e8   Section        0  utilities.o(i.memset1)
-    i.mix_sub_columns                        0x080102fc   Section        0  aes.o(i.mix_sub_columns)
-    mix_sub_columns                          0x080102fd   Thumb Code   532  aes.o(i.mix_sub_columns)
-    i.my_atof                                0x08010514   Section        0  gps.o(i.my_atof)
-    i.my_atoi                                0x0801051e   Section        0  gps.o(i.my_atoi)
-    i.my_strtod                              0x08010568   Section        0  gps.o(i.my_strtod)
-    i.onNetworkJointimesout                  0x08010684   Section        0  loramac.o(i.onNetworkJointimesout)
-    onNetworkJointimesout                    0x08010685   Thumb Code    12  loramac.o(i.onNetworkJointimesout)
-    i.parse_cmd                              0x08010694   Section        0  command.o(i.parse_cmd)
-    parse_cmd                                0x08010695   Thumb Code   252  command.o(i.parse_cmd)
-    i.powerLED                               0x080107ac   Section        0  bsp.o(i.powerLED)
-    i.print_16_02x                           0x080107d8   Section        0  at.o(i.print_16_02x)
-    print_16_02x                             0x080107d9   Thumb Code    72  at.o(i.print_16_02x)
-    i.print_8_02x                            0x08010824   Section        0  at.o(i.print_8_02x)
-    print_8_02x                              0x08010825   Thumb Code    44  at.o(i.print_8_02x)
-    i.print_d                                0x0801087c   Section        0  at.o(i.print_d)
-    print_d                                  0x0801087d   Thumb Code    18  at.o(i.print_d)
-    i.print_u                                0x08010898   Section        0  at.o(i.print_u)
-    print_u                                  0x08010899   Thumb Code    18  at.o(i.print_u)
-    i.rand1                                  0x080108b4   Section        0  utilities.o(i.rand1)
-    i.randr                                  0x080108e0   Section        0  utilities.o(i.randr)
-    i.read_data                              0x080108f6   Section        0  lora.o(i.read_data)
-    i.region_printf                          0x08010974   Section        0  lora.o(i.region_printf)
-    i.round                                  0x08010988   Section        0  round.o(i.round)
-    i.s_tdc                                  0x08010a24   Section        0  at.o(i.s_tdc)
-    i.send_ALARM_data                        0x08010a3c   Section        0  main.o(i.send_ALARM_data)
-    i.send_data                              0x08010ae8   Section        0  main.o(i.send_data)
-    i.set_at_receive                         0x08010ba0   Section        0  at.o(i.set_at_receive)
-    i.shift_sub_rows                         0x08010bc4   Section        0  aes.o(i.shift_sub_rows)
-    shift_sub_rows                           0x08010bc5   Thumb Code   100  aes.o(i.shift_sub_rows)
-    i.split                                  0x08010c2c   Section        0  gps.o(i.split)
-    i.sqrt                                   0x08010c64   Section        0  sqrt.o(i.sqrt)
-    i.srand1                                 0x08010cac   Section        0  utilities.o(i.srand1)
-    i.sscanf_16_hhx                          0x08010cb8   Section        0  at.o(i.sscanf_16_hhx)
-    sscanf_16_hhx                            0x08010cb9   Thumb Code    70  at.o(i.sscanf_16_hhx)
-    i.sscanf_uint32_as_hhx                   0x08010d04   Section        0  at.o(i.sscanf_uint32_as_hhx)
-    sscanf_uint32_as_hhx                     0x08010d05   Thumb Code    20  at.o(i.sscanf_uint32_as_hhx)
-    i.store_data                             0x08010d2c   Section        0  lora.o(i.store_data)
-    i.tanf                                   0x08010df4   Section        0  tanf.o(i.tanf)
-    i.tiny_sscanf                            0x08010f64   Section        0  tiny_sscanf.o(i.tiny_sscanf)
-    i.tiny_vfscanf                           0x08010f78   Section        0  tiny_sscanf.o(i.tiny_vfscanf)
-    tiny_vfscanf                             0x08010f79   Thumb Code   592  tiny_sscanf.o(i.tiny_vfscanf)
-    i.translate_status                       0x080111cc   Section        0  at.o(i.translate_status)
-    translate_status                         0x080111cd   Thumb Code    32  at.o(i.translate_status)
-    i.usart1_IRQHandler                      0x080111ec   Section        0  bsp_usart2.o(i.usart1_IRQHandler)
-    i.usart1_Init                            0x08011228   Section        0  bsp_usart2.o(i.usart1_Init)
-    i.usart1_IoInit                          0x08011270   Section        0  bsp_usart2.o(i.usart1_IoInit)
-    i.vcom_DMA_TX_IRQHandler                 0x080112c4   Section        0  vcom.o(i.vcom_DMA_TX_IRQHandler)
-    i.vcom_IRQHandler                        0x080112d4   Section        0  vcom.o(i.vcom_IRQHandler)
-    i.vcom_Init                              0x080112e4   Section        0  vcom.o(i.vcom_Init)
-    i.vcom_IoInit                            0x08011320   Section        0  vcom.o(i.vcom_IoInit)
-    i.vcom_ReceiveInit                       0x08011380   Section        0  vcom.o(i.vcom_ReceiveInit)
-    i.vcom_Trace                             0x080113ac   Section        0  vcom.o(i.vcom_Trace)
-    i.xor_block                              0x080113c0   Section        0  aes.o(i.xor_block)
-    xor_block                                0x080113c1   Thumb Code   130  aes.o(i.xor_block)
-    .constdata                               0x08011444   Section      224  sx1276.o(.constdata)
-    .constdata                               0x08011524   Section      104  sx1276mb1las.o(.constdata)
-    .constdata                               0x0801158c   Section       25  system_stm32l0xx.o(.constdata)
-    .constdata                               0x080115a5   Section        8  system_stm32l0xx.o(.constdata)
-    .constdata                               0x080115ad   Section       24  hw_rtc.o(.constdata)
-    DaysInMonth                              0x080115ad   Data          12  hw_rtc.o(.constdata)
-    DaysInMonthLeapYear                      0x080115b9   Data          12  hw_rtc.o(.constdata)
-    .constdata                               0x080115c8   Section     1136  command.o(.constdata)
-    ATError_description                      0x080115c8   Data          32  command.o(.constdata)
-    ATCommand                                0x080115e8   Data        1104  command.o(.constdata)
-    .constdata                               0x08011a38   Section      132  regionus915.o(.constdata)
-    DataratesUS915                           0x08011a38   Data          16  regionus915.o(.constdata)
-    BandwidthsUS915                          0x08011a48   Data          64  regionus915.o(.constdata)
-    DatarateOffsetsUS915                     0x08011a88   Data          20  regionus915.o(.constdata)
-    MaxPayloadOfDatarateUS915                0x08011a9c   Data          16  regionus915.o(.constdata)
-    MaxPayloadOfDatarateRepeaterUS915        0x08011aac   Data          16  regionus915.o(.constdata)
-    .constdata                               0x08011abc   Section       16  loramac.o(.constdata)
-    LoRaMacMaxEirpTable                      0x08011abc   Data          16  loramac.o(.constdata)
-    .constdata                               0x08011acc   Section      768  aes.o(.constdata)
-    sbox                                     0x08011acc   Data         256  aes.o(.constdata)
-    gfm2_sbox                                0x08011bcc   Data         256  aes.o(.constdata)
-    gfm3_sbox                                0x08011ccc   Data         256  aes.o(.constdata)
-    .constdata                               0x08011dd0   Section       80  asin.o(.constdata)
-    pS                                       0x08011dd0   Data          48  asin.o(.constdata)
-    qS                                       0x08011e00   Data          32  asin.o(.constdata)
-    .constdata                               0x08011e20   Section      152  atan.o(.constdata)
-    atanhi                                   0x08011e20   Data          32  atan.o(.constdata)
-    atanlo                                   0x08011e40   Data          32  atan.o(.constdata)
-    aTodd                                    0x08011e60   Data          40  atan.o(.constdata)
-    aTeven                                   0x08011e88   Data          48  atan.o(.constdata)
-    .constdata                               0x08011eb8   Section        8  qnan.o(.constdata)
-    .constdata                               0x08011ec0   Section       32  rredf.o(.constdata)
-    twooverpi                                0x08011ec0   Data          32  rredf.o(.constdata)
-    .constdata                               0x08011ee0   Section       64  ctype_c.o(.constdata)
-    .conststring                             0x08011f20   Section      164  at.o(.conststring)
-    .conststring                             0x08011fc4   Section     3486  command.o(.conststring)
+    i.memcpy1                                0x080102d4   Section        0  utilities.o(i.memcpy1)
+    i.memcpyr                                0x080102ea   Section        0  utilities.o(i.memcpyr)
+    i.memset1                                0x08010304   Section        0  utilities.o(i.memset1)
+    i.mix_sub_columns                        0x08010318   Section        0  aes.o(i.mix_sub_columns)
+    mix_sub_columns                          0x08010319   Thumb Code   532  aes.o(i.mix_sub_columns)
+    i.my_atof                                0x08010530   Section        0  gps.o(i.my_atof)
+    i.my_atoi                                0x0801053a   Section        0  gps.o(i.my_atoi)
+    i.my_strtod                              0x08010584   Section        0  gps.o(i.my_strtod)
+    i.onNetworkJointimesout                  0x080106a0   Section        0  loramac.o(i.onNetworkJointimesout)
+    onNetworkJointimesout                    0x080106a1   Thumb Code    12  loramac.o(i.onNetworkJointimesout)
+    i.parse_cmd                              0x080106b0   Section        0  command.o(i.parse_cmd)
+    parse_cmd                                0x080106b1   Thumb Code   252  command.o(i.parse_cmd)
+    i.powerLED                               0x080107c8   Section        0  bsp.o(i.powerLED)
+    i.print_16_02x                           0x080107f4   Section        0  at.o(i.print_16_02x)
+    print_16_02x                             0x080107f5   Thumb Code    72  at.o(i.print_16_02x)
+    i.print_8_02x                            0x08010840   Section        0  at.o(i.print_8_02x)
+    print_8_02x                              0x08010841   Thumb Code    44  at.o(i.print_8_02x)
+    i.print_d                                0x08010898   Section        0  at.o(i.print_d)
+    print_d                                  0x08010899   Thumb Code    18  at.o(i.print_d)
+    i.print_u                                0x080108b4   Section        0  at.o(i.print_u)
+    print_u                                  0x080108b5   Thumb Code    18  at.o(i.print_u)
+    i.rand1                                  0x080108d0   Section        0  utilities.o(i.rand1)
+    i.randr                                  0x080108fc   Section        0  utilities.o(i.randr)
+    i.read_data                              0x08010912   Section        0  lora.o(i.read_data)
+    i.region_printf                          0x08010990   Section        0  lora.o(i.region_printf)
+    i.round                                  0x080109a4   Section        0  round.o(i.round)
+    i.s_tdc                                  0x08010a40   Section        0  at.o(i.s_tdc)
+    i.send_ALARM_data                        0x08010a58   Section        0  main.o(i.send_ALARM_data)
+    i.send_data                              0x08010b04   Section        0  main.o(i.send_data)
+    i.set_at_receive                         0x08010bbc   Section        0  at.o(i.set_at_receive)
+    i.shift_sub_rows                         0x08010be0   Section        0  aes.o(i.shift_sub_rows)
+    shift_sub_rows                           0x08010be1   Thumb Code   100  aes.o(i.shift_sub_rows)
+    i.split                                  0x08010c48   Section        0  gps.o(i.split)
+    i.sqrt                                   0x08010c80   Section        0  sqrt.o(i.sqrt)
+    i.srand1                                 0x08010cc8   Section        0  utilities.o(i.srand1)
+    i.sscanf_16_hhx                          0x08010cd4   Section        0  at.o(i.sscanf_16_hhx)
+    sscanf_16_hhx                            0x08010cd5   Thumb Code    70  at.o(i.sscanf_16_hhx)
+    i.sscanf_uint32_as_hhx                   0x08010d20   Section        0  at.o(i.sscanf_uint32_as_hhx)
+    sscanf_uint32_as_hhx                     0x08010d21   Thumb Code    20  at.o(i.sscanf_uint32_as_hhx)
+    i.store_data                             0x08010d48   Section        0  lora.o(i.store_data)
+    i.tanf                                   0x08010e10   Section        0  tanf.o(i.tanf)
+    i.tiny_sscanf                            0x08010f80   Section        0  tiny_sscanf.o(i.tiny_sscanf)
+    i.tiny_vfscanf                           0x08010f94   Section        0  tiny_sscanf.o(i.tiny_vfscanf)
+    tiny_vfscanf                             0x08010f95   Thumb Code   592  tiny_sscanf.o(i.tiny_vfscanf)
+    i.translate_status                       0x080111e8   Section        0  at.o(i.translate_status)
+    translate_status                         0x080111e9   Thumb Code    32  at.o(i.translate_status)
+    i.usart1_IRQHandler                      0x08011208   Section        0  bsp_usart2.o(i.usart1_IRQHandler)
+    i.usart1_Init                            0x08011244   Section        0  bsp_usart2.o(i.usart1_Init)
+    i.usart1_IoInit                          0x0801128c   Section        0  bsp_usart2.o(i.usart1_IoInit)
+    i.vcom_DMA_TX_IRQHandler                 0x080112e0   Section        0  vcom.o(i.vcom_DMA_TX_IRQHandler)
+    i.vcom_IRQHandler                        0x080112f0   Section        0  vcom.o(i.vcom_IRQHandler)
+    i.vcom_Init                              0x08011300   Section        0  vcom.o(i.vcom_Init)
+    i.vcom_IoInit                            0x0801133c   Section        0  vcom.o(i.vcom_IoInit)
+    i.vcom_ReceiveInit                       0x0801139c   Section        0  vcom.o(i.vcom_ReceiveInit)
+    i.vcom_Trace                             0x080113c8   Section        0  vcom.o(i.vcom_Trace)
+    i.xor_block                              0x080113dc   Section        0  aes.o(i.xor_block)
+    xor_block                                0x080113dd   Thumb Code   130  aes.o(i.xor_block)
+    .constdata                               0x08011460   Section      224  sx1276.o(.constdata)
+    .constdata                               0x08011540   Section      104  sx1276mb1las.o(.constdata)
+    .constdata                               0x080115a8   Section       25  system_stm32l0xx.o(.constdata)
+    .constdata                               0x080115c1   Section        8  system_stm32l0xx.o(.constdata)
+    .constdata                               0x080115c9   Section       24  hw_rtc.o(.constdata)
+    DaysInMonth                              0x080115c9   Data          12  hw_rtc.o(.constdata)
+    DaysInMonthLeapYear                      0x080115d5   Data          12  hw_rtc.o(.constdata)
+    .constdata                               0x080115e4   Section     1136  command.o(.constdata)
+    ATError_description                      0x080115e4   Data          32  command.o(.constdata)
+    ATCommand                                0x08011604   Data        1104  command.o(.constdata)
+    .constdata                               0x08011a54   Section      132  regionus915.o(.constdata)
+    DataratesUS915                           0x08011a54   Data          16  regionus915.o(.constdata)
+    BandwidthsUS915                          0x08011a64   Data          64  regionus915.o(.constdata)
+    DatarateOffsetsUS915                     0x08011aa4   Data          20  regionus915.o(.constdata)
+    MaxPayloadOfDatarateUS915                0x08011ab8   Data          16  regionus915.o(.constdata)
+    MaxPayloadOfDatarateRepeaterUS915        0x08011ac8   Data          16  regionus915.o(.constdata)
+    .constdata                               0x08011ad8   Section       16  loramac.o(.constdata)
+    LoRaMacMaxEirpTable                      0x08011ad8   Data          16  loramac.o(.constdata)
+    .constdata                               0x08011ae8   Section      768  aes.o(.constdata)
+    sbox                                     0x08011ae8   Data         256  aes.o(.constdata)
+    gfm2_sbox                                0x08011be8   Data         256  aes.o(.constdata)
+    gfm3_sbox                                0x08011ce8   Data         256  aes.o(.constdata)
+    .constdata                               0x08011de8   Section       80  asin.o(.constdata)
+    pS                                       0x08011de8   Data          48  asin.o(.constdata)
+    qS                                       0x08011e18   Data          32  asin.o(.constdata)
+    .constdata                               0x08011e38   Section      152  atan.o(.constdata)
+    atanhi                                   0x08011e38   Data          32  atan.o(.constdata)
+    atanlo                                   0x08011e58   Data          32  atan.o(.constdata)
+    aTodd                                    0x08011e78   Data          40  atan.o(.constdata)
+    aTeven                                   0x08011ea0   Data          48  atan.o(.constdata)
+    .constdata                               0x08011ed0   Section        8  qnan.o(.constdata)
+    .constdata                               0x08011ed8   Section       32  rredf.o(.constdata)
+    twooverpi                                0x08011ed8   Data          32  rredf.o(.constdata)
+    .constdata                               0x08011ef8   Section       64  ctype_c.o(.constdata)
+    .conststring                             0x08011f38   Section      164  at.o(.conststring)
+    .conststring                             0x08011fdc   Section     3486  command.o(.conststring)
     .data                                    0x20000000   Section       32  sx1276.o(.data)
     RadioEvents                              0x20000000   Data           4  sx1276.o(.data)
     LoRaBoardCallbacks                       0x20000004   Data           4  sx1276.o(.data)
@@ -6354,48 +6353,48 @@ Image Symbol Table
     lora_state_GPS_Send                      0x0801017d   Thumb Code     8  lora.o(i.lora_state_GPS_Send)
     lora_state_INT                           0x08010189   Thumb Code    56  lora.o(i.lora_state_INT)
     lora_state_Led                           0x080101dd   Thumb Code     8  lora.o(i.lora_state_Led)
-    main                                     0x080101e9   Thumb Code   162  main.o(i.main)
-    memcpy1                                  0x080102b9   Thumb Code    22  utilities.o(i.memcpy1)
-    memcpyr                                  0x080102cf   Thumb Code    26  utilities.o(i.memcpyr)
-    memset1                                  0x080102e9   Thumb Code    18  utilities.o(i.memset1)
-    my_atof                                  0x08010515   Thumb Code    10  gps.o(i.my_atof)
-    my_atoi                                  0x0801051f   Thumb Code    72  gps.o(i.my_atoi)
-    my_strtod                                0x08010569   Thumb Code   268  gps.o(i.my_strtod)
-    powerLED                                 0x080107ad   Thumb Code    42  bsp.o(i.powerLED)
-    rand1                                    0x080108b5   Thumb Code    26  utilities.o(i.rand1)
-    randr                                    0x080108e1   Thumb Code    22  utilities.o(i.randr)
-    read_data                                0x080108f7   Thumb Code   126  lora.o(i.read_data)
-    region_printf                            0x08010975   Thumb Code    10  lora.o(i.region_printf)
-    round                                    0x08010989   Thumb Code   142  round.o(i.round)
-    s_tdc                                    0x08010a25   Thumb Code    18  at.o(i.s_tdc)
-    send_ALARM_data                          0x08010a3d   Thumb Code   132  main.o(i.send_ALARM_data)
-    send_data                                0x08010ae9   Thumb Code   136  main.o(i.send_data)
-    set_at_receive                           0x08010ba1   Thumb Code    28  at.o(i.set_at_receive)
-    split                                    0x08010c2d   Thumb Code    54  gps.o(i.split)
-    sqrt                                     0x08010c65   Thumb Code    66  sqrt.o(i.sqrt)
-    srand1                                   0x08010cad   Thumb Code     6  utilities.o(i.srand1)
-    store_data                               0x08010d2d   Thumb Code   190  lora.o(i.store_data)
-    tanf                                     0x08010df5   Thumb Code   312  tanf.o(i.tanf)
-    tiny_sscanf                              0x08010f65   Thumb Code    20  tiny_sscanf.o(i.tiny_sscanf)
-    usart1_IRQHandler                        0x080111ed   Thumb Code    58  bsp_usart2.o(i.usart1_IRQHandler)
-    usart1_Init                              0x08011229   Thumb Code    62  bsp_usart2.o(i.usart1_Init)
-    usart1_IoInit                            0x08011271   Thumb Code    74  bsp_usart2.o(i.usart1_IoInit)
-    vcom_DMA_TX_IRQHandler                   0x080112c5   Thumb Code    12  vcom.o(i.vcom_DMA_TX_IRQHandler)
-    vcom_IRQHandler                          0x080112d5   Thumb Code    10  vcom.o(i.vcom_IRQHandler)
-    vcom_Init                                0x080112e5   Thumb Code    46  vcom.o(i.vcom_Init)
-    vcom_IoInit                              0x08011321   Thumb Code    92  vcom.o(i.vcom_IoInit)
-    vcom_ReceiveInit                         0x08011381   Thumb Code    34  vcom.o(i.vcom_ReceiveInit)
-    vcom_Trace                               0x080113ad   Thumb Code    14  vcom.o(i.vcom_Trace)
-    RadioRegsInit                            0x08011444   Data          48  sx1276.o(.constdata)
-    FskBandwidths                            0x08011474   Data         176  sx1276.o(.constdata)
-    Radio                                    0x08011524   Data         104  sx1276mb1las.o(.constdata)
-    AHBPrescTable                            0x0801158c   Data          16  system_stm32l0xx.o(.constdata)
-    PLLMulTable                              0x0801159c   Data           9  system_stm32l0xx.o(.constdata)
-    APBPrescTable                            0x080115a5   Data           8  system_stm32l0xx.o(.constdata)
-    __mathlib_zero                           0x08011eb8   Data           8  qnan.o(.constdata)
-    __ctype_categories                       0x08011ee0   Data          64  ctype_c.o(.constdata)
-    Region$$Table$$Base                      0x08012d64   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08012d84   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x080101e9   Thumb Code   188  main.o(i.main)
+    memcpy1                                  0x080102d5   Thumb Code    22  utilities.o(i.memcpy1)
+    memcpyr                                  0x080102eb   Thumb Code    26  utilities.o(i.memcpyr)
+    memset1                                  0x08010305   Thumb Code    18  utilities.o(i.memset1)
+    my_atof                                  0x08010531   Thumb Code    10  gps.o(i.my_atof)
+    my_atoi                                  0x0801053b   Thumb Code    72  gps.o(i.my_atoi)
+    my_strtod                                0x08010585   Thumb Code   268  gps.o(i.my_strtod)
+    powerLED                                 0x080107c9   Thumb Code    42  bsp.o(i.powerLED)
+    rand1                                    0x080108d1   Thumb Code    26  utilities.o(i.rand1)
+    randr                                    0x080108fd   Thumb Code    22  utilities.o(i.randr)
+    read_data                                0x08010913   Thumb Code   126  lora.o(i.read_data)
+    region_printf                            0x08010991   Thumb Code    10  lora.o(i.region_printf)
+    round                                    0x080109a5   Thumb Code   142  round.o(i.round)
+    s_tdc                                    0x08010a41   Thumb Code    18  at.o(i.s_tdc)
+    send_ALARM_data                          0x08010a59   Thumb Code   132  main.o(i.send_ALARM_data)
+    send_data                                0x08010b05   Thumb Code   136  main.o(i.send_data)
+    set_at_receive                           0x08010bbd   Thumb Code    28  at.o(i.set_at_receive)
+    split                                    0x08010c49   Thumb Code    54  gps.o(i.split)
+    sqrt                                     0x08010c81   Thumb Code    66  sqrt.o(i.sqrt)
+    srand1                                   0x08010cc9   Thumb Code     6  utilities.o(i.srand1)
+    store_data                               0x08010d49   Thumb Code   190  lora.o(i.store_data)
+    tanf                                     0x08010e11   Thumb Code   312  tanf.o(i.tanf)
+    tiny_sscanf                              0x08010f81   Thumb Code    20  tiny_sscanf.o(i.tiny_sscanf)
+    usart1_IRQHandler                        0x08011209   Thumb Code    58  bsp_usart2.o(i.usart1_IRQHandler)
+    usart1_Init                              0x08011245   Thumb Code    62  bsp_usart2.o(i.usart1_Init)
+    usart1_IoInit                            0x0801128d   Thumb Code    74  bsp_usart2.o(i.usart1_IoInit)
+    vcom_DMA_TX_IRQHandler                   0x080112e1   Thumb Code    12  vcom.o(i.vcom_DMA_TX_IRQHandler)
+    vcom_IRQHandler                          0x080112f1   Thumb Code    10  vcom.o(i.vcom_IRQHandler)
+    vcom_Init                                0x08011301   Thumb Code    46  vcom.o(i.vcom_Init)
+    vcom_IoInit                              0x0801133d   Thumb Code    92  vcom.o(i.vcom_IoInit)
+    vcom_ReceiveInit                         0x0801139d   Thumb Code    34  vcom.o(i.vcom_ReceiveInit)
+    vcom_Trace                               0x080113c9   Thumb Code    14  vcom.o(i.vcom_Trace)
+    RadioRegsInit                            0x08011460   Data          48  sx1276.o(.constdata)
+    FskBandwidths                            0x08011490   Data         176  sx1276.o(.constdata)
+    Radio                                    0x08011540   Data         104  sx1276mb1las.o(.constdata)
+    AHBPrescTable                            0x080115a8   Data          16  system_stm32l0xx.o(.constdata)
+    PLLMulTable                              0x080115b8   Data           9  system_stm32l0xx.o(.constdata)
+    APBPrescTable                            0x080115c1   Data           8  system_stm32l0xx.o(.constdata)
+    __mathlib_zero                           0x08011ed0   Data           8  qnan.o(.constdata)
+    __ctype_categories                       0x08011ef8   Data          64  ctype_c.o(.constdata)
+    Region$$Table$$Base                      0x08012d7c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08012d9c   Number         0  anon$$obj.o(Region$$Table)
     DioIrq                                   0x20000008   Data          24  sx1276.o(.data)
     PAGEError                                0x20000020   Data           4  flash_eraseprogram.o(.data)
     data32                                   0x20000024   Data           4  flash_eraseprogram.o(.data)
@@ -6506,9 +6505,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000131d0, Max: 0x00030000, ABSOLUTE, COMPRESSED[0x00012e70])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000131e8, Max: 0x00030000, ABSOLUTE, COMPRESSED[0x00012e88])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00012d84, Max: 0x00030000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00012d9c, Max: 0x00030000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -7167,80 +7166,79 @@ Memory Map of the image
     0x0801017c   0x0801017c   0x0000000c   Code   RO         6198    i.lora_state_GPS_Send  lora.o
     0x08010188   0x08010188   0x00000054   Code   RO         6199    i.lora_state_INT    lora.o
     0x080101dc   0x080101dc   0x0000000c   Code   RO         6200    i.lora_state_Led    lora.o
-    0x080101e8   0x080101e8   0x000000d0   Code   RO         5034    i.main              main.o
-    0x080102b8   0x080102b8   0x00000016   Code   RO         9105    i.memcpy1           utilities.o
-    0x080102ce   0x080102ce   0x0000001a   Code   RO         9106    i.memcpyr           utilities.o
-    0x080102e8   0x080102e8   0x00000012   Code   RO         9107    i.memset1           utilities.o
-    0x080102fa   0x080102fa   0x00000002   PAD
-    0x080102fc   0x080102fc   0x00000218   Code   RO         9263    i.mix_sub_columns   aes.o
-    0x08010514   0x08010514   0x0000000a   Code   RO          486    i.my_atof           gps.o
-    0x0801051e   0x0801051e   0x00000048   Code   RO          487    i.my_atoi           gps.o
-    0x08010566   0x08010566   0x00000002   PAD
-    0x08010568   0x08010568   0x0000011c   Code   RO          488    i.my_strtod         gps.o
-    0x08010684   0x08010684   0x00000010   Code   RO         8601    i.onNetworkJointimesout  loramac.o
-    0x08010694   0x08010694   0x00000118   Code   RO         6094    i.parse_cmd         command.o
-    0x080107ac   0x080107ac   0x0000002a   Code   RO         4710    i.powerLED          bsp.o
-    0x080107d6   0x080107d6   0x00000002   PAD
-    0x080107d8   0x080107d8   0x0000004c   Code   RO         5618    i.print_16_02x      at.o
-    0x08010824   0x08010824   0x00000058   Code   RO         5619    i.print_8_02x       at.o
-    0x0801087c   0x0801087c   0x0000001c   Code   RO         5620    i.print_d           at.o
-    0x08010898   0x08010898   0x0000001c   Code   RO         5621    i.print_u           at.o
-    0x080108b4   0x080108b4   0x0000002c   Code   RO         9108    i.rand1             utilities.o
-    0x080108e0   0x080108e0   0x00000016   Code   RO         9109    i.randr             utilities.o
-    0x080108f6   0x080108f6   0x0000007e   Code   RO         6203    i.read_data         lora.o
-    0x08010974   0x08010974   0x00000014   Code   RO         6204    i.region_printf     lora.o
-    0x08010988   0x08010988   0x0000009c   Code   RO         9381    i.round             m_ps.l(round.o)
-    0x08010a24   0x08010a24   0x00000018   Code   RO         5622    i.s_tdc             at.o
-    0x08010a3c   0x08010a3c   0x000000ac   Code   RO         5035    i.send_ALARM_data   main.o
-    0x08010ae8   0x08010ae8   0x000000b8   Code   RO         5036    i.send_data         main.o
-    0x08010ba0   0x08010ba0   0x00000024   Code   RO         5623    i.set_at_receive    at.o
-    0x08010bc4   0x08010bc4   0x00000068   Code   RO         9264    i.shift_sub_rows    aes.o
-    0x08010c2c   0x08010c2c   0x00000036   Code   RO          490    i.split             gps.o
-    0x08010c62   0x08010c62   0x00000002   PAD
-    0x08010c64   0x08010c64   0x00000048   Code   RO         9384    i.sqrt              m_ps.l(sqrt.o)
-    0x08010cac   0x08010cac   0x0000000c   Code   RO         9110    i.srand1            utilities.o
-    0x08010cb8   0x08010cb8   0x0000004c   Code   RO         5624    i.sscanf_16_hhx     at.o
-    0x08010d04   0x08010d04   0x00000028   Code   RO         5625    i.sscanf_uint32_as_hhx  at.o
-    0x08010d2c   0x08010d2c   0x000000c8   Code   RO         6205    i.store_data        lora.o
-    0x08010df4   0x08010df4   0x00000170   Code   RO         9392    i.tanf              m_ps.l(tanf.o)
-    0x08010f64   0x08010f64   0x00000014   Code   RO         6516    i.tiny_sscanf       tiny_sscanf.o
-    0x08010f78   0x08010f78   0x00000254   Code   RO         6517    i.tiny_vfscanf      tiny_sscanf.o
-    0x080111cc   0x080111cc   0x00000020   Code   RO         5626    i.translate_status  at.o
-    0x080111ec   0x080111ec   0x0000003a   Code   RO          629    i.usart1_IRQHandler  bsp_usart2.o
-    0x08011226   0x08011226   0x00000002   PAD
-    0x08011228   0x08011228   0x00000048   Code   RO          630    i.usart1_Init       bsp_usart2.o
-    0x08011270   0x08011270   0x00000054   Code   RO          632    i.usart1_IoInit     bsp_usart2.o
-    0x080112c4   0x080112c4   0x00000010   Code   RO         5452    i.vcom_DMA_TX_IRQHandler  vcom.o
-    0x080112d4   0x080112d4   0x00000010   Code   RO         5454    i.vcom_IRQHandler   vcom.o
-    0x080112e4   0x080112e4   0x0000003c   Code   RO         5455    i.vcom_Init         vcom.o
-    0x08011320   0x08011320   0x00000060   Code   RO         5457    i.vcom_IoInit       vcom.o
-    0x08011380   0x08011380   0x0000002c   Code   RO         5458    i.vcom_ReceiveInit  vcom.o
-    0x080113ac   0x080113ac   0x00000014   Code   RO         5459    i.vcom_Trace        vcom.o
-    0x080113c0   0x080113c0   0x00000082   Code   RO         9265    i.xor_block         aes.o
-    0x08011442   0x08011442   0x00000002   PAD
-    0x08011444   0x08011444   0x000000e0   Data   RO           42    .constdata          sx1276.o
-    0x08011524   0x08011524   0x00000068   Data   RO         1221    .constdata          sx1276mb1las.o
-    0x0801158c   0x0801158c   0x00000019   Data   RO         1301    .constdata          system_stm32l0xx.o
-    0x080115a5   0x080115a5   0x00000008   Data   RO         1302    .constdata          system_stm32l0xx.o
-    0x080115ad   0x080115ad   0x00000018   Data   RO         4874    .constdata          hw_rtc.o
-    0x080115c5   0x080115c5   0x00000003   PAD
-    0x080115c8   0x080115c8   0x00000470   Data   RO         6096    .constdata          command.o
-    0x08011a38   0x08011a38   0x00000084   Data   RO         8238    .constdata          regionus915.o
-    0x08011abc   0x08011abc   0x00000010   Data   RO         8603    .constdata          loramac.o
-    0x08011acc   0x08011acc   0x00000300   Data   RO         9266    .constdata          aes.o
-    0x08011dcc   0x08011dcc   0x00000004   PAD
-    0x08011dd0   0x08011dd0   0x00000050   Data   RO         9349    .constdata          m_ps.l(asin.o)
-    0x08011e20   0x08011e20   0x00000098   Data   RO         9506    .constdata          m_ps.l(atan.o)
-    0x08011eb8   0x08011eb8   0x00000008   Data   RO         9548    .constdata          m_ps.l(qnan.o)
-    0x08011ec0   0x08011ec0   0x00000020   Data   RO         9550    .constdata          m_ps.l(rredf.o)
-    0x08011ee0   0x08011ee0   0x00000040   Data   RO         9576    .constdata          mc_p.l(ctype_c.o)
-    0x08011f20   0x08011f20   0x000000a4   Data   RO         5629    .conststring        at.o
-    0x08011fc4   0x08011fc4   0x00000d9e   Data   RO         6097    .conststring        command.o
-    0x08012d62   0x08012d62   0x00000002   PAD
-    0x08012d64   0x08012d64   0x00000020   Data   RO         9612    Region$$Table       anon$$obj.o
+    0x080101e8   0x080101e8   0x000000ec   Code   RO         5034    i.main              main.o
+    0x080102d4   0x080102d4   0x00000016   Code   RO         9105    i.memcpy1           utilities.o
+    0x080102ea   0x080102ea   0x0000001a   Code   RO         9106    i.memcpyr           utilities.o
+    0x08010304   0x08010304   0x00000012   Code   RO         9107    i.memset1           utilities.o
+    0x08010316   0x08010316   0x00000002   PAD
+    0x08010318   0x08010318   0x00000218   Code   RO         9263    i.mix_sub_columns   aes.o
+    0x08010530   0x08010530   0x0000000a   Code   RO          486    i.my_atof           gps.o
+    0x0801053a   0x0801053a   0x00000048   Code   RO          487    i.my_atoi           gps.o
+    0x08010582   0x08010582   0x00000002   PAD
+    0x08010584   0x08010584   0x0000011c   Code   RO          488    i.my_strtod         gps.o
+    0x080106a0   0x080106a0   0x00000010   Code   RO         8601    i.onNetworkJointimesout  loramac.o
+    0x080106b0   0x080106b0   0x00000118   Code   RO         6094    i.parse_cmd         command.o
+    0x080107c8   0x080107c8   0x0000002a   Code   RO         4710    i.powerLED          bsp.o
+    0x080107f2   0x080107f2   0x00000002   PAD
+    0x080107f4   0x080107f4   0x0000004c   Code   RO         5618    i.print_16_02x      at.o
+    0x08010840   0x08010840   0x00000058   Code   RO         5619    i.print_8_02x       at.o
+    0x08010898   0x08010898   0x0000001c   Code   RO         5620    i.print_d           at.o
+    0x080108b4   0x080108b4   0x0000001c   Code   RO         5621    i.print_u           at.o
+    0x080108d0   0x080108d0   0x0000002c   Code   RO         9108    i.rand1             utilities.o
+    0x080108fc   0x080108fc   0x00000016   Code   RO         9109    i.randr             utilities.o
+    0x08010912   0x08010912   0x0000007e   Code   RO         6203    i.read_data         lora.o
+    0x08010990   0x08010990   0x00000014   Code   RO         6204    i.region_printf     lora.o
+    0x080109a4   0x080109a4   0x0000009c   Code   RO         9381    i.round             m_ps.l(round.o)
+    0x08010a40   0x08010a40   0x00000018   Code   RO         5622    i.s_tdc             at.o
+    0x08010a58   0x08010a58   0x000000ac   Code   RO         5035    i.send_ALARM_data   main.o
+    0x08010b04   0x08010b04   0x000000b8   Code   RO         5036    i.send_data         main.o
+    0x08010bbc   0x08010bbc   0x00000024   Code   RO         5623    i.set_at_receive    at.o
+    0x08010be0   0x08010be0   0x00000068   Code   RO         9264    i.shift_sub_rows    aes.o
+    0x08010c48   0x08010c48   0x00000036   Code   RO          490    i.split             gps.o
+    0x08010c7e   0x08010c7e   0x00000002   PAD
+    0x08010c80   0x08010c80   0x00000048   Code   RO         9384    i.sqrt              m_ps.l(sqrt.o)
+    0x08010cc8   0x08010cc8   0x0000000c   Code   RO         9110    i.srand1            utilities.o
+    0x08010cd4   0x08010cd4   0x0000004c   Code   RO         5624    i.sscanf_16_hhx     at.o
+    0x08010d20   0x08010d20   0x00000028   Code   RO         5625    i.sscanf_uint32_as_hhx  at.o
+    0x08010d48   0x08010d48   0x000000c8   Code   RO         6205    i.store_data        lora.o
+    0x08010e10   0x08010e10   0x00000170   Code   RO         9392    i.tanf              m_ps.l(tanf.o)
+    0x08010f80   0x08010f80   0x00000014   Code   RO         6516    i.tiny_sscanf       tiny_sscanf.o
+    0x08010f94   0x08010f94   0x00000254   Code   RO         6517    i.tiny_vfscanf      tiny_sscanf.o
+    0x080111e8   0x080111e8   0x00000020   Code   RO         5626    i.translate_status  at.o
+    0x08011208   0x08011208   0x0000003a   Code   RO          629    i.usart1_IRQHandler  bsp_usart2.o
+    0x08011242   0x08011242   0x00000002   PAD
+    0x08011244   0x08011244   0x00000048   Code   RO          630    i.usart1_Init       bsp_usart2.o
+    0x0801128c   0x0801128c   0x00000054   Code   RO          632    i.usart1_IoInit     bsp_usart2.o
+    0x080112e0   0x080112e0   0x00000010   Code   RO         5452    i.vcom_DMA_TX_IRQHandler  vcom.o
+    0x080112f0   0x080112f0   0x00000010   Code   RO         5454    i.vcom_IRQHandler   vcom.o
+    0x08011300   0x08011300   0x0000003c   Code   RO         5455    i.vcom_Init         vcom.o
+    0x0801133c   0x0801133c   0x00000060   Code   RO         5457    i.vcom_IoInit       vcom.o
+    0x0801139c   0x0801139c   0x0000002c   Code   RO         5458    i.vcom_ReceiveInit  vcom.o
+    0x080113c8   0x080113c8   0x00000014   Code   RO         5459    i.vcom_Trace        vcom.o
+    0x080113dc   0x080113dc   0x00000082   Code   RO         9265    i.xor_block         aes.o
+    0x0801145e   0x0801145e   0x00000002   PAD
+    0x08011460   0x08011460   0x000000e0   Data   RO           42    .constdata          sx1276.o
+    0x08011540   0x08011540   0x00000068   Data   RO         1221    .constdata          sx1276mb1las.o
+    0x080115a8   0x080115a8   0x00000019   Data   RO         1301    .constdata          system_stm32l0xx.o
+    0x080115c1   0x080115c1   0x00000008   Data   RO         1302    .constdata          system_stm32l0xx.o
+    0x080115c9   0x080115c9   0x00000018   Data   RO         4874    .constdata          hw_rtc.o
+    0x080115e1   0x080115e1   0x00000003   PAD
+    0x080115e4   0x080115e4   0x00000470   Data   RO         6096    .constdata          command.o
+    0x08011a54   0x08011a54   0x00000084   Data   RO         8238    .constdata          regionus915.o
+    0x08011ad8   0x08011ad8   0x00000010   Data   RO         8603    .constdata          loramac.o
+    0x08011ae8   0x08011ae8   0x00000300   Data   RO         9266    .constdata          aes.o
+    0x08011de8   0x08011de8   0x00000050   Data   RO         9349    .constdata          m_ps.l(asin.o)
+    0x08011e38   0x08011e38   0x00000098   Data   RO         9506    .constdata          m_ps.l(atan.o)
+    0x08011ed0   0x08011ed0   0x00000008   Data   RO         9548    .constdata          m_ps.l(qnan.o)
+    0x08011ed8   0x08011ed8   0x00000020   Data   RO         9550    .constdata          m_ps.l(rredf.o)
+    0x08011ef8   0x08011ef8   0x00000040   Data   RO         9576    .constdata          mc_p.l(ctype_c.o)
+    0x08011f38   0x08011f38   0x000000a4   Data   RO         5629    .conststring        at.o
+    0x08011fdc   0x08011fdc   0x00000d9e   Data   RO         6097    .conststring        command.o
+    0x08012d7a   0x08012d7a   0x00000002   PAD
+    0x08012d7c   0x08012d7c   0x00000020   Data   RO         9612    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08012d84, Size: 0x00002488, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x000000ec])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08012d9c, Size: 0x00002488, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x000000ec])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -7330,7 +7328,7 @@ Image component sizes
       7668        574         16        108       1136      49084   loramac.o
        604         42          0         32        556       8287   loramaccrypto.o
        178         22          0          8          0       5778   low_power_manager.o
-      7956        956          0        342         84      26921   main.o
+      7984        958          0        342         84      27041   main.o
        844         14          0         80          0      10039   mpu9250.o
        918          8          0          0          0       6270   queue.o
        426          0          0          0          0      30513   region.o
@@ -7368,9 +7366,9 @@ Image component sizes
        488         66          0         12        176       6513   vcom.o
 
     ----------------------------------------------------------------------
-     59832       5288       6320       1096       8252    1010704   Object Totals
+     59860       5290       6316       1096       8252    1010824   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        88          0          9          7          7          0   (incl. Padding)
+        88          0          5          7          7          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -7477,15 +7475,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     70532       5874       6656       1100       8252     988988   Grand Totals
-     70532       5874       6656        236       8252     988988   ELF Image Totals (compressed)
-     70532       5874       6656        236          0          0   ROM Totals
+     70560       5876       6652       1100       8252     989108   Grand Totals
+     70560       5876       6652        236       8252     989108   ELF Image Totals (compressed)
+     70560       5876       6652        236          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                77188 (  75.38kB)
+    Total RO  Size (Code + RO Data)                77212 (  75.40kB)
     Total RW  Size (RW Data + ZI Data)              9352 (   9.13kB)
-    Total ROM Size (Code + RO Data + RW Data)      77424 (  75.61kB)
+    Total ROM Size (Code + RO Data + RW Data)      77448 (  75.63kB)
 
 ==============================================================================
 

@@ -40,7 +40,7 @@
 ;*******************************************************************************
 ;
 ; Amount of memory (in bytes) allocated for Stack
-; Tailor this value to your application needs
+; Tailor this value to your application needs TODO: Stack and Heap Allocation here
 ; <h> Stack Configuration
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>

@@ -80,7 +80,8 @@ ARM Macro Assembler    Page 2
                        ************************
    41 00000000         ;
    42 00000000         ; Amount of memory (in bytes) allocated for Stack
-   43 00000000         ; Tailor this value to your application needs
+   43 00000000         ; Tailor this value to your application needs TODO: Stac
+                       k and Heap Allocation here
    44 00000000         ; <h> Stack Configuration
    45 00000000         ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
    46 00000000         ; </h>
@@ -127,13 +128,13 @@ ARM Macro Assembler    Page 2
                                DCD              __initial_sp ; Top of Stack
    77 00000004 00000000        DCD              Reset_Handler ; Reset Handler
    78 00000008 00000000        DCD              NMI_Handler ; NMI Handler
-   79 0000000C 00000000        DCD              HardFault_Handler ; Hard Fault 
 
 
 
 ARM Macro Assembler    Page 3 
 
 
+   79 0000000C 00000000        DCD              HardFault_Handler ; Hard Fault 
                                                             Handler
    80 00000010 00000000        DCD              0           ; Reserved
    81 00000014 00000000        DCD              0           ; Reserved
@@ -192,13 +193,13 @@ ARM Macro Assembler    Page 3
   112 00000088 00000000        DCD              TIM7_IRQHandler ; TIM7
   113 0000008C 00000000        DCD              0           ; Reserved
   114 00000090 00000000        DCD              TIM21_IRQHandler ; TIM21
-  115 00000094 00000000        DCD              I2C3_IRQHandler ; I2C3
 
 
 
 ARM Macro Assembler    Page 4 
 
 
+  115 00000094 00000000        DCD              I2C3_IRQHandler ; I2C3
   116 00000098 00000000        DCD              TIM22_IRQHandler ; TIM22
   117 0000009C 00000000        DCD              I2C1_IRQHandler ; I2C1
   118 000000A0 00000000        DCD              I2C2_IRQHandler ; I2C2
@@ -257,13 +258,13 @@ WEAK]
                                PROC
   160 0000000E                 EXPORT           PendSV_Handler                 
 [WEAK]
-  161 0000000E E7FE            B                .
 
 
 
 ARM Macro Assembler    Page 5 
 
 
+  161 0000000E E7FE            B                .
   162 00000010                 ENDP
   163 00000010         SysTick_Handler
                                PROC
@@ -322,13 +323,13 @@ ARM Macro Assembler    Page 5
   192 00000012                 EXPORT           I2C2_IRQHandler                
 [WEAK]
   193 00000012                 EXPORT           I2C3_IRQHandler                
-[WEAK]
 
 
 
 ARM Macro Assembler    Page 6 
 
 
+[WEAK]
   194 00000012                 EXPORT           SPI1_IRQHandler                
 [WEAK]
   195 00000012                 EXPORT           SPI2_IRQHandler                
@@ -387,13 +388,13 @@ ARM Macro Assembler    Page 6
                        ************************
   242 00000014                 IF               :DEF:__MICROLIB
   243 00000014         
-  244 00000014                 EXPORT           __initial_sp
 
 
 
 ARM Macro Assembler    Page 7 
 
 
+  244 00000014                 EXPORT           __initial_sp
   245 00000014                 EXPORT           __heap_base
   246 00000014                 EXPORT           __heap_limit
   247 00000014         
