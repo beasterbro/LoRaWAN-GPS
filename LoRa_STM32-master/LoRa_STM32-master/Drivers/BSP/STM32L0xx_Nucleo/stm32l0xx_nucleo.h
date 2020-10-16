@@ -176,7 +176,7 @@ typedef enum
    stuck if the SPI communication is corrupted.
    You may modify these timeout values depending on CPU frequency and application
    conditions (interrupts routines ...). */   
-#define NUCLEO_SPIx_TIMEOUT_MAX                   500
+#define NUCLEO_SPIx_TIMEOUT_MAX                   1000
 #endif /* HAL_SPI_MODULE_ENABLED */
 /**TODO: Max SPI Timeout MAX here, default 1000 setting to 500
   * @}

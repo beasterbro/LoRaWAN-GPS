@@ -308,7 +308,6 @@ void BSP_PB_Init(Button_TypeDef Button, ButtonMode_TypeDef ButtonMode)
   */
 void BSP_PB_DeInit(Button_TypeDef Button)//TODO: this is called on button push?
 {
-	//printf( "Click \n\r" );
   GPIO_InitTypeDef gpio_init_structure;
   gpio_init_structure.Pin = BUTTON_PIN[Button];
   HAL_NVIC_DisableIRQ((IRQn_Type)(BUTTON_IRQn[Button]));

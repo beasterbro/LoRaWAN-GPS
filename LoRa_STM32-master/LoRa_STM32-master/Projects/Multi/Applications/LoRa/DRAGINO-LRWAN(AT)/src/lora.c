@@ -1166,8 +1166,8 @@ void lora_state_INT(void)
 {
 
   int in1 = 0;
-	HAL_Delay(3000);
-	in1=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_14);
+	//HAL_Delay(3000);
+	in1=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_14);//TODO: 3 sec delay is HAL_Delay?
 	if(GPIO_PIN_14)
 	{
 	PRINTF("Click");

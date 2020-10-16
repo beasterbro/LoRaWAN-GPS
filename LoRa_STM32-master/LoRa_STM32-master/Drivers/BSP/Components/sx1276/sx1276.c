@@ -1166,7 +1166,7 @@ void SX1276StartCad( void )
 
 void SX1276SetTxContinuousWave( uint32_t freq, int8_t power, uint16_t time )
 	{ //TODO: EDITIED THIS HERE
-    uint32_t timeout = ( uint32_t )( .5 * 1000 );
+    uint32_t timeout = ( uint32_t )( 1 * 1000 );
 		//Speed of .5 knocks LED and rxTimeOut out of sync, txTimer and LED appear in sync
     SX1276SetChannel( freq );
 
@@ -1708,8 +1708,8 @@ void SX1276OnDio1Irq( void )
                 SX1276.Settings.State = RF_IDLE;
                 if( ( RadioEvents != NULL ) && ( RadioEvents->RxTimeout != NULL ) )
                 {
-                    RadioEvents->RxTimeout( );
-                    PRINTF( "Testing 123\n\r" );//THE rxTIMEOUT PRINTF IS RIGHT HERE
+									RadioEvents->RxTimeout( );//TODO: rxTimeOut here
+                    PRINTF( "rxTimeOut" );//THE rxTIMEOUT PRINTF IS RIGHT HERE
                 }
                 break;
             default:
