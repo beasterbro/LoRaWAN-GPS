@@ -60,7 +60,7 @@
 #include <stdio.h>
 static uint8_t config_count=0;
 static uint8_t key_count=0;
-
+int in1 = 0;//TODO: Trying to export button click to main
 static uint32_t s_config[32]; //store config
 static uint32_t s_key[32];    //store key
 
@@ -1165,7 +1165,7 @@ SGM_t LORA_SGM( void )
 void lora_state_INT(void)
 {
 
-  int in1 = 0;
+  
 	//HAL_Delay(3000);//TODO: 3 sec delay is HAL_Delay
 	in1=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_14);//TODO: 3 sec delay is HAL_Delay
 

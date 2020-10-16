@@ -84,7 +84,7 @@ uint32_t Alarm_TX_DUTYCYCLE=60000;
 uint32_t GPS_ALARM=0;
 
 extern uint32_t set_sgm;
-
+extern int in1;
 extern uint32_t s_gm;
 extern uint8_t Restart;
 
@@ -319,11 +319,16 @@ int main( void )
   /* Configure the Lora Stack*/
   LORA_Init( &LoRaMainCallbacks, &LoRaParamInit);
   
-  while( 1 )
+  while( 1 )//TODO: Main program loop here
   {
 		/* Handle UART commands */
     CMD_Process();
-		
+		if(in1== 1){//TODO: adding check for button click here
+			PRINTF("Clock");
+			in1 = 0;
+					 Send();
+
+		}
 		if(s_gm == 1)
 		{
 //	   lora_send_fsm();
@@ -371,7 +376,7 @@ static void LORA_HasJoined( void )
 	#endif
 }
 
-static void Send( void )
+static void Send( void )//TODO: Here is where the high level send function is
 {
   sensor_t sensor_data;
   
