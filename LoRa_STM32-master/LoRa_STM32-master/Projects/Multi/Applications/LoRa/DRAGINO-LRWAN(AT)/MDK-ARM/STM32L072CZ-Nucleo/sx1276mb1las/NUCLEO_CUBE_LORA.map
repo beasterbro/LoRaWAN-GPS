@@ -2057,12 +2057,11 @@ Section Cross References
     lora.o(i.lora_getState) refers to lora.o(.data) for .data
     lora.o(i.lora_state_GPS_Alarm) refers to lora.o(.data) for .data
     lora.o(i.lora_state_GPS_Send) refers to lora.o(.data) for .data
-    lora.o(i.lora_state_INT) refers to stm32l0xx_hal_msp.o(i.HAL_Delay) for HAL_Delay
     lora.o(i.lora_state_INT) refers to stm32l0xx_hal_gpio.o(i.HAL_GPIO_ReadPin) for HAL_GPIO_ReadPin
     lora.o(i.lora_state_INT) refers to trace.o(i.TraceSend) for TraceSend
     lora.o(i.lora_state_INT) refers to low_power_manager.o(i.LPM_SetOffMode) for LPM_SetOffMode
-    lora.o(i.lora_state_INT) refers to main.o(.data) for GPS_ALARM
     lora.o(i.lora_state_INT) refers to lora.o(.data) for .data
+    lora.o(i.lora_state_INT) refers to main.o(.data) for APP_TX_DUTYCYCLE
     lora.o(i.lora_state_Led) refers to lora.o(.data) for .data
     lora.o(i.lora_state_LoRa_Alarm) refers to lora.o(.data) for .data
     lora.o(i.lora_state_Wake_Join) refers to lora.o(.data) for .data
@@ -5115,354 +5114,354 @@ Image Symbol Table
     i.SX1276IsChannelFree                    0x0800ab58   Section        0  sx1276.o(i.SX1276IsChannelFree)
     i.SX1276OnDio0Irq                        0x0800aba8   Section        0  sx1276.o(i.SX1276OnDio0Irq)
     i.SX1276OnDio1Irq                        0x0800ae24   Section        0  sx1276.o(i.SX1276OnDio1Irq)
-    i.SX1276OnDio2Irq                        0x0800af00   Section        0  sx1276.o(i.SX1276OnDio2Irq)
-    i.SX1276OnDio3Irq                        0x0800afb4   Section        0  sx1276.o(i.SX1276OnDio3Irq)
-    i.SX1276OnDio4Irq                        0x0800b008   Section        0  sx1276.o(i.SX1276OnDio4Irq)
-    i.SX1276OnTimeoutIrq                     0x0800b024   Section        0  sx1276.o(i.SX1276OnTimeoutIrq)
-    i.SX1276Random                           0x0800b0ec   Section        0  sx1276.o(i.SX1276Random)
-    i.SX1276Read                             0x0800b12a   Section        0  sx1276.o(i.SX1276Read)
-    i.SX1276ReadBuffer                       0x0800b13a   Section        0  sx1276.o(i.SX1276ReadBuffer)
-    i.SX1276ReadFifo                         0x0800b17c   Section        0  sx1276.o(i.SX1276ReadFifo)
-    i.SX1276ReadRssi                         0x0800b18c   Section        0  sx1276.o(i.SX1276ReadRssi)
-    i.SX1276Reset                            0x0800b1d0   Section        0  sx1276.o(i.SX1276Reset)
-    i.SX1276Send                             0x0800b220   Section        0  sx1276.o(i.SX1276Send)
-    i.SX1276SetAntSw                         0x0800b310   Section        0  sx1276mb1las.o(i.SX1276SetAntSw)
-    i.SX1276SetAntSwLowPower                 0x0800b32c   Section        0  sx1276mb1las.o(i.SX1276SetAntSwLowPower)
-    i.SX1276SetChannel                       0x0800b370   Section        0  sx1276.o(i.SX1276SetChannel)
-    i.SX1276SetMaxPayloadLength              0x0800b3c0   Section        0  sx1276.o(i.SX1276SetMaxPayloadLength)
-    i.SX1276SetModem                         0x0800b3f0   Section        0  sx1276.o(i.SX1276SetModem)
-    i.SX1276SetOpMode                        0x0800b460   Section        0  sx1276.o(i.SX1276SetOpMode)
-    i.SX1276SetPublicNetwork                 0x0800b4bc   Section        0  sx1276.o(i.SX1276SetPublicNetwork)
-    i.SX1276SetRfTxPower                     0x0800b4e0   Section        0  sx1276mb1las.o(i.SX1276SetRfTxPower)
-    i.SX1276SetRx                            0x0800b580   Section        0  sx1276.o(i.SX1276SetRx)
-    i.SX1276SetRxConfig                      0x0800b77c   Section        0  sx1276.o(i.SX1276SetRxConfig)
-    i.SX1276SetSleep                         0x0800ba04   Section        0  sx1276.o(i.SX1276SetSleep)
-    i.SX1276SetStby                          0x0800ba28   Section        0  sx1276.o(i.SX1276SetStby)
-    i.SX1276SetTx                            0x0800ba4c   Section        0  sx1276.o(i.SX1276SetTx)
-    i.SX1276SetTxConfig                      0x0800baf0   Section        0  sx1276.o(i.SX1276SetTxConfig)
-    i.SX1276SetTxContinuousWave              0x0800bcec   Section        0  sx1276.o(i.SX1276SetTxContinuousWave)
-    i.SX1276SetXO                            0x0800bd64   Section        0  sx1276mb1las.o(i.SX1276SetXO)
-    i.SX1276StartCad                         0x0800bd68   Section        0  sx1276.o(i.SX1276StartCad)
-    i.SX1276Write                            0x0800bda0   Section        0  sx1276.o(i.SX1276Write)
-    i.SX1276WriteBuffer                      0x0800bdac   Section        0  sx1276.o(i.SX1276WriteBuffer)
-    i.SX1276WriteFifo                        0x0800bdee   Section        0  sx1276.o(i.SX1276WriteFifo)
-    i.ScheduleTx                             0x0800bdfc   Section        0  loramac.o(i.ScheduleTx)
-    ScheduleTx                               0x0800bdfd   Thumb Code   292  loramac.o(i.ScheduleTx)
-    i.Send                                   0x0800bf30   Section        0  main.o(i.Send)
-    Send                                     0x0800bf31   Thumb Code  1342  main.o(i.Send)
-    i.Send                                   0x0800c484   Section        0  loramac.o(i.Send)
-    i.SendFrameOnChannel                     0x0800c4c4   Section        0  loramac.o(i.SendFrameOnChannel)
-    i.SetTxContinuousWave                    0x0800c588   Section        0  loramac.o(i.SetTxContinuousWave)
-    i.SetTxContinuousWave1                   0x0800c5dc   Section        0  loramac.o(i.SetTxContinuousWave1)
-    i.Store_Config                           0x0800c618   Section        0  lora.o(i.Store_Config)
-    i.Store_key                              0x0800c838   Section        0  lora.o(i.Store_key)
-    i.SysTick_Handler                        0x0800c8a8   Section        0  stm32l0xx_it.o(i.SysTick_Handler)
-    i.SystemClock_Config                     0x0800c8b0   Section        0  stm32l0xx_hw.o(i.SystemClock_Config)
-    i.SystemInit                             0x0800c93c   Section        0  system_stm32l0xx.o(i.SystemInit)
-    i.TimerGetCurrentTime                    0x0800c990   Section        0  timeserver.o(i.TimerGetCurrentTime)
-    i.TimerGetElapsedTime                    0x0800c99c   Section        0  timeserver.o(i.TimerGetElapsedTime)
-    i.TimerInit                              0x0800c9b4   Section        0  timeserver.o(i.TimerInit)
-    i.TimerInsertNewHeadTimer                0x0800c9c4   Section        0  timeserver.o(i.TimerInsertNewHeadTimer)
-    TimerInsertNewHeadTimer                  0x0800c9c5   Thumb Code    24  timeserver.o(i.TimerInsertNewHeadTimer)
-    i.TimerIrqHandler                        0x0800c9e0   Section        0  timeserver.o(i.TimerIrqHandler)
-    i.TimerSetTimeout                        0x0800ca58   Section        0  timeserver.o(i.TimerSetTimeout)
-    TimerSetTimeout                          0x0800ca59   Thumb Code    44  timeserver.o(i.TimerSetTimeout)
-    i.TimerSetValue                          0x0800ca84   Section        0  timeserver.o(i.TimerSetValue)
-    i.TimerStart                             0x0800caa8   Section        0  timeserver.o(i.TimerStart)
-    i.TimerStop                              0x0800cb18   Section        0  timeserver.o(i.TimerStop)
-    i.TraceInit                              0x0800cb78   Section        0  trace.o(i.TraceInit)
-    i.TraceSend                              0x0800cb9c   Section        0  trace.o(i.TraceSend)
-    i.Trace_TxCpltCallback                   0x0800cc24   Section        0  trace.o(i.Trace_TxCpltCallback)
-    Trace_TxCpltCallback                     0x0800cc25   Thumb Code    62  trace.o(i.Trace_TxCpltCallback)
-    i.UART_AdvFeatureConfig                  0x0800cc6c   Section        0  stm32l0xx_hal_uart.o(i.UART_AdvFeatureConfig)
-    i.UART_CheckIdleState                    0x0800cd38   Section        0  stm32l0xx_hal_uart.o(i.UART_CheckIdleState)
-    i.UART_DMAAbortOnError                   0x0800cd98   Section        0  stm32l0xx_hal_uart.o(i.UART_DMAAbortOnError)
-    UART_DMAAbortOnError                     0x0800cd99   Thumb Code    20  stm32l0xx_hal_uart.o(i.UART_DMAAbortOnError)
-    i.UART_DMAError                          0x0800cdac   Section        0  stm32l0xx_hal_uart.o(i.UART_DMAError)
-    UART_DMAError                            0x0800cdad   Thumb Code    74  stm32l0xx_hal_uart.o(i.UART_DMAError)
-    i.UART_DMATransmitCplt                   0x0800cdf6   Section        0  stm32l0xx_hal_uart.o(i.UART_DMATransmitCplt)
-    UART_DMATransmitCplt                     0x0800cdf7   Thumb Code    48  stm32l0xx_hal_uart.o(i.UART_DMATransmitCplt)
-    i.UART_DMATxHalfCplt                     0x0800ce26   Section        0  stm32l0xx_hal_uart.o(i.UART_DMATxHalfCplt)
-    UART_DMATxHalfCplt                       0x0800ce27   Thumb Code    10  stm32l0xx_hal_uart.o(i.UART_DMATxHalfCplt)
-    i.UART_EndRxTransfer                     0x0800ce30   Section        0  stm32l0xx_hal_uart.o(i.UART_EndRxTransfer)
-    UART_EndRxTransfer                       0x0800ce31   Thumb Code    30  stm32l0xx_hal_uart.o(i.UART_EndRxTransfer)
-    i.UART_EndTxTransfer                     0x0800ce4e   Section        0  stm32l0xx_hal_uart.o(i.UART_EndTxTransfer)
-    UART_EndTxTransfer                       0x0800ce4f   Thumb Code    18  stm32l0xx_hal_uart.o(i.UART_EndTxTransfer)
-    i.UART_Receive_IT                        0x0800ce60   Section        0  stm32l0xx_hal_uart.o(i.UART_Receive_IT)
-    UART_Receive_IT                          0x0800ce61   Thumb Code   126  stm32l0xx_hal_uart.o(i.UART_Receive_IT)
-    i.UART_SetConfig                         0x0800cee0   Section        0  stm32l0xx_hal_uart.o(i.UART_SetConfig)
-    i.UART_Transmit_IT                       0x0800d110   Section        0  stm32l0xx_hal_uart.o(i.UART_Transmit_IT)
-    UART_Transmit_IT                         0x0800d111   Thumb Code   102  stm32l0xx_hal_uart.o(i.UART_Transmit_IT)
-    i.UART_WaitOnFlagUntilTimeout            0x0800d176   Section        0  stm32l0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout)
-    i.USART1_IRQHandler                      0x0800d1d8   Section        0  main.o(i.USART1_IRQHandler)
-    i.ValidatePayloadLength                  0x0800d1e8   Section        0  loramac.o(i.ValidatePayloadLength)
-    ValidatePayloadLength                    0x0800d1e9   Thumb Code    62  loramac.o(i.ValidatePayloadLength)
-    i.__0vsnprintf                           0x0800d230   Section        0  printfa.o(i.__0vsnprintf)
-    i.__ARM_clz                              0x0800d25c   Section        0  depilogue.o(i.__ARM_clz)
-    i.__ARM_common_ll_muluu                  0x0800d28a   Section        0  hw_rtc.o(i.__ARM_common_ll_muluu)
-    i.__ARM_common_switch8                   0x0800d2ba   Section        0  sx1276.o(i.__ARM_common_switch8)
-    i.__ARM_fpclassify                       0x0800d2d4   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i.__ARM_fpclassifyf                      0x0800d300   Section        0  fpclassifyf.o(i.__ARM_fpclassifyf)
-    i.__ARM_isinff                           0x0800d322   Section        0  filter.o(i.__ARM_isinff)
-    __ARM_isinff                             0x0800d323   Thumb Code    18  filter.o(i.__ARM_isinff)
-    i.__ARM_isnanf                           0x0800d334   Section        0  filter.o(i.__ARM_isnanf)
-    __ARM_isnanf                             0x0800d335   Thumb Code    14  filter.o(i.__ARM_isnanf)
-    i.__kernel_poly                          0x0800d342   Section        0  poly.o(i.__kernel_poly)
-    i.__mathlib_dbl_infnan                   0x0800d3ee   Section        0  dunder.o(i.__mathlib_dbl_infnan)
-    i.__mathlib_dbl_infnan2                  0x0800d3f8   Section        0  dunder.o(i.__mathlib_dbl_infnan2)
-    i.__mathlib_dbl_invalid                  0x0800d400   Section        0  dunder.o(i.__mathlib_dbl_invalid)
-    i.__mathlib_dbl_underflow                0x0800d410   Section        0  dunder.o(i.__mathlib_dbl_underflow)
-    i.__mathlib_flt_infnan                   0x0800d424   Section        0  funder.o(i.__mathlib_flt_infnan)
-    i.__mathlib_flt_invalid                  0x0800d42e   Section        0  funder.o(i.__mathlib_flt_invalid)
-    i.__mathlib_flt_underflow                0x0800d43a   Section        0  funder.o(i.__mathlib_flt_underflow)
-    i.__mathlib_rredf2                       0x0800d448   Section        0  rredf.o(i.__mathlib_rredf2)
-    i.__scatterload_copy                     0x0800d5c8   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x0800d5d6   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x0800d5d8   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.__set_errno                            0x0800d5e8   Section        0  errno.o(i.__set_errno)
-    i._fp_digits                             0x0800d5f4   Section        0  printfa.o(i._fp_digits)
-    _fp_digits                               0x0800d5f5   Thumb Code   344  printfa.o(i._fp_digits)
-    i._printf_core                           0x0800d768   Section        0  printfa.o(i._printf_core)
-    _printf_core                             0x0800d769   Thumb Code  1754  printfa.o(i._printf_core)
-    i._printf_post_padding                   0x0800de54   Section        0  printfa.o(i._printf_post_padding)
-    _printf_post_padding                     0x0800de55   Thumb Code    32  printfa.o(i._printf_post_padding)
-    i._printf_pre_padding                    0x0800de74   Section        0  printfa.o(i._printf_pre_padding)
-    _printf_pre_padding                      0x0800de75   Thumb Code    44  printfa.o(i._printf_pre_padding)
-    i._snputc                                0x0800dea0   Section        0  printfa.o(i._snputc)
-    _snputc                                  0x0800dea1   Thumb Code    22  printfa.o(i._snputc)
-    i.aes_encrypt                            0x0800deb6   Section        0  aes.o(i.aes_encrypt)
-    i.aes_set_key                            0x0800df0c   Section        0  aes.o(i.aes_set_key)
-    i.asin                                   0x0800e008   Section        0  asin.o(i.asin)
-    i.at_ACE_get                             0x0800e27c   Section        0  at.o(i.at_ACE_get)
-    i.at_ACE_set                             0x0800e290   Section        0  at.o(i.at_ACE_set)
-    i.at_ADR_get                             0x0800e2b4   Section        0  at.o(i.at_ADR_get)
-    i.at_ADR_set                             0x0800e2d6   Section        0  at.o(i.at_ADR_set)
-    i.at_AppEUI_get                          0x0800e30a   Section        0  at.o(i.at_AppEUI_get)
-    i.at_AppEUI_set                          0x0800e318   Section        0  at.o(i.at_AppEUI_set)
-    i.at_AppKey_get                          0x0800e380   Section        0  at.o(i.at_AppKey_get)
-    i.at_AppKey_set                          0x0800e38e   Section        0  at.o(i.at_AppKey_set)
-    i.at_AppSKey_get                         0x0800e3ae   Section        0  at.o(i.at_AppSKey_get)
-    i.at_AppSKey_set                         0x0800e3bc   Section        0  at.o(i.at_AppSKey_set)
-    i.at_CHE_get                             0x0800e3dc   Section        0  at.o(i.at_CHE_get)
-    i.at_CHE_set                             0x0800e498   Section        0  at.o(i.at_CHE_set)
-    i.at_CHS_get                             0x0800e4cc   Section        0  at.o(i.at_CHS_get)
-    i.at_CHS_set                             0x0800e4dc   Section        0  at.o(i.at_CHS_set)
-    i.at_DataRate_get                        0x0800e518   Section        0  at.o(i.at_DataRate_get)
-    i.at_DataRate_set                        0x0800e53c   Section        0  at.o(i.at_DataRate_set)
-    i.at_DevAddr_get                         0x0800e568   Section        0  at.o(i.at_DevAddr_get)
-    i.at_DevAddr_set                         0x0800e572   Section        0  at.o(i.at_DevAddr_set)
-    i.at_DevEUI_get                          0x0800e590   Section        0  at.o(i.at_DevEUI_get)
-    i.at_DevEUI_set                          0x0800e5a0   Section        0  at.o(i.at_DevEUI_set)
-    i.at_DeviceClass_get                     0x0800e608   Section        0  at.o(i.at_DeviceClass_get)
-    i.at_DeviceClass_set                     0x0800e638   Section        0  at.o(i.at_DeviceClass_set)
-    i.at_DownlinkCounter_get                 0x0800e66c   Section        0  at.o(i.at_DownlinkCounter_get)
-    i.at_DownlinkCounter_set                 0x0800e68c   Section        0  at.o(i.at_DownlinkCounter_set)
-    i.at_DutyCycle_get                       0x0800e6c0   Section        0  at.o(i.at_DutyCycle_get)
-    i.at_DutyCycle_set                       0x0800e6ec   Section        0  at.o(i.at_DutyCycle_set)
-    i.at_FDR                                 0x0800e710   Section        0  at.o(i.at_FDR)
-    i.at_Join                                0x0800e738   Section        0  at.o(i.at_Join)
-    i.at_JoinAcceptDelay1_get                0x0800e742   Section        0  at.o(i.at_JoinAcceptDelay1_get)
-    i.at_JoinAcceptDelay1_set                0x0800e764   Section        0  at.o(i.at_JoinAcceptDelay1_set)
-    i.at_JoinAcceptDelay2_get                0x0800e798   Section        0  at.o(i.at_JoinAcceptDelay2_get)
-    i.at_JoinAcceptDelay2_set                0x0800e7b8   Section        0  at.o(i.at_JoinAcceptDelay2_set)
-    i.at_NetworkID_get                       0x0800e7ec   Section        0  at.o(i.at_NetworkID_get)
-    i.at_NetworkID_set                       0x0800e840   Section        0  at.o(i.at_NetworkID_set)
-    i.at_NetworkJoinMode_get                 0x0800e86c   Section        0  at.o(i.at_NetworkJoinMode_get)
-    i.at_NetworkJoinMode_set                 0x0800e880   Section        0  at.o(i.at_NetworkJoinMode_set)
-    i.at_NetworkJoinStatus                   0x0800e8a2   Section        0  at.o(i.at_NetworkJoinStatus)
-    i.at_NwkSKey_get                         0x0800e8ce   Section        0  at.o(i.at_NwkSKey_get)
-    i.at_NwkSKey_set                         0x0800e8dc   Section        0  at.o(i.at_NwkSKey_set)
-    i.at_PublicNetwork_get                   0x0800e8fc   Section        0  at.o(i.at_PublicNetwork_get)
-    i.at_PublicNetwork_set                   0x0800e91e   Section        0  at.o(i.at_PublicNetwork_set)
-    i.at_Receive                             0x0800e954   Section        0  at.o(i.at_Receive)
-    i.at_ReceiveBinary                       0x0800e998   Section        0  at.o(i.at_ReceiveBinary)
-    i.at_Rx1Delay_get                        0x0800e9e8   Section        0  at.o(i.at_Rx1Delay_get)
-    i.at_Rx1Delay_set                        0x0800ea08   Section        0  at.o(i.at_Rx1Delay_set)
-    i.at_Rx2DataRate_get                     0x0800ea3c   Section        0  at.o(i.at_Rx2DataRate_get)
-    i.at_Rx2DataRate_set                     0x0800ea60   Section        0  at.o(i.at_Rx2DataRate_set)
-    i.at_Rx2Delay_get                        0x0800eaa8   Section        0  at.o(i.at_Rx2Delay_get)
-    i.at_Rx2Delay_set                        0x0800eac8   Section        0  at.o(i.at_Rx2Delay_set)
-    i.at_Rx2Frequency_get                    0x0800eafc   Section        0  at.o(i.at_Rx2Frequency_get)
-    i.at_Rx2Frequency_set                    0x0800eb1c   Section        0  at.o(i.at_Rx2Frequency_set)
-    i.at_STD                                 0x0800eb60   Section        0  at.o(i.at_STD)
-    i.at_Send                                0x0800eb74   Section        0  at.o(i.at_Send)
-    i.at_SendBinary                          0x0800ec0c   Section        0  at.o(i.at_SendBinary)
-    i.at_TDC_get                             0x0800ecd8   Section        0  at.o(i.at_TDC_get)
-    i.at_TDC_set                             0x0800ecec   Section        0  at.o(i.at_TDC_set)
-    i.at_TransmitPower_get                   0x0800ed10   Section        0  at.o(i.at_TransmitPower_get)
-    i.at_TransmitPower_set                   0x0800ed34   Section        0  at.o(i.at_TransmitPower_set)
-    i.at_UplinkCounter_get                   0x0800ed6c   Section        0  at.o(i.at_UplinkCounter_get)
-    i.at_UplinkCounter_set                   0x0800ed8c   Section        0  at.o(i.at_UplinkCounter_set)
-    i.at_ack_get                             0x0800edc0   Section        0  at.o(i.at_ack_get)
-    i.at_ack_set                             0x0800edd4   Section        0  at.o(i.at_ack_set)
-    i.at_application_port_get                0x0800edf6   Section        0  at.o(i.at_application_port_get)
-    i.at_application_port_set                0x0800ee04   Section        0  at.o(i.at_application_port_set)
-    i.at_gpst_get                            0x0800ee30   Section        0  at.o(i.at_gpst_get)
-    i.at_gpst_set                            0x0800ee44   Section        0  at.o(i.at_gpst_set)
-    i.at_isack_get                           0x0800ee68   Section        0  at.o(i.at_isack_get)
-    i.at_reset                               0x0800ee7c   Section        0  at.o(i.at_reset)
-    i.at_return_error                        0x0800ee80   Section        0  at.o(i.at_return_error)
-    i.at_rssi_get                            0x0800ee84   Section        0  at.o(i.at_rssi_get)
-    i.at_sgm_get                             0x0800ee94   Section        0  at.o(i.at_sgm_get)
-    i.at_sgm_set                             0x0800eea8   Section        0  at.o(i.at_sgm_set)
-    i.at_snr_get                             0x0800eee4   Section        0  at.o(i.at_snr_get)
-    i.at_symbtimeout1LSB_get                 0x0800eef4   Section        0  at.o(i.at_symbtimeout1LSB_get)
-    i.at_symbtimeout1LSB_set                 0x0800ef08   Section        0  at.o(i.at_symbtimeout1LSB_set)
-    i.at_symbtimeout2LSB_get                 0x0800ef34   Section        0  at.o(i.at_symbtimeout2LSB_get)
-    i.at_symbtimeout2LSB_set                 0x0800ef48   Section        0  at.o(i.at_symbtimeout2LSB_set)
-    i.at_version_get                         0x0800ef74   Section        0  at.o(i.at_version_get)
-    i.atan                                   0x0800ef90   Section        0  atan.o(i.atan)
-    i.atan2                                  0x0800f1ac   Section        0  atan2.o(i.atan2)
-    i.ceil                                   0x0800f324   Section        0  ceil.o(i.ceil)
-    i.certif_DownLinkIncrement               0x0800f3ec   Section        0  lora-test.o(i.certif_DownLinkIncrement)
-    i.certif_linkCheck                       0x0800f3fc   Section        0  lora-test.o(i.certif_linkCheck)
-    i.certif_running                         0x0800f410   Section        0  lora-test.o(i.certif_running)
-    i.certif_rx                              0x0800f41c   Section        0  lora-test.o(i.certif_rx)
-    i.certif_tx                              0x0800f5a4   Section        0  lora-test.o(i.certif_tx)
-    certif_tx                                0x0800f5a5   Thumb Code   156  lora-test.o(i.certif_tx)
-    i.check                                  0x0800f648   Section        0  gps.o(i.check)
-    i.com_error                              0x0800f684   Section        0  command.o(i.com_error)
-    com_error                                0x0800f685   Thumb Code    24  command.o(i.com_error)
-    i.copy_and_key                           0x0800f6a0   Section        0  aes.o(i.copy_and_key)
-    copy_and_key                             0x0800f6a1   Thumb Code   132  aes.o(i.copy_and_key)
-    i.copy_block                             0x0800f724   Section        0  aes.o(i.copy_block)
-    copy_block                               0x0800f725   Thumb Code    66  aes.o(i.copy_block)
-    i.cosf                                   0x0800f768   Section        0  cosf.o(i.cosf)
-    i.customize_freq1_get                    0x0800f8e0   Section        0  lora.o(i.customize_freq1_get)
-    i.customize_freq1_set                    0x0800f8ec   Section        0  lora.o(i.customize_freq1_set)
-    i.customize_set8channel_get              0x0800f8f8   Section        0  lora.o(i.customize_set8channel_get)
-    i.customize_set8channel_set              0x0800f904   Section        0  lora.o(i.customize_set8channel_set)
-    i.floor                                  0x0800f910   Section        0  floor.o(i.floor)
-    i.gps_state_no                           0x0800f9d8   Section        0  lora.o(i.gps_state_no)
-    i.gps_state_off                          0x0800f9e4   Section        0  lora.o(i.gps_state_off)
-    i.gps_state_on                           0x0800f9f0   Section        0  lora.o(i.gps_state_on)
-    i.invSqrt                                0x0800f9fc   Section        0  main.o(i.invSqrt)
-    i.key_printf                             0x0800fa30   Section        0  lora.o(i.key_printf)
-    i.lora_config_appeui_get                 0x0800fa94   Section        0  lora.o(i.lora_config_appeui_get)
-    i.lora_config_appeui_set                 0x0800fa9c   Section        0  lora.o(i.lora_config_appeui_set)
-    i.lora_config_appkey_get                 0x0800fab0   Section        0  lora.o(i.lora_config_appkey_get)
-    i.lora_config_appkey_set                 0x0800fab8   Section        0  lora.o(i.lora_config_appkey_set)
-    i.lora_config_application_port_get       0x0800facc   Section        0  lora.o(i.lora_config_application_port_get)
-    i.lora_config_application_port_set       0x0800fad8   Section        0  lora.o(i.lora_config_application_port_set)
-    i.lora_config_appskey_get                0x0800fae4   Section        0  lora.o(i.lora_config_appskey_get)
-    i.lora_config_appskey_set                0x0800faec   Section        0  lora.o(i.lora_config_appskey_set)
-    i.lora_config_devaddr_get                0x0800fb00   Section        0  lora.o(i.lora_config_devaddr_get)
-    i.lora_config_devaddr_set                0x0800fb1c   Section        0  lora.o(i.lora_config_devaddr_set)
-    i.lora_config_deveui_get                 0x0800fb28   Section        0  lora.o(i.lora_config_deveui_get)
-    i.lora_config_deveui_set                 0x0800fb30   Section        0  lora.o(i.lora_config_deveui_set)
-    i.lora_config_duty_cycle_get             0x0800fb44   Section        0  lora.o(i.lora_config_duty_cycle_get)
-    i.lora_config_duty_cycle_set             0x0800fb50   Section        0  lora.o(i.lora_config_duty_cycle_set)
-    i.lora_config_isack_get                  0x0800fb68   Section        0  lora.o(i.lora_config_isack_get)
-    i.lora_config_nwkskey_get                0x0800fb80   Section        0  lora.o(i.lora_config_nwkskey_get)
-    i.lora_config_nwkskey_set                0x0800fb88   Section        0  lora.o(i.lora_config_nwkskey_set)
-    i.lora_config_otaa_get                   0x0800fb9c   Section        0  lora.o(i.lora_config_otaa_get)
-    i.lora_config_otaa_set                   0x0800fba8   Section        0  lora.o(i.lora_config_otaa_set)
-    i.lora_config_reqack_get                 0x0800fbb4   Section        0  lora.o(i.lora_config_reqack_get)
-    i.lora_config_reqack_set                 0x0800fbc0   Section        0  lora.o(i.lora_config_reqack_set)
-    i.lora_config_rssi_get                   0x0800fbcc   Section        0  lora.o(i.lora_config_rssi_get)
-    i.lora_config_snr_get                    0x0800fbd8   Section        0  lora.o(i.lora_config_snr_get)
-    i.lora_config_tx_datarate_set            0x0800fbe4   Section        0  lora.o(i.lora_config_tx_datarate_set)
-    i.lora_getGPSState                       0x0800fbf0   Section        0  lora.o(i.lora_getGPSState)
-    i.lora_getState                          0x0800fbfc   Section        0  lora.o(i.lora_getState)
-    i.lora_send                              0x0800fc08   Section        0  main.o(i.lora_send)
-    lora_send                                0x0800fc09   Thumb Code  1380  main.o(i.lora_send)
-    i.lora_state_GPS_Send                    0x08010180   Section        0  lora.o(i.lora_state_GPS_Send)
-    i.lora_state_INT                         0x0801018c   Section        0  lora.o(i.lora_state_INT)
-    i.lora_state_Led                         0x080101f8   Section        0  lora.o(i.lora_state_Led)
-    i.main                                   0x08010204   Section        0  main.o(i.main)
-    i.memcpy1                                0x080102b4   Section        0  utilities.o(i.memcpy1)
-    i.memcpyr                                0x080102ca   Section        0  utilities.o(i.memcpyr)
-    i.memset1                                0x080102e4   Section        0  utilities.o(i.memset1)
-    i.mix_sub_columns                        0x080102f8   Section        0  aes.o(i.mix_sub_columns)
-    mix_sub_columns                          0x080102f9   Thumb Code   532  aes.o(i.mix_sub_columns)
-    i.my_atof                                0x08010510   Section        0  gps.o(i.my_atof)
-    i.my_atoi                                0x0801051a   Section        0  gps.o(i.my_atoi)
-    i.my_strtod                              0x08010564   Section        0  gps.o(i.my_strtod)
-    i.onNetworkJointimesout                  0x08010680   Section        0  loramac.o(i.onNetworkJointimesout)
-    onNetworkJointimesout                    0x08010681   Thumb Code    12  loramac.o(i.onNetworkJointimesout)
-    i.parse_cmd                              0x08010690   Section        0  command.o(i.parse_cmd)
-    parse_cmd                                0x08010691   Thumb Code   252  command.o(i.parse_cmd)
-    i.powerLED                               0x080107a8   Section        0  bsp.o(i.powerLED)
-    i.print_16_02x                           0x080107d4   Section        0  at.o(i.print_16_02x)
-    print_16_02x                             0x080107d5   Thumb Code    72  at.o(i.print_16_02x)
-    i.print_8_02x                            0x08010820   Section        0  at.o(i.print_8_02x)
-    print_8_02x                              0x08010821   Thumb Code    44  at.o(i.print_8_02x)
-    i.print_d                                0x08010878   Section        0  at.o(i.print_d)
-    print_d                                  0x08010879   Thumb Code    18  at.o(i.print_d)
-    i.print_u                                0x08010894   Section        0  at.o(i.print_u)
-    print_u                                  0x08010895   Thumb Code    18  at.o(i.print_u)
-    i.rand1                                  0x080108b0   Section        0  utilities.o(i.rand1)
-    i.randr                                  0x080108dc   Section        0  utilities.o(i.randr)
-    i.read_data                              0x080108f2   Section        0  lora.o(i.read_data)
-    i.region_printf                          0x08010970   Section        0  lora.o(i.region_printf)
-    i.round                                  0x08010984   Section        0  round.o(i.round)
-    i.s_tdc                                  0x08010a20   Section        0  at.o(i.s_tdc)
-    i.send_ALARM_data                        0x08010a38   Section        0  main.o(i.send_ALARM_data)
-    i.send_data                              0x08010ae4   Section        0  main.o(i.send_data)
-    i.set_at_receive                         0x08010b9c   Section        0  at.o(i.set_at_receive)
-    i.shift_sub_rows                         0x08010bc0   Section        0  aes.o(i.shift_sub_rows)
-    shift_sub_rows                           0x08010bc1   Thumb Code   100  aes.o(i.shift_sub_rows)
-    i.split                                  0x08010c28   Section        0  gps.o(i.split)
-    i.sqrt                                   0x08010c60   Section        0  sqrt.o(i.sqrt)
-    i.srand1                                 0x08010ca8   Section        0  utilities.o(i.srand1)
-    i.sscanf_16_hhx                          0x08010cb4   Section        0  at.o(i.sscanf_16_hhx)
-    sscanf_16_hhx                            0x08010cb5   Thumb Code    70  at.o(i.sscanf_16_hhx)
-    i.sscanf_uint32_as_hhx                   0x08010d00   Section        0  at.o(i.sscanf_uint32_as_hhx)
-    sscanf_uint32_as_hhx                     0x08010d01   Thumb Code    20  at.o(i.sscanf_uint32_as_hhx)
-    i.store_data                             0x08010d28   Section        0  lora.o(i.store_data)
-    i.tanf                                   0x08010df0   Section        0  tanf.o(i.tanf)
-    i.tiny_sscanf                            0x08010f60   Section        0  tiny_sscanf.o(i.tiny_sscanf)
-    i.tiny_vfscanf                           0x08010f74   Section        0  tiny_sscanf.o(i.tiny_vfscanf)
-    tiny_vfscanf                             0x08010f75   Thumb Code   592  tiny_sscanf.o(i.tiny_vfscanf)
-    i.translate_status                       0x080111c8   Section        0  at.o(i.translate_status)
-    translate_status                         0x080111c9   Thumb Code    32  at.o(i.translate_status)
-    i.usart1_IRQHandler                      0x080111e8   Section        0  bsp_usart2.o(i.usart1_IRQHandler)
-    i.usart1_Init                            0x08011224   Section        0  bsp_usart2.o(i.usart1_Init)
-    i.usart1_IoInit                          0x0801126c   Section        0  bsp_usart2.o(i.usart1_IoInit)
-    i.vcom_DMA_TX_IRQHandler                 0x080112c0   Section        0  vcom.o(i.vcom_DMA_TX_IRQHandler)
-    i.vcom_IRQHandler                        0x080112d0   Section        0  vcom.o(i.vcom_IRQHandler)
-    i.vcom_Init                              0x080112e0   Section        0  vcom.o(i.vcom_Init)
-    i.vcom_IoInit                            0x0801131c   Section        0  vcom.o(i.vcom_IoInit)
-    i.vcom_ReceiveInit                       0x0801137c   Section        0  vcom.o(i.vcom_ReceiveInit)
-    i.vcom_Trace                             0x080113a8   Section        0  vcom.o(i.vcom_Trace)
-    i.xor_block                              0x080113bc   Section        0  aes.o(i.xor_block)
-    xor_block                                0x080113bd   Thumb Code   130  aes.o(i.xor_block)
-    .constdata                               0x08011440   Section      224  sx1276.o(.constdata)
-    .constdata                               0x08011520   Section      104  sx1276mb1las.o(.constdata)
-    .constdata                               0x08011588   Section       25  system_stm32l0xx.o(.constdata)
-    .constdata                               0x080115a1   Section        8  system_stm32l0xx.o(.constdata)
-    .constdata                               0x080115a9   Section       24  hw_rtc.o(.constdata)
-    DaysInMonth                              0x080115a9   Data          12  hw_rtc.o(.constdata)
-    DaysInMonthLeapYear                      0x080115b5   Data          12  hw_rtc.o(.constdata)
-    .constdata                               0x080115c4   Section     1136  command.o(.constdata)
-    ATError_description                      0x080115c4   Data          32  command.o(.constdata)
-    ATCommand                                0x080115e4   Data        1104  command.o(.constdata)
-    .constdata                               0x08011a34   Section      132  regionus915.o(.constdata)
-    DataratesUS915                           0x08011a34   Data          16  regionus915.o(.constdata)
-    BandwidthsUS915                          0x08011a44   Data          64  regionus915.o(.constdata)
-    DatarateOffsetsUS915                     0x08011a84   Data          20  regionus915.o(.constdata)
-    MaxPayloadOfDatarateUS915                0x08011a98   Data          16  regionus915.o(.constdata)
-    MaxPayloadOfDatarateRepeaterUS915        0x08011aa8   Data          16  regionus915.o(.constdata)
-    .constdata                               0x08011ab8   Section       16  loramac.o(.constdata)
-    LoRaMacMaxEirpTable                      0x08011ab8   Data          16  loramac.o(.constdata)
-    .constdata                               0x08011ac8   Section      768  aes.o(.constdata)
-    sbox                                     0x08011ac8   Data         256  aes.o(.constdata)
-    gfm2_sbox                                0x08011bc8   Data         256  aes.o(.constdata)
-    gfm3_sbox                                0x08011cc8   Data         256  aes.o(.constdata)
-    .constdata                               0x08011dc8   Section       80  asin.o(.constdata)
-    pS                                       0x08011dc8   Data          48  asin.o(.constdata)
-    qS                                       0x08011df8   Data          32  asin.o(.constdata)
-    .constdata                               0x08011e18   Section      152  atan.o(.constdata)
-    atanhi                                   0x08011e18   Data          32  atan.o(.constdata)
-    atanlo                                   0x08011e38   Data          32  atan.o(.constdata)
-    aTodd                                    0x08011e58   Data          40  atan.o(.constdata)
-    aTeven                                   0x08011e80   Data          48  atan.o(.constdata)
-    .constdata                               0x08011eb0   Section        8  qnan.o(.constdata)
-    .constdata                               0x08011eb8   Section       32  rredf.o(.constdata)
-    twooverpi                                0x08011eb8   Data          32  rredf.o(.constdata)
-    .constdata                               0x08011ed8   Section       64  ctype_c.o(.constdata)
-    .conststring                             0x08011f18   Section      164  at.o(.conststring)
-    .conststring                             0x08011fbc   Section     3486  command.o(.conststring)
+    i.SX1276OnDio2Irq                        0x0800aefc   Section        0  sx1276.o(i.SX1276OnDio2Irq)
+    i.SX1276OnDio3Irq                        0x0800afb0   Section        0  sx1276.o(i.SX1276OnDio3Irq)
+    i.SX1276OnDio4Irq                        0x0800b004   Section        0  sx1276.o(i.SX1276OnDio4Irq)
+    i.SX1276OnTimeoutIrq                     0x0800b020   Section        0  sx1276.o(i.SX1276OnTimeoutIrq)
+    i.SX1276Random                           0x0800b0e8   Section        0  sx1276.o(i.SX1276Random)
+    i.SX1276Read                             0x0800b126   Section        0  sx1276.o(i.SX1276Read)
+    i.SX1276ReadBuffer                       0x0800b136   Section        0  sx1276.o(i.SX1276ReadBuffer)
+    i.SX1276ReadFifo                         0x0800b178   Section        0  sx1276.o(i.SX1276ReadFifo)
+    i.SX1276ReadRssi                         0x0800b188   Section        0  sx1276.o(i.SX1276ReadRssi)
+    i.SX1276Reset                            0x0800b1cc   Section        0  sx1276.o(i.SX1276Reset)
+    i.SX1276Send                             0x0800b21c   Section        0  sx1276.o(i.SX1276Send)
+    i.SX1276SetAntSw                         0x0800b30c   Section        0  sx1276mb1las.o(i.SX1276SetAntSw)
+    i.SX1276SetAntSwLowPower                 0x0800b328   Section        0  sx1276mb1las.o(i.SX1276SetAntSwLowPower)
+    i.SX1276SetChannel                       0x0800b36c   Section        0  sx1276.o(i.SX1276SetChannel)
+    i.SX1276SetMaxPayloadLength              0x0800b3bc   Section        0  sx1276.o(i.SX1276SetMaxPayloadLength)
+    i.SX1276SetModem                         0x0800b3ec   Section        0  sx1276.o(i.SX1276SetModem)
+    i.SX1276SetOpMode                        0x0800b45c   Section        0  sx1276.o(i.SX1276SetOpMode)
+    i.SX1276SetPublicNetwork                 0x0800b4b8   Section        0  sx1276.o(i.SX1276SetPublicNetwork)
+    i.SX1276SetRfTxPower                     0x0800b4dc   Section        0  sx1276mb1las.o(i.SX1276SetRfTxPower)
+    i.SX1276SetRx                            0x0800b57c   Section        0  sx1276.o(i.SX1276SetRx)
+    i.SX1276SetRxConfig                      0x0800b778   Section        0  sx1276.o(i.SX1276SetRxConfig)
+    i.SX1276SetSleep                         0x0800ba00   Section        0  sx1276.o(i.SX1276SetSleep)
+    i.SX1276SetStby                          0x0800ba24   Section        0  sx1276.o(i.SX1276SetStby)
+    i.SX1276SetTx                            0x0800ba48   Section        0  sx1276.o(i.SX1276SetTx)
+    i.SX1276SetTxConfig                      0x0800baec   Section        0  sx1276.o(i.SX1276SetTxConfig)
+    i.SX1276SetTxContinuousWave              0x0800bce8   Section        0  sx1276.o(i.SX1276SetTxContinuousWave)
+    i.SX1276SetXO                            0x0800bd60   Section        0  sx1276mb1las.o(i.SX1276SetXO)
+    i.SX1276StartCad                         0x0800bd64   Section        0  sx1276.o(i.SX1276StartCad)
+    i.SX1276Write                            0x0800bd9c   Section        0  sx1276.o(i.SX1276Write)
+    i.SX1276WriteBuffer                      0x0800bda8   Section        0  sx1276.o(i.SX1276WriteBuffer)
+    i.SX1276WriteFifo                        0x0800bdea   Section        0  sx1276.o(i.SX1276WriteFifo)
+    i.ScheduleTx                             0x0800bdf8   Section        0  loramac.o(i.ScheduleTx)
+    ScheduleTx                               0x0800bdf9   Thumb Code   292  loramac.o(i.ScheduleTx)
+    i.Send                                   0x0800bf2c   Section        0  main.o(i.Send)
+    Send                                     0x0800bf2d   Thumb Code  1342  main.o(i.Send)
+    i.Send                                   0x0800c480   Section        0  loramac.o(i.Send)
+    i.SendFrameOnChannel                     0x0800c4c0   Section        0  loramac.o(i.SendFrameOnChannel)
+    i.SetTxContinuousWave                    0x0800c584   Section        0  loramac.o(i.SetTxContinuousWave)
+    i.SetTxContinuousWave1                   0x0800c5d8   Section        0  loramac.o(i.SetTxContinuousWave1)
+    i.Store_Config                           0x0800c614   Section        0  lora.o(i.Store_Config)
+    i.Store_key                              0x0800c834   Section        0  lora.o(i.Store_key)
+    i.SysTick_Handler                        0x0800c8a4   Section        0  stm32l0xx_it.o(i.SysTick_Handler)
+    i.SystemClock_Config                     0x0800c8ac   Section        0  stm32l0xx_hw.o(i.SystemClock_Config)
+    i.SystemInit                             0x0800c938   Section        0  system_stm32l0xx.o(i.SystemInit)
+    i.TimerGetCurrentTime                    0x0800c98c   Section        0  timeserver.o(i.TimerGetCurrentTime)
+    i.TimerGetElapsedTime                    0x0800c998   Section        0  timeserver.o(i.TimerGetElapsedTime)
+    i.TimerInit                              0x0800c9b0   Section        0  timeserver.o(i.TimerInit)
+    i.TimerInsertNewHeadTimer                0x0800c9c0   Section        0  timeserver.o(i.TimerInsertNewHeadTimer)
+    TimerInsertNewHeadTimer                  0x0800c9c1   Thumb Code    24  timeserver.o(i.TimerInsertNewHeadTimer)
+    i.TimerIrqHandler                        0x0800c9dc   Section        0  timeserver.o(i.TimerIrqHandler)
+    i.TimerSetTimeout                        0x0800ca54   Section        0  timeserver.o(i.TimerSetTimeout)
+    TimerSetTimeout                          0x0800ca55   Thumb Code    44  timeserver.o(i.TimerSetTimeout)
+    i.TimerSetValue                          0x0800ca80   Section        0  timeserver.o(i.TimerSetValue)
+    i.TimerStart                             0x0800caa4   Section        0  timeserver.o(i.TimerStart)
+    i.TimerStop                              0x0800cb14   Section        0  timeserver.o(i.TimerStop)
+    i.TraceInit                              0x0800cb74   Section        0  trace.o(i.TraceInit)
+    i.TraceSend                              0x0800cb98   Section        0  trace.o(i.TraceSend)
+    i.Trace_TxCpltCallback                   0x0800cc20   Section        0  trace.o(i.Trace_TxCpltCallback)
+    Trace_TxCpltCallback                     0x0800cc21   Thumb Code    62  trace.o(i.Trace_TxCpltCallback)
+    i.UART_AdvFeatureConfig                  0x0800cc68   Section        0  stm32l0xx_hal_uart.o(i.UART_AdvFeatureConfig)
+    i.UART_CheckIdleState                    0x0800cd34   Section        0  stm32l0xx_hal_uart.o(i.UART_CheckIdleState)
+    i.UART_DMAAbortOnError                   0x0800cd94   Section        0  stm32l0xx_hal_uart.o(i.UART_DMAAbortOnError)
+    UART_DMAAbortOnError                     0x0800cd95   Thumb Code    20  stm32l0xx_hal_uart.o(i.UART_DMAAbortOnError)
+    i.UART_DMAError                          0x0800cda8   Section        0  stm32l0xx_hal_uart.o(i.UART_DMAError)
+    UART_DMAError                            0x0800cda9   Thumb Code    74  stm32l0xx_hal_uart.o(i.UART_DMAError)
+    i.UART_DMATransmitCplt                   0x0800cdf2   Section        0  stm32l0xx_hal_uart.o(i.UART_DMATransmitCplt)
+    UART_DMATransmitCplt                     0x0800cdf3   Thumb Code    48  stm32l0xx_hal_uart.o(i.UART_DMATransmitCplt)
+    i.UART_DMATxHalfCplt                     0x0800ce22   Section        0  stm32l0xx_hal_uart.o(i.UART_DMATxHalfCplt)
+    UART_DMATxHalfCplt                       0x0800ce23   Thumb Code    10  stm32l0xx_hal_uart.o(i.UART_DMATxHalfCplt)
+    i.UART_EndRxTransfer                     0x0800ce2c   Section        0  stm32l0xx_hal_uart.o(i.UART_EndRxTransfer)
+    UART_EndRxTransfer                       0x0800ce2d   Thumb Code    30  stm32l0xx_hal_uart.o(i.UART_EndRxTransfer)
+    i.UART_EndTxTransfer                     0x0800ce4a   Section        0  stm32l0xx_hal_uart.o(i.UART_EndTxTransfer)
+    UART_EndTxTransfer                       0x0800ce4b   Thumb Code    18  stm32l0xx_hal_uart.o(i.UART_EndTxTransfer)
+    i.UART_Receive_IT                        0x0800ce5c   Section        0  stm32l0xx_hal_uart.o(i.UART_Receive_IT)
+    UART_Receive_IT                          0x0800ce5d   Thumb Code   126  stm32l0xx_hal_uart.o(i.UART_Receive_IT)
+    i.UART_SetConfig                         0x0800cedc   Section        0  stm32l0xx_hal_uart.o(i.UART_SetConfig)
+    i.UART_Transmit_IT                       0x0800d10c   Section        0  stm32l0xx_hal_uart.o(i.UART_Transmit_IT)
+    UART_Transmit_IT                         0x0800d10d   Thumb Code   102  stm32l0xx_hal_uart.o(i.UART_Transmit_IT)
+    i.UART_WaitOnFlagUntilTimeout            0x0800d172   Section        0  stm32l0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout)
+    i.USART1_IRQHandler                      0x0800d1d4   Section        0  main.o(i.USART1_IRQHandler)
+    i.ValidatePayloadLength                  0x0800d1e4   Section        0  loramac.o(i.ValidatePayloadLength)
+    ValidatePayloadLength                    0x0800d1e5   Thumb Code    62  loramac.o(i.ValidatePayloadLength)
+    i.__0vsnprintf                           0x0800d22c   Section        0  printfa.o(i.__0vsnprintf)
+    i.__ARM_clz                              0x0800d258   Section        0  depilogue.o(i.__ARM_clz)
+    i.__ARM_common_ll_muluu                  0x0800d286   Section        0  hw_rtc.o(i.__ARM_common_ll_muluu)
+    i.__ARM_common_switch8                   0x0800d2b6   Section        0  sx1276.o(i.__ARM_common_switch8)
+    i.__ARM_fpclassify                       0x0800d2d0   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i.__ARM_fpclassifyf                      0x0800d2fc   Section        0  fpclassifyf.o(i.__ARM_fpclassifyf)
+    i.__ARM_isinff                           0x0800d31e   Section        0  filter.o(i.__ARM_isinff)
+    __ARM_isinff                             0x0800d31f   Thumb Code    18  filter.o(i.__ARM_isinff)
+    i.__ARM_isnanf                           0x0800d330   Section        0  filter.o(i.__ARM_isnanf)
+    __ARM_isnanf                             0x0800d331   Thumb Code    14  filter.o(i.__ARM_isnanf)
+    i.__kernel_poly                          0x0800d33e   Section        0  poly.o(i.__kernel_poly)
+    i.__mathlib_dbl_infnan                   0x0800d3ea   Section        0  dunder.o(i.__mathlib_dbl_infnan)
+    i.__mathlib_dbl_infnan2                  0x0800d3f4   Section        0  dunder.o(i.__mathlib_dbl_infnan2)
+    i.__mathlib_dbl_invalid                  0x0800d3fc   Section        0  dunder.o(i.__mathlib_dbl_invalid)
+    i.__mathlib_dbl_underflow                0x0800d40c   Section        0  dunder.o(i.__mathlib_dbl_underflow)
+    i.__mathlib_flt_infnan                   0x0800d420   Section        0  funder.o(i.__mathlib_flt_infnan)
+    i.__mathlib_flt_invalid                  0x0800d42a   Section        0  funder.o(i.__mathlib_flt_invalid)
+    i.__mathlib_flt_underflow                0x0800d436   Section        0  funder.o(i.__mathlib_flt_underflow)
+    i.__mathlib_rredf2                       0x0800d444   Section        0  rredf.o(i.__mathlib_rredf2)
+    i.__scatterload_copy                     0x0800d5c4   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0800d5d2   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x0800d5d4   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.__set_errno                            0x0800d5e4   Section        0  errno.o(i.__set_errno)
+    i._fp_digits                             0x0800d5f0   Section        0  printfa.o(i._fp_digits)
+    _fp_digits                               0x0800d5f1   Thumb Code   344  printfa.o(i._fp_digits)
+    i._printf_core                           0x0800d764   Section        0  printfa.o(i._printf_core)
+    _printf_core                             0x0800d765   Thumb Code  1754  printfa.o(i._printf_core)
+    i._printf_post_padding                   0x0800de50   Section        0  printfa.o(i._printf_post_padding)
+    _printf_post_padding                     0x0800de51   Thumb Code    32  printfa.o(i._printf_post_padding)
+    i._printf_pre_padding                    0x0800de70   Section        0  printfa.o(i._printf_pre_padding)
+    _printf_pre_padding                      0x0800de71   Thumb Code    44  printfa.o(i._printf_pre_padding)
+    i._snputc                                0x0800de9c   Section        0  printfa.o(i._snputc)
+    _snputc                                  0x0800de9d   Thumb Code    22  printfa.o(i._snputc)
+    i.aes_encrypt                            0x0800deb2   Section        0  aes.o(i.aes_encrypt)
+    i.aes_set_key                            0x0800df08   Section        0  aes.o(i.aes_set_key)
+    i.asin                                   0x0800e004   Section        0  asin.o(i.asin)
+    i.at_ACE_get                             0x0800e278   Section        0  at.o(i.at_ACE_get)
+    i.at_ACE_set                             0x0800e28c   Section        0  at.o(i.at_ACE_set)
+    i.at_ADR_get                             0x0800e2b0   Section        0  at.o(i.at_ADR_get)
+    i.at_ADR_set                             0x0800e2d2   Section        0  at.o(i.at_ADR_set)
+    i.at_AppEUI_get                          0x0800e306   Section        0  at.o(i.at_AppEUI_get)
+    i.at_AppEUI_set                          0x0800e314   Section        0  at.o(i.at_AppEUI_set)
+    i.at_AppKey_get                          0x0800e37c   Section        0  at.o(i.at_AppKey_get)
+    i.at_AppKey_set                          0x0800e38a   Section        0  at.o(i.at_AppKey_set)
+    i.at_AppSKey_get                         0x0800e3aa   Section        0  at.o(i.at_AppSKey_get)
+    i.at_AppSKey_set                         0x0800e3b8   Section        0  at.o(i.at_AppSKey_set)
+    i.at_CHE_get                             0x0800e3d8   Section        0  at.o(i.at_CHE_get)
+    i.at_CHE_set                             0x0800e494   Section        0  at.o(i.at_CHE_set)
+    i.at_CHS_get                             0x0800e4c8   Section        0  at.o(i.at_CHS_get)
+    i.at_CHS_set                             0x0800e4d8   Section        0  at.o(i.at_CHS_set)
+    i.at_DataRate_get                        0x0800e514   Section        0  at.o(i.at_DataRate_get)
+    i.at_DataRate_set                        0x0800e538   Section        0  at.o(i.at_DataRate_set)
+    i.at_DevAddr_get                         0x0800e564   Section        0  at.o(i.at_DevAddr_get)
+    i.at_DevAddr_set                         0x0800e56e   Section        0  at.o(i.at_DevAddr_set)
+    i.at_DevEUI_get                          0x0800e58c   Section        0  at.o(i.at_DevEUI_get)
+    i.at_DevEUI_set                          0x0800e59c   Section        0  at.o(i.at_DevEUI_set)
+    i.at_DeviceClass_get                     0x0800e604   Section        0  at.o(i.at_DeviceClass_get)
+    i.at_DeviceClass_set                     0x0800e634   Section        0  at.o(i.at_DeviceClass_set)
+    i.at_DownlinkCounter_get                 0x0800e668   Section        0  at.o(i.at_DownlinkCounter_get)
+    i.at_DownlinkCounter_set                 0x0800e688   Section        0  at.o(i.at_DownlinkCounter_set)
+    i.at_DutyCycle_get                       0x0800e6bc   Section        0  at.o(i.at_DutyCycle_get)
+    i.at_DutyCycle_set                       0x0800e6e8   Section        0  at.o(i.at_DutyCycle_set)
+    i.at_FDR                                 0x0800e70c   Section        0  at.o(i.at_FDR)
+    i.at_Join                                0x0800e734   Section        0  at.o(i.at_Join)
+    i.at_JoinAcceptDelay1_get                0x0800e73e   Section        0  at.o(i.at_JoinAcceptDelay1_get)
+    i.at_JoinAcceptDelay1_set                0x0800e760   Section        0  at.o(i.at_JoinAcceptDelay1_set)
+    i.at_JoinAcceptDelay2_get                0x0800e794   Section        0  at.o(i.at_JoinAcceptDelay2_get)
+    i.at_JoinAcceptDelay2_set                0x0800e7b4   Section        0  at.o(i.at_JoinAcceptDelay2_set)
+    i.at_NetworkID_get                       0x0800e7e8   Section        0  at.o(i.at_NetworkID_get)
+    i.at_NetworkID_set                       0x0800e83c   Section        0  at.o(i.at_NetworkID_set)
+    i.at_NetworkJoinMode_get                 0x0800e868   Section        0  at.o(i.at_NetworkJoinMode_get)
+    i.at_NetworkJoinMode_set                 0x0800e87c   Section        0  at.o(i.at_NetworkJoinMode_set)
+    i.at_NetworkJoinStatus                   0x0800e89e   Section        0  at.o(i.at_NetworkJoinStatus)
+    i.at_NwkSKey_get                         0x0800e8ca   Section        0  at.o(i.at_NwkSKey_get)
+    i.at_NwkSKey_set                         0x0800e8d8   Section        0  at.o(i.at_NwkSKey_set)
+    i.at_PublicNetwork_get                   0x0800e8f8   Section        0  at.o(i.at_PublicNetwork_get)
+    i.at_PublicNetwork_set                   0x0800e91a   Section        0  at.o(i.at_PublicNetwork_set)
+    i.at_Receive                             0x0800e950   Section        0  at.o(i.at_Receive)
+    i.at_ReceiveBinary                       0x0800e994   Section        0  at.o(i.at_ReceiveBinary)
+    i.at_Rx1Delay_get                        0x0800e9e4   Section        0  at.o(i.at_Rx1Delay_get)
+    i.at_Rx1Delay_set                        0x0800ea04   Section        0  at.o(i.at_Rx1Delay_set)
+    i.at_Rx2DataRate_get                     0x0800ea38   Section        0  at.o(i.at_Rx2DataRate_get)
+    i.at_Rx2DataRate_set                     0x0800ea5c   Section        0  at.o(i.at_Rx2DataRate_set)
+    i.at_Rx2Delay_get                        0x0800eaa4   Section        0  at.o(i.at_Rx2Delay_get)
+    i.at_Rx2Delay_set                        0x0800eac4   Section        0  at.o(i.at_Rx2Delay_set)
+    i.at_Rx2Frequency_get                    0x0800eaf8   Section        0  at.o(i.at_Rx2Frequency_get)
+    i.at_Rx2Frequency_set                    0x0800eb18   Section        0  at.o(i.at_Rx2Frequency_set)
+    i.at_STD                                 0x0800eb5c   Section        0  at.o(i.at_STD)
+    i.at_Send                                0x0800eb70   Section        0  at.o(i.at_Send)
+    i.at_SendBinary                          0x0800ec08   Section        0  at.o(i.at_SendBinary)
+    i.at_TDC_get                             0x0800ecd4   Section        0  at.o(i.at_TDC_get)
+    i.at_TDC_set                             0x0800ece8   Section        0  at.o(i.at_TDC_set)
+    i.at_TransmitPower_get                   0x0800ed0c   Section        0  at.o(i.at_TransmitPower_get)
+    i.at_TransmitPower_set                   0x0800ed30   Section        0  at.o(i.at_TransmitPower_set)
+    i.at_UplinkCounter_get                   0x0800ed68   Section        0  at.o(i.at_UplinkCounter_get)
+    i.at_UplinkCounter_set                   0x0800ed88   Section        0  at.o(i.at_UplinkCounter_set)
+    i.at_ack_get                             0x0800edbc   Section        0  at.o(i.at_ack_get)
+    i.at_ack_set                             0x0800edd0   Section        0  at.o(i.at_ack_set)
+    i.at_application_port_get                0x0800edf2   Section        0  at.o(i.at_application_port_get)
+    i.at_application_port_set                0x0800ee00   Section        0  at.o(i.at_application_port_set)
+    i.at_gpst_get                            0x0800ee2c   Section        0  at.o(i.at_gpst_get)
+    i.at_gpst_set                            0x0800ee40   Section        0  at.o(i.at_gpst_set)
+    i.at_isack_get                           0x0800ee64   Section        0  at.o(i.at_isack_get)
+    i.at_reset                               0x0800ee78   Section        0  at.o(i.at_reset)
+    i.at_return_error                        0x0800ee7c   Section        0  at.o(i.at_return_error)
+    i.at_rssi_get                            0x0800ee80   Section        0  at.o(i.at_rssi_get)
+    i.at_sgm_get                             0x0800ee90   Section        0  at.o(i.at_sgm_get)
+    i.at_sgm_set                             0x0800eea4   Section        0  at.o(i.at_sgm_set)
+    i.at_snr_get                             0x0800eee0   Section        0  at.o(i.at_snr_get)
+    i.at_symbtimeout1LSB_get                 0x0800eef0   Section        0  at.o(i.at_symbtimeout1LSB_get)
+    i.at_symbtimeout1LSB_set                 0x0800ef04   Section        0  at.o(i.at_symbtimeout1LSB_set)
+    i.at_symbtimeout2LSB_get                 0x0800ef30   Section        0  at.o(i.at_symbtimeout2LSB_get)
+    i.at_symbtimeout2LSB_set                 0x0800ef44   Section        0  at.o(i.at_symbtimeout2LSB_set)
+    i.at_version_get                         0x0800ef70   Section        0  at.o(i.at_version_get)
+    i.atan                                   0x0800ef8c   Section        0  atan.o(i.atan)
+    i.atan2                                  0x0800f1a8   Section        0  atan2.o(i.atan2)
+    i.ceil                                   0x0800f320   Section        0  ceil.o(i.ceil)
+    i.certif_DownLinkIncrement               0x0800f3e8   Section        0  lora-test.o(i.certif_DownLinkIncrement)
+    i.certif_linkCheck                       0x0800f3f8   Section        0  lora-test.o(i.certif_linkCheck)
+    i.certif_running                         0x0800f40c   Section        0  lora-test.o(i.certif_running)
+    i.certif_rx                              0x0800f418   Section        0  lora-test.o(i.certif_rx)
+    i.certif_tx                              0x0800f5a0   Section        0  lora-test.o(i.certif_tx)
+    certif_tx                                0x0800f5a1   Thumb Code   156  lora-test.o(i.certif_tx)
+    i.check                                  0x0800f644   Section        0  gps.o(i.check)
+    i.com_error                              0x0800f680   Section        0  command.o(i.com_error)
+    com_error                                0x0800f681   Thumb Code    24  command.o(i.com_error)
+    i.copy_and_key                           0x0800f69c   Section        0  aes.o(i.copy_and_key)
+    copy_and_key                             0x0800f69d   Thumb Code   132  aes.o(i.copy_and_key)
+    i.copy_block                             0x0800f720   Section        0  aes.o(i.copy_block)
+    copy_block                               0x0800f721   Thumb Code    66  aes.o(i.copy_block)
+    i.cosf                                   0x0800f764   Section        0  cosf.o(i.cosf)
+    i.customize_freq1_get                    0x0800f8dc   Section        0  lora.o(i.customize_freq1_get)
+    i.customize_freq1_set                    0x0800f8e8   Section        0  lora.o(i.customize_freq1_set)
+    i.customize_set8channel_get              0x0800f8f4   Section        0  lora.o(i.customize_set8channel_get)
+    i.customize_set8channel_set              0x0800f900   Section        0  lora.o(i.customize_set8channel_set)
+    i.floor                                  0x0800f90c   Section        0  floor.o(i.floor)
+    i.gps_state_no                           0x0800f9d4   Section        0  lora.o(i.gps_state_no)
+    i.gps_state_off                          0x0800f9e0   Section        0  lora.o(i.gps_state_off)
+    i.gps_state_on                           0x0800f9ec   Section        0  lora.o(i.gps_state_on)
+    i.invSqrt                                0x0800f9f8   Section        0  main.o(i.invSqrt)
+    i.key_printf                             0x0800fa2c   Section        0  lora.o(i.key_printf)
+    i.lora_config_appeui_get                 0x0800fa90   Section        0  lora.o(i.lora_config_appeui_get)
+    i.lora_config_appeui_set                 0x0800fa98   Section        0  lora.o(i.lora_config_appeui_set)
+    i.lora_config_appkey_get                 0x0800faac   Section        0  lora.o(i.lora_config_appkey_get)
+    i.lora_config_appkey_set                 0x0800fab4   Section        0  lora.o(i.lora_config_appkey_set)
+    i.lora_config_application_port_get       0x0800fac8   Section        0  lora.o(i.lora_config_application_port_get)
+    i.lora_config_application_port_set       0x0800fad4   Section        0  lora.o(i.lora_config_application_port_set)
+    i.lora_config_appskey_get                0x0800fae0   Section        0  lora.o(i.lora_config_appskey_get)
+    i.lora_config_appskey_set                0x0800fae8   Section        0  lora.o(i.lora_config_appskey_set)
+    i.lora_config_devaddr_get                0x0800fafc   Section        0  lora.o(i.lora_config_devaddr_get)
+    i.lora_config_devaddr_set                0x0800fb18   Section        0  lora.o(i.lora_config_devaddr_set)
+    i.lora_config_deveui_get                 0x0800fb24   Section        0  lora.o(i.lora_config_deveui_get)
+    i.lora_config_deveui_set                 0x0800fb2c   Section        0  lora.o(i.lora_config_deveui_set)
+    i.lora_config_duty_cycle_get             0x0800fb40   Section        0  lora.o(i.lora_config_duty_cycle_get)
+    i.lora_config_duty_cycle_set             0x0800fb4c   Section        0  lora.o(i.lora_config_duty_cycle_set)
+    i.lora_config_isack_get                  0x0800fb64   Section        0  lora.o(i.lora_config_isack_get)
+    i.lora_config_nwkskey_get                0x0800fb7c   Section        0  lora.o(i.lora_config_nwkskey_get)
+    i.lora_config_nwkskey_set                0x0800fb84   Section        0  lora.o(i.lora_config_nwkskey_set)
+    i.lora_config_otaa_get                   0x0800fb98   Section        0  lora.o(i.lora_config_otaa_get)
+    i.lora_config_otaa_set                   0x0800fba4   Section        0  lora.o(i.lora_config_otaa_set)
+    i.lora_config_reqack_get                 0x0800fbb0   Section        0  lora.o(i.lora_config_reqack_get)
+    i.lora_config_reqack_set                 0x0800fbbc   Section        0  lora.o(i.lora_config_reqack_set)
+    i.lora_config_rssi_get                   0x0800fbc8   Section        0  lora.o(i.lora_config_rssi_get)
+    i.lora_config_snr_get                    0x0800fbd4   Section        0  lora.o(i.lora_config_snr_get)
+    i.lora_config_tx_datarate_set            0x0800fbe0   Section        0  lora.o(i.lora_config_tx_datarate_set)
+    i.lora_getGPSState                       0x0800fbec   Section        0  lora.o(i.lora_getGPSState)
+    i.lora_getState                          0x0800fbf8   Section        0  lora.o(i.lora_getState)
+    i.lora_send                              0x0800fc04   Section        0  main.o(i.lora_send)
+    lora_send                                0x0800fc05   Thumb Code  1380  main.o(i.lora_send)
+    i.lora_state_GPS_Send                    0x0801017c   Section        0  lora.o(i.lora_state_GPS_Send)
+    i.lora_state_INT                         0x08010188   Section        0  lora.o(i.lora_state_INT)
+    i.lora_state_Led                         0x080101c8   Section        0  lora.o(i.lora_state_Led)
+    i.main                                   0x080101d4   Section        0  main.o(i.main)
+    i.memcpy1                                0x08010284   Section        0  utilities.o(i.memcpy1)
+    i.memcpyr                                0x0801029a   Section        0  utilities.o(i.memcpyr)
+    i.memset1                                0x080102b4   Section        0  utilities.o(i.memset1)
+    i.mix_sub_columns                        0x080102c8   Section        0  aes.o(i.mix_sub_columns)
+    mix_sub_columns                          0x080102c9   Thumb Code   532  aes.o(i.mix_sub_columns)
+    i.my_atof                                0x080104e0   Section        0  gps.o(i.my_atof)
+    i.my_atoi                                0x080104ea   Section        0  gps.o(i.my_atoi)
+    i.my_strtod                              0x08010534   Section        0  gps.o(i.my_strtod)
+    i.onNetworkJointimesout                  0x08010650   Section        0  loramac.o(i.onNetworkJointimesout)
+    onNetworkJointimesout                    0x08010651   Thumb Code    12  loramac.o(i.onNetworkJointimesout)
+    i.parse_cmd                              0x08010660   Section        0  command.o(i.parse_cmd)
+    parse_cmd                                0x08010661   Thumb Code   252  command.o(i.parse_cmd)
+    i.powerLED                               0x08010778   Section        0  bsp.o(i.powerLED)
+    i.print_16_02x                           0x080107a4   Section        0  at.o(i.print_16_02x)
+    print_16_02x                             0x080107a5   Thumb Code    72  at.o(i.print_16_02x)
+    i.print_8_02x                            0x080107f0   Section        0  at.o(i.print_8_02x)
+    print_8_02x                              0x080107f1   Thumb Code    44  at.o(i.print_8_02x)
+    i.print_d                                0x08010848   Section        0  at.o(i.print_d)
+    print_d                                  0x08010849   Thumb Code    18  at.o(i.print_d)
+    i.print_u                                0x08010864   Section        0  at.o(i.print_u)
+    print_u                                  0x08010865   Thumb Code    18  at.o(i.print_u)
+    i.rand1                                  0x08010880   Section        0  utilities.o(i.rand1)
+    i.randr                                  0x080108ac   Section        0  utilities.o(i.randr)
+    i.read_data                              0x080108c2   Section        0  lora.o(i.read_data)
+    i.region_printf                          0x08010940   Section        0  lora.o(i.region_printf)
+    i.round                                  0x08010954   Section        0  round.o(i.round)
+    i.s_tdc                                  0x080109f0   Section        0  at.o(i.s_tdc)
+    i.send_ALARM_data                        0x08010a08   Section        0  main.o(i.send_ALARM_data)
+    i.send_data                              0x08010ab4   Section        0  main.o(i.send_data)
+    i.set_at_receive                         0x08010b6c   Section        0  at.o(i.set_at_receive)
+    i.shift_sub_rows                         0x08010b90   Section        0  aes.o(i.shift_sub_rows)
+    shift_sub_rows                           0x08010b91   Thumb Code   100  aes.o(i.shift_sub_rows)
+    i.split                                  0x08010bf8   Section        0  gps.o(i.split)
+    i.sqrt                                   0x08010c30   Section        0  sqrt.o(i.sqrt)
+    i.srand1                                 0x08010c78   Section        0  utilities.o(i.srand1)
+    i.sscanf_16_hhx                          0x08010c84   Section        0  at.o(i.sscanf_16_hhx)
+    sscanf_16_hhx                            0x08010c85   Thumb Code    70  at.o(i.sscanf_16_hhx)
+    i.sscanf_uint32_as_hhx                   0x08010cd0   Section        0  at.o(i.sscanf_uint32_as_hhx)
+    sscanf_uint32_as_hhx                     0x08010cd1   Thumb Code    20  at.o(i.sscanf_uint32_as_hhx)
+    i.store_data                             0x08010cf8   Section        0  lora.o(i.store_data)
+    i.tanf                                   0x08010dc0   Section        0  tanf.o(i.tanf)
+    i.tiny_sscanf                            0x08010f30   Section        0  tiny_sscanf.o(i.tiny_sscanf)
+    i.tiny_vfscanf                           0x08010f44   Section        0  tiny_sscanf.o(i.tiny_vfscanf)
+    tiny_vfscanf                             0x08010f45   Thumb Code   592  tiny_sscanf.o(i.tiny_vfscanf)
+    i.translate_status                       0x08011198   Section        0  at.o(i.translate_status)
+    translate_status                         0x08011199   Thumb Code    32  at.o(i.translate_status)
+    i.usart1_IRQHandler                      0x080111b8   Section        0  bsp_usart2.o(i.usart1_IRQHandler)
+    i.usart1_Init                            0x080111f4   Section        0  bsp_usart2.o(i.usart1_Init)
+    i.usart1_IoInit                          0x0801123c   Section        0  bsp_usart2.o(i.usart1_IoInit)
+    i.vcom_DMA_TX_IRQHandler                 0x08011290   Section        0  vcom.o(i.vcom_DMA_TX_IRQHandler)
+    i.vcom_IRQHandler                        0x080112a0   Section        0  vcom.o(i.vcom_IRQHandler)
+    i.vcom_Init                              0x080112b0   Section        0  vcom.o(i.vcom_Init)
+    i.vcom_IoInit                            0x080112ec   Section        0  vcom.o(i.vcom_IoInit)
+    i.vcom_ReceiveInit                       0x0801134c   Section        0  vcom.o(i.vcom_ReceiveInit)
+    i.vcom_Trace                             0x08011378   Section        0  vcom.o(i.vcom_Trace)
+    i.xor_block                              0x0801138c   Section        0  aes.o(i.xor_block)
+    xor_block                                0x0801138d   Thumb Code   130  aes.o(i.xor_block)
+    .constdata                               0x08011410   Section      224  sx1276.o(.constdata)
+    .constdata                               0x080114f0   Section      104  sx1276mb1las.o(.constdata)
+    .constdata                               0x08011558   Section       25  system_stm32l0xx.o(.constdata)
+    .constdata                               0x08011571   Section        8  system_stm32l0xx.o(.constdata)
+    .constdata                               0x08011579   Section       24  hw_rtc.o(.constdata)
+    DaysInMonth                              0x08011579   Data          12  hw_rtc.o(.constdata)
+    DaysInMonthLeapYear                      0x08011585   Data          12  hw_rtc.o(.constdata)
+    .constdata                               0x08011594   Section     1136  command.o(.constdata)
+    ATError_description                      0x08011594   Data          32  command.o(.constdata)
+    ATCommand                                0x080115b4   Data        1104  command.o(.constdata)
+    .constdata                               0x08011a04   Section      132  regionus915.o(.constdata)
+    DataratesUS915                           0x08011a04   Data          16  regionus915.o(.constdata)
+    BandwidthsUS915                          0x08011a14   Data          64  regionus915.o(.constdata)
+    DatarateOffsetsUS915                     0x08011a54   Data          20  regionus915.o(.constdata)
+    MaxPayloadOfDatarateUS915                0x08011a68   Data          16  regionus915.o(.constdata)
+    MaxPayloadOfDatarateRepeaterUS915        0x08011a78   Data          16  regionus915.o(.constdata)
+    .constdata                               0x08011a88   Section       16  loramac.o(.constdata)
+    LoRaMacMaxEirpTable                      0x08011a88   Data          16  loramac.o(.constdata)
+    .constdata                               0x08011a98   Section      768  aes.o(.constdata)
+    sbox                                     0x08011a98   Data         256  aes.o(.constdata)
+    gfm2_sbox                                0x08011b98   Data         256  aes.o(.constdata)
+    gfm3_sbox                                0x08011c98   Data         256  aes.o(.constdata)
+    .constdata                               0x08011d98   Section       80  asin.o(.constdata)
+    pS                                       0x08011d98   Data          48  asin.o(.constdata)
+    qS                                       0x08011dc8   Data          32  asin.o(.constdata)
+    .constdata                               0x08011de8   Section      152  atan.o(.constdata)
+    atanhi                                   0x08011de8   Data          32  atan.o(.constdata)
+    atanlo                                   0x08011e08   Data          32  atan.o(.constdata)
+    aTodd                                    0x08011e28   Data          40  atan.o(.constdata)
+    aTeven                                   0x08011e50   Data          48  atan.o(.constdata)
+    .constdata                               0x08011e80   Section        8  qnan.o(.constdata)
+    .constdata                               0x08011e88   Section       32  rredf.o(.constdata)
+    twooverpi                                0x08011e88   Data          32  rredf.o(.constdata)
+    .constdata                               0x08011ea8   Section       64  ctype_c.o(.constdata)
+    .conststring                             0x08011ee8   Section      164  at.o(.conststring)
+    .conststring                             0x08011f8c   Section     3486  command.o(.conststring)
     .data                                    0x20000000   Section       32  sx1276.o(.data)
     RadioEvents                              0x20000000   Data           4  sx1276.o(.data)
     LoRaBoardCallbacks                       0x20000004   Data           4  sx1276.o(.data)
@@ -6147,254 +6146,254 @@ Image Symbol Table
     SX1276IsChannelFree                      0x0800ab59   Thumb Code    78  sx1276.o(i.SX1276IsChannelFree)
     SX1276OnDio0Irq                          0x0800aba9   Thumb Code   594  sx1276.o(i.SX1276OnDio0Irq)
     SX1276OnDio1Irq                          0x0800ae25   Thumb Code   194  sx1276.o(i.SX1276OnDio1Irq)
-    SX1276OnDio2Irq                          0x0800af01   Thumb Code   166  sx1276.o(i.SX1276OnDio2Irq)
-    SX1276OnDio3Irq                          0x0800afb5   Thumb Code    76  sx1276.o(i.SX1276OnDio3Irq)
-    SX1276OnDio4Irq                          0x0800b009   Thumb Code    24  sx1276.o(i.SX1276OnDio4Irq)
-    SX1276OnTimeoutIrq                       0x0800b025   Thumb Code   188  sx1276.o(i.SX1276OnTimeoutIrq)
-    SX1276Random                             0x0800b0ed   Thumb Code    62  sx1276.o(i.SX1276Random)
-    SX1276Read                               0x0800b12b   Thumb Code    16  sx1276.o(i.SX1276Read)
-    SX1276ReadBuffer                         0x0800b13b   Thumb Code    66  sx1276.o(i.SX1276ReadBuffer)
-    SX1276ReadFifo                           0x0800b17d   Thumb Code    14  sx1276.o(i.SX1276ReadFifo)
-    SX1276ReadRssi                           0x0800b18d   Thumb Code    58  sx1276.o(i.SX1276ReadRssi)
-    SX1276Reset                              0x0800b1d1   Thumb Code    74  sx1276.o(i.SX1276Reset)
-    SX1276Send                               0x0800b221   Thumb Code   230  sx1276.o(i.SX1276Send)
-    SX1276SetAntSw                           0x0800b311   Thumb Code    24  sx1276mb1las.o(i.SX1276SetAntSw)
-    SX1276SetAntSwLowPower                   0x0800b32d   Thumb Code    60  sx1276mb1las.o(i.SX1276SetAntSwLowPower)
-    SX1276SetChannel                         0x0800b371   Thumb Code    72  sx1276.o(i.SX1276SetChannel)
-    SX1276SetMaxPayloadLength                0x0800b3c1   Thumb Code    42  sx1276.o(i.SX1276SetMaxPayloadLength)
-    SX1276SetModem                           0x0800b3f1   Thumb Code   106  sx1276.o(i.SX1276SetModem)
-    SX1276SetOpMode                          0x0800b461   Thumb Code    86  sx1276.o(i.SX1276SetOpMode)
-    SX1276SetPublicNetwork                   0x0800b4bd   Thumb Code    32  sx1276.o(i.SX1276SetPublicNetwork)
-    SX1276SetRfTxPower                       0x0800b4e1   Thumb Code   154  sx1276mb1las.o(i.SX1276SetRfTxPower)
-    SX1276SetRx                              0x0800b581   Thumb Code   474  sx1276.o(i.SX1276SetRx)
-    SX1276SetRxConfig                        0x0800b77d   Thumb Code   628  sx1276.o(i.SX1276SetRxConfig)
-    SX1276SetSleep                           0x0800ba05   Thumb Code    32  sx1276.o(i.SX1276SetSleep)
-    SX1276SetStby                            0x0800ba29   Thumb Code    32  sx1276.o(i.SX1276SetStby)
-    SX1276SetTx                              0x0800ba4d   Thumb Code   158  sx1276.o(i.SX1276SetTx)
-    SX1276SetTxConfig                        0x0800baf1   Thumb Code   490  sx1276.o(i.SX1276SetTxConfig)
-    SX1276SetTxContinuousWave                0x0800bced   Thumb Code   116  sx1276.o(i.SX1276SetTxContinuousWave)
-    SX1276SetXO                              0x0800bd65   Thumb Code     2  sx1276mb1las.o(i.SX1276SetXO)
-    SX1276StartCad                           0x0800bd69   Thumb Code    50  sx1276.o(i.SX1276StartCad)
-    SX1276Write                              0x0800bda1   Thumb Code    12  sx1276.o(i.SX1276Write)
-    SX1276WriteBuffer                        0x0800bdad   Thumb Code    66  sx1276.o(i.SX1276WriteBuffer)
-    SX1276WriteFifo                          0x0800bdef   Thumb Code    14  sx1276.o(i.SX1276WriteFifo)
-    Send                                     0x0800c485   Thumb Code    54  loramac.o(i.Send)
-    SendFrameOnChannel                       0x0800c4c5   Thumb Code   140  loramac.o(i.SendFrameOnChannel)
-    SetTxContinuousWave                      0x0800c589   Thumb Code    74  loramac.o(i.SetTxContinuousWave)
-    SetTxContinuousWave1                     0x0800c5dd   Thumb Code    48  loramac.o(i.SetTxContinuousWave1)
-    Store_Config                             0x0800c619   Thumb Code   494  lora.o(i.Store_Config)
-    Store_key                                0x0800c839   Thumb Code    98  lora.o(i.Store_key)
-    SysTick_Handler                          0x0800c8a9   Thumb Code     8  stm32l0xx_it.o(i.SysTick_Handler)
-    SystemClock_Config                       0x0800c8b1   Thumb Code   130  stm32l0xx_hw.o(i.SystemClock_Config)
-    SystemInit                               0x0800c93d   Thumb Code    66  system_stm32l0xx.o(i.SystemInit)
-    TimerGetCurrentTime                      0x0800c991   Thumb Code    12  timeserver.o(i.TimerGetCurrentTime)
-    TimerGetElapsedTime                      0x0800c99d   Thumb Code    24  timeserver.o(i.TimerGetElapsedTime)
-    TimerInit                                0x0800c9b5   Thumb Code    14  timeserver.o(i.TimerInit)
-    TimerIrqHandler                          0x0800c9e1   Thumb Code   116  timeserver.o(i.TimerIrqHandler)
-    TimerSetValue                            0x0800ca85   Thumb Code    34  timeserver.o(i.TimerSetValue)
-    TimerStart                               0x0800caa9   Thumb Code   108  timeserver.o(i.TimerStart)
-    TimerStop                                0x0800cb19   Thumb Code    90  timeserver.o(i.TimerStop)
-    TraceInit                                0x0800cb79   Thumb Code    28  trace.o(i.TraceInit)
-    TraceSend                                0x0800cb9d   Thumb Code   126  trace.o(i.TraceSend)
-    UART_AdvFeatureConfig                    0x0800cc6d   Thumb Code   202  stm32l0xx_hal_uart.o(i.UART_AdvFeatureConfig)
-    UART_CheckIdleState                      0x0800cd39   Thumb Code    90  stm32l0xx_hal_uart.o(i.UART_CheckIdleState)
-    UART_SetConfig                           0x0800cee1   Thumb Code   510  stm32l0xx_hal_uart.o(i.UART_SetConfig)
-    UART_WaitOnFlagUntilTimeout              0x0800d177   Thumb Code    98  stm32l0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout)
-    USART1_IRQHandler                        0x0800d1d9   Thumb Code    10  main.o(i.USART1_IRQHandler)
-    __0vsnprintf                             0x0800d231   Thumb Code    40  printfa.o(i.__0vsnprintf)
-    __1vsnprintf                             0x0800d231   Thumb Code     0  printfa.o(i.__0vsnprintf)
-    __2vsnprintf                             0x0800d231   Thumb Code     0  printfa.o(i.__0vsnprintf)
-    __c89vsnprintf                           0x0800d231   Thumb Code     0  printfa.o(i.__0vsnprintf)
-    vsnprintf                                0x0800d231   Thumb Code     0  printfa.o(i.__0vsnprintf)
-    __ARM_clz                                0x0800d25d   Thumb Code    46  depilogue.o(i.__ARM_clz)
-    __ARM_common_ll_muluu                    0x0800d28b   Thumb Code    48  hw_rtc.o(i.__ARM_common_ll_muluu)
-    __ARM_common_switch8                     0x0800d2bb   Thumb Code    26  sx1276.o(i.__ARM_common_switch8)
-    __ARM_fpclassify                         0x0800d2d5   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
-    __ARM_fpclassifyf                        0x0800d301   Thumb Code    34  fpclassifyf.o(i.__ARM_fpclassifyf)
-    __kernel_poly                            0x0800d343   Thumb Code   172  poly.o(i.__kernel_poly)
-    __mathlib_dbl_infnan                     0x0800d3ef   Thumb Code    10  dunder.o(i.__mathlib_dbl_infnan)
-    __mathlib_dbl_infnan2                    0x0800d3f9   Thumb Code     8  dunder.o(i.__mathlib_dbl_infnan2)
-    __mathlib_dbl_invalid                    0x0800d401   Thumb Code    16  dunder.o(i.__mathlib_dbl_invalid)
-    __mathlib_dbl_underflow                  0x0800d411   Thumb Code    14  dunder.o(i.__mathlib_dbl_underflow)
-    __mathlib_flt_infnan                     0x0800d425   Thumb Code    10  funder.o(i.__mathlib_flt_infnan)
-    __mathlib_flt_invalid                    0x0800d42f   Thumb Code    12  funder.o(i.__mathlib_flt_invalid)
-    __mathlib_flt_underflow                  0x0800d43b   Thumb Code    14  funder.o(i.__mathlib_flt_underflow)
-    __mathlib_rredf2                         0x0800d449   Thumb Code   366  rredf.o(i.__mathlib_rredf2)
-    __scatterload_copy                       0x0800d5c9   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x0800d5d7   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x0800d5d9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    __set_errno                              0x0800d5e9   Thumb Code     6  errno.o(i.__set_errno)
-    aes_encrypt                              0x0800deb7   Thumb Code    84  aes.o(i.aes_encrypt)
-    aes_set_key                              0x0800df0d   Thumb Code   248  aes.o(i.aes_set_key)
-    asin                                     0x0800e009   Thumb Code   574  asin.o(i.asin)
-    at_ACE_get                               0x0800e27d   Thumb Code    14  at.o(i.at_ACE_get)
-    at_ACE_set                               0x0800e291   Thumb Code    26  at.o(i.at_ACE_set)
-    at_ADR_get                               0x0800e2b5   Thumb Code    34  at.o(i.at_ADR_get)
-    at_ADR_set                               0x0800e2d7   Thumb Code    52  at.o(i.at_ADR_set)
-    at_AppEUI_get                            0x0800e30b   Thumb Code    14  at.o(i.at_AppEUI_get)
-    at_AppEUI_set                            0x0800e319   Thumb Code    64  at.o(i.at_AppEUI_set)
-    at_AppKey_get                            0x0800e381   Thumb Code    14  at.o(i.at_AppKey_get)
-    at_AppKey_set                            0x0800e38f   Thumb Code    32  at.o(i.at_AppKey_set)
-    at_AppSKey_get                           0x0800e3af   Thumb Code    14  at.o(i.at_AppSKey_get)
-    at_AppSKey_set                           0x0800e3bd   Thumb Code    32  at.o(i.at_AppSKey_set)
-    at_CHE_get                               0x0800e3dd   Thumb Code   136  at.o(i.at_CHE_get)
-    at_CHE_set                               0x0800e499   Thumb Code    48  at.o(i.at_CHE_set)
-    at_CHS_get                               0x0800e4cd   Thumb Code    14  at.o(i.at_CHS_get)
-    at_CHS_set                               0x0800e4dd   Thumb Code    46  at.o(i.at_CHS_set)
-    at_DataRate_get                          0x0800e519   Thumb Code    36  at.o(i.at_DataRate_get)
-    at_DataRate_set                          0x0800e53d   Thumb Code    36  at.o(i.at_DataRate_set)
-    at_DevAddr_get                           0x0800e569   Thumb Code    10  at.o(i.at_DevAddr_get)
-    at_DevAddr_set                           0x0800e573   Thumb Code    30  at.o(i.at_DevAddr_set)
-    at_DevEUI_get                            0x0800e591   Thumb Code    14  at.o(i.at_DevEUI_get)
-    at_DevEUI_set                            0x0800e5a1   Thumb Code    64  at.o(i.at_DevEUI_set)
-    at_DeviceClass_get                       0x0800e609   Thumb Code    40  at.o(i.at_DeviceClass_get)
-    at_DeviceClass_set                       0x0800e639   Thumb Code    52  at.o(i.at_DeviceClass_set)
-    at_DownlinkCounter_get                   0x0800e66d   Thumb Code    32  at.o(i.at_DownlinkCounter_get)
-    at_DownlinkCounter_set                   0x0800e68d   Thumb Code    46  at.o(i.at_DownlinkCounter_set)
-    at_DutyCycle_get                         0x0800e6c1   Thumb Code    36  at.o(i.at_DutyCycle_get)
-    at_DutyCycle_set                         0x0800e6ed   Thumb Code    34  at.o(i.at_DutyCycle_set)
-    at_FDR                                   0x0800e711   Thumb Code    28  at.o(i.at_FDR)
-    at_Join                                  0x0800e739   Thumb Code    10  at.o(i.at_Join)
-    at_JoinAcceptDelay1_get                  0x0800e743   Thumb Code    32  at.o(i.at_JoinAcceptDelay1_get)
-    at_JoinAcceptDelay1_set                  0x0800e765   Thumb Code    46  at.o(i.at_JoinAcceptDelay1_set)
-    at_JoinAcceptDelay2_get                  0x0800e799   Thumb Code    32  at.o(i.at_JoinAcceptDelay2_get)
-    at_JoinAcceptDelay2_set                  0x0800e7b9   Thumb Code    46  at.o(i.at_JoinAcceptDelay2_set)
-    at_NetworkID_get                         0x0800e7ed   Thumb Code    60  at.o(i.at_NetworkID_get)
-    at_NetworkID_set                         0x0800e841   Thumb Code    44  at.o(i.at_NetworkID_set)
-    at_NetworkJoinMode_get                   0x0800e86d   Thumb Code    20  at.o(i.at_NetworkJoinMode_get)
-    at_NetworkJoinMode_set                   0x0800e881   Thumb Code    34  at.o(i.at_NetworkJoinMode_set)
-    at_NetworkJoinStatus                     0x0800e8a3   Thumb Code    44  at.o(i.at_NetworkJoinStatus)
-    at_NwkSKey_get                           0x0800e8cf   Thumb Code    14  at.o(i.at_NwkSKey_get)
-    at_NwkSKey_set                           0x0800e8dd   Thumb Code    32  at.o(i.at_NwkSKey_set)
-    at_PublicNetwork_get                     0x0800e8fd   Thumb Code    34  at.o(i.at_PublicNetwork_get)
-    at_PublicNetwork_set                     0x0800e91f   Thumb Code    52  at.o(i.at_PublicNetwork_set)
-    at_Receive                               0x0800e955   Thumb Code    48  at.o(i.at_Receive)
-    at_ReceiveBinary                         0x0800e999   Thumb Code    56  at.o(i.at_ReceiveBinary)
-    at_Rx1Delay_get                          0x0800e9e9   Thumb Code    32  at.o(i.at_Rx1Delay_get)
-    at_Rx1Delay_set                          0x0800ea09   Thumb Code    46  at.o(i.at_Rx1Delay_set)
-    at_Rx2DataRate_get                       0x0800ea3d   Thumb Code    34  at.o(i.at_Rx2DataRate_get)
-    at_Rx2DataRate_set                       0x0800ea61   Thumb Code    64  at.o(i.at_Rx2DataRate_set)
-    at_Rx2Delay_get                          0x0800eaa9   Thumb Code    32  at.o(i.at_Rx2Delay_get)
-    at_Rx2Delay_set                          0x0800eac9   Thumb Code    46  at.o(i.at_Rx2Delay_set)
-    at_Rx2Frequency_get                      0x0800eafd   Thumb Code    32  at.o(i.at_Rx2Frequency_get)
-    at_Rx2Frequency_set                      0x0800eb1d   Thumb Code    64  at.o(i.at_Rx2Frequency_set)
-    at_STD                                   0x0800eb61   Thumb Code    16  at.o(i.at_STD)
-    at_Send                                  0x0800eb75   Thumb Code   104  at.o(i.at_Send)
-    at_SendBinary                            0x0800ec0d   Thumb Code   148  at.o(i.at_SendBinary)
-    at_TDC_get                               0x0800ecd9   Thumb Code    14  at.o(i.at_TDC_get)
-    at_TDC_set                               0x0800eced   Thumb Code    26  at.o(i.at_TDC_set)
-    at_TransmitPower_get                     0x0800ed11   Thumb Code    36  at.o(i.at_TransmitPower_get)
-    at_TransmitPower_set                     0x0800ed35   Thumb Code    46  at.o(i.at_TransmitPower_set)
-    at_UplinkCounter_get                     0x0800ed6d   Thumb Code    32  at.o(i.at_UplinkCounter_get)
-    at_UplinkCounter_set                     0x0800ed8d   Thumb Code    46  at.o(i.at_UplinkCounter_set)
-    at_ack_get                               0x0800edc1   Thumb Code    20  at.o(i.at_ack_get)
-    at_ack_set                               0x0800edd5   Thumb Code    34  at.o(i.at_ack_set)
-    at_application_port_get                  0x0800edf7   Thumb Code    14  at.o(i.at_application_port_get)
-    at_application_port_set                  0x0800ee05   Thumb Code    36  at.o(i.at_application_port_set)
-    at_gpst_get                              0x0800ee31   Thumb Code    14  at.o(i.at_gpst_get)
-    at_gpst_set                              0x0800ee45   Thumb Code    26  at.o(i.at_gpst_set)
-    at_isack_get                             0x0800ee69   Thumb Code    20  at.o(i.at_isack_get)
-    at_reset                                 0x0800ee7d   Thumb Code     4  at.o(i.at_reset)
-    at_return_error                          0x0800ee81   Thumb Code     4  at.o(i.at_return_error)
-    at_rssi_get                              0x0800ee85   Thumb Code    14  at.o(i.at_rssi_get)
-    at_sgm_get                               0x0800ee95   Thumb Code    14  at.o(i.at_sgm_get)
-    at_sgm_set                               0x0800eea9   Thumb Code    52  at.o(i.at_sgm_set)
-    at_snr_get                               0x0800eee5   Thumb Code    14  at.o(i.at_snr_get)
-    at_symbtimeout1LSB_get                   0x0800eef5   Thumb Code    14  at.o(i.at_symbtimeout1LSB_get)
-    at_symbtimeout1LSB_set                   0x0800ef09   Thumb Code    36  at.o(i.at_symbtimeout1LSB_set)
-    at_symbtimeout2LSB_get                   0x0800ef35   Thumb Code    14  at.o(i.at_symbtimeout2LSB_get)
-    at_symbtimeout2LSB_set                   0x0800ef49   Thumb Code    36  at.o(i.at_symbtimeout2LSB_set)
-    at_version_get                           0x0800ef75   Thumb Code    20  at.o(i.at_version_get)
-    atan                                     0x0800ef91   Thumb Code   472  atan.o(i.atan)
-    atan2                                    0x0800f1ad   Thumb Code   334  atan2.o(i.atan2)
-    ceil                                     0x0800f325   Thumb Code   180  ceil.o(i.ceil)
-    certif_DownLinkIncrement                 0x0800f3ed   Thumb Code    10  lora-test.o(i.certif_DownLinkIncrement)
-    certif_linkCheck                         0x0800f3fd   Thumb Code    16  lora-test.o(i.certif_linkCheck)
-    certif_running                           0x0800f411   Thumb Code     6  lora-test.o(i.certif_running)
-    certif_rx                                0x0800f41d   Thumb Code   374  lora-test.o(i.certif_rx)
-    check                                    0x0800f649   Thumb Code    56  gps.o(i.check)
-    cosf                                     0x0800f769   Thumb Code   318  cosf.o(i.cosf)
-    customize_freq1_get                      0x0800f8e1   Thumb Code     6  lora.o(i.customize_freq1_get)
-    customize_freq1_set                      0x0800f8ed   Thumb Code     6  lora.o(i.customize_freq1_set)
-    customize_set8channel_get                0x0800f8f9   Thumb Code     6  lora.o(i.customize_set8channel_get)
-    customize_set8channel_set                0x0800f905   Thumb Code     6  lora.o(i.customize_set8channel_set)
-    floor                                    0x0800f911   Thumb Code   180  floor.o(i.floor)
-    gps_state_no                             0x0800f9d9   Thumb Code     8  lora.o(i.gps_state_no)
-    gps_state_off                            0x0800f9e5   Thumb Code     8  lora.o(i.gps_state_off)
-    gps_state_on                             0x0800f9f1   Thumb Code     8  lora.o(i.gps_state_on)
-    invSqrt                                  0x0800f9fd   Thumb Code    48  main.o(i.invSqrt)
-    key_printf                               0x0800fa31   Thumb Code    44  lora.o(i.key_printf)
-    lora_config_appeui_get                   0x0800fa95   Thumb Code     4  lora.o(i.lora_config_appeui_get)
-    lora_config_appeui_set                   0x0800fa9d   Thumb Code    14  lora.o(i.lora_config_appeui_set)
-    lora_config_appkey_get                   0x0800fab1   Thumb Code     4  lora.o(i.lora_config_appkey_get)
-    lora_config_appkey_set                   0x0800fab9   Thumb Code    14  lora.o(i.lora_config_appkey_set)
-    lora_config_application_port_get         0x0800facd   Thumb Code     8  lora.o(i.lora_config_application_port_get)
-    lora_config_application_port_set         0x0800fad9   Thumb Code     6  lora.o(i.lora_config_application_port_set)
-    lora_config_appskey_get                  0x0800fae5   Thumb Code     4  lora.o(i.lora_config_appskey_get)
-    lora_config_appskey_set                  0x0800faed   Thumb Code    14  lora.o(i.lora_config_appskey_set)
-    lora_config_devaddr_get                  0x0800fb01   Thumb Code    14  lora.o(i.lora_config_devaddr_get)
-    lora_config_devaddr_set                  0x0800fb1d   Thumb Code     6  lora.o(i.lora_config_devaddr_set)
-    lora_config_deveui_get                   0x0800fb29   Thumb Code     4  lora.o(i.lora_config_deveui_get)
-    lora_config_deveui_set                   0x0800fb31   Thumb Code    14  lora.o(i.lora_config_deveui_set)
-    lora_config_duty_cycle_get               0x0800fb45   Thumb Code     6  lora.o(i.lora_config_duty_cycle_get)
-    lora_config_duty_cycle_set               0x0800fb51   Thumb Code    18  lora.o(i.lora_config_duty_cycle_set)
-    lora_config_isack_get                    0x0800fb69   Thumb Code    18  lora.o(i.lora_config_isack_get)
-    lora_config_nwkskey_get                  0x0800fb81   Thumb Code     4  lora.o(i.lora_config_nwkskey_get)
-    lora_config_nwkskey_set                  0x0800fb89   Thumb Code    14  lora.o(i.lora_config_nwkskey_set)
-    lora_config_otaa_get                     0x0800fb9d   Thumb Code     6  lora.o(i.lora_config_otaa_get)
-    lora_config_otaa_set                     0x0800fba9   Thumb Code     6  lora.o(i.lora_config_otaa_set)
-    lora_config_reqack_get                   0x0800fbb5   Thumb Code     6  lora.o(i.lora_config_reqack_get)
-    lora_config_reqack_set                   0x0800fbc1   Thumb Code     6  lora.o(i.lora_config_reqack_set)
-    lora_config_rssi_get                     0x0800fbcd   Thumb Code     8  lora.o(i.lora_config_rssi_get)
-    lora_config_snr_get                      0x0800fbd9   Thumb Code     8  lora.o(i.lora_config_snr_get)
-    lora_config_tx_datarate_set              0x0800fbe5   Thumb Code     6  lora.o(i.lora_config_tx_datarate_set)
-    lora_getGPSState                         0x0800fbf1   Thumb Code     6  lora.o(i.lora_getGPSState)
-    lora_getState                            0x0800fbfd   Thumb Code     6  lora.o(i.lora_getState)
-    lora_state_GPS_Send                      0x08010181   Thumb Code     8  lora.o(i.lora_state_GPS_Send)
-    lora_state_INT                           0x0801018d   Thumb Code    68  lora.o(i.lora_state_INT)
-    lora_state_Led                           0x080101f9   Thumb Code     8  lora.o(i.lora_state_Led)
-    main                                     0x08010205   Thumb Code   144  main.o(i.main)
-    memcpy1                                  0x080102b5   Thumb Code    22  utilities.o(i.memcpy1)
-    memcpyr                                  0x080102cb   Thumb Code    26  utilities.o(i.memcpyr)
-    memset1                                  0x080102e5   Thumb Code    18  utilities.o(i.memset1)
-    my_atof                                  0x08010511   Thumb Code    10  gps.o(i.my_atof)
-    my_atoi                                  0x0801051b   Thumb Code    72  gps.o(i.my_atoi)
-    my_strtod                                0x08010565   Thumb Code   268  gps.o(i.my_strtod)
-    powerLED                                 0x080107a9   Thumb Code    42  bsp.o(i.powerLED)
-    rand1                                    0x080108b1   Thumb Code    26  utilities.o(i.rand1)
-    randr                                    0x080108dd   Thumb Code    22  utilities.o(i.randr)
-    read_data                                0x080108f3   Thumb Code   126  lora.o(i.read_data)
-    region_printf                            0x08010971   Thumb Code    10  lora.o(i.region_printf)
-    round                                    0x08010985   Thumb Code   142  round.o(i.round)
-    s_tdc                                    0x08010a21   Thumb Code    18  at.o(i.s_tdc)
-    send_ALARM_data                          0x08010a39   Thumb Code   132  main.o(i.send_ALARM_data)
-    send_data                                0x08010ae5   Thumb Code   136  main.o(i.send_data)
-    set_at_receive                           0x08010b9d   Thumb Code    28  at.o(i.set_at_receive)
-    split                                    0x08010c29   Thumb Code    54  gps.o(i.split)
-    sqrt                                     0x08010c61   Thumb Code    66  sqrt.o(i.sqrt)
-    srand1                                   0x08010ca9   Thumb Code     6  utilities.o(i.srand1)
-    store_data                               0x08010d29   Thumb Code   190  lora.o(i.store_data)
-    tanf                                     0x08010df1   Thumb Code   312  tanf.o(i.tanf)
-    tiny_sscanf                              0x08010f61   Thumb Code    20  tiny_sscanf.o(i.tiny_sscanf)
-    usart1_IRQHandler                        0x080111e9   Thumb Code    58  bsp_usart2.o(i.usart1_IRQHandler)
-    usart1_Init                              0x08011225   Thumb Code    62  bsp_usart2.o(i.usart1_Init)
-    usart1_IoInit                            0x0801126d   Thumb Code    74  bsp_usart2.o(i.usart1_IoInit)
-    vcom_DMA_TX_IRQHandler                   0x080112c1   Thumb Code    12  vcom.o(i.vcom_DMA_TX_IRQHandler)
-    vcom_IRQHandler                          0x080112d1   Thumb Code    10  vcom.o(i.vcom_IRQHandler)
-    vcom_Init                                0x080112e1   Thumb Code    46  vcom.o(i.vcom_Init)
-    vcom_IoInit                              0x0801131d   Thumb Code    92  vcom.o(i.vcom_IoInit)
-    vcom_ReceiveInit                         0x0801137d   Thumb Code    34  vcom.o(i.vcom_ReceiveInit)
-    vcom_Trace                               0x080113a9   Thumb Code    14  vcom.o(i.vcom_Trace)
-    RadioRegsInit                            0x08011440   Data          48  sx1276.o(.constdata)
-    FskBandwidths                            0x08011470   Data         176  sx1276.o(.constdata)
-    Radio                                    0x08011520   Data         104  sx1276mb1las.o(.constdata)
-    AHBPrescTable                            0x08011588   Data          16  system_stm32l0xx.o(.constdata)
-    PLLMulTable                              0x08011598   Data           9  system_stm32l0xx.o(.constdata)
-    APBPrescTable                            0x080115a1   Data           8  system_stm32l0xx.o(.constdata)
-    __mathlib_zero                           0x08011eb0   Data           8  qnan.o(.constdata)
-    __ctype_categories                       0x08011ed8   Data          64  ctype_c.o(.constdata)
-    Region$$Table$$Base                      0x08012d5c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08012d7c   Number         0  anon$$obj.o(Region$$Table)
+    SX1276OnDio2Irq                          0x0800aefd   Thumb Code   166  sx1276.o(i.SX1276OnDio2Irq)
+    SX1276OnDio3Irq                          0x0800afb1   Thumb Code    76  sx1276.o(i.SX1276OnDio3Irq)
+    SX1276OnDio4Irq                          0x0800b005   Thumb Code    24  sx1276.o(i.SX1276OnDio4Irq)
+    SX1276OnTimeoutIrq                       0x0800b021   Thumb Code   188  sx1276.o(i.SX1276OnTimeoutIrq)
+    SX1276Random                             0x0800b0e9   Thumb Code    62  sx1276.o(i.SX1276Random)
+    SX1276Read                               0x0800b127   Thumb Code    16  sx1276.o(i.SX1276Read)
+    SX1276ReadBuffer                         0x0800b137   Thumb Code    66  sx1276.o(i.SX1276ReadBuffer)
+    SX1276ReadFifo                           0x0800b179   Thumb Code    14  sx1276.o(i.SX1276ReadFifo)
+    SX1276ReadRssi                           0x0800b189   Thumb Code    58  sx1276.o(i.SX1276ReadRssi)
+    SX1276Reset                              0x0800b1cd   Thumb Code    74  sx1276.o(i.SX1276Reset)
+    SX1276Send                               0x0800b21d   Thumb Code   230  sx1276.o(i.SX1276Send)
+    SX1276SetAntSw                           0x0800b30d   Thumb Code    24  sx1276mb1las.o(i.SX1276SetAntSw)
+    SX1276SetAntSwLowPower                   0x0800b329   Thumb Code    60  sx1276mb1las.o(i.SX1276SetAntSwLowPower)
+    SX1276SetChannel                         0x0800b36d   Thumb Code    72  sx1276.o(i.SX1276SetChannel)
+    SX1276SetMaxPayloadLength                0x0800b3bd   Thumb Code    42  sx1276.o(i.SX1276SetMaxPayloadLength)
+    SX1276SetModem                           0x0800b3ed   Thumb Code   106  sx1276.o(i.SX1276SetModem)
+    SX1276SetOpMode                          0x0800b45d   Thumb Code    86  sx1276.o(i.SX1276SetOpMode)
+    SX1276SetPublicNetwork                   0x0800b4b9   Thumb Code    32  sx1276.o(i.SX1276SetPublicNetwork)
+    SX1276SetRfTxPower                       0x0800b4dd   Thumb Code   154  sx1276mb1las.o(i.SX1276SetRfTxPower)
+    SX1276SetRx                              0x0800b57d   Thumb Code   474  sx1276.o(i.SX1276SetRx)
+    SX1276SetRxConfig                        0x0800b779   Thumb Code   628  sx1276.o(i.SX1276SetRxConfig)
+    SX1276SetSleep                           0x0800ba01   Thumb Code    32  sx1276.o(i.SX1276SetSleep)
+    SX1276SetStby                            0x0800ba25   Thumb Code    32  sx1276.o(i.SX1276SetStby)
+    SX1276SetTx                              0x0800ba49   Thumb Code   158  sx1276.o(i.SX1276SetTx)
+    SX1276SetTxConfig                        0x0800baed   Thumb Code   490  sx1276.o(i.SX1276SetTxConfig)
+    SX1276SetTxContinuousWave                0x0800bce9   Thumb Code   116  sx1276.o(i.SX1276SetTxContinuousWave)
+    SX1276SetXO                              0x0800bd61   Thumb Code     2  sx1276mb1las.o(i.SX1276SetXO)
+    SX1276StartCad                           0x0800bd65   Thumb Code    50  sx1276.o(i.SX1276StartCad)
+    SX1276Write                              0x0800bd9d   Thumb Code    12  sx1276.o(i.SX1276Write)
+    SX1276WriteBuffer                        0x0800bda9   Thumb Code    66  sx1276.o(i.SX1276WriteBuffer)
+    SX1276WriteFifo                          0x0800bdeb   Thumb Code    14  sx1276.o(i.SX1276WriteFifo)
+    Send                                     0x0800c481   Thumb Code    54  loramac.o(i.Send)
+    SendFrameOnChannel                       0x0800c4c1   Thumb Code   140  loramac.o(i.SendFrameOnChannel)
+    SetTxContinuousWave                      0x0800c585   Thumb Code    74  loramac.o(i.SetTxContinuousWave)
+    SetTxContinuousWave1                     0x0800c5d9   Thumb Code    48  loramac.o(i.SetTxContinuousWave1)
+    Store_Config                             0x0800c615   Thumb Code   494  lora.o(i.Store_Config)
+    Store_key                                0x0800c835   Thumb Code    98  lora.o(i.Store_key)
+    SysTick_Handler                          0x0800c8a5   Thumb Code     8  stm32l0xx_it.o(i.SysTick_Handler)
+    SystemClock_Config                       0x0800c8ad   Thumb Code   130  stm32l0xx_hw.o(i.SystemClock_Config)
+    SystemInit                               0x0800c939   Thumb Code    66  system_stm32l0xx.o(i.SystemInit)
+    TimerGetCurrentTime                      0x0800c98d   Thumb Code    12  timeserver.o(i.TimerGetCurrentTime)
+    TimerGetElapsedTime                      0x0800c999   Thumb Code    24  timeserver.o(i.TimerGetElapsedTime)
+    TimerInit                                0x0800c9b1   Thumb Code    14  timeserver.o(i.TimerInit)
+    TimerIrqHandler                          0x0800c9dd   Thumb Code   116  timeserver.o(i.TimerIrqHandler)
+    TimerSetValue                            0x0800ca81   Thumb Code    34  timeserver.o(i.TimerSetValue)
+    TimerStart                               0x0800caa5   Thumb Code   108  timeserver.o(i.TimerStart)
+    TimerStop                                0x0800cb15   Thumb Code    90  timeserver.o(i.TimerStop)
+    TraceInit                                0x0800cb75   Thumb Code    28  trace.o(i.TraceInit)
+    TraceSend                                0x0800cb99   Thumb Code   126  trace.o(i.TraceSend)
+    UART_AdvFeatureConfig                    0x0800cc69   Thumb Code   202  stm32l0xx_hal_uart.o(i.UART_AdvFeatureConfig)
+    UART_CheckIdleState                      0x0800cd35   Thumb Code    90  stm32l0xx_hal_uart.o(i.UART_CheckIdleState)
+    UART_SetConfig                           0x0800cedd   Thumb Code   510  stm32l0xx_hal_uart.o(i.UART_SetConfig)
+    UART_WaitOnFlagUntilTimeout              0x0800d173   Thumb Code    98  stm32l0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout)
+    USART1_IRQHandler                        0x0800d1d5   Thumb Code    10  main.o(i.USART1_IRQHandler)
+    __0vsnprintf                             0x0800d22d   Thumb Code    40  printfa.o(i.__0vsnprintf)
+    __1vsnprintf                             0x0800d22d   Thumb Code     0  printfa.o(i.__0vsnprintf)
+    __2vsnprintf                             0x0800d22d   Thumb Code     0  printfa.o(i.__0vsnprintf)
+    __c89vsnprintf                           0x0800d22d   Thumb Code     0  printfa.o(i.__0vsnprintf)
+    vsnprintf                                0x0800d22d   Thumb Code     0  printfa.o(i.__0vsnprintf)
+    __ARM_clz                                0x0800d259   Thumb Code    46  depilogue.o(i.__ARM_clz)
+    __ARM_common_ll_muluu                    0x0800d287   Thumb Code    48  hw_rtc.o(i.__ARM_common_ll_muluu)
+    __ARM_common_switch8                     0x0800d2b7   Thumb Code    26  sx1276.o(i.__ARM_common_switch8)
+    __ARM_fpclassify                         0x0800d2d1   Thumb Code    40  fpclassify.o(i.__ARM_fpclassify)
+    __ARM_fpclassifyf                        0x0800d2fd   Thumb Code    34  fpclassifyf.o(i.__ARM_fpclassifyf)
+    __kernel_poly                            0x0800d33f   Thumb Code   172  poly.o(i.__kernel_poly)
+    __mathlib_dbl_infnan                     0x0800d3eb   Thumb Code    10  dunder.o(i.__mathlib_dbl_infnan)
+    __mathlib_dbl_infnan2                    0x0800d3f5   Thumb Code     8  dunder.o(i.__mathlib_dbl_infnan2)
+    __mathlib_dbl_invalid                    0x0800d3fd   Thumb Code    16  dunder.o(i.__mathlib_dbl_invalid)
+    __mathlib_dbl_underflow                  0x0800d40d   Thumb Code    14  dunder.o(i.__mathlib_dbl_underflow)
+    __mathlib_flt_infnan                     0x0800d421   Thumb Code    10  funder.o(i.__mathlib_flt_infnan)
+    __mathlib_flt_invalid                    0x0800d42b   Thumb Code    12  funder.o(i.__mathlib_flt_invalid)
+    __mathlib_flt_underflow                  0x0800d437   Thumb Code    14  funder.o(i.__mathlib_flt_underflow)
+    __mathlib_rredf2                         0x0800d445   Thumb Code   366  rredf.o(i.__mathlib_rredf2)
+    __scatterload_copy                       0x0800d5c5   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0800d5d3   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x0800d5d5   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    __set_errno                              0x0800d5e5   Thumb Code     6  errno.o(i.__set_errno)
+    aes_encrypt                              0x0800deb3   Thumb Code    84  aes.o(i.aes_encrypt)
+    aes_set_key                              0x0800df09   Thumb Code   248  aes.o(i.aes_set_key)
+    asin                                     0x0800e005   Thumb Code   574  asin.o(i.asin)
+    at_ACE_get                               0x0800e279   Thumb Code    14  at.o(i.at_ACE_get)
+    at_ACE_set                               0x0800e28d   Thumb Code    26  at.o(i.at_ACE_set)
+    at_ADR_get                               0x0800e2b1   Thumb Code    34  at.o(i.at_ADR_get)
+    at_ADR_set                               0x0800e2d3   Thumb Code    52  at.o(i.at_ADR_set)
+    at_AppEUI_get                            0x0800e307   Thumb Code    14  at.o(i.at_AppEUI_get)
+    at_AppEUI_set                            0x0800e315   Thumb Code    64  at.o(i.at_AppEUI_set)
+    at_AppKey_get                            0x0800e37d   Thumb Code    14  at.o(i.at_AppKey_get)
+    at_AppKey_set                            0x0800e38b   Thumb Code    32  at.o(i.at_AppKey_set)
+    at_AppSKey_get                           0x0800e3ab   Thumb Code    14  at.o(i.at_AppSKey_get)
+    at_AppSKey_set                           0x0800e3b9   Thumb Code    32  at.o(i.at_AppSKey_set)
+    at_CHE_get                               0x0800e3d9   Thumb Code   136  at.o(i.at_CHE_get)
+    at_CHE_set                               0x0800e495   Thumb Code    48  at.o(i.at_CHE_set)
+    at_CHS_get                               0x0800e4c9   Thumb Code    14  at.o(i.at_CHS_get)
+    at_CHS_set                               0x0800e4d9   Thumb Code    46  at.o(i.at_CHS_set)
+    at_DataRate_get                          0x0800e515   Thumb Code    36  at.o(i.at_DataRate_get)
+    at_DataRate_set                          0x0800e539   Thumb Code    36  at.o(i.at_DataRate_set)
+    at_DevAddr_get                           0x0800e565   Thumb Code    10  at.o(i.at_DevAddr_get)
+    at_DevAddr_set                           0x0800e56f   Thumb Code    30  at.o(i.at_DevAddr_set)
+    at_DevEUI_get                            0x0800e58d   Thumb Code    14  at.o(i.at_DevEUI_get)
+    at_DevEUI_set                            0x0800e59d   Thumb Code    64  at.o(i.at_DevEUI_set)
+    at_DeviceClass_get                       0x0800e605   Thumb Code    40  at.o(i.at_DeviceClass_get)
+    at_DeviceClass_set                       0x0800e635   Thumb Code    52  at.o(i.at_DeviceClass_set)
+    at_DownlinkCounter_get                   0x0800e669   Thumb Code    32  at.o(i.at_DownlinkCounter_get)
+    at_DownlinkCounter_set                   0x0800e689   Thumb Code    46  at.o(i.at_DownlinkCounter_set)
+    at_DutyCycle_get                         0x0800e6bd   Thumb Code    36  at.o(i.at_DutyCycle_get)
+    at_DutyCycle_set                         0x0800e6e9   Thumb Code    34  at.o(i.at_DutyCycle_set)
+    at_FDR                                   0x0800e70d   Thumb Code    28  at.o(i.at_FDR)
+    at_Join                                  0x0800e735   Thumb Code    10  at.o(i.at_Join)
+    at_JoinAcceptDelay1_get                  0x0800e73f   Thumb Code    32  at.o(i.at_JoinAcceptDelay1_get)
+    at_JoinAcceptDelay1_set                  0x0800e761   Thumb Code    46  at.o(i.at_JoinAcceptDelay1_set)
+    at_JoinAcceptDelay2_get                  0x0800e795   Thumb Code    32  at.o(i.at_JoinAcceptDelay2_get)
+    at_JoinAcceptDelay2_set                  0x0800e7b5   Thumb Code    46  at.o(i.at_JoinAcceptDelay2_set)
+    at_NetworkID_get                         0x0800e7e9   Thumb Code    60  at.o(i.at_NetworkID_get)
+    at_NetworkID_set                         0x0800e83d   Thumb Code    44  at.o(i.at_NetworkID_set)
+    at_NetworkJoinMode_get                   0x0800e869   Thumb Code    20  at.o(i.at_NetworkJoinMode_get)
+    at_NetworkJoinMode_set                   0x0800e87d   Thumb Code    34  at.o(i.at_NetworkJoinMode_set)
+    at_NetworkJoinStatus                     0x0800e89f   Thumb Code    44  at.o(i.at_NetworkJoinStatus)
+    at_NwkSKey_get                           0x0800e8cb   Thumb Code    14  at.o(i.at_NwkSKey_get)
+    at_NwkSKey_set                           0x0800e8d9   Thumb Code    32  at.o(i.at_NwkSKey_set)
+    at_PublicNetwork_get                     0x0800e8f9   Thumb Code    34  at.o(i.at_PublicNetwork_get)
+    at_PublicNetwork_set                     0x0800e91b   Thumb Code    52  at.o(i.at_PublicNetwork_set)
+    at_Receive                               0x0800e951   Thumb Code    48  at.o(i.at_Receive)
+    at_ReceiveBinary                         0x0800e995   Thumb Code    56  at.o(i.at_ReceiveBinary)
+    at_Rx1Delay_get                          0x0800e9e5   Thumb Code    32  at.o(i.at_Rx1Delay_get)
+    at_Rx1Delay_set                          0x0800ea05   Thumb Code    46  at.o(i.at_Rx1Delay_set)
+    at_Rx2DataRate_get                       0x0800ea39   Thumb Code    34  at.o(i.at_Rx2DataRate_get)
+    at_Rx2DataRate_set                       0x0800ea5d   Thumb Code    64  at.o(i.at_Rx2DataRate_set)
+    at_Rx2Delay_get                          0x0800eaa5   Thumb Code    32  at.o(i.at_Rx2Delay_get)
+    at_Rx2Delay_set                          0x0800eac5   Thumb Code    46  at.o(i.at_Rx2Delay_set)
+    at_Rx2Frequency_get                      0x0800eaf9   Thumb Code    32  at.o(i.at_Rx2Frequency_get)
+    at_Rx2Frequency_set                      0x0800eb19   Thumb Code    64  at.o(i.at_Rx2Frequency_set)
+    at_STD                                   0x0800eb5d   Thumb Code    16  at.o(i.at_STD)
+    at_Send                                  0x0800eb71   Thumb Code   104  at.o(i.at_Send)
+    at_SendBinary                            0x0800ec09   Thumb Code   148  at.o(i.at_SendBinary)
+    at_TDC_get                               0x0800ecd5   Thumb Code    14  at.o(i.at_TDC_get)
+    at_TDC_set                               0x0800ece9   Thumb Code    26  at.o(i.at_TDC_set)
+    at_TransmitPower_get                     0x0800ed0d   Thumb Code    36  at.o(i.at_TransmitPower_get)
+    at_TransmitPower_set                     0x0800ed31   Thumb Code    46  at.o(i.at_TransmitPower_set)
+    at_UplinkCounter_get                     0x0800ed69   Thumb Code    32  at.o(i.at_UplinkCounter_get)
+    at_UplinkCounter_set                     0x0800ed89   Thumb Code    46  at.o(i.at_UplinkCounter_set)
+    at_ack_get                               0x0800edbd   Thumb Code    20  at.o(i.at_ack_get)
+    at_ack_set                               0x0800edd1   Thumb Code    34  at.o(i.at_ack_set)
+    at_application_port_get                  0x0800edf3   Thumb Code    14  at.o(i.at_application_port_get)
+    at_application_port_set                  0x0800ee01   Thumb Code    36  at.o(i.at_application_port_set)
+    at_gpst_get                              0x0800ee2d   Thumb Code    14  at.o(i.at_gpst_get)
+    at_gpst_set                              0x0800ee41   Thumb Code    26  at.o(i.at_gpst_set)
+    at_isack_get                             0x0800ee65   Thumb Code    20  at.o(i.at_isack_get)
+    at_reset                                 0x0800ee79   Thumb Code     4  at.o(i.at_reset)
+    at_return_error                          0x0800ee7d   Thumb Code     4  at.o(i.at_return_error)
+    at_rssi_get                              0x0800ee81   Thumb Code    14  at.o(i.at_rssi_get)
+    at_sgm_get                               0x0800ee91   Thumb Code    14  at.o(i.at_sgm_get)
+    at_sgm_set                               0x0800eea5   Thumb Code    52  at.o(i.at_sgm_set)
+    at_snr_get                               0x0800eee1   Thumb Code    14  at.o(i.at_snr_get)
+    at_symbtimeout1LSB_get                   0x0800eef1   Thumb Code    14  at.o(i.at_symbtimeout1LSB_get)
+    at_symbtimeout1LSB_set                   0x0800ef05   Thumb Code    36  at.o(i.at_symbtimeout1LSB_set)
+    at_symbtimeout2LSB_get                   0x0800ef31   Thumb Code    14  at.o(i.at_symbtimeout2LSB_get)
+    at_symbtimeout2LSB_set                   0x0800ef45   Thumb Code    36  at.o(i.at_symbtimeout2LSB_set)
+    at_version_get                           0x0800ef71   Thumb Code    20  at.o(i.at_version_get)
+    atan                                     0x0800ef8d   Thumb Code   472  atan.o(i.atan)
+    atan2                                    0x0800f1a9   Thumb Code   334  atan2.o(i.atan2)
+    ceil                                     0x0800f321   Thumb Code   180  ceil.o(i.ceil)
+    certif_DownLinkIncrement                 0x0800f3e9   Thumb Code    10  lora-test.o(i.certif_DownLinkIncrement)
+    certif_linkCheck                         0x0800f3f9   Thumb Code    16  lora-test.o(i.certif_linkCheck)
+    certif_running                           0x0800f40d   Thumb Code     6  lora-test.o(i.certif_running)
+    certif_rx                                0x0800f419   Thumb Code   374  lora-test.o(i.certif_rx)
+    check                                    0x0800f645   Thumb Code    56  gps.o(i.check)
+    cosf                                     0x0800f765   Thumb Code   318  cosf.o(i.cosf)
+    customize_freq1_get                      0x0800f8dd   Thumb Code     6  lora.o(i.customize_freq1_get)
+    customize_freq1_set                      0x0800f8e9   Thumb Code     6  lora.o(i.customize_freq1_set)
+    customize_set8channel_get                0x0800f8f5   Thumb Code     6  lora.o(i.customize_set8channel_get)
+    customize_set8channel_set                0x0800f901   Thumb Code     6  lora.o(i.customize_set8channel_set)
+    floor                                    0x0800f90d   Thumb Code   180  floor.o(i.floor)
+    gps_state_no                             0x0800f9d5   Thumb Code     8  lora.o(i.gps_state_no)
+    gps_state_off                            0x0800f9e1   Thumb Code     8  lora.o(i.gps_state_off)
+    gps_state_on                             0x0800f9ed   Thumb Code     8  lora.o(i.gps_state_on)
+    invSqrt                                  0x0800f9f9   Thumb Code    48  main.o(i.invSqrt)
+    key_printf                               0x0800fa2d   Thumb Code    44  lora.o(i.key_printf)
+    lora_config_appeui_get                   0x0800fa91   Thumb Code     4  lora.o(i.lora_config_appeui_get)
+    lora_config_appeui_set                   0x0800fa99   Thumb Code    14  lora.o(i.lora_config_appeui_set)
+    lora_config_appkey_get                   0x0800faad   Thumb Code     4  lora.o(i.lora_config_appkey_get)
+    lora_config_appkey_set                   0x0800fab5   Thumb Code    14  lora.o(i.lora_config_appkey_set)
+    lora_config_application_port_get         0x0800fac9   Thumb Code     8  lora.o(i.lora_config_application_port_get)
+    lora_config_application_port_set         0x0800fad5   Thumb Code     6  lora.o(i.lora_config_application_port_set)
+    lora_config_appskey_get                  0x0800fae1   Thumb Code     4  lora.o(i.lora_config_appskey_get)
+    lora_config_appskey_set                  0x0800fae9   Thumb Code    14  lora.o(i.lora_config_appskey_set)
+    lora_config_devaddr_get                  0x0800fafd   Thumb Code    14  lora.o(i.lora_config_devaddr_get)
+    lora_config_devaddr_set                  0x0800fb19   Thumb Code     6  lora.o(i.lora_config_devaddr_set)
+    lora_config_deveui_get                   0x0800fb25   Thumb Code     4  lora.o(i.lora_config_deveui_get)
+    lora_config_deveui_set                   0x0800fb2d   Thumb Code    14  lora.o(i.lora_config_deveui_set)
+    lora_config_duty_cycle_get               0x0800fb41   Thumb Code     6  lora.o(i.lora_config_duty_cycle_get)
+    lora_config_duty_cycle_set               0x0800fb4d   Thumb Code    18  lora.o(i.lora_config_duty_cycle_set)
+    lora_config_isack_get                    0x0800fb65   Thumb Code    18  lora.o(i.lora_config_isack_get)
+    lora_config_nwkskey_get                  0x0800fb7d   Thumb Code     4  lora.o(i.lora_config_nwkskey_get)
+    lora_config_nwkskey_set                  0x0800fb85   Thumb Code    14  lora.o(i.lora_config_nwkskey_set)
+    lora_config_otaa_get                     0x0800fb99   Thumb Code     6  lora.o(i.lora_config_otaa_get)
+    lora_config_otaa_set                     0x0800fba5   Thumb Code     6  lora.o(i.lora_config_otaa_set)
+    lora_config_reqack_get                   0x0800fbb1   Thumb Code     6  lora.o(i.lora_config_reqack_get)
+    lora_config_reqack_set                   0x0800fbbd   Thumb Code     6  lora.o(i.lora_config_reqack_set)
+    lora_config_rssi_get                     0x0800fbc9   Thumb Code     8  lora.o(i.lora_config_rssi_get)
+    lora_config_snr_get                      0x0800fbd5   Thumb Code     8  lora.o(i.lora_config_snr_get)
+    lora_config_tx_datarate_set              0x0800fbe1   Thumb Code     6  lora.o(i.lora_config_tx_datarate_set)
+    lora_getGPSState                         0x0800fbed   Thumb Code     6  lora.o(i.lora_getGPSState)
+    lora_getState                            0x0800fbf9   Thumb Code     6  lora.o(i.lora_getState)
+    lora_state_GPS_Send                      0x0801017d   Thumb Code     8  lora.o(i.lora_state_GPS_Send)
+    lora_state_INT                           0x08010189   Thumb Code    44  lora.o(i.lora_state_INT)
+    lora_state_Led                           0x080101c9   Thumb Code     8  lora.o(i.lora_state_Led)
+    main                                     0x080101d5   Thumb Code   144  main.o(i.main)
+    memcpy1                                  0x08010285   Thumb Code    22  utilities.o(i.memcpy1)
+    memcpyr                                  0x0801029b   Thumb Code    26  utilities.o(i.memcpyr)
+    memset1                                  0x080102b5   Thumb Code    18  utilities.o(i.memset1)
+    my_atof                                  0x080104e1   Thumb Code    10  gps.o(i.my_atof)
+    my_atoi                                  0x080104eb   Thumb Code    72  gps.o(i.my_atoi)
+    my_strtod                                0x08010535   Thumb Code   268  gps.o(i.my_strtod)
+    powerLED                                 0x08010779   Thumb Code    42  bsp.o(i.powerLED)
+    rand1                                    0x08010881   Thumb Code    26  utilities.o(i.rand1)
+    randr                                    0x080108ad   Thumb Code    22  utilities.o(i.randr)
+    read_data                                0x080108c3   Thumb Code   126  lora.o(i.read_data)
+    region_printf                            0x08010941   Thumb Code    10  lora.o(i.region_printf)
+    round                                    0x08010955   Thumb Code   142  round.o(i.round)
+    s_tdc                                    0x080109f1   Thumb Code    18  at.o(i.s_tdc)
+    send_ALARM_data                          0x08010a09   Thumb Code   132  main.o(i.send_ALARM_data)
+    send_data                                0x08010ab5   Thumb Code   136  main.o(i.send_data)
+    set_at_receive                           0x08010b6d   Thumb Code    28  at.o(i.set_at_receive)
+    split                                    0x08010bf9   Thumb Code    54  gps.o(i.split)
+    sqrt                                     0x08010c31   Thumb Code    66  sqrt.o(i.sqrt)
+    srand1                                   0x08010c79   Thumb Code     6  utilities.o(i.srand1)
+    store_data                               0x08010cf9   Thumb Code   190  lora.o(i.store_data)
+    tanf                                     0x08010dc1   Thumb Code   312  tanf.o(i.tanf)
+    tiny_sscanf                              0x08010f31   Thumb Code    20  tiny_sscanf.o(i.tiny_sscanf)
+    usart1_IRQHandler                        0x080111b9   Thumb Code    58  bsp_usart2.o(i.usart1_IRQHandler)
+    usart1_Init                              0x080111f5   Thumb Code    62  bsp_usart2.o(i.usart1_Init)
+    usart1_IoInit                            0x0801123d   Thumb Code    74  bsp_usart2.o(i.usart1_IoInit)
+    vcom_DMA_TX_IRQHandler                   0x08011291   Thumb Code    12  vcom.o(i.vcom_DMA_TX_IRQHandler)
+    vcom_IRQHandler                          0x080112a1   Thumb Code    10  vcom.o(i.vcom_IRQHandler)
+    vcom_Init                                0x080112b1   Thumb Code    46  vcom.o(i.vcom_Init)
+    vcom_IoInit                              0x080112ed   Thumb Code    92  vcom.o(i.vcom_IoInit)
+    vcom_ReceiveInit                         0x0801134d   Thumb Code    34  vcom.o(i.vcom_ReceiveInit)
+    vcom_Trace                               0x08011379   Thumb Code    14  vcom.o(i.vcom_Trace)
+    RadioRegsInit                            0x08011410   Data          48  sx1276.o(.constdata)
+    FskBandwidths                            0x08011440   Data         176  sx1276.o(.constdata)
+    Radio                                    0x080114f0   Data         104  sx1276mb1las.o(.constdata)
+    AHBPrescTable                            0x08011558   Data          16  system_stm32l0xx.o(.constdata)
+    PLLMulTable                              0x08011568   Data           9  system_stm32l0xx.o(.constdata)
+    APBPrescTable                            0x08011571   Data           8  system_stm32l0xx.o(.constdata)
+    __mathlib_zero                           0x08011e80   Data           8  qnan.o(.constdata)
+    __ctype_categories                       0x08011ea8   Data          64  ctype_c.o(.constdata)
+    Region$$Table$$Base                      0x08012d2c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08012d4c   Number         0  anon$$obj.o(Region$$Table)
     DioIrq                                   0x20000008   Data          24  sx1276.o(.data)
     PAGEError                                0x20000020   Data           4  flash_eraseprogram.o(.data)
     data32                                   0x20000024   Data           4  flash_eraseprogram.o(.data)
@@ -6504,9 +6503,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000131c4, Max: 0x00030000, ABSOLUTE, COMPRESSED[0x00012e68])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00013194, Max: 0x00030000, ABSOLUTE, COMPRESSED[0x00012e38])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00012d7c, Max: 0x00030000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00012d4c, Max: 0x00030000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -6919,325 +6918,325 @@ Memory Map of the image
     0x0800ab58   0x0800ab58   0x0000004e   Code   RO           10    i.SX1276IsChannelFree  sx1276.o
     0x0800aba6   0x0800aba6   0x00000002   PAD
     0x0800aba8   0x0800aba8   0x0000027c   Code   RO           11    i.SX1276OnDio0Irq   sx1276.o
-    0x0800ae24   0x0800ae24   0x000000dc   Code   RO           12    i.SX1276OnDio1Irq   sx1276.o
-    0x0800af00   0x0800af00   0x000000b4   Code   RO           13    i.SX1276OnDio2Irq   sx1276.o
-    0x0800afb4   0x0800afb4   0x00000054   Code   RO           14    i.SX1276OnDio3Irq   sx1276.o
-    0x0800b008   0x0800b008   0x0000001c   Code   RO           15    i.SX1276OnDio4Irq   sx1276.o
-    0x0800b024   0x0800b024   0x000000c8   Code   RO           17    i.SX1276OnTimeoutIrq  sx1276.o
-    0x0800b0ec   0x0800b0ec   0x0000003e   Code   RO           18    i.SX1276Random      sx1276.o
-    0x0800b12a   0x0800b12a   0x00000010   Code   RO           19    i.SX1276Read        sx1276.o
-    0x0800b13a   0x0800b13a   0x00000042   Code   RO           20    i.SX1276ReadBuffer  sx1276.o
-    0x0800b17c   0x0800b17c   0x0000000e   Code   RO           21    i.SX1276ReadFifo    sx1276.o
-    0x0800b18a   0x0800b18a   0x00000002   PAD
-    0x0800b18c   0x0800b18c   0x00000044   Code   RO           22    i.SX1276ReadRssi    sx1276.o
-    0x0800b1d0   0x0800b1d0   0x00000050   Code   RO           23    i.SX1276Reset       sx1276.o
-    0x0800b220   0x0800b220   0x000000f0   Code   RO           24    i.SX1276Send        sx1276.o
-    0x0800b310   0x0800b310   0x0000001c   Code   RO         1217    i.SX1276SetAntSw    sx1276mb1las.o
-    0x0800b32c   0x0800b32c   0x00000044   Code   RO         1218    i.SX1276SetAntSwLowPower  sx1276mb1las.o
-    0x0800b370   0x0800b370   0x00000050   Code   RO           25    i.SX1276SetChannel  sx1276.o
-    0x0800b3c0   0x0800b3c0   0x00000030   Code   RO           26    i.SX1276SetMaxPayloadLength  sx1276.o
-    0x0800b3f0   0x0800b3f0   0x00000070   Code   RO           27    i.SX1276SetModem    sx1276.o
-    0x0800b460   0x0800b460   0x0000005c   Code   RO           28    i.SX1276SetOpMode   sx1276.o
-    0x0800b4bc   0x0800b4bc   0x00000024   Code   RO           29    i.SX1276SetPublicNetwork  sx1276.o
-    0x0800b4e0   0x0800b4e0   0x000000a0   Code   RO         1219    i.SX1276SetRfTxPower  sx1276mb1las.o
-    0x0800b580   0x0800b580   0x000001fc   Code   RO           30    i.SX1276SetRx       sx1276.o
-    0x0800b77c   0x0800b77c   0x00000288   Code   RO           31    i.SX1276SetRxConfig  sx1276.o
-    0x0800ba04   0x0800ba04   0x00000024   Code   RO           32    i.SX1276SetSleep    sx1276.o
-    0x0800ba28   0x0800ba28   0x00000024   Code   RO           33    i.SX1276SetStby     sx1276.o
-    0x0800ba4c   0x0800ba4c   0x000000a4   Code   RO           34    i.SX1276SetTx       sx1276.o
-    0x0800baf0   0x0800baf0   0x000001fc   Code   RO           35    i.SX1276SetTxConfig  sx1276.o
-    0x0800bcec   0x0800bcec   0x00000078   Code   RO           36    i.SX1276SetTxContinuousWave  sx1276.o
-    0x0800bd64   0x0800bd64   0x00000002   Code   RO         1220    i.SX1276SetXO       sx1276mb1las.o
-    0x0800bd66   0x0800bd66   0x00000002   PAD
-    0x0800bd68   0x0800bd68   0x00000038   Code   RO           37    i.SX1276StartCad    sx1276.o
-    0x0800bda0   0x0800bda0   0x0000000c   Code   RO           38    i.SX1276Write       sx1276.o
-    0x0800bdac   0x0800bdac   0x00000042   Code   RO           39    i.SX1276WriteBuffer  sx1276.o
-    0x0800bdee   0x0800bdee   0x0000000e   Code   RO           40    i.SX1276WriteFifo   sx1276.o
-    0x0800bdfc   0x0800bdfc   0x00000134   Code   RO         8594    i.ScheduleTx        loramac.o
-    0x0800bf30   0x0800bf30   0x00000554   Code   RO         5030    i.Send              main.o
-    0x0800c484   0x0800c484   0x00000040   Code   RO         8595    i.Send              loramac.o
-    0x0800c4c4   0x0800c4c4   0x000000c4   Code   RO         8596    i.SendFrameOnChannel  loramac.o
-    0x0800c588   0x0800c588   0x00000054   Code   RO         8597    i.SetTxContinuousWave  loramac.o
-    0x0800c5dc   0x0800c5dc   0x0000003c   Code   RO         8598    i.SetTxContinuousWave1  loramac.o
-    0x0800c618   0x0800c618   0x00000220   Code   RO         6160    i.Store_Config      lora.o
-    0x0800c838   0x0800c838   0x00000070   Code   RO         6161    i.Store_key         lora.o
-    0x0800c8a8   0x0800c8a8   0x00000008   Code   RO         5353    i.SysTick_Handler   stm32l0xx_it.o
-    0x0800c8b0   0x0800c8b0   0x0000008c   Code   RO         5248    i.SystemClock_Config  stm32l0xx_hw.o
-    0x0800c93c   0x0800c93c   0x00000054   Code   RO         1300    i.SystemInit        system_stm32l0xx.o
-    0x0800c990   0x0800c990   0x0000000c   Code   RO         9019    i.TimerGetCurrentTime  timeserver.o
-    0x0800c99c   0x0800c99c   0x00000018   Code   RO         9020    i.TimerGetElapsedTime  timeserver.o
-    0x0800c9b4   0x0800c9b4   0x0000000e   Code   RO         9021    i.TimerInit         timeserver.o
-    0x0800c9c2   0x0800c9c2   0x00000002   PAD
-    0x0800c9c4   0x0800c9c4   0x0000001c   Code   RO         9022    i.TimerInsertNewHeadTimer  timeserver.o
-    0x0800c9e0   0x0800c9e0   0x00000078   Code   RO         9023    i.TimerIrqHandler   timeserver.o
-    0x0800ca58   0x0800ca58   0x0000002c   Code   RO         9025    i.TimerSetTimeout   timeserver.o
-    0x0800ca84   0x0800ca84   0x00000022   Code   RO         9026    i.TimerSetValue     timeserver.o
-    0x0800caa6   0x0800caa6   0x00000002   PAD
-    0x0800caa8   0x0800caa8   0x00000070   Code   RO         9027    i.TimerStart        timeserver.o
-    0x0800cb18   0x0800cb18   0x00000060   Code   RO         9028    i.TimerStop         timeserver.o
-    0x0800cb78   0x0800cb78   0x00000024   Code   RO         9162    i.TraceInit         trace.o
-    0x0800cb9c   0x0800cb9c   0x00000088   Code   RO         9163    i.TraceSend         trace.o
-    0x0800cc24   0x0800cc24   0x00000048   Code   RO         9164    i.Trace_TxCpltCallback  trace.o
-    0x0800cc6c   0x0800cc6c   0x000000ca   Code   RO         1607    i.UART_AdvFeatureConfig  stm32l0xx_hal_uart.o
-    0x0800cd36   0x0800cd36   0x00000002   PAD
-    0x0800cd38   0x0800cd38   0x00000060   Code   RO         1608    i.UART_CheckIdleState  stm32l0xx_hal_uart.o
-    0x0800cd98   0x0800cd98   0x00000014   Code   RO         1609    i.UART_DMAAbortOnError  stm32l0xx_hal_uart.o
-    0x0800cdac   0x0800cdac   0x0000004a   Code   RO         1610    i.UART_DMAError     stm32l0xx_hal_uart.o
-    0x0800cdf6   0x0800cdf6   0x00000030   Code   RO         1615    i.UART_DMATransmitCplt  stm32l0xx_hal_uart.o
-    0x0800ce26   0x0800ce26   0x0000000a   Code   RO         1617    i.UART_DMATxHalfCplt  stm32l0xx_hal_uart.o
-    0x0800ce30   0x0800ce30   0x0000001e   Code   RO         1619    i.UART_EndRxTransfer  stm32l0xx_hal_uart.o
-    0x0800ce4e   0x0800ce4e   0x00000012   Code   RO         1620    i.UART_EndTxTransfer  stm32l0xx_hal_uart.o
-    0x0800ce60   0x0800ce60   0x0000007e   Code   RO         1621    i.UART_Receive_IT   stm32l0xx_hal_uart.o
-    0x0800cede   0x0800cede   0x00000002   PAD
-    0x0800cee0   0x0800cee0   0x00000230   Code   RO         1622    i.UART_SetConfig    stm32l0xx_hal_uart.o
-    0x0800d110   0x0800d110   0x00000066   Code   RO         1623    i.UART_Transmit_IT  stm32l0xx_hal_uart.o
-    0x0800d176   0x0800d176   0x00000062   Code   RO         1624    i.UART_WaitOnFlagUntilTimeout  stm32l0xx_hal_uart.o
-    0x0800d1d8   0x0800d1d8   0x00000010   Code   RO         5031    i.USART1_IRQHandler  main.o
-    0x0800d1e8   0x0800d1e8   0x00000048   Code   RO         8599    i.ValidatePayloadLength  loramac.o
-    0x0800d230   0x0800d230   0x0000002c   Code   RO         9433    i.__0vsnprintf      mc_p.l(printfa.o)
-    0x0800d25c   0x0800d25c   0x0000002e   Code   RO         9597    i.__ARM_clz         mf_p.l(depilogue.o)
-    0x0800d28a   0x0800d28a   0x00000030   Code   RO         4964    i.__ARM_common_ll_muluu  hw_rtc.o
-    0x0800d2ba   0x0800d2ba   0x0000001a   Code   RO          238    i.__ARM_common_switch8  sx1276.o
-    0x0800d2d4   0x0800d2d4   0x0000002c   Code   RO         9527    i.__ARM_fpclassify  m_ps.l(fpclassify.o)
-    0x0800d300   0x0800d300   0x00000022   Code   RO         9529    i.__ARM_fpclassifyf  m_ps.l(fpclassifyf.o)
-    0x0800d322   0x0800d322   0x00000012   Code   RO          706    i.__ARM_isinff      filter.o
-    0x0800d334   0x0800d334   0x0000000e   Code   RO          707    i.__ARM_isnanf      filter.o
-    0x0800d342   0x0800d342   0x000000ac   Code   RO         9545    i.__kernel_poly     m_ps.l(poly.o)
-    0x0800d3ee   0x0800d3ee   0x0000000a   Code   RO         9514    i.__mathlib_dbl_infnan  m_ps.l(dunder.o)
-    0x0800d3f8   0x0800d3f8   0x00000008   Code   RO         9515    i.__mathlib_dbl_infnan2  m_ps.l(dunder.o)
-    0x0800d400   0x0800d400   0x00000010   Code   RO         9516    i.__mathlib_dbl_invalid  m_ps.l(dunder.o)
-    0x0800d410   0x0800d410   0x00000014   Code   RO         9519    i.__mathlib_dbl_underflow  m_ps.l(dunder.o)
-    0x0800d424   0x0800d424   0x0000000a   Code   RO         9532    i.__mathlib_flt_infnan  m_ps.l(funder.o)
-    0x0800d42e   0x0800d42e   0x0000000c   Code   RO         9534    i.__mathlib_flt_invalid  m_ps.l(funder.o)
-    0x0800d43a   0x0800d43a   0x0000000e   Code   RO         9537    i.__mathlib_flt_underflow  m_ps.l(funder.o)
-    0x0800d448   0x0800d448   0x00000180   Code   RO         9548    i.__mathlib_rredf2  m_ps.l(rredf.o)
-    0x0800d5c8   0x0800d5c8   0x0000000e   Code   RO         9613    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x0800d5d6   0x0800d5d6   0x00000002   Code   RO         9614    i.__scatterload_null  mc_p.l(handlers.o)
-    0x0800d5d8   0x0800d5d8   0x0000000e   Code   RO         9615    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x0800d5e6   0x0800d5e6   0x00000002   PAD
-    0x0800d5e8   0x0800d5e8   0x0000000c   Code   RO         9579    i.__set_errno       mc_p.l(errno.o)
-    0x0800d5f4   0x0800d5f4   0x00000174   Code   RO         9435    i._fp_digits        mc_p.l(printfa.o)
-    0x0800d768   0x0800d768   0x000006ec   Code   RO         9436    i._printf_core      mc_p.l(printfa.o)
-    0x0800de54   0x0800de54   0x00000020   Code   RO         9437    i._printf_post_padding  mc_p.l(printfa.o)
-    0x0800de74   0x0800de74   0x0000002c   Code   RO         9438    i._printf_pre_padding  mc_p.l(printfa.o)
-    0x0800dea0   0x0800dea0   0x00000016   Code   RO         9439    i._snputc           mc_p.l(printfa.o)
-    0x0800deb6   0x0800deb6   0x00000054   Code   RO         9258    i.aes_encrypt       aes.o
-    0x0800df0a   0x0800df0a   0x00000002   PAD
-    0x0800df0c   0x0800df0c   0x000000fc   Code   RO         9259    i.aes_set_key       aes.o
-    0x0800e008   0x0800e008   0x00000274   Code   RO         9347    i.asin              m_ps.l(asin.o)
-    0x0800e27c   0x0800e27c   0x00000014   Code   RO         5539    i.at_ACE_get        at.o
-    0x0800e290   0x0800e290   0x00000024   Code   RO         5540    i.at_ACE_set        at.o
-    0x0800e2b4   0x0800e2b4   0x00000022   Code   RO         5541    i.at_ADR_get        at.o
-    0x0800e2d6   0x0800e2d6   0x00000034   Code   RO         5542    i.at_ADR_set        at.o
-    0x0800e30a   0x0800e30a   0x0000000e   Code   RO         5543    i.at_AppEUI_get     at.o
-    0x0800e318   0x0800e318   0x00000068   Code   RO         5544    i.at_AppEUI_set     at.o
-    0x0800e380   0x0800e380   0x0000000e   Code   RO         5545    i.at_AppKey_get     at.o
-    0x0800e38e   0x0800e38e   0x00000020   Code   RO         5546    i.at_AppKey_set     at.o
-    0x0800e3ae   0x0800e3ae   0x0000000e   Code   RO         5547    i.at_AppSKey_get    at.o
-    0x0800e3bc   0x0800e3bc   0x00000020   Code   RO         5548    i.at_AppSKey_set    at.o
-    0x0800e3dc   0x0800e3dc   0x000000bc   Code   RO         5549    i.at_CHE_get        at.o
-    0x0800e498   0x0800e498   0x00000034   Code   RO         5550    i.at_CHE_set        at.o
-    0x0800e4cc   0x0800e4cc   0x0000000e   Code   RO         5551    i.at_CHS_get        at.o
-    0x0800e4da   0x0800e4da   0x00000002   PAD
-    0x0800e4dc   0x0800e4dc   0x0000003c   Code   RO         5552    i.at_CHS_set        at.o
-    0x0800e518   0x0800e518   0x00000024   Code   RO         5553    i.at_DataRate_get   at.o
-    0x0800e53c   0x0800e53c   0x0000002c   Code   RO         5554    i.at_DataRate_set   at.o
-    0x0800e568   0x0800e568   0x0000000a   Code   RO         5555    i.at_DevAddr_get    at.o
-    0x0800e572   0x0800e572   0x0000001e   Code   RO         5556    i.at_DevAddr_set    at.o
-    0x0800e590   0x0800e590   0x0000000e   Code   RO         5557    i.at_DevEUI_get     at.o
-    0x0800e59e   0x0800e59e   0x00000002   PAD
-    0x0800e5a0   0x0800e5a0   0x00000068   Code   RO         5558    i.at_DevEUI_set     at.o
-    0x0800e608   0x0800e608   0x00000030   Code   RO         5559    i.at_DeviceClass_get  at.o
-    0x0800e638   0x0800e638   0x00000034   Code   RO         5560    i.at_DeviceClass_set  at.o
-    0x0800e66c   0x0800e66c   0x00000020   Code   RO         5561    i.at_DownlinkCounter_get  at.o
-    0x0800e68c   0x0800e68c   0x00000034   Code   RO         5562    i.at_DownlinkCounter_set  at.o
-    0x0800e6c0   0x0800e6c0   0x0000002c   Code   RO         5563    i.at_DutyCycle_get  at.o
-    0x0800e6ec   0x0800e6ec   0x00000022   Code   RO         5564    i.at_DutyCycle_set  at.o
-    0x0800e70e   0x0800e70e   0x00000002   PAD
-    0x0800e710   0x0800e710   0x00000028   Code   RO         5565    i.at_FDR            at.o
-    0x0800e738   0x0800e738   0x0000000a   Code   RO         5566    i.at_Join           at.o
-    0x0800e742   0x0800e742   0x00000020   Code   RO         5567    i.at_JoinAcceptDelay1_get  at.o
-    0x0800e762   0x0800e762   0x00000002   PAD
-    0x0800e764   0x0800e764   0x00000034   Code   RO         5568    i.at_JoinAcceptDelay1_set  at.o
-    0x0800e798   0x0800e798   0x00000020   Code   RO         5569    i.at_JoinAcceptDelay2_get  at.o
-    0x0800e7b8   0x0800e7b8   0x00000034   Code   RO         5570    i.at_JoinAcceptDelay2_set  at.o
-    0x0800e7ec   0x0800e7ec   0x00000054   Code   RO         5571    i.at_NetworkID_get  at.o
-    0x0800e840   0x0800e840   0x0000002c   Code   RO         5572    i.at_NetworkID_set  at.o
-    0x0800e86c   0x0800e86c   0x00000014   Code   RO         5573    i.at_NetworkJoinMode_get  at.o
-    0x0800e880   0x0800e880   0x00000022   Code   RO         5574    i.at_NetworkJoinMode_set  at.o
-    0x0800e8a2   0x0800e8a2   0x0000002c   Code   RO         5575    i.at_NetworkJoinStatus  at.o
-    0x0800e8ce   0x0800e8ce   0x0000000e   Code   RO         5576    i.at_NwkSKey_get    at.o
-    0x0800e8dc   0x0800e8dc   0x00000020   Code   RO         5577    i.at_NwkSKey_set    at.o
-    0x0800e8fc   0x0800e8fc   0x00000022   Code   RO         5578    i.at_PublicNetwork_get  at.o
-    0x0800e91e   0x0800e91e   0x00000034   Code   RO         5579    i.at_PublicNetwork_set  at.o
-    0x0800e952   0x0800e952   0x00000002   PAD
-    0x0800e954   0x0800e954   0x00000044   Code   RO         5580    i.at_Receive        at.o
-    0x0800e998   0x0800e998   0x00000050   Code   RO         5581    i.at_ReceiveBinary  at.o
-    0x0800e9e8   0x0800e9e8   0x00000020   Code   RO         5582    i.at_Rx1Delay_get   at.o
-    0x0800ea08   0x0800ea08   0x00000034   Code   RO         5583    i.at_Rx1Delay_set   at.o
-    0x0800ea3c   0x0800ea3c   0x00000022   Code   RO         5584    i.at_Rx2DataRate_get  at.o
-    0x0800ea5e   0x0800ea5e   0x00000002   PAD
-    0x0800ea60   0x0800ea60   0x00000048   Code   RO         5585    i.at_Rx2DataRate_set  at.o
-    0x0800eaa8   0x0800eaa8   0x00000020   Code   RO         5586    i.at_Rx2Delay_get   at.o
-    0x0800eac8   0x0800eac8   0x00000034   Code   RO         5587    i.at_Rx2Delay_set   at.o
-    0x0800eafc   0x0800eafc   0x00000020   Code   RO         5588    i.at_Rx2Frequency_get  at.o
-    0x0800eb1c   0x0800eb1c   0x00000044   Code   RO         5589    i.at_Rx2Frequency_set  at.o
-    0x0800eb60   0x0800eb60   0x00000014   Code   RO         5590    i.at_STD            at.o
-    0x0800eb74   0x0800eb74   0x00000098   Code   RO         5591    i.at_Send           at.o
-    0x0800ec0c   0x0800ec0c   0x000000cc   Code   RO         5592    i.at_SendBinary     at.o
-    0x0800ecd8   0x0800ecd8   0x00000014   Code   RO         5593    i.at_TDC_get        at.o
-    0x0800ecec   0x0800ecec   0x00000024   Code   RO         5594    i.at_TDC_set        at.o
-    0x0800ed10   0x0800ed10   0x00000024   Code   RO         5595    i.at_TransmitPower_get  at.o
-    0x0800ed34   0x0800ed34   0x00000038   Code   RO         5596    i.at_TransmitPower_set  at.o
-    0x0800ed6c   0x0800ed6c   0x00000020   Code   RO         5597    i.at_UplinkCounter_get  at.o
-    0x0800ed8c   0x0800ed8c   0x00000034   Code   RO         5598    i.at_UplinkCounter_set  at.o
-    0x0800edc0   0x0800edc0   0x00000014   Code   RO         5599    i.at_ack_get        at.o
-    0x0800edd4   0x0800edd4   0x00000022   Code   RO         5600    i.at_ack_set        at.o
-    0x0800edf6   0x0800edf6   0x0000000e   Code   RO         5601    i.at_application_port_get  at.o
-    0x0800ee04   0x0800ee04   0x0000002c   Code   RO         5602    i.at_application_port_set  at.o
-    0x0800ee30   0x0800ee30   0x00000014   Code   RO         5603    i.at_gpst_get       at.o
-    0x0800ee44   0x0800ee44   0x00000024   Code   RO         5604    i.at_gpst_set       at.o
-    0x0800ee68   0x0800ee68   0x00000014   Code   RO         5605    i.at_isack_get      at.o
-    0x0800ee7c   0x0800ee7c   0x00000004   Code   RO         5606    i.at_reset          at.o
-    0x0800ee80   0x0800ee80   0x00000004   Code   RO         5607    i.at_return_error   at.o
-    0x0800ee84   0x0800ee84   0x0000000e   Code   RO         5609    i.at_rssi_get       at.o
-    0x0800ee92   0x0800ee92   0x00000002   PAD
-    0x0800ee94   0x0800ee94   0x00000014   Code   RO         5610    i.at_sgm_get        at.o
-    0x0800eea8   0x0800eea8   0x0000003c   Code   RO         5611    i.at_sgm_set        at.o
-    0x0800eee4   0x0800eee4   0x0000000e   Code   RO         5612    i.at_snr_get        at.o
-    0x0800eef2   0x0800eef2   0x00000002   PAD
-    0x0800eef4   0x0800eef4   0x00000014   Code   RO         5613    i.at_symbtimeout1LSB_get  at.o
-    0x0800ef08   0x0800ef08   0x0000002c   Code   RO         5614    i.at_symbtimeout1LSB_set  at.o
-    0x0800ef34   0x0800ef34   0x00000014   Code   RO         5615    i.at_symbtimeout2LSB_get  at.o
-    0x0800ef48   0x0800ef48   0x0000002c   Code   RO         5616    i.at_symbtimeout2LSB_set  at.o
-    0x0800ef74   0x0800ef74   0x0000001c   Code   RO         5617    i.at_version_get    at.o
-    0x0800ef90   0x0800ef90   0x0000021c   Code   RO         9504    i.atan              m_ps.l(atan.o)
-    0x0800f1ac   0x0800f1ac   0x00000178   Code   RO         9357    i.atan2             m_ps.l(atan2.o)
-    0x0800f324   0x0800f324   0x000000c8   Code   RO         9365    i.ceil              m_ps.l(ceil.o)
-    0x0800f3ec   0x0800f3ec   0x00000010   Code   RO         8864    i.certif_DownLinkIncrement  lora-test.o
-    0x0800f3fc   0x0800f3fc   0x00000014   Code   RO         8865    i.certif_linkCheck  lora-test.o
-    0x0800f410   0x0800f410   0x0000000c   Code   RO         8866    i.certif_running    lora-test.o
-    0x0800f41c   0x0800f41c   0x00000188   Code   RO         8867    i.certif_rx         lora-test.o
-    0x0800f5a4   0x0800f5a4   0x000000a4   Code   RO         8868    i.certif_tx         lora-test.o
-    0x0800f648   0x0800f648   0x0000003c   Code   RO          484    i.check             gps.o
-    0x0800f684   0x0800f684   0x0000001c   Code   RO         6093    i.com_error         command.o
-    0x0800f6a0   0x0800f6a0   0x00000084   Code   RO         9260    i.copy_and_key      aes.o
-    0x0800f724   0x0800f724   0x00000042   Code   RO         9261    i.copy_block        aes.o
-    0x0800f766   0x0800f766   0x00000002   PAD
-    0x0800f768   0x0800f768   0x00000178   Code   RO         9369    i.cosf              m_ps.l(cosf.o)
-    0x0800f8e0   0x0800f8e0   0x0000000c   Code   RO         6162    i.customize_freq1_get  lora.o
-    0x0800f8ec   0x0800f8ec   0x0000000c   Code   RO         6163    i.customize_freq1_set  lora.o
-    0x0800f8f8   0x0800f8f8   0x0000000c   Code   RO         6164    i.customize_set8channel_get  lora.o
-    0x0800f904   0x0800f904   0x0000000c   Code   RO         6165    i.customize_set8channel_set  lora.o
-    0x0800f910   0x0800f910   0x000000c8   Code   RO         9377    i.floor             m_ps.l(floor.o)
-    0x0800f9d8   0x0800f9d8   0x0000000c   Code   RO         6166    i.gps_state_no      lora.o
-    0x0800f9e4   0x0800f9e4   0x0000000c   Code   RO         6167    i.gps_state_off     lora.o
-    0x0800f9f0   0x0800f9f0   0x0000000c   Code   RO         6168    i.gps_state_on      lora.o
-    0x0800f9fc   0x0800f9fc   0x00000034   Code   RO         5032    i.invSqrt           main.o
-    0x0800fa30   0x0800fa30   0x00000064   Code   RO         6169    i.key_printf        lora.o
-    0x0800fa94   0x0800fa94   0x00000008   Code   RO         6170    i.lora_config_appeui_get  lora.o
-    0x0800fa9c   0x0800fa9c   0x00000014   Code   RO         6171    i.lora_config_appeui_set  lora.o
-    0x0800fab0   0x0800fab0   0x00000008   Code   RO         6172    i.lora_config_appkey_get  lora.o
-    0x0800fab8   0x0800fab8   0x00000014   Code   RO         6173    i.lora_config_appkey_set  lora.o
-    0x0800facc   0x0800facc   0x0000000c   Code   RO         6174    i.lora_config_application_port_get  lora.o
-    0x0800fad8   0x0800fad8   0x0000000c   Code   RO         6175    i.lora_config_application_port_set  lora.o
-    0x0800fae4   0x0800fae4   0x00000008   Code   RO         6176    i.lora_config_appskey_get  lora.o
-    0x0800faec   0x0800faec   0x00000014   Code   RO         6177    i.lora_config_appskey_set  lora.o
-    0x0800fb00   0x0800fb00   0x0000001c   Code   RO         6178    i.lora_config_devaddr_get  lora.o
-    0x0800fb1c   0x0800fb1c   0x0000000c   Code   RO         6179    i.lora_config_devaddr_set  lora.o
-    0x0800fb28   0x0800fb28   0x00000008   Code   RO         6180    i.lora_config_deveui_get  lora.o
-    0x0800fb30   0x0800fb30   0x00000014   Code   RO         6181    i.lora_config_deveui_set  lora.o
-    0x0800fb44   0x0800fb44   0x0000000c   Code   RO         6182    i.lora_config_duty_cycle_get  lora.o
-    0x0800fb50   0x0800fb50   0x00000018   Code   RO         6183    i.lora_config_duty_cycle_set  lora.o
-    0x0800fb68   0x0800fb68   0x00000018   Code   RO         6184    i.lora_config_isack_get  lora.o
-    0x0800fb80   0x0800fb80   0x00000008   Code   RO         6185    i.lora_config_nwkskey_get  lora.o
-    0x0800fb88   0x0800fb88   0x00000014   Code   RO         6186    i.lora_config_nwkskey_set  lora.o
-    0x0800fb9c   0x0800fb9c   0x0000000c   Code   RO         6187    i.lora_config_otaa_get  lora.o
-    0x0800fba8   0x0800fba8   0x0000000c   Code   RO         6188    i.lora_config_otaa_set  lora.o
-    0x0800fbb4   0x0800fbb4   0x0000000c   Code   RO         6189    i.lora_config_reqack_get  lora.o
-    0x0800fbc0   0x0800fbc0   0x0000000c   Code   RO         6190    i.lora_config_reqack_set  lora.o
-    0x0800fbcc   0x0800fbcc   0x0000000c   Code   RO         6191    i.lora_config_rssi_get  lora.o
-    0x0800fbd8   0x0800fbd8   0x0000000c   Code   RO         6192    i.lora_config_snr_get  lora.o
-    0x0800fbe4   0x0800fbe4   0x0000000c   Code   RO         6194    i.lora_config_tx_datarate_set  lora.o
-    0x0800fbf0   0x0800fbf0   0x0000000c   Code   RO         6195    i.lora_getGPSState  lora.o
-    0x0800fbfc   0x0800fbfc   0x0000000c   Code   RO         6196    i.lora_getState     lora.o
-    0x0800fc08   0x0800fc08   0x00000578   Code   RO         5033    i.lora_send         main.o
-    0x08010180   0x08010180   0x0000000c   Code   RO         6198    i.lora_state_GPS_Send  lora.o
-    0x0801018c   0x0801018c   0x0000006c   Code   RO         6199    i.lora_state_INT    lora.o
-    0x080101f8   0x080101f8   0x0000000c   Code   RO         6200    i.lora_state_Led    lora.o
-    0x08010204   0x08010204   0x000000b0   Code   RO         5034    i.main              main.o
-    0x080102b4   0x080102b4   0x00000016   Code   RO         9104    i.memcpy1           utilities.o
-    0x080102ca   0x080102ca   0x0000001a   Code   RO         9105    i.memcpyr           utilities.o
-    0x080102e4   0x080102e4   0x00000012   Code   RO         9106    i.memset1           utilities.o
-    0x080102f6   0x080102f6   0x00000002   PAD
-    0x080102f8   0x080102f8   0x00000218   Code   RO         9262    i.mix_sub_columns   aes.o
-    0x08010510   0x08010510   0x0000000a   Code   RO          486    i.my_atof           gps.o
-    0x0801051a   0x0801051a   0x00000048   Code   RO          487    i.my_atoi           gps.o
-    0x08010562   0x08010562   0x00000002   PAD
-    0x08010564   0x08010564   0x0000011c   Code   RO          488    i.my_strtod         gps.o
-    0x08010680   0x08010680   0x00000010   Code   RO         8600    i.onNetworkJointimesout  loramac.o
-    0x08010690   0x08010690   0x00000118   Code   RO         6094    i.parse_cmd         command.o
-    0x080107a8   0x080107a8   0x0000002a   Code   RO         4710    i.powerLED          bsp.o
-    0x080107d2   0x080107d2   0x00000002   PAD
-    0x080107d4   0x080107d4   0x0000004c   Code   RO         5618    i.print_16_02x      at.o
-    0x08010820   0x08010820   0x00000058   Code   RO         5619    i.print_8_02x       at.o
-    0x08010878   0x08010878   0x0000001c   Code   RO         5620    i.print_d           at.o
-    0x08010894   0x08010894   0x0000001c   Code   RO         5621    i.print_u           at.o
-    0x080108b0   0x080108b0   0x0000002c   Code   RO         9107    i.rand1             utilities.o
-    0x080108dc   0x080108dc   0x00000016   Code   RO         9108    i.randr             utilities.o
-    0x080108f2   0x080108f2   0x0000007e   Code   RO         6203    i.read_data         lora.o
-    0x08010970   0x08010970   0x00000014   Code   RO         6204    i.region_printf     lora.o
-    0x08010984   0x08010984   0x0000009c   Code   RO         9380    i.round             m_ps.l(round.o)
-    0x08010a20   0x08010a20   0x00000018   Code   RO         5622    i.s_tdc             at.o
-    0x08010a38   0x08010a38   0x000000ac   Code   RO         5035    i.send_ALARM_data   main.o
-    0x08010ae4   0x08010ae4   0x000000b8   Code   RO         5036    i.send_data         main.o
-    0x08010b9c   0x08010b9c   0x00000024   Code   RO         5623    i.set_at_receive    at.o
-    0x08010bc0   0x08010bc0   0x00000068   Code   RO         9263    i.shift_sub_rows    aes.o
-    0x08010c28   0x08010c28   0x00000036   Code   RO          490    i.split             gps.o
-    0x08010c5e   0x08010c5e   0x00000002   PAD
-    0x08010c60   0x08010c60   0x00000048   Code   RO         9383    i.sqrt              m_ps.l(sqrt.o)
-    0x08010ca8   0x08010ca8   0x0000000c   Code   RO         9109    i.srand1            utilities.o
-    0x08010cb4   0x08010cb4   0x0000004c   Code   RO         5624    i.sscanf_16_hhx     at.o
-    0x08010d00   0x08010d00   0x00000028   Code   RO         5625    i.sscanf_uint32_as_hhx  at.o
-    0x08010d28   0x08010d28   0x000000c8   Code   RO         6205    i.store_data        lora.o
-    0x08010df0   0x08010df0   0x00000170   Code   RO         9391    i.tanf              m_ps.l(tanf.o)
-    0x08010f60   0x08010f60   0x00000014   Code   RO         6515    i.tiny_sscanf       tiny_sscanf.o
-    0x08010f74   0x08010f74   0x00000254   Code   RO         6516    i.tiny_vfscanf      tiny_sscanf.o
-    0x080111c8   0x080111c8   0x00000020   Code   RO         5626    i.translate_status  at.o
-    0x080111e8   0x080111e8   0x0000003a   Code   RO          629    i.usart1_IRQHandler  bsp_usart2.o
-    0x08011222   0x08011222   0x00000002   PAD
-    0x08011224   0x08011224   0x00000048   Code   RO          630    i.usart1_Init       bsp_usart2.o
-    0x0801126c   0x0801126c   0x00000054   Code   RO          632    i.usart1_IoInit     bsp_usart2.o
-    0x080112c0   0x080112c0   0x00000010   Code   RO         5452    i.vcom_DMA_TX_IRQHandler  vcom.o
-    0x080112d0   0x080112d0   0x00000010   Code   RO         5454    i.vcom_IRQHandler   vcom.o
-    0x080112e0   0x080112e0   0x0000003c   Code   RO         5455    i.vcom_Init         vcom.o
-    0x0801131c   0x0801131c   0x00000060   Code   RO         5457    i.vcom_IoInit       vcom.o
-    0x0801137c   0x0801137c   0x0000002c   Code   RO         5458    i.vcom_ReceiveInit  vcom.o
-    0x080113a8   0x080113a8   0x00000014   Code   RO         5459    i.vcom_Trace        vcom.o
-    0x080113bc   0x080113bc   0x00000082   Code   RO         9264    i.xor_block         aes.o
-    0x0801143e   0x0801143e   0x00000002   PAD
-    0x08011440   0x08011440   0x000000e0   Data   RO           42    .constdata          sx1276.o
-    0x08011520   0x08011520   0x00000068   Data   RO         1221    .constdata          sx1276mb1las.o
-    0x08011588   0x08011588   0x00000019   Data   RO         1301    .constdata          system_stm32l0xx.o
-    0x080115a1   0x080115a1   0x00000008   Data   RO         1302    .constdata          system_stm32l0xx.o
-    0x080115a9   0x080115a9   0x00000018   Data   RO         4874    .constdata          hw_rtc.o
-    0x080115c1   0x080115c1   0x00000003   PAD
-    0x080115c4   0x080115c4   0x00000470   Data   RO         6096    .constdata          command.o
-    0x08011a34   0x08011a34   0x00000084   Data   RO         8237    .constdata          regionus915.o
-    0x08011ab8   0x08011ab8   0x00000010   Data   RO         8602    .constdata          loramac.o
-    0x08011ac8   0x08011ac8   0x00000300   Data   RO         9265    .constdata          aes.o
-    0x08011dc8   0x08011dc8   0x00000050   Data   RO         9348    .constdata          m_ps.l(asin.o)
-    0x08011e18   0x08011e18   0x00000098   Data   RO         9505    .constdata          m_ps.l(atan.o)
-    0x08011eb0   0x08011eb0   0x00000008   Data   RO         9547    .constdata          m_ps.l(qnan.o)
-    0x08011eb8   0x08011eb8   0x00000020   Data   RO         9549    .constdata          m_ps.l(rredf.o)
-    0x08011ed8   0x08011ed8   0x00000040   Data   RO         9575    .constdata          mc_p.l(ctype_c.o)
-    0x08011f18   0x08011f18   0x000000a4   Data   RO         5629    .conststring        at.o
-    0x08011fbc   0x08011fbc   0x00000d9e   Data   RO         6097    .conststring        command.o
-    0x08012d5a   0x08012d5a   0x00000002   PAD
-    0x08012d5c   0x08012d5c   0x00000020   Data   RO         9611    Region$$Table       anon$$obj.o
+    0x0800ae24   0x0800ae24   0x000000d8   Code   RO           12    i.SX1276OnDio1Irq   sx1276.o
+    0x0800aefc   0x0800aefc   0x000000b4   Code   RO           13    i.SX1276OnDio2Irq   sx1276.o
+    0x0800afb0   0x0800afb0   0x00000054   Code   RO           14    i.SX1276OnDio3Irq   sx1276.o
+    0x0800b004   0x0800b004   0x0000001c   Code   RO           15    i.SX1276OnDio4Irq   sx1276.o
+    0x0800b020   0x0800b020   0x000000c8   Code   RO           17    i.SX1276OnTimeoutIrq  sx1276.o
+    0x0800b0e8   0x0800b0e8   0x0000003e   Code   RO           18    i.SX1276Random      sx1276.o
+    0x0800b126   0x0800b126   0x00000010   Code   RO           19    i.SX1276Read        sx1276.o
+    0x0800b136   0x0800b136   0x00000042   Code   RO           20    i.SX1276ReadBuffer  sx1276.o
+    0x0800b178   0x0800b178   0x0000000e   Code   RO           21    i.SX1276ReadFifo    sx1276.o
+    0x0800b186   0x0800b186   0x00000002   PAD
+    0x0800b188   0x0800b188   0x00000044   Code   RO           22    i.SX1276ReadRssi    sx1276.o
+    0x0800b1cc   0x0800b1cc   0x00000050   Code   RO           23    i.SX1276Reset       sx1276.o
+    0x0800b21c   0x0800b21c   0x000000f0   Code   RO           24    i.SX1276Send        sx1276.o
+    0x0800b30c   0x0800b30c   0x0000001c   Code   RO         1217    i.SX1276SetAntSw    sx1276mb1las.o
+    0x0800b328   0x0800b328   0x00000044   Code   RO         1218    i.SX1276SetAntSwLowPower  sx1276mb1las.o
+    0x0800b36c   0x0800b36c   0x00000050   Code   RO           25    i.SX1276SetChannel  sx1276.o
+    0x0800b3bc   0x0800b3bc   0x00000030   Code   RO           26    i.SX1276SetMaxPayloadLength  sx1276.o
+    0x0800b3ec   0x0800b3ec   0x00000070   Code   RO           27    i.SX1276SetModem    sx1276.o
+    0x0800b45c   0x0800b45c   0x0000005c   Code   RO           28    i.SX1276SetOpMode   sx1276.o
+    0x0800b4b8   0x0800b4b8   0x00000024   Code   RO           29    i.SX1276SetPublicNetwork  sx1276.o
+    0x0800b4dc   0x0800b4dc   0x000000a0   Code   RO         1219    i.SX1276SetRfTxPower  sx1276mb1las.o
+    0x0800b57c   0x0800b57c   0x000001fc   Code   RO           30    i.SX1276SetRx       sx1276.o
+    0x0800b778   0x0800b778   0x00000288   Code   RO           31    i.SX1276SetRxConfig  sx1276.o
+    0x0800ba00   0x0800ba00   0x00000024   Code   RO           32    i.SX1276SetSleep    sx1276.o
+    0x0800ba24   0x0800ba24   0x00000024   Code   RO           33    i.SX1276SetStby     sx1276.o
+    0x0800ba48   0x0800ba48   0x000000a4   Code   RO           34    i.SX1276SetTx       sx1276.o
+    0x0800baec   0x0800baec   0x000001fc   Code   RO           35    i.SX1276SetTxConfig  sx1276.o
+    0x0800bce8   0x0800bce8   0x00000078   Code   RO           36    i.SX1276SetTxContinuousWave  sx1276.o
+    0x0800bd60   0x0800bd60   0x00000002   Code   RO         1220    i.SX1276SetXO       sx1276mb1las.o
+    0x0800bd62   0x0800bd62   0x00000002   PAD
+    0x0800bd64   0x0800bd64   0x00000038   Code   RO           37    i.SX1276StartCad    sx1276.o
+    0x0800bd9c   0x0800bd9c   0x0000000c   Code   RO           38    i.SX1276Write       sx1276.o
+    0x0800bda8   0x0800bda8   0x00000042   Code   RO           39    i.SX1276WriteBuffer  sx1276.o
+    0x0800bdea   0x0800bdea   0x0000000e   Code   RO           40    i.SX1276WriteFifo   sx1276.o
+    0x0800bdf8   0x0800bdf8   0x00000134   Code   RO         8594    i.ScheduleTx        loramac.o
+    0x0800bf2c   0x0800bf2c   0x00000554   Code   RO         5030    i.Send              main.o
+    0x0800c480   0x0800c480   0x00000040   Code   RO         8595    i.Send              loramac.o
+    0x0800c4c0   0x0800c4c0   0x000000c4   Code   RO         8596    i.SendFrameOnChannel  loramac.o
+    0x0800c584   0x0800c584   0x00000054   Code   RO         8597    i.SetTxContinuousWave  loramac.o
+    0x0800c5d8   0x0800c5d8   0x0000003c   Code   RO         8598    i.SetTxContinuousWave1  loramac.o
+    0x0800c614   0x0800c614   0x00000220   Code   RO         6160    i.Store_Config      lora.o
+    0x0800c834   0x0800c834   0x00000070   Code   RO         6161    i.Store_key         lora.o
+    0x0800c8a4   0x0800c8a4   0x00000008   Code   RO         5353    i.SysTick_Handler   stm32l0xx_it.o
+    0x0800c8ac   0x0800c8ac   0x0000008c   Code   RO         5248    i.SystemClock_Config  stm32l0xx_hw.o
+    0x0800c938   0x0800c938   0x00000054   Code   RO         1300    i.SystemInit        system_stm32l0xx.o
+    0x0800c98c   0x0800c98c   0x0000000c   Code   RO         9019    i.TimerGetCurrentTime  timeserver.o
+    0x0800c998   0x0800c998   0x00000018   Code   RO         9020    i.TimerGetElapsedTime  timeserver.o
+    0x0800c9b0   0x0800c9b0   0x0000000e   Code   RO         9021    i.TimerInit         timeserver.o
+    0x0800c9be   0x0800c9be   0x00000002   PAD
+    0x0800c9c0   0x0800c9c0   0x0000001c   Code   RO         9022    i.TimerInsertNewHeadTimer  timeserver.o
+    0x0800c9dc   0x0800c9dc   0x00000078   Code   RO         9023    i.TimerIrqHandler   timeserver.o
+    0x0800ca54   0x0800ca54   0x0000002c   Code   RO         9025    i.TimerSetTimeout   timeserver.o
+    0x0800ca80   0x0800ca80   0x00000022   Code   RO         9026    i.TimerSetValue     timeserver.o
+    0x0800caa2   0x0800caa2   0x00000002   PAD
+    0x0800caa4   0x0800caa4   0x00000070   Code   RO         9027    i.TimerStart        timeserver.o
+    0x0800cb14   0x0800cb14   0x00000060   Code   RO         9028    i.TimerStop         timeserver.o
+    0x0800cb74   0x0800cb74   0x00000024   Code   RO         9162    i.TraceInit         trace.o
+    0x0800cb98   0x0800cb98   0x00000088   Code   RO         9163    i.TraceSend         trace.o
+    0x0800cc20   0x0800cc20   0x00000048   Code   RO         9164    i.Trace_TxCpltCallback  trace.o
+    0x0800cc68   0x0800cc68   0x000000ca   Code   RO         1607    i.UART_AdvFeatureConfig  stm32l0xx_hal_uart.o
+    0x0800cd32   0x0800cd32   0x00000002   PAD
+    0x0800cd34   0x0800cd34   0x00000060   Code   RO         1608    i.UART_CheckIdleState  stm32l0xx_hal_uart.o
+    0x0800cd94   0x0800cd94   0x00000014   Code   RO         1609    i.UART_DMAAbortOnError  stm32l0xx_hal_uart.o
+    0x0800cda8   0x0800cda8   0x0000004a   Code   RO         1610    i.UART_DMAError     stm32l0xx_hal_uart.o
+    0x0800cdf2   0x0800cdf2   0x00000030   Code   RO         1615    i.UART_DMATransmitCplt  stm32l0xx_hal_uart.o
+    0x0800ce22   0x0800ce22   0x0000000a   Code   RO         1617    i.UART_DMATxHalfCplt  stm32l0xx_hal_uart.o
+    0x0800ce2c   0x0800ce2c   0x0000001e   Code   RO         1619    i.UART_EndRxTransfer  stm32l0xx_hal_uart.o
+    0x0800ce4a   0x0800ce4a   0x00000012   Code   RO         1620    i.UART_EndTxTransfer  stm32l0xx_hal_uart.o
+    0x0800ce5c   0x0800ce5c   0x0000007e   Code   RO         1621    i.UART_Receive_IT   stm32l0xx_hal_uart.o
+    0x0800ceda   0x0800ceda   0x00000002   PAD
+    0x0800cedc   0x0800cedc   0x00000230   Code   RO         1622    i.UART_SetConfig    stm32l0xx_hal_uart.o
+    0x0800d10c   0x0800d10c   0x00000066   Code   RO         1623    i.UART_Transmit_IT  stm32l0xx_hal_uart.o
+    0x0800d172   0x0800d172   0x00000062   Code   RO         1624    i.UART_WaitOnFlagUntilTimeout  stm32l0xx_hal_uart.o
+    0x0800d1d4   0x0800d1d4   0x00000010   Code   RO         5031    i.USART1_IRQHandler  main.o
+    0x0800d1e4   0x0800d1e4   0x00000048   Code   RO         8599    i.ValidatePayloadLength  loramac.o
+    0x0800d22c   0x0800d22c   0x0000002c   Code   RO         9433    i.__0vsnprintf      mc_p.l(printfa.o)
+    0x0800d258   0x0800d258   0x0000002e   Code   RO         9597    i.__ARM_clz         mf_p.l(depilogue.o)
+    0x0800d286   0x0800d286   0x00000030   Code   RO         4964    i.__ARM_common_ll_muluu  hw_rtc.o
+    0x0800d2b6   0x0800d2b6   0x0000001a   Code   RO          238    i.__ARM_common_switch8  sx1276.o
+    0x0800d2d0   0x0800d2d0   0x0000002c   Code   RO         9527    i.__ARM_fpclassify  m_ps.l(fpclassify.o)
+    0x0800d2fc   0x0800d2fc   0x00000022   Code   RO         9529    i.__ARM_fpclassifyf  m_ps.l(fpclassifyf.o)
+    0x0800d31e   0x0800d31e   0x00000012   Code   RO          706    i.__ARM_isinff      filter.o
+    0x0800d330   0x0800d330   0x0000000e   Code   RO          707    i.__ARM_isnanf      filter.o
+    0x0800d33e   0x0800d33e   0x000000ac   Code   RO         9545    i.__kernel_poly     m_ps.l(poly.o)
+    0x0800d3ea   0x0800d3ea   0x0000000a   Code   RO         9514    i.__mathlib_dbl_infnan  m_ps.l(dunder.o)
+    0x0800d3f4   0x0800d3f4   0x00000008   Code   RO         9515    i.__mathlib_dbl_infnan2  m_ps.l(dunder.o)
+    0x0800d3fc   0x0800d3fc   0x00000010   Code   RO         9516    i.__mathlib_dbl_invalid  m_ps.l(dunder.o)
+    0x0800d40c   0x0800d40c   0x00000014   Code   RO         9519    i.__mathlib_dbl_underflow  m_ps.l(dunder.o)
+    0x0800d420   0x0800d420   0x0000000a   Code   RO         9532    i.__mathlib_flt_infnan  m_ps.l(funder.o)
+    0x0800d42a   0x0800d42a   0x0000000c   Code   RO         9534    i.__mathlib_flt_invalid  m_ps.l(funder.o)
+    0x0800d436   0x0800d436   0x0000000e   Code   RO         9537    i.__mathlib_flt_underflow  m_ps.l(funder.o)
+    0x0800d444   0x0800d444   0x00000180   Code   RO         9548    i.__mathlib_rredf2  m_ps.l(rredf.o)
+    0x0800d5c4   0x0800d5c4   0x0000000e   Code   RO         9613    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x0800d5d2   0x0800d5d2   0x00000002   Code   RO         9614    i.__scatterload_null  mc_p.l(handlers.o)
+    0x0800d5d4   0x0800d5d4   0x0000000e   Code   RO         9615    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x0800d5e2   0x0800d5e2   0x00000002   PAD
+    0x0800d5e4   0x0800d5e4   0x0000000c   Code   RO         9579    i.__set_errno       mc_p.l(errno.o)
+    0x0800d5f0   0x0800d5f0   0x00000174   Code   RO         9435    i._fp_digits        mc_p.l(printfa.o)
+    0x0800d764   0x0800d764   0x000006ec   Code   RO         9436    i._printf_core      mc_p.l(printfa.o)
+    0x0800de50   0x0800de50   0x00000020   Code   RO         9437    i._printf_post_padding  mc_p.l(printfa.o)
+    0x0800de70   0x0800de70   0x0000002c   Code   RO         9438    i._printf_pre_padding  mc_p.l(printfa.o)
+    0x0800de9c   0x0800de9c   0x00000016   Code   RO         9439    i._snputc           mc_p.l(printfa.o)
+    0x0800deb2   0x0800deb2   0x00000054   Code   RO         9258    i.aes_encrypt       aes.o
+    0x0800df06   0x0800df06   0x00000002   PAD
+    0x0800df08   0x0800df08   0x000000fc   Code   RO         9259    i.aes_set_key       aes.o
+    0x0800e004   0x0800e004   0x00000274   Code   RO         9347    i.asin              m_ps.l(asin.o)
+    0x0800e278   0x0800e278   0x00000014   Code   RO         5539    i.at_ACE_get        at.o
+    0x0800e28c   0x0800e28c   0x00000024   Code   RO         5540    i.at_ACE_set        at.o
+    0x0800e2b0   0x0800e2b0   0x00000022   Code   RO         5541    i.at_ADR_get        at.o
+    0x0800e2d2   0x0800e2d2   0x00000034   Code   RO         5542    i.at_ADR_set        at.o
+    0x0800e306   0x0800e306   0x0000000e   Code   RO         5543    i.at_AppEUI_get     at.o
+    0x0800e314   0x0800e314   0x00000068   Code   RO         5544    i.at_AppEUI_set     at.o
+    0x0800e37c   0x0800e37c   0x0000000e   Code   RO         5545    i.at_AppKey_get     at.o
+    0x0800e38a   0x0800e38a   0x00000020   Code   RO         5546    i.at_AppKey_set     at.o
+    0x0800e3aa   0x0800e3aa   0x0000000e   Code   RO         5547    i.at_AppSKey_get    at.o
+    0x0800e3b8   0x0800e3b8   0x00000020   Code   RO         5548    i.at_AppSKey_set    at.o
+    0x0800e3d8   0x0800e3d8   0x000000bc   Code   RO         5549    i.at_CHE_get        at.o
+    0x0800e494   0x0800e494   0x00000034   Code   RO         5550    i.at_CHE_set        at.o
+    0x0800e4c8   0x0800e4c8   0x0000000e   Code   RO         5551    i.at_CHS_get        at.o
+    0x0800e4d6   0x0800e4d6   0x00000002   PAD
+    0x0800e4d8   0x0800e4d8   0x0000003c   Code   RO         5552    i.at_CHS_set        at.o
+    0x0800e514   0x0800e514   0x00000024   Code   RO         5553    i.at_DataRate_get   at.o
+    0x0800e538   0x0800e538   0x0000002c   Code   RO         5554    i.at_DataRate_set   at.o
+    0x0800e564   0x0800e564   0x0000000a   Code   RO         5555    i.at_DevAddr_get    at.o
+    0x0800e56e   0x0800e56e   0x0000001e   Code   RO         5556    i.at_DevAddr_set    at.o
+    0x0800e58c   0x0800e58c   0x0000000e   Code   RO         5557    i.at_DevEUI_get     at.o
+    0x0800e59a   0x0800e59a   0x00000002   PAD
+    0x0800e59c   0x0800e59c   0x00000068   Code   RO         5558    i.at_DevEUI_set     at.o
+    0x0800e604   0x0800e604   0x00000030   Code   RO         5559    i.at_DeviceClass_get  at.o
+    0x0800e634   0x0800e634   0x00000034   Code   RO         5560    i.at_DeviceClass_set  at.o
+    0x0800e668   0x0800e668   0x00000020   Code   RO         5561    i.at_DownlinkCounter_get  at.o
+    0x0800e688   0x0800e688   0x00000034   Code   RO         5562    i.at_DownlinkCounter_set  at.o
+    0x0800e6bc   0x0800e6bc   0x0000002c   Code   RO         5563    i.at_DutyCycle_get  at.o
+    0x0800e6e8   0x0800e6e8   0x00000022   Code   RO         5564    i.at_DutyCycle_set  at.o
+    0x0800e70a   0x0800e70a   0x00000002   PAD
+    0x0800e70c   0x0800e70c   0x00000028   Code   RO         5565    i.at_FDR            at.o
+    0x0800e734   0x0800e734   0x0000000a   Code   RO         5566    i.at_Join           at.o
+    0x0800e73e   0x0800e73e   0x00000020   Code   RO         5567    i.at_JoinAcceptDelay1_get  at.o
+    0x0800e75e   0x0800e75e   0x00000002   PAD
+    0x0800e760   0x0800e760   0x00000034   Code   RO         5568    i.at_JoinAcceptDelay1_set  at.o
+    0x0800e794   0x0800e794   0x00000020   Code   RO         5569    i.at_JoinAcceptDelay2_get  at.o
+    0x0800e7b4   0x0800e7b4   0x00000034   Code   RO         5570    i.at_JoinAcceptDelay2_set  at.o
+    0x0800e7e8   0x0800e7e8   0x00000054   Code   RO         5571    i.at_NetworkID_get  at.o
+    0x0800e83c   0x0800e83c   0x0000002c   Code   RO         5572    i.at_NetworkID_set  at.o
+    0x0800e868   0x0800e868   0x00000014   Code   RO         5573    i.at_NetworkJoinMode_get  at.o
+    0x0800e87c   0x0800e87c   0x00000022   Code   RO         5574    i.at_NetworkJoinMode_set  at.o
+    0x0800e89e   0x0800e89e   0x0000002c   Code   RO         5575    i.at_NetworkJoinStatus  at.o
+    0x0800e8ca   0x0800e8ca   0x0000000e   Code   RO         5576    i.at_NwkSKey_get    at.o
+    0x0800e8d8   0x0800e8d8   0x00000020   Code   RO         5577    i.at_NwkSKey_set    at.o
+    0x0800e8f8   0x0800e8f8   0x00000022   Code   RO         5578    i.at_PublicNetwork_get  at.o
+    0x0800e91a   0x0800e91a   0x00000034   Code   RO         5579    i.at_PublicNetwork_set  at.o
+    0x0800e94e   0x0800e94e   0x00000002   PAD
+    0x0800e950   0x0800e950   0x00000044   Code   RO         5580    i.at_Receive        at.o
+    0x0800e994   0x0800e994   0x00000050   Code   RO         5581    i.at_ReceiveBinary  at.o
+    0x0800e9e4   0x0800e9e4   0x00000020   Code   RO         5582    i.at_Rx1Delay_get   at.o
+    0x0800ea04   0x0800ea04   0x00000034   Code   RO         5583    i.at_Rx1Delay_set   at.o
+    0x0800ea38   0x0800ea38   0x00000022   Code   RO         5584    i.at_Rx2DataRate_get  at.o
+    0x0800ea5a   0x0800ea5a   0x00000002   PAD
+    0x0800ea5c   0x0800ea5c   0x00000048   Code   RO         5585    i.at_Rx2DataRate_set  at.o
+    0x0800eaa4   0x0800eaa4   0x00000020   Code   RO         5586    i.at_Rx2Delay_get   at.o
+    0x0800eac4   0x0800eac4   0x00000034   Code   RO         5587    i.at_Rx2Delay_set   at.o
+    0x0800eaf8   0x0800eaf8   0x00000020   Code   RO         5588    i.at_Rx2Frequency_get  at.o
+    0x0800eb18   0x0800eb18   0x00000044   Code   RO         5589    i.at_Rx2Frequency_set  at.o
+    0x0800eb5c   0x0800eb5c   0x00000014   Code   RO         5590    i.at_STD            at.o
+    0x0800eb70   0x0800eb70   0x00000098   Code   RO         5591    i.at_Send           at.o
+    0x0800ec08   0x0800ec08   0x000000cc   Code   RO         5592    i.at_SendBinary     at.o
+    0x0800ecd4   0x0800ecd4   0x00000014   Code   RO         5593    i.at_TDC_get        at.o
+    0x0800ece8   0x0800ece8   0x00000024   Code   RO         5594    i.at_TDC_set        at.o
+    0x0800ed0c   0x0800ed0c   0x00000024   Code   RO         5595    i.at_TransmitPower_get  at.o
+    0x0800ed30   0x0800ed30   0x00000038   Code   RO         5596    i.at_TransmitPower_set  at.o
+    0x0800ed68   0x0800ed68   0x00000020   Code   RO         5597    i.at_UplinkCounter_get  at.o
+    0x0800ed88   0x0800ed88   0x00000034   Code   RO         5598    i.at_UplinkCounter_set  at.o
+    0x0800edbc   0x0800edbc   0x00000014   Code   RO         5599    i.at_ack_get        at.o
+    0x0800edd0   0x0800edd0   0x00000022   Code   RO         5600    i.at_ack_set        at.o
+    0x0800edf2   0x0800edf2   0x0000000e   Code   RO         5601    i.at_application_port_get  at.o
+    0x0800ee00   0x0800ee00   0x0000002c   Code   RO         5602    i.at_application_port_set  at.o
+    0x0800ee2c   0x0800ee2c   0x00000014   Code   RO         5603    i.at_gpst_get       at.o
+    0x0800ee40   0x0800ee40   0x00000024   Code   RO         5604    i.at_gpst_set       at.o
+    0x0800ee64   0x0800ee64   0x00000014   Code   RO         5605    i.at_isack_get      at.o
+    0x0800ee78   0x0800ee78   0x00000004   Code   RO         5606    i.at_reset          at.o
+    0x0800ee7c   0x0800ee7c   0x00000004   Code   RO         5607    i.at_return_error   at.o
+    0x0800ee80   0x0800ee80   0x0000000e   Code   RO         5609    i.at_rssi_get       at.o
+    0x0800ee8e   0x0800ee8e   0x00000002   PAD
+    0x0800ee90   0x0800ee90   0x00000014   Code   RO         5610    i.at_sgm_get        at.o
+    0x0800eea4   0x0800eea4   0x0000003c   Code   RO         5611    i.at_sgm_set        at.o
+    0x0800eee0   0x0800eee0   0x0000000e   Code   RO         5612    i.at_snr_get        at.o
+    0x0800eeee   0x0800eeee   0x00000002   PAD
+    0x0800eef0   0x0800eef0   0x00000014   Code   RO         5613    i.at_symbtimeout1LSB_get  at.o
+    0x0800ef04   0x0800ef04   0x0000002c   Code   RO         5614    i.at_symbtimeout1LSB_set  at.o
+    0x0800ef30   0x0800ef30   0x00000014   Code   RO         5615    i.at_symbtimeout2LSB_get  at.o
+    0x0800ef44   0x0800ef44   0x0000002c   Code   RO         5616    i.at_symbtimeout2LSB_set  at.o
+    0x0800ef70   0x0800ef70   0x0000001c   Code   RO         5617    i.at_version_get    at.o
+    0x0800ef8c   0x0800ef8c   0x0000021c   Code   RO         9504    i.atan              m_ps.l(atan.o)
+    0x0800f1a8   0x0800f1a8   0x00000178   Code   RO         9357    i.atan2             m_ps.l(atan2.o)
+    0x0800f320   0x0800f320   0x000000c8   Code   RO         9365    i.ceil              m_ps.l(ceil.o)
+    0x0800f3e8   0x0800f3e8   0x00000010   Code   RO         8864    i.certif_DownLinkIncrement  lora-test.o
+    0x0800f3f8   0x0800f3f8   0x00000014   Code   RO         8865    i.certif_linkCheck  lora-test.o
+    0x0800f40c   0x0800f40c   0x0000000c   Code   RO         8866    i.certif_running    lora-test.o
+    0x0800f418   0x0800f418   0x00000188   Code   RO         8867    i.certif_rx         lora-test.o
+    0x0800f5a0   0x0800f5a0   0x000000a4   Code   RO         8868    i.certif_tx         lora-test.o
+    0x0800f644   0x0800f644   0x0000003c   Code   RO          484    i.check             gps.o
+    0x0800f680   0x0800f680   0x0000001c   Code   RO         6093    i.com_error         command.o
+    0x0800f69c   0x0800f69c   0x00000084   Code   RO         9260    i.copy_and_key      aes.o
+    0x0800f720   0x0800f720   0x00000042   Code   RO         9261    i.copy_block        aes.o
+    0x0800f762   0x0800f762   0x00000002   PAD
+    0x0800f764   0x0800f764   0x00000178   Code   RO         9369    i.cosf              m_ps.l(cosf.o)
+    0x0800f8dc   0x0800f8dc   0x0000000c   Code   RO         6162    i.customize_freq1_get  lora.o
+    0x0800f8e8   0x0800f8e8   0x0000000c   Code   RO         6163    i.customize_freq1_set  lora.o
+    0x0800f8f4   0x0800f8f4   0x0000000c   Code   RO         6164    i.customize_set8channel_get  lora.o
+    0x0800f900   0x0800f900   0x0000000c   Code   RO         6165    i.customize_set8channel_set  lora.o
+    0x0800f90c   0x0800f90c   0x000000c8   Code   RO         9377    i.floor             m_ps.l(floor.o)
+    0x0800f9d4   0x0800f9d4   0x0000000c   Code   RO         6166    i.gps_state_no      lora.o
+    0x0800f9e0   0x0800f9e0   0x0000000c   Code   RO         6167    i.gps_state_off     lora.o
+    0x0800f9ec   0x0800f9ec   0x0000000c   Code   RO         6168    i.gps_state_on      lora.o
+    0x0800f9f8   0x0800f9f8   0x00000034   Code   RO         5032    i.invSqrt           main.o
+    0x0800fa2c   0x0800fa2c   0x00000064   Code   RO         6169    i.key_printf        lora.o
+    0x0800fa90   0x0800fa90   0x00000008   Code   RO         6170    i.lora_config_appeui_get  lora.o
+    0x0800fa98   0x0800fa98   0x00000014   Code   RO         6171    i.lora_config_appeui_set  lora.o
+    0x0800faac   0x0800faac   0x00000008   Code   RO         6172    i.lora_config_appkey_get  lora.o
+    0x0800fab4   0x0800fab4   0x00000014   Code   RO         6173    i.lora_config_appkey_set  lora.o
+    0x0800fac8   0x0800fac8   0x0000000c   Code   RO         6174    i.lora_config_application_port_get  lora.o
+    0x0800fad4   0x0800fad4   0x0000000c   Code   RO         6175    i.lora_config_application_port_set  lora.o
+    0x0800fae0   0x0800fae0   0x00000008   Code   RO         6176    i.lora_config_appskey_get  lora.o
+    0x0800fae8   0x0800fae8   0x00000014   Code   RO         6177    i.lora_config_appskey_set  lora.o
+    0x0800fafc   0x0800fafc   0x0000001c   Code   RO         6178    i.lora_config_devaddr_get  lora.o
+    0x0800fb18   0x0800fb18   0x0000000c   Code   RO         6179    i.lora_config_devaddr_set  lora.o
+    0x0800fb24   0x0800fb24   0x00000008   Code   RO         6180    i.lora_config_deveui_get  lora.o
+    0x0800fb2c   0x0800fb2c   0x00000014   Code   RO         6181    i.lora_config_deveui_set  lora.o
+    0x0800fb40   0x0800fb40   0x0000000c   Code   RO         6182    i.lora_config_duty_cycle_get  lora.o
+    0x0800fb4c   0x0800fb4c   0x00000018   Code   RO         6183    i.lora_config_duty_cycle_set  lora.o
+    0x0800fb64   0x0800fb64   0x00000018   Code   RO         6184    i.lora_config_isack_get  lora.o
+    0x0800fb7c   0x0800fb7c   0x00000008   Code   RO         6185    i.lora_config_nwkskey_get  lora.o
+    0x0800fb84   0x0800fb84   0x00000014   Code   RO         6186    i.lora_config_nwkskey_set  lora.o
+    0x0800fb98   0x0800fb98   0x0000000c   Code   RO         6187    i.lora_config_otaa_get  lora.o
+    0x0800fba4   0x0800fba4   0x0000000c   Code   RO         6188    i.lora_config_otaa_set  lora.o
+    0x0800fbb0   0x0800fbb0   0x0000000c   Code   RO         6189    i.lora_config_reqack_get  lora.o
+    0x0800fbbc   0x0800fbbc   0x0000000c   Code   RO         6190    i.lora_config_reqack_set  lora.o
+    0x0800fbc8   0x0800fbc8   0x0000000c   Code   RO         6191    i.lora_config_rssi_get  lora.o
+    0x0800fbd4   0x0800fbd4   0x0000000c   Code   RO         6192    i.lora_config_snr_get  lora.o
+    0x0800fbe0   0x0800fbe0   0x0000000c   Code   RO         6194    i.lora_config_tx_datarate_set  lora.o
+    0x0800fbec   0x0800fbec   0x0000000c   Code   RO         6195    i.lora_getGPSState  lora.o
+    0x0800fbf8   0x0800fbf8   0x0000000c   Code   RO         6196    i.lora_getState     lora.o
+    0x0800fc04   0x0800fc04   0x00000578   Code   RO         5033    i.lora_send         main.o
+    0x0801017c   0x0801017c   0x0000000c   Code   RO         6198    i.lora_state_GPS_Send  lora.o
+    0x08010188   0x08010188   0x00000040   Code   RO         6199    i.lora_state_INT    lora.o
+    0x080101c8   0x080101c8   0x0000000c   Code   RO         6200    i.lora_state_Led    lora.o
+    0x080101d4   0x080101d4   0x000000b0   Code   RO         5034    i.main              main.o
+    0x08010284   0x08010284   0x00000016   Code   RO         9104    i.memcpy1           utilities.o
+    0x0801029a   0x0801029a   0x0000001a   Code   RO         9105    i.memcpyr           utilities.o
+    0x080102b4   0x080102b4   0x00000012   Code   RO         9106    i.memset1           utilities.o
+    0x080102c6   0x080102c6   0x00000002   PAD
+    0x080102c8   0x080102c8   0x00000218   Code   RO         9262    i.mix_sub_columns   aes.o
+    0x080104e0   0x080104e0   0x0000000a   Code   RO          486    i.my_atof           gps.o
+    0x080104ea   0x080104ea   0x00000048   Code   RO          487    i.my_atoi           gps.o
+    0x08010532   0x08010532   0x00000002   PAD
+    0x08010534   0x08010534   0x0000011c   Code   RO          488    i.my_strtod         gps.o
+    0x08010650   0x08010650   0x00000010   Code   RO         8600    i.onNetworkJointimesout  loramac.o
+    0x08010660   0x08010660   0x00000118   Code   RO         6094    i.parse_cmd         command.o
+    0x08010778   0x08010778   0x0000002a   Code   RO         4710    i.powerLED          bsp.o
+    0x080107a2   0x080107a2   0x00000002   PAD
+    0x080107a4   0x080107a4   0x0000004c   Code   RO         5618    i.print_16_02x      at.o
+    0x080107f0   0x080107f0   0x00000058   Code   RO         5619    i.print_8_02x       at.o
+    0x08010848   0x08010848   0x0000001c   Code   RO         5620    i.print_d           at.o
+    0x08010864   0x08010864   0x0000001c   Code   RO         5621    i.print_u           at.o
+    0x08010880   0x08010880   0x0000002c   Code   RO         9107    i.rand1             utilities.o
+    0x080108ac   0x080108ac   0x00000016   Code   RO         9108    i.randr             utilities.o
+    0x080108c2   0x080108c2   0x0000007e   Code   RO         6203    i.read_data         lora.o
+    0x08010940   0x08010940   0x00000014   Code   RO         6204    i.region_printf     lora.o
+    0x08010954   0x08010954   0x0000009c   Code   RO         9380    i.round             m_ps.l(round.o)
+    0x080109f0   0x080109f0   0x00000018   Code   RO         5622    i.s_tdc             at.o
+    0x08010a08   0x08010a08   0x000000ac   Code   RO         5035    i.send_ALARM_data   main.o
+    0x08010ab4   0x08010ab4   0x000000b8   Code   RO         5036    i.send_data         main.o
+    0x08010b6c   0x08010b6c   0x00000024   Code   RO         5623    i.set_at_receive    at.o
+    0x08010b90   0x08010b90   0x00000068   Code   RO         9263    i.shift_sub_rows    aes.o
+    0x08010bf8   0x08010bf8   0x00000036   Code   RO          490    i.split             gps.o
+    0x08010c2e   0x08010c2e   0x00000002   PAD
+    0x08010c30   0x08010c30   0x00000048   Code   RO         9383    i.sqrt              m_ps.l(sqrt.o)
+    0x08010c78   0x08010c78   0x0000000c   Code   RO         9109    i.srand1            utilities.o
+    0x08010c84   0x08010c84   0x0000004c   Code   RO         5624    i.sscanf_16_hhx     at.o
+    0x08010cd0   0x08010cd0   0x00000028   Code   RO         5625    i.sscanf_uint32_as_hhx  at.o
+    0x08010cf8   0x08010cf8   0x000000c8   Code   RO         6205    i.store_data        lora.o
+    0x08010dc0   0x08010dc0   0x00000170   Code   RO         9391    i.tanf              m_ps.l(tanf.o)
+    0x08010f30   0x08010f30   0x00000014   Code   RO         6515    i.tiny_sscanf       tiny_sscanf.o
+    0x08010f44   0x08010f44   0x00000254   Code   RO         6516    i.tiny_vfscanf      tiny_sscanf.o
+    0x08011198   0x08011198   0x00000020   Code   RO         5626    i.translate_status  at.o
+    0x080111b8   0x080111b8   0x0000003a   Code   RO          629    i.usart1_IRQHandler  bsp_usart2.o
+    0x080111f2   0x080111f2   0x00000002   PAD
+    0x080111f4   0x080111f4   0x00000048   Code   RO          630    i.usart1_Init       bsp_usart2.o
+    0x0801123c   0x0801123c   0x00000054   Code   RO          632    i.usart1_IoInit     bsp_usart2.o
+    0x08011290   0x08011290   0x00000010   Code   RO         5452    i.vcom_DMA_TX_IRQHandler  vcom.o
+    0x080112a0   0x080112a0   0x00000010   Code   RO         5454    i.vcom_IRQHandler   vcom.o
+    0x080112b0   0x080112b0   0x0000003c   Code   RO         5455    i.vcom_Init         vcom.o
+    0x080112ec   0x080112ec   0x00000060   Code   RO         5457    i.vcom_IoInit       vcom.o
+    0x0801134c   0x0801134c   0x0000002c   Code   RO         5458    i.vcom_ReceiveInit  vcom.o
+    0x08011378   0x08011378   0x00000014   Code   RO         5459    i.vcom_Trace        vcom.o
+    0x0801138c   0x0801138c   0x00000082   Code   RO         9264    i.xor_block         aes.o
+    0x0801140e   0x0801140e   0x00000002   PAD
+    0x08011410   0x08011410   0x000000e0   Data   RO           42    .constdata          sx1276.o
+    0x080114f0   0x080114f0   0x00000068   Data   RO         1221    .constdata          sx1276mb1las.o
+    0x08011558   0x08011558   0x00000019   Data   RO         1301    .constdata          system_stm32l0xx.o
+    0x08011571   0x08011571   0x00000008   Data   RO         1302    .constdata          system_stm32l0xx.o
+    0x08011579   0x08011579   0x00000018   Data   RO         4874    .constdata          hw_rtc.o
+    0x08011591   0x08011591   0x00000003   PAD
+    0x08011594   0x08011594   0x00000470   Data   RO         6096    .constdata          command.o
+    0x08011a04   0x08011a04   0x00000084   Data   RO         8237    .constdata          regionus915.o
+    0x08011a88   0x08011a88   0x00000010   Data   RO         8602    .constdata          loramac.o
+    0x08011a98   0x08011a98   0x00000300   Data   RO         9265    .constdata          aes.o
+    0x08011d98   0x08011d98   0x00000050   Data   RO         9348    .constdata          m_ps.l(asin.o)
+    0x08011de8   0x08011de8   0x00000098   Data   RO         9505    .constdata          m_ps.l(atan.o)
+    0x08011e80   0x08011e80   0x00000008   Data   RO         9547    .constdata          m_ps.l(qnan.o)
+    0x08011e88   0x08011e88   0x00000020   Data   RO         9549    .constdata          m_ps.l(rredf.o)
+    0x08011ea8   0x08011ea8   0x00000040   Data   RO         9575    .constdata          mc_p.l(ctype_c.o)
+    0x08011ee8   0x08011ee8   0x000000a4   Data   RO         5629    .conststring        at.o
+    0x08011f8c   0x08011f8c   0x00000d9e   Data   RO         6097    .conststring        command.o
+    0x08012d2a   0x08012d2a   0x00000002   PAD
+    0x08012d2c   0x08012d2c   0x00000020   Data   RO         9611    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08012d7c, Size: 0x00002480, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x000000ec])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08012d4c, Size: 0x00002480, Max: 0x00005000, ABSOLUTE, COMPRESSED[0x000000ec])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -7305,66 +7304,66 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1304         12        768          0          0      14776   aes.o
-      3788        644        164         40        319      58818   at.o
-       378         28          0          6          0      14681   bsp.o
-       214         20          0          0        112       3328   bsp_usart2.o
-       554          0          0          0          0       4669   cmac.o
-       440         58       4622          8        128       4254   command.o
-        98          4          0          0          0       1487   debug.o
-         8          0          0          0          0       1202   delay.o
-        72         14          0          0          0       1061   exti_wakeup.o
-      1580        120          0        192          0      14094   filter.o
-       248        102          0          8         12       4214   flash_eraseprogram.o
-      2400        214          0         32       2264      16192   gps.o
-       234         26          0          0         64       4121   hw_gpio.o
-       938         98         24          4        104      12473   hw_rtc.o
-       372         24          0          0         88       3391   hw_spi.o
-       736         26          0          0         60       8378   iic.o
-       612         52          0          2         94       7547   lora-test.o
-      3160        618          0        116        296      33928   lora.o
-      7668        574         16        108       1136      48652   loramac.o
-       604         42          0         32        556       8167   loramaccrypto.o
-       178         22          0          8          0       5682   low_power_manager.o
-      7924        942          0        342         84      26653   main.o
-       844         14          0         80          0       9895   mpu9250.o
-       918          8          0          0          0       6210   queue.o
-       426          0          0          0          0      30237   region.o
-         0          0          0          0          0       1244   regionau915.o
-      1014         18          0          0          0      14835   regioncommon.o
-      2472        294        132         16        900      25380   regionus915.o
-        28          8        192          0       1024        684   startup_stm32l072xx.o
-       108         30          0          4          0       4996   stm32l0xx_hal.o
-      1026         36          0          0          0       7544   stm32l0xx_hal_adc.o
-       170          0          0          0          0       1702   stm32l0xx_hal_adc_ex.o
-        96         14          0          0          0      10372   stm32l0xx_hal_cortex.o
-      1164         20          0          0          0       5222   stm32l0xx_hal_dma.o
-       396         54          0          0         24       4346   stm32l0xx_hal_flash.o
-       164         24          0          0          0       3137   stm32l0xx_hal_flash_ex.o
-       434         38          0          0          0       4186   stm32l0xx_hal_gpio.o
-       254         22          0          0          0       4820   stm32l0xx_hal_msp.o
-       116         22          0          0          0       2118   stm32l0xx_hal_pwr.o
-        32          8          0          0          0       1281   stm32l0xx_hal_pwr_ex.o
-      1772        114          0          0          0       7460   stm32l0xx_hal_rcc.o
-       844         56          0          0          0       3685   stm32l0xx_hal_rcc_ex.o
-      1514         26          0          0          0      10768   stm32l0xx_hal_rtc.o
-        60          0          0          0          0       1355   stm32l0xx_hal_rtc_ex.o
-      1008          0          0          0          0       4795   stm32l0xx_hal_spi.o
-      2132        106          0          0          0      16036   stm32l0xx_hal_uart.o
-       196          4          0          0          0       3132   stm32l0xx_hal_uart_ex.o
-       864        128          0          2         96      10416   stm32l0xx_hw.o
-       190         10          0          0          0       5886   stm32l0xx_it.o
-      5394        360        224         32        420     458520   sx1276.o
-       534         60        104         28          0      13321   sx1276mb1las.o
-        84         18         33          4          0       1803   system_stm32l0xx.o
-       484         18          0          4          0       8635   timeserver.o
-       616         22          0          0          0       4582   tiny_sscanf.o
-       244         28          0          1        288       4675   trace.o
-       144         24          0          4          0       5067   utilities.o
-       488         66          0         12        176       6381   vcom.o
+      1304         12        768          0          0      14884   aes.o
+      3788        644        164         40        319      59898   at.o
+       378         28          0          6          0      14813   bsp.o
+       214         20          0          0        112       3388   bsp_usart2.o
+       554          0          0          0          0       4729   cmac.o
+       440         58       4622          8        128       4338   command.o
+        98          4          0          0          0       1523   debug.o
+         8          0          0          0          0       1226   delay.o
+        72         14          0          0          0       1085   exti_wakeup.o
+      1580        120          0        192          0      14238   filter.o
+       248        102          0          8         12       4286   flash_eraseprogram.o
+      2400        214          0         32       2264      16396   gps.o
+       234         26          0          0         64       4205   hw_gpio.o
+       938         98         24          4        104      12689   hw_rtc.o
+       372         24          0          0         88       3463   hw_spi.o
+       736         26          0          0         60       8522   iic.o
+       612         52          0          2         94       7655   lora-test.o
+      3116        598          0        116        296      34556   lora.o
+      7668        574         16        108       1136      49084   loramac.o
+       604         42          0         32        556       8287   loramaccrypto.o
+       178         22          0          8          0       5778   low_power_manager.o
+      7924        942          0        342         84      26881   main.o
+       844         14          0         80          0      10039   mpu9250.o
+       918          8          0          0          0       6270   queue.o
+       426          0          0          0          0      30513   region.o
+         0          0          0          0          0       1256   regionau915.o
+      1014         18          0          0          0      15015   regioncommon.o
+      2472        294        132         16        900      25692   regionus915.o
+        28          8        192          0       1024        696   startup_stm32l072xx.o
+       108         30          0          4          0       5092   stm32l0xx_hal.o
+      1026         36          0          0          0       7652   stm32l0xx_hal_adc.o
+       170          0          0          0          0       1726   stm32l0xx_hal_adc_ex.o
+        96         14          0          0          0      10420   stm32l0xx_hal_cortex.o
+      1164         20          0          0          0       5294   stm32l0xx_hal_dma.o
+       396         54          0          0         24       4418   stm32l0xx_hal_flash.o
+       164         24          0          0          0       3173   stm32l0xx_hal_flash_ex.o
+       434         38          0          0          0       4246   stm32l0xx_hal_gpio.o
+       254         22          0          0          0       4916   stm32l0xx_hal_msp.o
+       116         22          0          0          0       2154   stm32l0xx_hal_pwr.o
+        32          8          0          0          0       1305   stm32l0xx_hal_pwr_ex.o
+      1772        114          0          0          0       7544   stm32l0xx_hal_rcc.o
+       844         56          0          0          0       3721   stm32l0xx_hal_rcc_ex.o
+      1514         26          0          0          0      10912   stm32l0xx_hal_rtc.o
+        60          0          0          0          0       1379   stm32l0xx_hal_rtc_ex.o
+      1008          0          0          0          0       4855   stm32l0xx_hal_spi.o
+      2132        106          0          0          0      16264   stm32l0xx_hal_uart.o
+       196          4          0          0          0       3180   stm32l0xx_hal_uart_ex.o
+       864        128          0          2         96      10584   stm32l0xx_hw.o
+       190         10          0          0          0       6018   stm32l0xx_it.o
+      5390        356        224         32        420     459244   sx1276.o
+       534         60        104         28          0      13489   sx1276mb1las.o
+        84         18         33          4          0       1839   system_stm32l0xx.o
+       484         18          0          4          0       8767   timeserver.o
+       616         22          0          0          0       4606   tiny_sscanf.o
+       244         28          0          1        288       4747   trace.o
+       144         24          0          4          0       5163   utilities.o
+       488         66          0         12        176       6513   vcom.o
 
     ----------------------------------------------------------------------
-     59828       5290       6316       1092       8248    1002494   Object Totals
+     59780       5266       6316       1092       8248    1010626   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         88          0          5          7          3          0   (incl. Padding)
 
@@ -7473,15 +7472,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     70528       5876       6652       1096       8248     980778   Grand Totals
-     70528       5876       6652        236       8248     980778   ELF Image Totals (compressed)
-     70528       5876       6652        236          0          0   ROM Totals
+     70480       5852       6652       1096       8248     988910   Grand Totals
+     70480       5852       6652        236       8248     988910   ELF Image Totals (compressed)
+     70480       5852       6652        236          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                77180 (  75.37kB)
+    Total RO  Size (Code + RO Data)                77132 (  75.32kB)
     Total RW  Size (RW Data + ZI Data)              9344 (   9.13kB)
-    Total ROM Size (Code + RO Data + RW Data)      77416 (  75.60kB)
+    Total ROM Size (Code + RO Data + RW Data)      77368 (  75.55kB)
 
 ==============================================================================
 

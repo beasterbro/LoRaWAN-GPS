@@ -1167,23 +1167,26 @@ void lora_state_INT(void)
 
   int in1 = 0;
 	//HAL_Delay(3000);
-	in1=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_14);//TODO: 3 sec delay is HAL_Delay?
-	if(GPIO_PIN_14)
-	{
-	PRINTF("Click");
-	}
+	in1=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_14);//TODO: 3 sec delay is HAL_Delay
 	if(in1 == 1)
+		{//TODO: GPIO_PIN_14 is button wire
+			PRINTF("Click");
+			LPM_SetOffMode(LPM_APPLI_Id , LPM_Enable );
+			State = STATE_GPS_SEND;
+			APP_TX_DUTYCYCLE = 0;
+	}
+	//if(in1 == 1)
 	{
-		PRINTF("Enter\n\r");//TODO: This is where alarm mode is
-		GPS_ALARM =1;
-		Alarm_LED = 0;
-		State = STATE_GPS_SEND;
-		APP_TX_DUTYCYCLE = 0;
+	//	PRINTF("Enter\n\r");//TODO: This is where alarm mode is
+	//	GPS_ALARM =1;
+	//	Alarm_LED = 0;//Changed to 1, default 0
+	//	State = STATE_GPS_SEND;
+	//	APP_TX_DUTYCYCLE = 0;
 //		TimerSetValue( &TxTimer,  APP_TX_DUTYCYCLE);
 //	
 //       /*Wait for next tx slot*/
 //    TimerStart( &TxTimer);
-		LPM_SetOffMode(LPM_APPLI_Id , LPM_Enable );
+	//	LPM_SetOffMode(LPM_APPLI_Id , LPM_Enable );
 	 	
 	}
 //	else
