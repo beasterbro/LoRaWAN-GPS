@@ -384,11 +384,14 @@ static void LORA_HasJoined( void )
 	#endif
 }
 
+/*
+A private function to record acceleration data and store it
+Ideally this is to be used instead of send when gps is not available
+*/
 static void RecordAccel( void )//TODO: Here is where the high level send function is
 {
-	  sensor_t sensor_data;
+	sensor_t sensor_data;
 	BSP_sensor_Read( &sensor_data );
-		uint32_t i = 0;
 	
 	if(basic_flag==1)
 	{
@@ -404,12 +407,7 @@ static void RecordAccel( void )//TODO: Here is where the high level send functio
 		Yaw_basic=Yaw;
 		basic_flag=0;
 	}
- if(AD_code3 <= 2840)
-	{
 
-		LP = 1;
-		PRINTF("\n\rAD_code3=%d  ", AD_code3);
-	}
 	else
 	{
 		LP = 0;
