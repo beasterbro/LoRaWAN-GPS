@@ -266,7 +266,7 @@ void CalibrateToZero(void);
 	float mx_old,my_old,mz_old;
 	
 	uint8_t flag_2=1;	
-	
+	void RecordAccel();
 	
 /* Private functions ---------------------------------------------------------*/
 
@@ -333,7 +333,8 @@ int main( void )
 				for(int V =0; V < size; V++){
 			PRINTF("%u",AppData.Buff[V]);
 				}
-				Send(); //TODO: This is where spamm was to server
+				Send();
+				RecordAccel(); //TODO: This is where spamm was to server
 
 		}
 		if(s_gm == 1)
@@ -381,6 +382,136 @@ static void LORA_HasJoined( void )
 	#if defined(AT_Data_Send)     /*LoRa ST Module*/
 	AT_PRINTF("Please using AT+SEND or AT+SENDB to send you data!\n\r");
 	#endif
+}
+
+static void RecordAccel( void )//TODO: Here is where the high level send function is
+{
+	  sensor_t sensor_data;
+	BSP_sensor_Read( &sensor_data );
+		uint32_t i = 0;
+	
+	if(basic_flag==1)
+	{
+		Roll_basic=0;
+		Pitch_basic=0;
+		Yaw_basic=0;
+		basic_flag=0;
+	}			
+	else if(basic_flag==2)
+	{
+		Roll_basic=Roll;
+		Pitch_basic=Pitch;
+		Yaw_basic=Yaw;
+		basic_flag=0;
+	}
+ if(AD_code3 <= 2840)
+	{
+
+		LP = 1;
+		PRINTF("\n\rAD_code3=%d  ", AD_code3);
+	}
+	else
+	{
+		LP = 0;
+	}
+	  MPU_Write_Byte(MPU9250_ADDR,0x6B,0X00);//唤醒
+    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
+
+		for(int H=0; H<10; H++)
+		{
+//			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
+			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
+//			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
+			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+			olddata=newdata;
+			newdata=yaw;
+			CountTurns(&newdata,&olddata,&turns);
+			CalYaw(&yaw,&turns);
+			pitch+=pitchoffset;
+			roll+=rolloffset;
+			yaw+=yawoffset;
+		}
+			for(int H=0; H<30; H++)
+		{
+//			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
+			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
+//			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
+			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+			olddata=newdata;
+			newdata=yaw;
+			CountTurns(&newdata,&olddata,&turns);
+			CalYaw(&yaw,&turns);
+			pitch+=pitchoffset;
+			roll+=rolloffset;
+			yaw+=yawoffset;
+		
+			Pitch_sum+=pitch;
+			Roll_sum+=roll;
+			yaw_sum+=yaw;
+		}
+
+		Yaw_new = Yaw_sum/30.0;
+	Roll_new=Roll_sum/30.0;
+	Pitch_new=Pitch_sum/30.0;
+	
+  if(flag_1==1)
+  {
+		flag_1=0;
+		Roll_old=Roll_new;
+		Pitch_old=Pitch_new;
+		Yaw_old = Yaw_new;
+	}
+
+  if(-0.2<Roll_new-Roll_old&&Roll_new-Roll_old<0.2)//ROLL
+	{
+		Roll1=(Roll_new+Roll_old)/2.0;
+		Roll1=(Roll_old+Roll1)/2.0;
+		Roll_old=Roll1;
+	}	
+	else 
+	{
+		Roll1=Roll_new;
+		Roll_old=Roll_new;
+	}
+	 if(-0.2<Yaw_new-Yaw_old&&Yaw_new-Yaw_old<0.2)//YAW
+	{
+		Yaw1=(Yaw_new+Yaw_old)/2.0;
+		Yaw1=(Yaw_old+Yaw1)/2.0;
+		Yaw_old=Yaw1;
+	}	
+	else 
+	{
+		Yaw1=Yaw_new;
+		Yaw_old=Yaw_new;
+	}
+	
+  if(-0.2<Pitch_new-Pitch_old&&Pitch_new-Pitch_old<0.2)//PITCH
+	{
+		Pitch1=(Pitch_new+Pitch_old)/2.0;
+		Pitch1=(Pitch_old+Pitch1)/2.0;
+		Pitch_old=Pitch1;
+	}		
+	else 
+		{
+		Pitch1=Pitch_new;
+		Pitch_old=Pitch_new;
+		}
+	
+	Roll=Roll1;
+	Pitch=Pitch1;
+		Yaw = Yaw1;
+	Roll1=Roll1-Roll_basic;
+	Pitch1=Pitch1-Pitch_basic;
+	Yaw1 = Yaw1-Yaw_basic;
+
+	Roll_sum=0;
+	Pitch_sum=0;
+	Yaw_sum = 0;
+	
+	 //PRINTF("\n\rYaw=%d  ",(int)(Yaw1*100));
+	 PRINTF("\n\rRoll=%d  ",(int)(Roll1*100));
+	 PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100));//TODO store accel info from this var
+
 }
 
 static void Send( void )//TODO: Here is where the high level send function is
