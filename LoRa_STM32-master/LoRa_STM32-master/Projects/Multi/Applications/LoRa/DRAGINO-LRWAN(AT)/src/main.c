@@ -274,7 +274,8 @@ int buff_size = 1001;
 	int TimeSecond = 3200;
 	int PitchBuff [1001];
 	int RollBuff [1001];
-	
+	int Roll_tot = 0;
+
 /* Private functions ---------------------------------------------------------*/
 
 /**
@@ -328,13 +329,22 @@ int main( void )
   
   /* Configure the Lora Stack*/
   LORA_Init( &LoRaMainCallbacks, &LoRaParamInit);
-  
+  int BufferAccel_flag = 0;
+	int PerformCalculation_flag = 0;
+	int finishedCalc_flag = 0;
 	int time = 0;
-
+  int res = 0;
+  int temp_time = 0;
+  int Pitch_tot = 0;
+	int i = 0;
   while( 1 )//TODO: Main program loop here
   {//3200 Iterations is one second
 		//An array with 5 seconds of data would need 3200*5 + 1 slots
 		time++;
+		if(time%3200 == 0)
+		{
+			PRINTF("One Second %d\n\r", (int)Roll_tot/buff_size);
+		}
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
@@ -345,10 +355,51 @@ int main( void )
 			//PRINTF("%u\n",AppData.Buff[V]);
 			//	}
 				//Send();
-				BufferAccelData(PitchBuff,RollBuff,buff_size);
-				int res = PerformCalculation(PitchBuff,RollBuff, buff_size);
-				PRINTF("Calc: %d \n",res);
-
+			BufferAccel_flag = 1;
+			//BufferAccelData(PitchBuff,RollBuff,buff_size);
+			
+		
+				
+		}
+			if(finishedCalc_flag == 1)
+			{
+				PRINTF("\n\n\n\n\n\nCalc: %d \n",res);
+				finishedCalc_flag = 0;
+			}
+		if(BufferAccel_flag == 1)
+	  {
+			temp_time++;
+		  if(temp_time < TimeSecond/10 && time < buff_size/4)
+	    {
+				PRINTF("Rec:%d\n\r",temp_time);
+			  RecordAccel(PitchBuff[temp_time],RollBuff[temp_time]);
+		  }
+			else
+			{
+				temp_time = 0;
+				BufferAccel_flag = 0;
+				PerformCalculation_flag = 1;
+			}
+		
+		}
+		if(PerformCalculation_flag == 1)
+		{
+	    
+	    if( i < buff_size-1)
+	    {
+				PRINTF("Iteration Time: %d\n\r%d",i,(int)Pitch_tot);
+				i++;
+		    Pitch_tot += PitchBuff[i];
+		    Roll_tot += RollBuff[i];
+	    }
+			else
+			{
+				res = Pitch_tot/buff_size;
+				i = 0;
+				PerformCalculation_flag = 0;
+				finishedCalc_flag = 1;
+			}
+	       
 		}
 		if(s_gm == 1)
 		{
@@ -417,7 +468,7 @@ After this function runs each of the inputted arrays should be populated with Pi
 */
 static void BufferAccelData(int PitchBuff[], int RollBuff[], int length)
 	{
-		int time = 0;
+	int time = 0;
 		while(time < 5 * TimeSecond && time < length)
 		{
 			RecordAccel(PitchBuff[time],RollBuff[time]);
@@ -546,9 +597,10 @@ static void RecordAccel( PitchData, RollData )//TODO: Here is where the high lev
 	Yaw_sum = 0;
 	
 	 //PRINTF("\n\rYaw=%d  ",(int)(Yaw1*100));
-		RollData= Roll1 * 100;
-		PitchData = Pitch1 * 100;
-	// PRINTF("\n\rRoll=%d  ",(int)(Roll1*100));
+		RollData= (int) Roll1 * 100;
+		PitchData = (int) Pitch1 * 100;
+		Roll_tot += RollData;
+	 PRINTF("\n\rRoll=%d  ",(int)Roll_tot);
 	// PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100));//TODO store accel info from this var
 
 }
