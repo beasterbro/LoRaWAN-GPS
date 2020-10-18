@@ -274,7 +274,7 @@ int buff_size = 1001;
 	int TimeSecond = 3200;
 	int PitchBuff [1001];
 	int RollBuff [1001];
-	int Roll_tot = 0;
+	int Roll_tot = 0;//TODO: Gotta use values no instantiated in main to get proper returns
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -361,18 +361,13 @@ int main( void )
 		
 				
 		}
-			if(finishedCalc_flag == 1)
-			{
-				PRINTF("\n\n\n\n\n\nCalc: %d \n",res);
-				finishedCalc_flag = 0;
-			}
 		if(BufferAccel_flag == 1)
 	  {
 			temp_time++;
-		  if(temp_time < TimeSecond/10 && time < buff_size/4)
+		  if(temp_time < TimeSecond/10 && temp_time < buff_size/4)
 	    {
 				PRINTF("Rec:%d\n\r",temp_time);
-			  RecordAccel(PitchBuff[temp_time],RollBuff[temp_time]);
+			  RecordAccel(temp_time);
 		  }
 			else
 			{
@@ -394,13 +389,19 @@ int main( void )
 	    }
 			else
 			{
-				res = Pitch_tot/buff_size;
+				res = Roll_tot/buff_size;
 				i = 0;
 				PerformCalculation_flag = 0;
 				finishedCalc_flag = 1;
 			}
 	       
 		}
+			if(finishedCalc_flag == 1)//TODO: This is done flag does not work
+			{
+				PRINTF("\n\n\n\n\n\nCalc: %d \n",res);
+				finishedCalc_flag = 0;
+			}
+			
 		if(s_gm == 1)
 		{
 //	   lora_send_fsm();
@@ -478,7 +479,7 @@ static void BufferAccelData(int PitchBuff[], int RollBuff[], int length)
 A private function to record acceleration data and store it
 Ideally this is to be used instead of send when gps is not available
 */
-static void RecordAccel( PitchData, RollData )//TODO: Here is where the high level send function is
+static void RecordAccel( time_val)//TODO: Here is where the high level send function is
 {
 	sensor_t sensor_data;
 	BSP_sensor_Read( &sensor_data );
@@ -597,8 +598,8 @@ static void RecordAccel( PitchData, RollData )//TODO: Here is where the high lev
 	Yaw_sum = 0;
 	
 	 //PRINTF("\n\rYaw=%d  ",(int)(Yaw1*100));
-		RollData= (int) Roll1 * 100;
-		PitchData = (int) Pitch1 * 100;
+		RollBuff[time_val]= (int) Roll1 * 100;
+		PitchBuff[time_val] = (int) Pitch1 * 100;
 		Roll_tot += RollData;
 	 PRINTF("\n\rRoll=%d  ",(int)Roll_tot);
 	// PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100));//TODO store accel info from this var
