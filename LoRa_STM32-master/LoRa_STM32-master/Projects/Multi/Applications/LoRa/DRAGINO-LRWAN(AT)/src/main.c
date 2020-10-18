@@ -334,23 +334,20 @@ int main( void )
   while( 1 )//TODO: Main program loop here
   {//3200 Iterations is one second
 		//An array with 5 seconds of data would need 3200*5 + 1 slots
-		if(time == TimeSecond){
-		PRINTF("One Second");
-			time = 0;
-		}
-		else{time++;}
+		time++;
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
 			PRINTF("Time = %d\n",time);
 			in1 = 0;
-			int size = ((sizeof AppData.Buff)/(sizeof 	AppData.Buff[0]));
-				for(int V =0; V < size; V++){
-			PRINTF("%u",AppData.Buff[V]);
-				}
+			//int size = ((sizeof AppData.Buff)/(sizeof 	AppData.Buff[0]));
+			//	for(int V =0; V < size; V++){
+			//PRINTF("%u\n",AppData.Buff[V]);
+			//	}
 				//Send();
-				BufferAccelData(PitchBuff,RollBuff);
-				PerformCalculation(PitchBuff,RollBuff, buff_size);
+				BufferAccelData(PitchBuff,RollBuff,buff_size);
+				int res = PerformCalculation(PitchBuff,RollBuff, buff_size);
+				PRINTF("Calc: %d \n",res);
 
 		}
 		if(s_gm == 1)
@@ -411,17 +408,17 @@ static int PerformCalculation(int PitchBuff[], int RollBuff[],int length)
 		Pitch_tot += PitchBuff[i];
 		Roll_tot += RollBuff[i];
 	}
-	return Pitch_tot/16001;
+	return Pitch_tot/length;
 }
 
 /* 
 A function made to store 5 seconds worth of acceleration data inside of the inputted arrays
 After this function runs each of the inputted arrays should be populated with Pitch and Roll data respectivly
 */
-static void BufferAccelData(int PitchBuff[], int RollBuff[])
+static void BufferAccelData(int PitchBuff[], int RollBuff[], int length)
 	{
 		int time = 0;
-		while(time < 5 * TimeSecond)
+		while(time < 5 * TimeSecond && time < length)
 		{
 			RecordAccel(PitchBuff[time],RollBuff[time]);
 		}
@@ -551,8 +548,8 @@ static void RecordAccel( PitchData, RollData )//TODO: Here is where the high lev
 	 //PRINTF("\n\rYaw=%d  ",(int)(Yaw1*100));
 		RollData= Roll1 * 100;
 		PitchData = Pitch1 * 100;
-	 PRINTF("\n\rRoll=%d  ",(int)(Roll1*100));
-	 PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100));//TODO store accel info from this var
+	// PRINTF("\n\rRoll=%d  ",(int)(Roll1*100));
+	// PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100));//TODO store accel info from this var
 
 }
 
