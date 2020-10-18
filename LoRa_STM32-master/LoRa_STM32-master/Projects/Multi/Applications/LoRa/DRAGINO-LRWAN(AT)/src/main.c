@@ -59,6 +59,7 @@
 #include "exti_wakeup.h"
 #include "IIC.h"
 #include "mpu9250.h"
+#include <time.h>
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 
@@ -266,7 +267,6 @@ void CalibrateToZero(void);
 	
 	uint8_t flag_2=1;	
 	
-
 	
 /* Private functions ---------------------------------------------------------*/
 
@@ -333,7 +333,7 @@ int main( void )
 				for(int V =0; V < size; V++){
 			PRINTF("%u",AppData.Buff[V]);
 				}
-			//Send();
+				Send(); //TODO: This is where spamm was to server
 
 		}
 		if(s_gm == 1)
@@ -387,11 +387,11 @@ static void Send( void )//TODO: Here is where the high level send function is
 {
   sensor_t sensor_data;
   
-  if ( LORA_JoinStatus () != LORA_SET)
-  {
+ // if ( LORA_JoinStatus () != LORA_SET)
+ // {
     /*Not joined, try again later*/
-    return;
-  }
+ //   return;
+ // }
 
 	BSP_sensor_Read( &sensor_data );
 	
@@ -489,13 +489,13 @@ static void Send( void )//TODO: Here is where the high level send function is
 	Roll_sum=0;
 	Pitch_sum=0;
 	
-	if(gps.latitude > 0 && gps.longitude > 0)		
- 	{
+	//if(gps.latitude > 0 && gps.longitude > 0)		
+ 	//{
    gps_latitude = gps.latitude;
 	 gps_longitude = gps.longitude;
 	 gps_state_on();
 	 PRINTF("\n\rRoll=%d  ",(int)(Roll1*100));
-	 PRINTF("Pitch=%d\n\r",(int)(Pitch1*100));
+	 PRINTF("Pitch=%d\n\r",(int)(Pitch1*100));//TODO store accel info from this var
 	 PRINTF("%s: %.4f\n\r",(gps.latNS == 'N')?"South":"North",gps_latitude);
 	 PRINTF("%s: %.4f\n\r ",(gps.lgtEW == 'E')?"East":"West",gps_longitude);
    
@@ -520,7 +520,7 @@ static void Send( void )//TODO: Here is where the high level send function is
    gps.latitude = 0;
    gps.longitude = 0;	
    start = 1;		
-	}
+	//}
 
 	AppData.Port = LORAWAN_APP_PORT;
 	if(lora_getGPSState() == STATE_GPS_OFF)

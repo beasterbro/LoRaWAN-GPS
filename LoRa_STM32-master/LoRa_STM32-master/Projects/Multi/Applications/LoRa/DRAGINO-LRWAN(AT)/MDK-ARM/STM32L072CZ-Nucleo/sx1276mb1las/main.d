@@ -71,3 +71,4 @@
 .\sx1276mb1las\main.o: ..\..\inc\exti_wakeup.h
 .\sx1276mb1las\main.o: ..\..\..\..\..\..\..\Drivers\BSP\Components\IIC\IIC.h
 .\sx1276mb1las\main.o: ..\..\..\..\..\..\..\Drivers\BSP\Components\mpu9250\mpu9250.h
+.\sx1276mb1las\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
