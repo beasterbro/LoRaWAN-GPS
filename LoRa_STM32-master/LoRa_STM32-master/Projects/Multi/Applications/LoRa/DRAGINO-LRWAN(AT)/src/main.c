@@ -267,6 +267,13 @@ void CalibrateToZero(void);
 	
 	uint8_t flag_2=1;	
 	void RecordAccel();
+	void BufferAccelData();
+	int PerformCalculation();
+
+int buff_size = 1001;
+	int TimeSecond = 3200;
+	int PitchBuff [1001];
+	int RollBuff [1001];
 	
 /* Private functions ---------------------------------------------------------*/
 
@@ -323,10 +330,11 @@ int main( void )
   LORA_Init( &LoRaMainCallbacks, &LoRaParamInit);
   
 	int time = 0;
+
   while( 1 )//TODO: Main program loop here
   {//3200 Iterations is one second
 		//An array with 5 seconds of data would need 3200*5 + 1 slots
-		if(time == 3200){
+		if(time == TimeSecond){
 		PRINTF("One Second");
 			time = 0;
 		}
@@ -341,7 +349,8 @@ int main( void )
 			PRINTF("%u",AppData.Buff[V]);
 				}
 				//Send();
-				RecordAccel(); //TODO: This is where spamm was to server
+				BufferAccelData(PitchBuff,RollBuff);
+				PerformCalculation(PitchBuff,RollBuff, buff_size);
 
 		}
 		if(s_gm == 1)
@@ -390,12 +399,38 @@ static void LORA_HasJoined( void )
 	AT_PRINTF("Please using AT+SEND or AT+SENDB to send you data!\n\r");
 	#endif
 }
+/*
+A Placeholder function for the real function that will perform an oporation on the data and then output some info to send to the server
+*/
+static int PerformCalculation(int PitchBuff[], int RollBuff[],int length)
+{
+	int Pitch_tot = 0;
+	int Roll_tot = 0;
+	for(int i =0; i < length-1;i++)
+	{
+		Pitch_tot += PitchBuff[i];
+		Roll_tot += RollBuff[i];
+	}
+	return Pitch_tot/16001;
+}
 
+/* 
+A function made to store 5 seconds worth of acceleration data inside of the inputted arrays
+After this function runs each of the inputted arrays should be populated with Pitch and Roll data respectivly
+*/
+static void BufferAccelData(int PitchBuff[], int RollBuff[])
+	{
+		int time = 0;
+		while(time < 5 * TimeSecond)
+		{
+			RecordAccel(PitchBuff[time],RollBuff[time]);
+		}
+	}
 /*
 A private function to record acceleration data and store it
 Ideally this is to be used instead of send when gps is not available
 */
-static void RecordAccel( void )//TODO: Here is where the high level send function is
+static void RecordAccel( PitchData, RollData )//TODO: Here is where the high level send function is
 {
 	sensor_t sensor_data;
 	BSP_sensor_Read( &sensor_data );
@@ -514,6 +549,8 @@ static void RecordAccel( void )//TODO: Here is where the high level send functio
 	Yaw_sum = 0;
 	
 	 //PRINTF("\n\rYaw=%d  ",(int)(Yaw1*100));
+		RollData= Roll1 * 100;
+		PitchData = Pitch1 * 100;
 	 PRINTF("\n\rRoll=%d  ",(int)(Roll1*100));
 	 PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100));//TODO store accel info from this var
 

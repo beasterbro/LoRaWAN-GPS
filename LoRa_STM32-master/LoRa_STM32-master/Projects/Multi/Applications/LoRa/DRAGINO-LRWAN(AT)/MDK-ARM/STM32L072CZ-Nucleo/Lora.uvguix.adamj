@@ -2045,9 +2045,9 @@
       </Doc>
       <Doc>
         <Name>..\..\src\main.c</Name>
-        <ColumnNumber>18</ColumnNumber>
-        <TopLine>313</TopLine>
-        <CurrentLine>328</CurrentLine>
+        <ColumnNumber>17</ColumnNumber>
+        <TopLine>262</TopLine>
+        <CurrentLine>276</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
