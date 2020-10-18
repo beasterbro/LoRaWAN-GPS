@@ -322,18 +322,25 @@ int main( void )
   /* Configure the Lora Stack*/
   LORA_Init( &LoRaMainCallbacks, &LoRaParamInit);
   
+	int time = 0;
   while( 1 )//TODO: Main program loop here
-  {
+  {//3200 Iterations is one second
+		//An array with 5 seconds of data would need 3200*5 + 1 slots
+		if(time == 3200){
+		PRINTF("One Second");
+			time = 0;
+		}
+		else{time++;}
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
-			PRINTF("Clock");
+			PRINTF("Time = %d\n",time);
 			in1 = 0;
 			int size = ((sizeof AppData.Buff)/(sizeof 	AppData.Buff[0]));
 				for(int V =0; V < size; V++){
 			PRINTF("%u",AppData.Buff[V]);
 				}
-				Send();
+				//Send();
 				RecordAccel(); //TODO: This is where spamm was to server
 
 		}
