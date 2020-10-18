@@ -270,6 +270,13 @@ void CalibrateToZero(void);
 	void BufferAccelData();
 	int PerformCalculation();
 
+  int BufferAccel_flag = 0;
+	int PerformCalculation_flag = 0;
+	int finishedCalc_flag = 0;
+	int gobal_time = 0;
+  int res = 0;
+  int temp_time = 0;
+  int Pitch_tot = 0;
 int buff_size = 1001;
 	int TimeSecond = 3200;
 	int PitchBuff [1001];
@@ -329,19 +336,13 @@ int main( void )
   
   /* Configure the Lora Stack*/
   LORA_Init( &LoRaMainCallbacks, &LoRaParamInit);
-  int BufferAccel_flag = 0;
-	int PerformCalculation_flag = 0;
-	int finishedCalc_flag = 0;
-	int time = 0;
-  int res = 0;
-  int temp_time = 0;
-  int Pitch_tot = 0;
+
 	int i = 0;
   while( 1 )//TODO: Main program loop here
   {//3200 Iterations is one second
 		//An array with 5 seconds of data would need 3200*5 + 1 slots
-		time++;
-		if(time%3200 == 0)
+		gobal_time++;
+		if(gobal_time%3200 == 0)
 		{
 			PRINTF("One Second %d\n\r", (int)Roll_tot/buff_size);
 		}
@@ -350,11 +351,9 @@ int main( void )
 		if(in1== 1){//TODO: adding check for button click here
 			PRINTF("Time = %d\n",time);
 			in1 = 0;
-			//int size = ((sizeof AppData.Buff)/(sizeof 	AppData.Buff[0]));
 			//	for(int V =0; V < size; V++){
 			//PRINTF("%u\n",AppData.Buff[V]);
 			//	}
-				//Send();
 			BufferAccel_flag = 1;
 			//BufferAccelData(PitchBuff,RollBuff,buff_size);
 			
@@ -366,8 +365,9 @@ int main( void )
 			temp_time++;
 		  if(temp_time < TimeSecond/10 && temp_time < buff_size/4)
 	    {
-				PRINTF("Rec:%d\n\r",temp_time);
 			  RecordAccel(temp_time);
+				PRINTF("Rec:%d\n\r",temp_time);
+
 		  }
 			else
 			{
@@ -382,10 +382,10 @@ int main( void )
 	    
 	    if( i < buff_size-1)
 	    {
-				PRINTF("Iteration Time: %d\n\r%d",i,(int)Pitch_tot);
 				i++;
 		    Pitch_tot += PitchBuff[i];
 		    Roll_tot += RollBuff[i];
+				PRINTF("Iteration Time: %d\n\r%d",i,(int)Roll_tot);
 	    }
 			else
 			{
@@ -398,8 +398,9 @@ int main( void )
 		}
 			if(finishedCalc_flag == 1)//TODO: This is done flag does not work
 			{
-				PRINTF("\n\n\n\n\n\nCalc: %d \n",res);
 				finishedCalc_flag = 0;
+				PRINTF("\n\n\n\n\n\nCalc: %d \n",res);
+
 			}
 			
 		if(s_gm == 1)
