@@ -268,20 +268,24 @@ void CalibrateToZero(void);
 	uint8_t flag_2=1;	
 	void RecordAccel();
 	void BufferAccelData();
-	int PerformCalculation();
+	void PerformCalculation();
 
   int BufferAccel_flag = 0;
 	int PerformCalculation_flag = 0;
 	int finishedCalc_flag = 0;
-	int gobal_time = 0;
+	int global_time = 0;
   int res = 0;
   int temp_time = 0;
   int Pitch_tot = 0;
 int buff_size = 1001;
-	int TimeSecond = 3200;
+	int TimeSecond = 0;
+	int oneSecTimer = 0;
 	int PitchBuff [1001];
 	int RollBuff [1001];
 	int Roll_tot = 0;//TODO: Gotta use values no instantiated in main to get proper returns
+	int result[2] ;
+	int startTime = 0;
+	int iterator = 0;
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -341,20 +345,24 @@ int main( void )
   while( 1 )//TODO: Main program loop here
   {//3200 Iterations is one second
 		//An array with 5 seconds of data would need 3200*5 + 1 slots
-		gobal_time++;
-		if(gobal_time%3200 == 0)
+		global_time++;
+		oneSecTimer++;
+		PRINTF("%d %d",global_time,oneSecTimer);
+		if(oneSecTimer==3200)
 		{
-			PRINTF("One Second %d\n\r", (int)Roll_tot/buff_size);
+			PRINTF("One Second \n\r");
+			oneSecTimer = 0;
+			TimeSecond++;
 		}
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
-			PRINTF("Time = %d\n",time);
 			in1 = 0;
 			//	for(int V =0; V < size; V++){
 			//PRINTF("%u\n",AppData.Buff[V]);
 			//	}
 			BufferAccel_flag = 1;
+			PRINTF("Buffer Flag on\n\r");
 			//BufferAccelData(PitchBuff,RollBuff,buff_size);
 			
 		
@@ -362,44 +370,55 @@ int main( void )
 		}
 		if(BufferAccel_flag == 1)
 	  {
-			temp_time++;
-		  if(temp_time < TimeSecond/10 && temp_time < buff_size/4)
-	    {
-			  RecordAccel(temp_time);
-				PRINTF("Rec:%d\n\r",temp_time);
+			
+			if(startTime == 0 )
+			{
+				PRINTF("Timer Started At: %d \n\r",TimeSecond);
+					startTime = TimeSecond;
 
+			}
+			int currentTime = TimeSecond;
+			
+		  if((currentTime - startTime) <= 5)
+	    {
+			  RecordAccel(iterator);
+				iterator++;
 		  }
 			else
 			{
-				temp_time = 0;
+				currentTime = 0;
+				startTime = 0;
+				iterator = 0;
 				BufferAccel_flag = 0;
 				PerformCalculation_flag = 1;
+								PRINTF("Finished Record Flash\n\r");
+
 			}
 		
 		}
 		if(PerformCalculation_flag == 1)
 		{
-	    
-	    if( i < buff_size-1)
+	    if( i < buff_size-1)//TODO: This section of code performs the calculation instead of the method to lower complexity
 	    {
 				i++;
 		    Pitch_tot += PitchBuff[i];
 		    Roll_tot += RollBuff[i];
-				PRINTF("Iteration Time: %d\n\r%d",i,(int)Roll_tot);
 	    }
 			else
 			{
-				res = Roll_tot/buff_size;
+				result[0] = Pitch_tot/buff_size;
+				result[1] = Roll_tot/buff_size;
 				i = 0;
 				PerformCalculation_flag = 0;
 				finishedCalc_flag = 1;
+				PRINTF("Finished Calc Flash\n\r");
 			}
 	       
 		}
 			if(finishedCalc_flag == 1)//TODO: This is done flag does not work
 			{
 				finishedCalc_flag = 0;
-				PRINTF("\n\n\n\n\n\nCalc: %d \n",res);
+				PRINTF("Pitch=%d, Roll=%d",result[0],result[1]);
 
 			}
 			
@@ -452,7 +471,7 @@ static void LORA_HasJoined( void )
 /*
 A Placeholder function for the real function that will perform an oporation on the data and then output some info to send to the server
 */
-static int PerformCalculation(int PitchBuff[], int RollBuff[],int length)
+static void PerformCalculation(int PitchBuff[], int RollBuff[],int length)
 {
 	int Pitch_tot = 0;
 	int Roll_tot = 0;
@@ -461,7 +480,9 @@ static int PerformCalculation(int PitchBuff[], int RollBuff[],int length)
 		Pitch_tot += PitchBuff[i];
 		Roll_tot += RollBuff[i];
 	}
-	return Pitch_tot/length;
+	result[0] = Pitch_tot/length;
+	result[1] = Roll_tot/length;
+	
 }
 
 /* 
@@ -601,9 +622,9 @@ static void RecordAccel( time_val)//TODO: Here is where the high level send func
 	 //PRINTF("\n\rYaw=%d  ",(int)(Yaw1*100));
 		RollBuff[time_val]= (int) Roll1 * 100;
 		PitchBuff[time_val] = (int) Pitch1 * 100;
-		Roll_tot += RollData;
-	 PRINTF("\n\rRoll=%d  ",(int)Roll_tot);
-	// PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100));//TODO store accel info from this var
+//	PRINTF("Yaw=	%d \n\r",Yaw);
+//	 PRINTF("\n\rRoll=%d  ",(int)Roll1);
+//	 PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100));//TODO store accel info from this var
 
 }
 
