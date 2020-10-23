@@ -269,7 +269,7 @@ void CalibrateToZero(void);
 	void RecordAccel();
 	void BufferAccelData();
 	void PerformCalculation();
-	void ResetAccelBuffer();
+	void ResetAccelBuff();
 
   int BufferAccel_flag = 0;
 	int PerformCalculation_flag = 0;
@@ -281,7 +281,7 @@ void CalibrateToZero(void);
 int buff_size = 101;
 	int TimeSecond = 0;
 	int oneSecTimer = 0;
-	int PitchBuff [1001];
+	int PitchBuff [1001];//These should be equal to buff_size, but I am not allowed to set it directly
 	int RollBuff [1001];
 	int Roll_tot = 0;//TODO: Gotta use values no instantiated in main to get proper returns
 	int result[2] ;
@@ -358,19 +358,19 @@ int main( void )
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
+			in1 = 0;
 			HAL_Delay(200);
 				if(in1== 1){
-								PRINTF("%d %d %d",global_time,oneSecTimer, TimeSecond);
-								in1 = 0;
+					HAL_Delay(10);
+					BufferAccel_flag = 1;
+			    PRINTF("Buffer Flag on\n\r");
+					in1 = 0;
 
 				}
 			//	for(int V =0; V < size; V++){
 			//PRINTF("%u\n",AppData.Buff[V]);
 			//	}
-				HAL_Delay(10);
-
-			BufferAccel_flag = 1;
-			PRINTF("Buffer Flag on\n\r");
+			PRINTF("%d %d %d",global_time,oneSecTimer, TimeSecond);
 			//BufferAccelData(PitchBuff,RollBuff,buff_size);
 			
 		
@@ -394,7 +394,7 @@ int main( void )
 		  }
 			else
 			{
-				ResetAccelBuffer();
+				ResetAccelBuff();
 			}
 		
 		}
