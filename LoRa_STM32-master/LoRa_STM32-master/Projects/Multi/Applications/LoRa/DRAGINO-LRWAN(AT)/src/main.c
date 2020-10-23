@@ -269,6 +269,7 @@ void CalibrateToZero(void);
 	void RecordAccel();
 	void BufferAccelData();
 	void PerformCalculation();
+	void ResetAccelBuffer();
 
   int BufferAccel_flag = 0;
 	int PerformCalculation_flag = 0;
@@ -277,7 +278,7 @@ void CalibrateToZero(void);
   int res = 0;
   int temp_time = 0;
   int Pitch_tot = 0;
-int buff_size = 1001;
+int buff_size = 101;
 	int TimeSecond = 0;
 	int oneSecTimer = 0;
 	int PitchBuff [1001];
@@ -350,18 +351,24 @@ int main( void )
 		oneSecTimer++;
 		if(oneSecTimer==3200)
 		{
-			PRINTF("One Second \n\r");
-			oneSecTimer = 0;
 			TimeSecond++;
+			PRINTF("One Second %d \n\r",TimeSecond);
+			oneSecTimer = 0;
 		}
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
-			in1 = 0;
+			HAL_Delay(200);
+				if(in1== 1){
+								PRINTF("%d %d %d",global_time,oneSecTimer, TimeSecond);
+								in1 = 0;
+
+				}
 			//	for(int V =0; V < size; V++){
 			//PRINTF("%u\n",AppData.Buff[V]);
 			//	}
-			PRINTF("%d %d %d",global_time,oneSecTimer, TimeSecond);
+				HAL_Delay(10);
+
 			BufferAccel_flag = 1;
 			PRINTF("Buffer Flag on\n\r");
 			//BufferAccelData(PitchBuff,RollBuff,buff_size);
@@ -380,20 +387,14 @@ int main( void )
 			}
 			int currentTime = TimeSecond;
 			
-		  if((currentTime - startTime) <= 5)
+		  if((currentTime - startTime) <= 5 && iterator < buff_size)
 	    {
 			  RecordAccel(iterator);
 				iterator++;
 		  }
 			else
 			{
-				currentTime = 0;
-				startTime = -1;
-				iterator = 0;
-				BufferAccel_flag = 0;
-				PerformCalculation_flag = 1;
-								PRINTF("Finished Record Flash\n\r");
-
+				ResetAccelBuffer();
 			}
 		
 		}
@@ -468,6 +469,14 @@ static void LORA_HasJoined( void )
 	#if defined(AT_Data_Send)     /*LoRa ST Module*/
 	AT_PRINTF("Please using AT+SEND or AT+SENDB to send you data!\n\r");
 	#endif
+}
+static void ResetAccelBuff()
+{
+				startTime = -1;
+				iterator = 0;
+				BufferAccel_flag = 0;
+				PerformCalculation_flag = 1;
+				PRINTF("Finished Record Flash\n\r");
 }
 /*
 A Placeholder function for the real function that will perform an oporation on the data and then output some info to send to the server
