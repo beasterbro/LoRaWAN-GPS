@@ -284,7 +284,7 @@ int buff_size = 1001;
 	int RollBuff [1001];
 	int Roll_tot = 0;//TODO: Gotta use values no instantiated in main to get proper returns
 	int result[2] ;
-	int startTime = 0;
+	int startTime = -1;
 	int iterator = 0;
 
 /* Private functions ---------------------------------------------------------*/
@@ -345,9 +345,9 @@ int main( void )
   while( 1 )//TODO: Main program loop here
   {//3200 Iterations is one second
 		//An array with 5 seconds of data would need 3200*5 + 1 slots
+
 		global_time++;
 		oneSecTimer++;
-		PRINTF("%d %d",global_time,oneSecTimer);
 		if(oneSecTimer==3200)
 		{
 			PRINTF("One Second \n\r");
@@ -361,6 +361,7 @@ int main( void )
 			//	for(int V =0; V < size; V++){
 			//PRINTF("%u\n",AppData.Buff[V]);
 			//	}
+			PRINTF("%d %d %d",global_time,oneSecTimer, TimeSecond);
 			BufferAccel_flag = 1;
 			PRINTF("Buffer Flag on\n\r");
 			//BufferAccelData(PitchBuff,RollBuff,buff_size);
@@ -371,7 +372,7 @@ int main( void )
 		if(BufferAccel_flag == 1)
 	  {
 			
-			if(startTime == 0 )
+			if(startTime == -1 )
 			{
 				PRINTF("Timer Started At: %d \n\r",TimeSecond);
 					startTime = TimeSecond;
@@ -387,7 +388,7 @@ int main( void )
 			else
 			{
 				currentTime = 0;
-				startTime = 0;
+				startTime = -1;
 				iterator = 0;
 				BufferAccel_flag = 0;
 				PerformCalculation_flag = 1;
