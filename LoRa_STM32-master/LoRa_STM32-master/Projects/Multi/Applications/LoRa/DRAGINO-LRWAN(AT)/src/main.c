@@ -353,11 +353,14 @@ int main( void )
 		{
 			TimeSecond++;
 			PRINTF("One Second %d \n\r",TimeSecond);
+			RecordAccel(1);
+			PRINTF("Fifo Reg: %d",MPU_ACCEL_XOUTH_REG);
 			oneSecTimer = 0;
 		}
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
+			PRINTF("Click");
 			in1 = 0;
 			HAL_Delay(200);
 				if(in1== 1){
@@ -540,9 +543,9 @@ static void RecordAccel( time_val)//TODO: Here is where the high level send func
 
 		for(int H=0; H<10; H++)
 		{
-//			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
+			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
 			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
-//			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
+			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
 			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
 			olddata=newdata;
 			newdata=yaw;
@@ -554,9 +557,9 @@ static void RecordAccel( time_val)//TODO: Here is where the high level send func
 		}
 			for(int H=0; H<30; H++)
 		{
-//			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
+			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
 			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
-//			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
+			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
 			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
 			olddata=newdata;
 			newdata=yaw;
@@ -570,6 +573,9 @@ static void RecordAccel( time_val)//TODO: Here is where the high level send func
 			Roll_sum+=roll;
 			yaw_sum+=yaw;
 		}
+			PRINTF("x1: %d x2: %d x3: %d \n\r",iax,imx,iax*imx);
+					PRINTF("y1: %d y2: %d y3: %d \n\r",iay,imy,iay*imy);
+			PRINTF("z1: %d z2: %d z3: %d \n\r",iaz,imz,iaz*imz);
 
 		Yaw_new = Yaw_sum/30.0;
 	Roll_new=Roll_sum/30.0;
@@ -633,8 +639,12 @@ static void RecordAccel( time_val)//TODO: Here is where the high level send func
 		RollBuff[time_val]= (int) Roll1 * 100;
 		PitchBuff[time_val] = (int) Pitch1 * 100;
 //	PRINTF("Yaw=	%d \n\r",Yaw);
-//	 PRINTF("\n\rRoll=%d  ",(int)Roll1);
-//	 PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100));//TODO store accel info from this var
+		//(Roll1*100)>>8
+		 // Pitch: signed 16 bits integer, MSB, unit: °
+    //Pitch: (bytes[13]<<24>>16 | bytes[14]) / 100
+			 PRINTF("\n\Yaw=%d \n\r",(int)(Yaw1*100)>>8);
+	 PRINTF("\n\rRoll=%d \n\r",(int)(Roll1*100)>>8);
+	 PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100)>>8);//TODO store accel info from this var
 
 }
 
