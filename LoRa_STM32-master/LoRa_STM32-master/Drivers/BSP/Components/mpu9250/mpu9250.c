@@ -51,7 +51,8 @@ uint8_t MPU_Init(void)
 	MPU_Set_Accel_Fsr(2);					       	 	//加速度传感器,±8g
     MPU_Set_Rate(200);						       	 	//设置采样率200Hz
     MPU_Write_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);   //关闭所有中断	
-	
+	//TODO: Look at FIFO Reg here disable fifo to individually read out data
+	//Use proper fifo interface to get things working properly (software pauses can cause hiccups)
 	MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X00);//I2C主模式关闭
 	MPU_Write_Byte(MPU9250_ADDR,MPU_FIFO_EN_REG,0X00);	//关闭FIFO
 	MPU_Write_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//INT引脚低电平有效，开启bypass模式，可以直接读取磁力计
