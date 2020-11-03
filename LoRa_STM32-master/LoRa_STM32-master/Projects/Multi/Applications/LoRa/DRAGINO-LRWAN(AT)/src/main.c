@@ -354,7 +354,6 @@ int main( void )
 			TimeSecond++;
 			PRINTF("One Second %d \n\r",TimeSecond);
 			RecordAccel(1);
-			PRINTF("Fifo Reg: %d",MPU_ACCEL_XOUTH_REG);
 			oneSecTimer = 0;
 		}
 		/* Handle UART commands */
@@ -573,9 +572,13 @@ static void RecordAccel( time_val)//TODO: Here is where the high level send func
 			Roll_sum+=roll;
 			yaw_sum+=yaw;
 		}
-			PRINTF("x1: %d x2: %d x3: %d \n\r",iax,imx,iax*imx);
-					PRINTF("y1: %d y2: %d y3: %d \n\r",iay,imy,iay*imy);
-			PRINTF("z1: %d z2: %d z3: %d \n\r",iaz,imz,iaz*imz);
+		float xval = ax;
+		float yval = ay;
+		float zval = az;
+
+			PRINTF("x1: %f \n\r",xval);
+			PRINTF("y1: %f \n\r",yval);
+			PRINTF("z1: %f \n\r",zval);
 
 		Yaw_new = Yaw_sum/30.0;
 	Roll_new=Roll_sum/30.0;
