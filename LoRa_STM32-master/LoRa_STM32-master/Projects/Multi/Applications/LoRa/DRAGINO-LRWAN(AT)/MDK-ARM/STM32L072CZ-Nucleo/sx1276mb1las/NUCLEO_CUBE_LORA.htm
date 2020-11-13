@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\sx1276mb1las\NUCLEO_CUBE_LORA.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\sx1276mb1las\NUCLEO_CUBE_LORA.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Nov 13 12:47:27 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Nov 13 13:03:09 2020
 <BR><P>
 <H3>Maximum Stack Usage =        860 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -775,6 +775,7 @@ Global Symbols
 <LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Get_Mag
 <LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Get_Gyro
 <LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Get_Accel
+<LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalYaw
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;at_CHE_get
 <LI><a href="#[226]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RegionCommonComputeSymbolTimeLoRa
@@ -789,7 +790,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1276SetTxConfig
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1276SetRxConfig
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1276GetTimeOnAir
-<LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[226]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RegionCommonComputeSymbolTimeLoRa
 <LI><a href="#[224]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RegionCommonComputeRxWindowParameters
 </UL>
@@ -5588,7 +5588,7 @@ Global Symbols
 <LI><a href="#[2a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_send
 </UL>
 
-<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 540 bytes, Stack size 40 bytes, main.o(i.main))
+<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 542 bytes, Stack size 40 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 860<LI>Call Chain = main &rArr; lora_send &rArr; send_data &rArr; Send &rArr; LORA_send &rArr; LoRaMacMcpsRequest &rArr; Send &rArr; ScheduleTx &rArr; SendFrameOnChannel &rArr; RegionTxConfig &rArr; RegionUS915TxConfig &rArr; TraceSend &rArr; CircularQueue_Add &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_Init
@@ -5596,7 +5596,7 @@ Global Symbols
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPS_init
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPS_Run
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TraceSend
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
