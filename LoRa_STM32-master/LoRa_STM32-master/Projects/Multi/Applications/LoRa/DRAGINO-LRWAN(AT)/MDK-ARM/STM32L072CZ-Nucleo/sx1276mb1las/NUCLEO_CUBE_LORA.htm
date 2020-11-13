@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\sx1276mb1las\NUCLEO_CUBE_LORA.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\sx1276mb1las\NUCLEO_CUBE_LORA.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Nov 12 19:57:24 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Nov 12 20:34:20 2020
 <BR><P>
 <H3>Maximum Stack Usage =        836 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -416,13 +416,13 @@ Global Symbols
 <LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1276SetAntSwLowPower
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1276IoInit
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SX1276IoDeInit
-<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vcom_IoInit
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 <LI><a href="#[257]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_SPI_IoInit
 <LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HW_SPI_IoDeInit
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DBG_Init
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_oil_float_Init
+<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vcom_IoInit
 <LI><a href="#[232]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RegionUS915NextChannel
 </UL>
 
@@ -749,7 +749,6 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;my_strtod
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPS_parse
-<LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[26f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
 </UL>
 
@@ -835,7 +834,6 @@ Global Symbols
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF2pSetCutoffFreq_3
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF2pSetCutoffFreq_2
 <LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF2pSetCutoffFreq_1
-<LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalYaw
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
 <LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send
@@ -1575,13 +1573,13 @@ Global Symbols
 <LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDA_OUT
 <LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDA_IN
 <LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_GPIO_MODE_Config
-<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vcom_IoInit
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI4_15_IRQHandler_Config
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DBG_Init
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_sensor_Init
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_sensor_DeInit
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_powerLED_Init
 <LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_oil_float_Init
+<LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vcom_IoInit
 </UL>
 
 <P><STRONG><a name="[1a3]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32l0xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
@@ -5584,12 +5582,10 @@ Global Symbols
 <LI><a href="#[2a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_send
 </UL>
 
-<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 460 bytes, Stack size 16 bytes, main.o(i.main))
+<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 464 bytes, Stack size 16 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 836<LI>Call Chain = main &rArr; lora_send &rArr; send_data &rArr; Send &rArr; LORA_send &rArr; LoRaMacMcpsRequest &rArr; Send &rArr; ScheduleTx &rArr; SendFrameOnChannel &rArr; RegionTxConfig &rArr; RegionUS915TxConfig &rArr; TraceSend &rArr; CircularQueue_Add &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_Init
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPS_init
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPS_Run
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TraceSend

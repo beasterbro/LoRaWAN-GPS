@@ -55,7 +55,7 @@ uint8_t MPU_Init(void)
 	//Use proper fifo interface to get things working properly (software pauses can cause hiccups)
 	MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X40);//I2C主模式关闭
 	MPU_Write_Byte(MPU9250_ADDR,MPU_FIFO_EN_REG,0XF8);	//关闭FIFO TODO: Changing FIFO Config default F8
-	MPU_Write_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//INT引脚低电平有效，开启bypass模式，可以直接读取磁力计
+	MPU_Write_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//INT引脚低电平有效，开启bypass模式，可以直接读取磁力计 TODO: (C8 makes res 0 instead of 9) editted Config Reg, default 82
     res=MPU_Read_Byte(MPU9250_ADDR,MPU_DEVICE_ID_REG);  //读取MPU6500的ID
     if(res==MPU6500_ID1||res==MPU6500_ID2) //器件ID正确
     {

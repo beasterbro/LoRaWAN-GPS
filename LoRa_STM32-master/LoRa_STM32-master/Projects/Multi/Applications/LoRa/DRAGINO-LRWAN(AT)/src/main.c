@@ -288,6 +288,7 @@ int buff_size = 101;
 	int result[2] ;
 	int startTime = -1;
 	int iterator = 0;
+	int FIFO_flag;
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -354,13 +355,14 @@ int main( void )
 		{
 			TimeSecond++;
 			PRINTF("One Second %d \n\r",TimeSecond);
-			//RecordAccel(1);
 			oneSecTimer = 0;
 		}
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
 			PRINTF("Click");
+			FIFO_flag = 1;
+			RecordAccel(1);
 			in1 = 0;
 			HAL_Delay(200);
 				if(in1== 1){
@@ -374,20 +376,20 @@ int main( void )
 			//	for(int V =0; V < size; V++){
 			//PRINTF("%u\n",AppData.Buff[V]);
 			//	}
-			PRINTF("%d %d %d",global_time,oneSecTimer, TimeSecond);
 			//BufferAccelData(PitchBuff,RollBuff,buff_size);
 			
 		
 				
 		}
+		if(FIFO_flag){
 		uint8_t buf[6],res;  
 		short temp;//TODO: Reading from fifo here for now
-		res=MPU_Read_Byte(MPU9250_ADDR,MPU_FIFO_RW_REG);
+	res=MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,6,buf);
 		temp=(((uint16_t)buf[0]<<8)|buf[1]);  
 		float accval = temp;
 
-
-			PRINTF("\n\r FIFO: %f \n\r",accval);
+		PRINTF("\n\r FIFO: %d %u %u \n\r",temp,res,buf);
+		}
 		if(BufferAccel_flag == 1)
 	  {
 			
