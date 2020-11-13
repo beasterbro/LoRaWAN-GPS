@@ -172,6 +172,7 @@ Maintainer: Miguel Luis and Gregory Cristian
 #define mag_scale 	  (9600.0/16384.0/100.0)							//高斯单位
 
 uint8_t MPU_Init(void);
+uint8_t My_MPU_Init(void);
 uint8_t MPU_WaitForReady(uint8_t devaddr);
 uint8_t MPU_Write_Byte(uint8_t devaddr,uint8_t reg,uint8_t data);
 uint8_t MPU_Read_Byte(uint8_t devaddr,uint8_t reg);

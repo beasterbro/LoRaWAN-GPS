@@ -133,6 +133,9 @@ int exti_flag=0,basic_flag=0;
 
 int exti_de=0;
 
+short iax,iay,iaz;
+float ax,ay,az;
+
 static uint32_t ServerSetTDC;
 
 static uint32_t AlarmSetTDC;
@@ -151,9 +154,14 @@ extern uint16_t AD_code3;
 
 extern uint32_t Positioning_time;
 
+extern float LPF2pApply_1(float sample);
+
 extern float LPF2pApply_2(float sample);
 
-float accoffsety=-0.032310;
+extern float LPF2pApply_3(float sample);
+
+
+static float accoffsetx=-0.030587,accoffsety=-0.032310,accoffsetz=0.046341;
 
 uint32_t Start_times=0,End_times=0;
 
@@ -260,10 +268,8 @@ void CalibrateToZero(void);
  	float pitch,roll,yaw;
 	float pitch_sum,roll_sum,yaw_sum;
 	short igx,igy,igz;
-	short iax,iay,iaz;
 	short imx,imy,imz;
 	float gx,gy,gz;
-	float ax,ay,az;
 	float mx,my,mz;
 	
 	float gx_old,gy_old,gz_old;
@@ -303,7 +309,9 @@ int buff_size = 101;
   */
 int main( void )
 {
-	uint8_t t=0;
+	FIFO_flag = 1;
+	
+
   /* STM32 HAL library initialization*/
   HAL_Init( );
   
@@ -332,18 +340,21 @@ int main( void )
 	
 	IIC_GPIO_MODE_Config();
 	HAL_Delay(10);
-	t=MPU_Init();
-	while (t)
+	
+	uint8_t isMPUInit=0;
+	isMPUInit=My_MPU_Init();
+	while (isMPUInit)
 	{
+		
 		PRINTF("MPU_Init error\n\r");
 		HAL_Delay(200);
 	}
 	Restart = 0;		
   /*Disbale Stand-by mode*/
-// if(lora_getState() != STATE_WAKE_JOIN)
-//	{
+  // if(lora_getState() != STATE_WAKE_JOIN)
+  //	{
   LPM_SetOffMode(LPM_APPLI_Id , LPM_Disable );
-//  }
+  //  }
   
   /* Configure the Lora Stack*/
   LORA_Init( &LoRaMainCallbacks, &LoRaParamInit);
@@ -364,11 +375,10 @@ int main( void )
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
-			PRINTF("Click");
-			FIFO_flag = 1;
-			//RecordAccel(1);
-			in1 = 0;
-			HAL_Delay(200);
+			  PRINTF("Click");
+				MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);//Reset and Re enable FIFO
+			  in1 = 0;
+			  HAL_Delay(200);
 				if(in1== 1){
 					HAL_Delay(10);
 					BufferAccel_flag = 1;
@@ -376,28 +386,30 @@ int main( void )
 					in1 = 0;
 
 				}
-				
-			//	for(int V =0; V < size; V++){
-			//PRINTF("%u\n",AppData.Buff[V]);
-			//	}
-			//BufferAccelData(PitchBuff,RollBuff,buff_size);
-			
 		
 				
 		}
+		
 		if(FIFO_flag){
-			MPU_Write_Byte(MPU9250_ADDR,MPU_FIFO_EN_REG,0X08);
-			 MPU_Write_Byte(MPU9250_ADDR,0x6B,0X00);//Wake
-    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);// Both Accel and Gyro Work
-		uint8_t buf[6],res;  
-		short temp;//TODO: Reading from fifo here for now
+			
+		    uint8_t buf[6],countL,buf3[6];  
+		    short temp, count,ax,ay,az;//TODO: Reading from fifo here for now
 				//res=MPU_Read_Len(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,6,buf);//Buff stores the real info
-	res=MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,6,buf);//This is a status code value
-		temp=(((uint16_t)buf[0]<<8)|buf[1]);  //should be ay actual stored value from buffer
-			 float accvalY =LPF2pApply_2((float)(temp)*accel_scale-accoffsety);
+        countL=MPU_Read_Byte(MPU9250_ADDR,MPU_FIFO_CNTL_REG);
+			  RecordAccel(1);
+			  //MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,6,buf);//This is a status code value
+				/*ay=(((uint16_t)buf[0]<<8)|buf[1]);  
+				ax=(((uint16_t)buf[2]<<8)|buf[3]);  
+				az=(((uint16_t)buf[4]<<8)|buf[5]);
+				temp=(((uint16_t)buf[0]<<8)|buf[1]);  //should be ay actual stored value from buffer
+			  float accvalX =LPF2pApply_1((float)(ax)*accel_scale-accoffsetx);
+		 	  float accvalY =LPF2pApply_2((float)(ay)*accel_scale-accoffsety);
+			  float accvalZ =LPF2pApply_3((float)(az)*accel_scale-accoffsetz); */
 
-			PRINTF("\n\r FIFO: temp: %u res: %u buf: %u accval: %f\n\r",temp,res,buf,accvalY);
-			FIFO_flag = 0;
+
+        //PRINTF("\n\r FIFO: count: %u accvalx: %f accvaly: %f accvalz: %f \n\r",countL,accvalX,accvalY,accvalZ);
+			  //FIFO_flag = 0;
+			  PRINTF("FIFO Count: %u \n\r",countL);
 		}
 		if(BufferAccel_flag == 1)
 	  {
@@ -534,142 +546,21 @@ static void BufferAccelData(int PitchBuff[], int RollBuff[], int length)
 A private function to record acceleration data and store it
 Ideally this is to be used instead of send when gps is not available
 */
-static void RecordAccel( time_val)//TODO: Here is where the high level send function is
+static void RecordAccel()//TODO: Here is where the high level send function is
 {
-	sensor_t sensor_data;
-	BSP_sensor_Read( &sensor_data );
+	short iax1,iay1,iaz1;
+	float ax1,ay1,az1;
 	
-	if(basic_flag==1)
-	{
-		Roll_basic=0;
-		Pitch_basic=0;
-		Yaw_basic=0;
-		basic_flag=0;
-	}			
-	else if(basic_flag==2)
-	{
-		Roll_basic=Roll;
-		Pitch_basic=Pitch;
-		Yaw_basic=Yaw;
-		basic_flag=0;
-	}
+	MPU_Get_Accel(&iax1,&iay1,&iaz1,&ax1,&ay1,&az1);
 
-	else
-	{
-		LP = 0;
-	}
-	  MPU_Write_Byte(MPU9250_ADDR,0x6B,0X00);//唤醒
-    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
+  float xval = ax1;
+	float yval = ay1;
+	float zval = az1;
 
-		for(int H=0; H<10; H++)
-		{
-			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
-			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
-			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
-			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
-			olddata=newdata;
-			newdata=yaw;
-			CountTurns(&newdata,&olddata,&turns);
-			CalYaw(&yaw,&turns);
-			pitch+=pitchoffset;
-			roll+=rolloffset;
-			yaw+=yawoffset;
-		}
-			for(int H=0; H<30; H++)
-		{
-			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
-			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
-			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
-			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
-			olddata=newdata;
-			newdata=yaw;
-			CountTurns(&newdata,&olddata,&turns);
-			CalYaw(&yaw,&turns);
-			pitch+=pitchoffset;
-			roll+=rolloffset;
-			yaw+=yawoffset;
-		
-			Pitch_sum+=pitch;
-			Roll_sum+=roll;
-			yaw_sum+=yaw;
-		}
-		float xval = ax;
-		float yval = ay;
-		float zval = az;
-
-			PRINTF("x1: %f \n\r",xval);
-			PRINTF("y1: %f \n\r",yval);
-			PRINTF("z1: %f \n\r",zval);
-
-		Yaw_new = Yaw_sum/30.0;
-	Roll_new=Roll_sum/30.0;
-	Pitch_new=Pitch_sum/30.0;
+	PRINTF("x1: %f \n\r",xval);
 	
-  if(flag_1==1)
-  {
-		flag_1=0;
-		Roll_old=Roll_new;
-		Pitch_old=Pitch_new;
-		Yaw_old = Yaw_new;
-	}
-
-  if(-0.2<Roll_new-Roll_old&&Roll_new-Roll_old<0.2)//ROLL
-	{
-		Roll1=(Roll_new+Roll_old)/2.0;
-		Roll1=(Roll_old+Roll1)/2.0;
-		Roll_old=Roll1;
-	}	
-	else 
-	{
-		Roll1=Roll_new;
-		Roll_old=Roll_new;
-	}
-	 if(-0.2<Yaw_new-Yaw_old&&Yaw_new-Yaw_old<0.2)//YAW
-	{
-		Yaw1=(Yaw_new+Yaw_old)/2.0;
-		Yaw1=(Yaw_old+Yaw1)/2.0;
-		Yaw_old=Yaw1;
-	}	
-	else 
-	{
-		Yaw1=Yaw_new;
-		Yaw_old=Yaw_new;
-	}
-	
-  if(-0.2<Pitch_new-Pitch_old&&Pitch_new-Pitch_old<0.2)//PITCH
-	{
-		Pitch1=(Pitch_new+Pitch_old)/2.0;
-		Pitch1=(Pitch_old+Pitch1)/2.0;
-		Pitch_old=Pitch1;
-	}		
-	else 
-		{
-		Pitch1=Pitch_new;
-		Pitch_old=Pitch_new;
-		}
-	
-	Roll=Roll1;
-	Pitch=Pitch1;
-		Yaw = Yaw1;
-	Roll1=Roll1-Roll_basic;
-	Pitch1=Pitch1-Pitch_basic;
-	Yaw1 = Yaw1-Yaw_basic;
-
-	Roll_sum=0;
-	Pitch_sum=0;
-	Yaw_sum = 0;
-	
-	 //PRINTF("\n\rYaw=%d  ",(int)(Yaw1*100));
-		RollBuff[time_val]= (int) Roll1 * 100;
-		PitchBuff[time_val] = (int) Pitch1 * 100;
-//	PRINTF("Yaw=	%d \n\r",Yaw);
-		//(Roll1*100)>>8
-		 // Pitch: signed 16 bits integer, MSB, unit: 掳
-    //Pitch: (bytes[13]<<24>>16 | bytes[14]) / 100
-			 PRINTF("\n\rYaw=%d \n\r",(int)(Yaw1*100)>>8);
-	 PRINTF("\n\rRoll=%d \n\r",(int)(Roll1*100)>>8);
-	 PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100)>>8);//TODO store accel info from this var
-
+	PRINTF("y1: %f \n\r",yval);
+	PRINTF("z1: %f \n\r",zval);
 }
 
 static void Send( void )//TODO: Here is where the high level send function is

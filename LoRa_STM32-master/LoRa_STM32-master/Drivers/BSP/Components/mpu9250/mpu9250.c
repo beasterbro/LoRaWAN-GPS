@@ -40,6 +40,32 @@ short accoldx,accoldy,accoldz;
 short magoldx,magoldy,magoldz;
 short gyrooldx,gyrooldy,gyrooldz;
 
+uint8_t My_MPU_Init(void)
+{
+
+    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X80);
+    HAL_Delay(100);
+    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);
+	  MPU_Set_Accel_Fsr(2);
+	  MPU_Set_Rate(4);
+	  MPU_Write_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);//TODO: Maybe look at later
+  	MPU_Write_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//Allows IC2 Bypass and sets INT pin as active high
+	
+		MPU_Write_Byte(MPU9250_ADDR,MPU_FIFO_EN_REG,0X08);
+		MPU_Write_Byte(MPU9250_ADDR,0x6B,0X00);//Wake
+		MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X40);
+    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X07);// Accel w/ power and Gyro no power
+	
+	  LPF2pSetCutoffFreq_1(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);		//30Hz
+    LPF2pSetCutoffFreq_2(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
+    LPF2pSetCutoffFreq_3(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
+    LPF2pSetCutoffFreq_4(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
+    LPF2pSetCutoffFreq_5(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
+    LPF2pSetCutoffFreq_6(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
+	
+	  return 0;
+}
+
 uint8_t MPU_Init(void)
 {
     uint8_t res=0;
@@ -49,7 +75,7 @@ uint8_t MPU_Init(void)
     MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//唤醒MPU9250
     MPU_Set_Gyro_Fsr(3);					        	//陀螺仪传感器,±2000dps
 	MPU_Set_Accel_Fsr(2);					       	 	//加速度传感器,±8g
-    MPU_Set_Rate(200);						       	 	//设置采样率200Hz
+    MPU_Set_Rate(10);						       	 	//设置采样率200Hz
     MPU_Write_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);   //关闭所有中断	
 	//TODO: Look at FIFO Reg here disable fifo to individually read out data
 	//Use proper fifo interface to get things working properly (software pauses can cause hiccups)
@@ -59,15 +85,18 @@ uint8_t MPU_Init(void)
     res=MPU_Read_Byte(MPU9250_ADDR,MPU_DEVICE_ID_REG);  //读取MPU6500的ID
     if(res==MPU6500_ID1||res==MPU6500_ID2) //器件ID正确
     {
+			PRINTF("MPU6500");
         MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X01);  	//设置CLKSEL,PLL X轴为参考
 			HAL_Delay(50);
         MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);  	//加速度与陀螺仪都工作
-		MPU_Set_Rate(200);						       	//设置采样率为200Hz   
+		MPU_Set_Rate(10);						       	//设置采样率为200Hz   
     }else return 1;
  
     res=MPU_Read_Byte(AK8963_ADDR,MAG_WIA);    			//读取AK8963 ID   
     if(res==AK8963_ID)
     {
+						PRINTF("AK8963_ID");
+
         MPU_Write_Byte(AK8963_ADDR,MAG_CNTL2,0X01);		//复位AK8963
 		HAL_Delay(50);
         MPU_Write_Byte(AK8963_ADDR,MAG_CNTL1,0X11);		//设置AK8963为单次测量
