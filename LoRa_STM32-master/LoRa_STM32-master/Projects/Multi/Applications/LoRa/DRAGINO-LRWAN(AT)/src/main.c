@@ -366,7 +366,7 @@ int main( void )
 		if(in1== 1){//TODO: adding check for button click here
 			PRINTF("Click");
 			FIFO_flag = 1;
-			RecordAccel(1);
+			//RecordAccel(1);
 			in1 = 0;
 			HAL_Delay(200);
 				if(in1== 1){
@@ -389,14 +389,14 @@ int main( void )
 			 MPU_Write_Byte(MPU9250_ADDR,0x6B,0X00);//Wake
     MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);// Both Accel and Gyro Work
 		uint8_t buf[6],res;  
-		uint16_t temp;//TODO: Reading from fifo here for now
-				res=MPU_Read_Len(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,6,buf);
-	//res=MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,6,buf);//Status code value
+		short temp;//TODO: Reading from fifo here for now
+				res=MPU_Read_Len(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,6,buf);//Buff stores the real info
+	//res=MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,6,buf);//This is a status code value
 		temp=(((uint16_t)buf[0]<<8)|buf[1]);  //should be ay actual stored value from buffer
 			 float accvalY =LPF2pApply_2((float)(temp)*accel_scale-accoffsety);
 
 			PRINTF("\n\r FIFO: temp: %u res: %u buf: %u accval: %f\n\r",temp,res,buf,accvalY);
-			//FIFO_flag = 0;
+			FIFO_flag = 0;
 		}
 		if(BufferAccel_flag == 1)
 	  {

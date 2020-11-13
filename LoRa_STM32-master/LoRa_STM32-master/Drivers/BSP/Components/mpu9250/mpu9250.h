@@ -168,7 +168,7 @@ Maintainer: Miguel Luis and Gregory Cristian
 #define MPU_DEVICE_ID_REG		0X75	//器件ID寄存器
 
 #define gryo_scale   	(4000.0/65536.0*3.14159/180.0)			//弧度秒
-#define accel_scale 	(16.0/65536.0)												//G单位
+#define accel_scale 	(16.0/65536.0)												//G单位 TODO: this is what converts it into G's
 #define mag_scale 	  (9600.0/16384.0/100.0)							//高斯单位
 
 uint8_t MPU_Init(void);
