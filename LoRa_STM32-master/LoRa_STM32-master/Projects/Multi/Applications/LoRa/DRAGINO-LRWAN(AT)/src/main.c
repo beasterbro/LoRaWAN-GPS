@@ -382,13 +382,16 @@ int main( void )
 				
 		}
 		if(FIFO_flag){
+			 MPU_Write_Byte(MPU9250_ADDR,0x6B,0X00);//Wake
+    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);// Both Accel and Gyro Work
 		uint8_t buf[6],res;  
 		short temp;//TODO: Reading from fifo here for now
 	res=MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,6,buf);
 		temp=(((uint16_t)buf[0]<<8)|buf[1]);  
 		float accval = temp;
 
-		PRINTF("\n\r FIFO: %d %u %u \n\r",temp,res,buf);
+			PRINTF("\n\r FIFO: temp: %d res: %u buf: %u accval: %f\n\r",temp,res,buf,accval);
+			FIFO_flag = 0;
 		}
 		if(BufferAccel_flag == 1)
 	  {
