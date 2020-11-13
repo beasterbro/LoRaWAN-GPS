@@ -86,6 +86,7 @@ uint32_t GPS_ALARM=0;
 
 extern uint32_t set_sgm;
 extern int in1;
+extern MPU_FIFO_RW_REG;
 extern uint32_t s_gm;
 extern uint8_t Restart;
 
@@ -369,6 +370,14 @@ int main( void )
 					in1 = 0;
 
 				}
+    uint8_t buf[6],res;  
+				short temp;
+	res=MPU_Read_Byte(MPU9250_ADDR,MPU_FIFO_RW_REG);
+						temp=(((uint16_t)buf[0]<<8)|buf[1]);  
+												float accval = temp;
+
+
+			PRINTF("x1: %f \n\r",accval);
 			//	for(int V =0; V < size; V++){
 			//PRINTF("%u\n",AppData.Buff[V]);
 			//	}
