@@ -151,6 +151,10 @@ extern uint16_t AD_code3;
 
 extern uint32_t Positioning_time;
 
+extern float LPF2pApply_2(float sample);
+
+float accoffsety=-0.032310;
+
 uint32_t Start_times=0,End_times=0;
 
 FP32 gps_latitude ,gps_longitude;
@@ -385,13 +389,14 @@ int main( void )
 			 MPU_Write_Byte(MPU9250_ADDR,0x6B,0X00);//Wake
     MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);// Both Accel and Gyro Work
 		uint8_t buf[6],res;  
-		short temp;//TODO: Reading from fifo here for now
-	res=MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,6,buf);
-		temp=(((uint16_t)buf[0]<<8)|buf[1]);  
-		float accval = temp;
+		uint16_t temp;//TODO: Reading from fifo here for now
+				res=MPU_Read_Len(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,6,buf);
+	//res=MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,6,buf);//Status code value
+		temp=(((uint16_t)buf[0]<<8)|buf[1]);  //should be ay actual stored value from buffer
+			 float accvalY =LPF2pApply_2((float)(temp)*accel_scale-accoffsety);
 
-			PRINTF("\n\r FIFO: temp: %d res: %u buf: %u accval: %f\n\r",temp,res,buf,accval);
-			FIFO_flag = 0;
+			PRINTF("\n\r FIFO: temp: %u res: %u buf: %u accval: %f\n\r",temp,res,buf,accvalY);
+			//FIFO_flag = 0;
 		}
 		if(BufferAccel_flag == 1)
 	  {
