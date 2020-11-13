@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\sx1276mb1las\NUCLEO_CUBE_LORA.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\sx1276mb1las\NUCLEO_CUBE_LORA.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Nov 02 15:04:51 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Nov 12 19:57:24 2020
 <BR><P>
-<H3>Maximum Stack Usage =        828 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        836 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; lora_send &rArr; send_data &rArr; Send &rArr; LORA_send &rArr; LoRaMacMcpsRequest &rArr; Send &rArr; ScheduleTx &rArr; SendFrameOnChannel &rArr; RegionTxConfig &rArr; RegionUS915TxConfig &rArr; TraceSend &rArr; CircularQueue_Add &rArr; __aeabi_uidivmod
 <P>
@@ -749,6 +749,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;my_strtod
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPS_parse
+<LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[26f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
 </UL>
 
@@ -834,6 +835,7 @@ Global Symbols
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF2pSetCutoffFreq_3
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF2pSetCutoffFreq_2
 <LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF2pSetCutoffFreq_1
+<LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CalYaw
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AHRSupdate
 <LI><a href="#[20d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Send
@@ -2952,6 +2954,7 @@ Global Symbols
 <LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_ReadByte
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Init
+<LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[1f6]"></a>MPU_Read_Len</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, mpu9250.o(i.MPU_Read_Len))
@@ -5581,14 +5584,17 @@ Global Symbols
 <LI><a href="#[2a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_send
 </UL>
 
-<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 432 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 828<LI>Call Chain = main &rArr; lora_send &rArr; send_data &rArr; Send &rArr; LORA_send &rArr; LoRaMacMcpsRequest &rArr; Send &rArr; ScheduleTx &rArr; SendFrameOnChannel &rArr; RegionTxConfig &rArr; RegionUS915TxConfig &rArr; TraceSend &rArr; CircularQueue_Add &rArr; __aeabi_uidivmod
+<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 460 bytes, Stack size 16 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 836<LI>Call Chain = main &rArr; lora_send &rArr; send_data &rArr; Send &rArr; LORA_send &rArr; LoRaMacMcpsRequest &rArr; Send &rArr; ScheduleTx &rArr; SendFrameOnChannel &rArr; RegionTxConfig &rArr; RegionUS915TxConfig &rArr; TraceSend &rArr; CircularQueue_Add &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_Init
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPS_init
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPS_Run
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TraceSend
 <LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Byte
+<LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Byte
 <LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Init
 <LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_GPIO_MODE_Config
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init

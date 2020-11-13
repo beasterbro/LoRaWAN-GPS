@@ -86,11 +86,11 @@ uint32_t GPS_ALARM=0;
 
 extern uint32_t set_sgm;
 extern int in1;
-extern MPU_FIFO_RW_REG;
 extern uint32_t s_gm;
 extern uint8_t Restart;
 
 int ALARM = 0;
+
 /*!
  * LoRaWAN Adaptive Data Rate
  * @note Please note that when ADR is enabled the end-device should be static
@@ -354,7 +354,7 @@ int main( void )
 		{
 			TimeSecond++;
 			PRINTF("One Second %d \n\r",TimeSecond);
-			RecordAccel(1);
+			//RecordAccel(1);
 			oneSecTimer = 0;
 		}
 		/* Handle UART commands */
@@ -370,14 +370,7 @@ int main( void )
 					in1 = 0;
 
 				}
-    uint8_t buf[6],res;  
-				short temp;
-	res=MPU_Read_Byte(MPU9250_ADDR,MPU_FIFO_RW_REG);
-						temp=(((uint16_t)buf[0]<<8)|buf[1]);  
-												float accval = temp;
-
-
-			PRINTF("x1: %f \n\r",accval);
+				
 			//	for(int V =0; V < size; V++){
 			//PRINTF("%u\n",AppData.Buff[V]);
 			//	}
@@ -387,6 +380,14 @@ int main( void )
 		
 				
 		}
+		uint8_t buf[6],res;  
+		short temp;//TODO: Reading from fifo here for now
+		res=MPU_Read_Byte(MPU9250_ADDR,MPU_FIFO_RW_REG);
+		temp=(((uint16_t)buf[0]<<8)|buf[1]);  
+		float accval = temp;
+
+
+			PRINTF("\n\r FIFO: %f \n\r",accval);
 		if(BufferAccel_flag == 1)
 	  {
 			
@@ -654,7 +655,7 @@ static void RecordAccel( time_val)//TODO: Here is where the high level send func
 		//(Roll1*100)>>8
 		 // Pitch: signed 16 bits integer, MSB, unit: °
     //Pitch: (bytes[13]<<24>>16 | bytes[14]) / 100
-			 PRINTF("\n\Yaw=%d \n\r",(int)(Yaw1*100)>>8);
+			 PRINTF("\n\rYaw=%d \n\r",(int)(Yaw1*100)>>8);
 	 PRINTF("\n\rRoll=%d \n\r",(int)(Roll1*100)>>8);
 	 PRINTF("\n\rPitch=%d\n\r",(int)(Pitch1*100)>>8);//TODO store accel info from this var
 
