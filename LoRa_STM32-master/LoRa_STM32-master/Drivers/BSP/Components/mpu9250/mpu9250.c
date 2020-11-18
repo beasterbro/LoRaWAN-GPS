@@ -43,18 +43,19 @@ short gyrooldx,gyrooldy,gyrooldz;
 uint8_t My_MPU_Init(void)
 {
 
-    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X80);
-    HAL_Delay(100);
-    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);
-	  MPU_Set_Accel_Fsr(2);
+    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X80);//Reset power
+    HAL_Delay(100);//Wait for it to finish
+    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//Set the clock to internal 20Mhz
+	  MPU_Write_Byte(MPU9250_ADDR,MPU_ACCEL_CFG_REG,0X18);//Set ACCEL scale to +- 16 g
+		//set's scale to +- 8g (default 2)
 	  MPU_Set_Rate(4);
 	  MPU_Write_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);//TODO: Maybe look at later
   	MPU_Write_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//Allows IC2 Bypass and sets INT pin as active high
 	
-		MPU_Write_Byte(MPU9250_ADDR,MPU_FIFO_EN_REG,0X08);
 		MPU_Write_Byte(MPU9250_ADDR,0x6B,0X00);//Wake
-		MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X40);
+		MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X40);//Enable FIFO in control register
     MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X07);// Accel w/ power and Gyro no power
+		MPU_Write_Byte(MPU9250_ADDR,MPU_FIFO_EN_REG,0X08);//Enabling fifo for Accel
 	
 	  LPF2pSetCutoffFreq_1(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);		//30Hz
     LPF2pSetCutoffFreq_2(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
@@ -64,6 +65,10 @@ uint8_t My_MPU_Init(void)
     LPF2pSetCutoffFreq_6(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
 	
 	  return 0;
+}
+
+uint8_t readFifo(void){
+	
 }
 
 uint8_t MPU_Init(void)
