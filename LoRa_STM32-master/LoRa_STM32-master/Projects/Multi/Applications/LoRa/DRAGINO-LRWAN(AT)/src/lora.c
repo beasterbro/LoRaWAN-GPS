@@ -1171,7 +1171,6 @@ void lora_state_INT(void)
 
 	if(in1 == 1)
 	{
-		PRINTF("Click");
 		//TODO: This is where alarm mode is
 		GPS_ALARM =1;
 		Alarm_LED = 0;

@@ -40,8 +40,7 @@ short accoldx,accoldy,accoldz;
 short magoldx,magoldy,magoldz;
 short gyrooldx,gyrooldy,gyrooldz;
 
-int DEFAULT_RATE = 100;
-int HS_RATE = 1000;//A high speed rate to read from the FIFO quickly
+
 
 uint8_t My_MPU_Init(void)
 {

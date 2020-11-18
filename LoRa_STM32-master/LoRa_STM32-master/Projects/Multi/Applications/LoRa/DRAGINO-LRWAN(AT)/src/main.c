@@ -454,7 +454,6 @@ static void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *i
 {
 	meanDiv = *index;
 	if(*index >= 499 || axArr[*index] == NULL){
-		PRINTF("Max x y z: %f %f %f i: %d\n\r",axMax,ayMax,azMax,iterator);
 		*index = 0;
 		PerformCalculation_flag = 0;  
 		axMax = 0;
@@ -472,6 +471,7 @@ static void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *i
 			azMax = azArr[*index];
 		}
 	}
+		PRINTF("Max x y z: %f %f %f i: %d\n\r",axMax,ayMax,azMax,iterator);
 }
 
 /* 
@@ -514,6 +514,7 @@ static void RecordAccel()//A function used to take several measurements of accel
 	PRINTF("x1: %f \n\r",xval);
 	PRINTF("y1: %f \n\r",yval);
 	PRINTF("z1: %f \n\r",zval);
+	MPU_Set_Rate(DEFAULT_RATE);//Reset rate here to solve print bugs hopefully
 }
 
 static void Send( void )//TODO: Here is where the high level send function is
