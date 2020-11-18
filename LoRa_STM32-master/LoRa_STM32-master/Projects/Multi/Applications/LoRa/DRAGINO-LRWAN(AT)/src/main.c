@@ -265,39 +265,39 @@ void CalYaw(float *yaw,short *turns);
 void CalibrateToZero(void);
  
  
- 	float pitch,roll,yaw;
-	float pitch_sum,roll_sum,yaw_sum;
-	short igx,igy,igz;
-	short imx,imy,imz;
-	float gx,gy,gz;
-	float mx,my,mz;
+float pitch,roll,yaw;
+float pitch_sum,roll_sum,yaw_sum;
+short igx,igy,igz;
+short imx,imy,imz;
+float gx,gy,gz;
+float mx,my,mz;
 	
-	float gx_old,gy_old,gz_old;
-	float ax_old,ay_old,az_old;
-	float mx_old,my_old,mz_old;
+float gx_old,gy_old,gz_old;
+float ax_old,ay_old,az_old;
+float mx_old,my_old,mz_old;
+uint8_t flag_2=1;	
 	
-	uint8_t flag_2=1;	
-	void RecordAccel();
-	void BufferAccelData();
-  void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *index);
-	void ResetAccelBuff();
+void RecordAccel();
+void BufferAccelData();
+void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *index);
+void ResetAccelBuff();
 
-  int BufferAccel_flag = 0;
-	int PerformCalculation_flag = 0;
-	int finishedCalc_flag = 0;
-	int global_time = 0;
-  int res = 0;
-  int temp_time = 0;
-  int Pitch_tot = 0;
-	int buff_size = 101;
-	int TimeSecond = 0;
-	int oneSecTimer = 0;
-	float axArr[500],ayArr[500],azArr[500];
-	int startTime = -1;
-	int iterator = 0;
-	int FIFO_flag;
-	float axTotal,ayTotal,azTotal;
-
+int BufferAccel_flag = 0;
+int PerformCalculation_flag = 0;
+int finishedCalc_flag = 0;
+int global_time = 0;
+int res = 0;
+int temp_time = 0;
+int Pitch_tot = 0;
+int buff_size = 101;
+int TimeSecond = 0;
+int oneSecTimer = 0;
+float axArr[500],ayArr[500],azArr[500];
+int startTime = -1;
+int iterator = 0;
+int FIFO_flag;
+float axTotal,ayTotal,azTotal;
+int meanDiv = 1;
 /* Private functions ---------------------------------------------------------*/
 
 /**
@@ -398,7 +398,7 @@ int main( void )
 		{
 			iterator++;
 			PerformCalculation(axArr,ayArr,azArr,&iterator);//The PerformCalculation_flag is reset in this method
-			PRINTF("Total x y z: %f %f %f i: %d\n\r",axTotal/sizeof &axTotal*10,ayTotal/sizeof &ayTotal*10,azTotal/sizeof &azTotal*10,iterator);
+			PRINTF("Total x y z: %f %f %f i: %d\n\r",axTotal/meanDiv,ayTotal/meanDiv,azTotal/meanDiv,iterator);
 		}
 			
 		if(s_gm == 1)
@@ -453,14 +453,17 @@ A Placeholder function for the real function that will perform an oporation on t
 */
 static void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *index)
 {
+	meanDiv = *index;
 	if(*index >= 499 || axArr[*index] == NULL){
 		PRINTF("Reset iter\n\r");
 		*index = 0;
 		PerformCalculation_flag = 0;  
 	}
-	axTotal += axArr[*index];
-	ayTotal += ayArr[*index];
-	azTotal += azArr[*index];
+	else{
+		axTotal += axArr[*index];
+		ayTotal += ayArr[*index];
+		azTotal += azArr[*index];
+	}
 }
 
 /* 
