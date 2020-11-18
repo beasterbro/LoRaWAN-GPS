@@ -46,7 +46,6 @@ uint8_t My_MPU_Init(void)
     MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X80);//Reset power
     HAL_Delay(100);//Wait for it to finish
     MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//Set the clock to internal 20Mhz
-	  MPU_Write_Byte(MPU9250_ADDR,MPU_ACCEL_CFG_REG,0X18);//Set ACCEL scale to +- 16 g
 		//set's scale to +- 8g (default 2)
 	  MPU_Set_Rate(4);
 	  MPU_Write_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);//TODO: Maybe look at later
@@ -56,7 +55,8 @@ uint8_t My_MPU_Init(void)
 		MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X40);//Enable FIFO in control register
     MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X07);// Accel w/ power and Gyro no power
 		MPU_Write_Byte(MPU9250_ADDR,MPU_FIFO_EN_REG,0X08);//Enabling fifo for Accel
-	
+	  MPU_Write_Byte(MPU9250_ADDR,MPU_ACCEL_CFG_REG,0X18);//Set ACCEL scale to +- 16 g
+
 	  LPF2pSetCutoffFreq_1(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);		//30Hz
     LPF2pSetCutoffFreq_2(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
     LPF2pSetCutoffFreq_3(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
@@ -67,7 +67,7 @@ uint8_t My_MPU_Init(void)
 	  return 0;
 }
 
-uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
+uint8_t readFifo(float *axArr[],float *ayArr[],float *azArr[]){
 	uint8_t buffer[6],res;  
 	
 	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_CNTH_REG,2,buffer);//Read the count of the FIFO
@@ -95,9 +95,9 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 			tmpx=LPF2pApply_1((float)(ax)*accel_scale-accoffsetx);
 			tmpy=LPF2pApply_2((float)(ay)*accel_scale-accoffsety);
 			tmpz=LPF2pApply_3((float)(az)*accel_scale-accoffsetz);
-			axArr[i] = tmpx;
-			ayArr[i] = tmpy;
-			azArr[i] = tmpz;
+			*axArr[i] = tmpx;
+			*ayArr[i] = tmpy;
+			*azArr[i] = tmpz;
 			
 		}
   }

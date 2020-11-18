@@ -279,7 +279,7 @@ void CalibrateToZero(void);
 	uint8_t flag_2=1;	
 	void RecordAccel();
 	void BufferAccelData();
-  void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *index);
+  void PerformCalculation(float *axArr[], float *ayArr[],float *azArr[],int *index);
 	void ResetAccelBuff();
 
   int BufferAccel_flag = 0;
@@ -295,7 +295,7 @@ void CalibrateToZero(void);
 	float axArr[500],ayArr[500],azArr[500];
 	int result[2] ;
 	int startTime = -1;
-	int *iterator = 0;
+	int iterator = 0;
 	int FIFO_flag;
 	float axTotal;
 
@@ -377,6 +377,7 @@ int main( void )
 			PRINTF("Click");
 			//MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);//Reset and Re enable FIFO
 			 RecordAccel();
+			
 			in1 = 0;
 			HAL_Delay(200);	
 			if(in1== 1){
@@ -396,8 +397,8 @@ int main( void )
 
 		if(PerformCalculation_flag == 1)
 		{
-			*iterator+=1;
-			PerformCalculation(axArr,ayArr,azArr,iterator);
+			iterator+=1;
+			PerformCalculation(&axArr,&ayArr,&azArr,&iterator);
 			PRINTF("Total: %f",axTotal/500);
 		}
 			if(finishedCalc_flag == 1)//TODO: This is done flag does not work

@@ -1167,11 +1167,12 @@ void lora_state_INT(void)
 
   
 	//HAL_Delay(3000);//TODO: 3 sec delay is HAL_Delay
-	in1=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_14);//TODO: 3 sec delay is HAL_Delay
+	in1=HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_14);
 
 	if(in1 == 1)
 	{
-		//PRINTF("Enter\n\r");//TODO: This is where alarm mode is
+		PRINTF("Click");
+		//TODO: This is where alarm mode is
 		GPS_ALARM =1;
 		Alarm_LED = 0;
 		State = STATE_GPS_SEND;
