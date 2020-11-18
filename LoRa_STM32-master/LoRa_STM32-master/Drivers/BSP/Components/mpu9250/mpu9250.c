@@ -55,7 +55,7 @@ uint8_t My_MPU_Init(void)
 		MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X40);//Enable FIFO in control register
     MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X07);// Accel w/ power and Gyro no power
 		MPU_Write_Byte(MPU9250_ADDR,MPU_FIFO_EN_REG,0X08);//Enabling fifo for Accel
-	  MPU_Write_Byte(MPU9250_ADDR,MPU_ACCEL_CFG_REG,0X18);//Set ACCEL scale to +- 16 g
+	  MPU_Write_Byte(MPU9250_ADDR,MPU_ACCEL_CFG_REG,0X08);//Set ACCEL scale to +- 16 g (default is 08)
 
 	  LPF2pSetCutoffFreq_1(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);		//30Hz
     LPF2pSetCutoffFreq_2(IMU_SAMPLE_RATE,IMU_FILTER_CUTOFF_FREQ);
@@ -67,7 +67,7 @@ uint8_t My_MPU_Init(void)
 	  return 0;
 }
 
-uint8_t readFifo(float *axArr[],float *ayArr[],float *azArr[]){
+uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 	uint8_t buffer[6],res;  
 	
 	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_CNTH_REG,2,buffer);//Read the count of the FIFO
@@ -78,15 +78,16 @@ uint8_t readFifo(float *axArr[],float *ayArr[],float *azArr[]){
 	short fifoFrameSize = 6 ;
 	MPU_Set_Rate(1000);//Increase rate for high speed data read out
 
-	for (size_t i=0; i < fifoSize/fifoFrameSize && (i < (sizeof *axArr/ sizeof axArr[0])); i++) {//While we have not read through the whole fifo
+	size_t i=0;
+	for (; i < fifoSize/fifoFrameSize && (i < 499); i++) {//While we have not read through the whole fifo
 		res = 	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,fifoFrameSize,buffer);
     // grab the data from the MPU9250
 		if (res < 0) {
+			PRINTF("Early Return");
       return -1;
 		}
 		
-		if(res==0)
-		{
+
 			ay=(((uint16_t)buffer[0]<<8)|buffer[1]);  
 			ax=(((uint16_t)buffer[2]<<8)|buffer[3]);  
 			az=(((uint16_t)buffer[4]<<8)|buffer[5]);
@@ -95,12 +96,12 @@ uint8_t readFifo(float *axArr[],float *ayArr[],float *azArr[]){
 			tmpx=LPF2pApply_1((float)(ax)*accel_scale-accoffsetx);
 			tmpy=LPF2pApply_2((float)(ay)*accel_scale-accoffsety);
 			tmpz=LPF2pApply_3((float)(az)*accel_scale-accoffsetz);
-			*axArr[i] = tmpx;
-			*ayArr[i] = tmpy;
-			*azArr[i] = tmpz;
-			
-		}
+			axArr[i] = tmpx;
+			ayArr[i] = tmpy;
+			azArr[i] = tmpz;
   }
+	PRINTF("Done With Loop %d i is: %zu",fifoSize/fifoFrameSize,i);
+	MPU_Set_Rate(100);
 	return 0;
 } 
 
