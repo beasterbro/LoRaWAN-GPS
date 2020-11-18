@@ -40,6 +40,9 @@ short accoldx,accoldy,accoldz;
 short magoldx,magoldy,magoldz;
 short gyrooldx,gyrooldy,gyrooldz;
 
+int DEFAULT_RATE = 100;
+int HS_RATE = 1000;//A high speed rate to read from the FIFO quickly
+
 uint8_t My_MPU_Init(void)
 {
 
@@ -47,7 +50,7 @@ uint8_t My_MPU_Init(void)
     HAL_Delay(100);//Wait for it to finish
     MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//Set the clock to internal 20Mhz
 		//set's scale to +- 8g (default 2)
-	  MPU_Set_Rate(100);
+	  MPU_Set_Rate(DEFAULT_RATE);
 	  MPU_Write_Byte(MPU9250_ADDR,MPU_INT_EN_REG,0X00);//TODO: Maybe look at later
   	MPU_Write_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//Allows IC2 Bypass and sets INT pin as active high
 	
@@ -76,7 +79,8 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 	short ax,ay,az;
 	float tmpx,tmpy,tmpz;
 	short fifoFrameSize = 6 ;
-	MPU_Set_Rate(1000);//Increase rate for high speed data read out
+	
+	MPU_Set_Rate(HS_RATE);//Increase rate for high speed data read out
 
 	size_t i=0;
 	for (; i < fifoSize/fifoFrameSize && (i < 499); i++) {//While we have not read through the whole fifo
@@ -101,7 +105,7 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 			azArr[i] = tmpz;
   }
 	PRINTF("Done With Loop FIFO: %d len is: %zu \n\r",fifoSize,fifoSize/fifoFrameSize);
-	MPU_Set_Rate(100);
+	MPU_Set_Rate(DEFAULT_RATE);
 	return 0;
 } 
 

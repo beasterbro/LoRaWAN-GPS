@@ -296,7 +296,7 @@ float axArr[500],ayArr[500],azArr[500];
 int startTime = -1;
 int iterator = 0;
 int FIFO_flag;
-float axTotal,ayTotal,azTotal;
+float axMax,ayMax,azMax;
 int meanDiv = 1;
 /* Private functions ---------------------------------------------------------*/
 
@@ -398,7 +398,6 @@ int main( void )
 		{
 			iterator++;
 			PerformCalculation(axArr,ayArr,azArr,&iterator);//The PerformCalculation_flag is reset in this method
-			PRINTF("Total x y z: %f %f %f i: %d\n\r",axTotal/meanDiv,ayTotal/meanDiv,azTotal/meanDiv,iterator);
 		}
 			
 		if(s_gm == 1)
@@ -455,14 +454,23 @@ static void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *i
 {
 	meanDiv = *index;
 	if(*index >= 499 || axArr[*index] == NULL){
-		PRINTF("Reset iter\n\r");
+		PRINTF("Max x y z: %f %f %f i: %d\n\r",axMax,ayMax,azMax,iterator);
 		*index = 0;
 		PerformCalculation_flag = 0;  
+		axMax = 0;
+		ayMax = 0;
+		azMax = 0;
 	}
 	else{
-		axTotal += axArr[*index];
-		ayTotal += ayArr[*index];
-		azTotal += azArr[*index];
+		if(axArr[*index] > axMax){
+			axMax = axArr[*index];
+		}
+		if(ayArr[*index] > ayMax){
+			ayMax = ayArr[*index];
+		}
+		if(azArr[*index] > azMax){
+			azMax = azArr[*index];
+		}
 	}
 }
 
