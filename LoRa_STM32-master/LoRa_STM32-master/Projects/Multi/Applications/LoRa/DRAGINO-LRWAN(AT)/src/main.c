@@ -279,7 +279,7 @@ void CalibrateToZero(void);
 	uint8_t flag_2=1;	
 	void RecordAccel();
 	void BufferAccelData();
-  void PerformCalculation(float axArr[], float ayArr[],float azArr[],int index);
+  void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *index);
 	void ResetAccelBuff();
 
   int BufferAccel_flag = 0;
@@ -296,7 +296,7 @@ void CalibrateToZero(void);
 	int startTime = -1;
 	int iterator = 0;
 	int FIFO_flag;
-	float axTotal;
+	float axTotal,ayTotal,azTotal;
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -396,9 +396,9 @@ int main( void )
 
 		if(PerformCalculation_flag == 1)
 		{
-			iterator+=1;
-			PerformCalculation(axArr,ayArr,azArr,iterator);//The flag is reset in this method
-			PRINTF("Total: %f",axTotal/500);
+			iterator++;
+			PerformCalculation(axArr,ayArr,azArr,&iterator);//The PerformCalculation_flag is reset in this method
+			PRINTF("Total x y z: %f %f %f i: %d",axTotal/sizeof &axTotal*10,ayTotal/sizeof &ayTotal*10,azTotal/sizeof &azTotal*10,iterator);
 		}
 			
 		if(s_gm == 1)
@@ -451,13 +451,16 @@ static void LORA_HasJoined( void )
 /*
 A Placeholder function for the real function that will perform an oporation on the data and then output some info to send to the server
 */
-static void PerformCalculation(float axArr[], float ayArr[],float azArr[],int index)
+static void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *index)
 {
-	axTotal += azArr[index];
-	if(index >= 499){
-	index = 0;
-	PerformCalculation_flag = 0;  
+	if(*index >= 499 || axArr[*index] == NULL){
+		PRINTF("Reset iter");
+		*index = 0;
+		PerformCalculation_flag = 0;  
 	}
+	axTotal += axArr[*index];
+	ayTotal += ayArr[*index];
+	azTotal += azArr[*index];
 }
 
 /* 
