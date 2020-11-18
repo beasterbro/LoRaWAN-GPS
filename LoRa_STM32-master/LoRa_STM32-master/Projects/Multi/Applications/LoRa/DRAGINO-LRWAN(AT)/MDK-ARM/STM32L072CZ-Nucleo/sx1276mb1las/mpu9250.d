@@ -57,3 +57,4 @@
 .\sx1276mb1las\mpu9250.o: ..\..\..\..\..\..\..\Drivers\BSP\Components\mpu9250\mpu9250.h
 .\sx1276mb1las\mpu9250.o: ..\..\..\..\..\..\..\Drivers\BSP\Components\filter\filter.h
 .\sx1276mb1las\mpu9250.o: ..\..\..\..\..\..\..\Drivers\BSP\Components\flash_eraseprogram\flash_eraseprogram.h
+.\sx1276mb1las\mpu9250.o: ..\..\inc\bsp.h

@@ -171,9 +171,10 @@ Maintainer: Miguel Luis and Gregory Cristian
 #define accel_scale 	(16.0/65536.0)												//G单位 TODO: this is what converts it into G's
 #define mag_scale 	  (9600.0/16384.0/100.0)							//高斯单位
 
-int DEFAULT_RATE = 200;
-int HS_RATE = 1000;//A high speed rate to read from the FIFO quickly
+#define DEFAULT_RATE 200
+#define HS_RATE 1000//A high speed rate to read from the FIFO quickly
 
+void AHRSupdate(float gx, float gy, float gz, float *ax, float *ay, float *az, float mx, float my, float mz,float *roll,float *pitch,float *yaw);
 uint8_t MPU_Init(void);
 uint8_t My_MPU_Init(void);
 uint8_t readFifo(float axArr[],float ayArr[],float azArr[]);

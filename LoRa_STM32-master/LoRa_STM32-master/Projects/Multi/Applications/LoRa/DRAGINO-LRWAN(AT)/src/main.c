@@ -258,8 +258,8 @@ static float k30=0.0f,k31=0.0f,k32=0.0f,k33=0.0f;
 static float k40=0.0f,k41=0.0f,k42=0.0f,k43=0.0f;
 
 
-float invSqrt(float number);
-void AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz,float *roll,float *pitch,float *yaw);
+//float invSqrt(float number);
+//void AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz,float *roll,float *pitch,float *yaw);
 void CountTurns(float *newdata,float *olddata,short *turns);
 void CalYaw(float *yaw,short *turns);
 void CalibrateToZero(void);
@@ -454,8 +454,10 @@ static void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *i
 {
 	meanDiv = *index;
 	if(*index >= 499 || axArr[*index] == NULL){
+		PRINTF("Max x y z: %f %f %f i: %d\n\r",axMax,ayMax,azMax,iterator);
 		*index = 0;
 		PerformCalculation_flag = 0;  
+		
 		axMax = 0;
 		ayMax = 0;
 		azMax = 0;
@@ -471,7 +473,6 @@ static void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *i
 			azMax = azArr[*index];
 		}
 	}
-		PRINTF("Max x y z: %f %f %f i: %d\n\r",axMax,ayMax,azMax,iterator);
 }
 
 /* 
@@ -496,13 +497,13 @@ static void RecordAccel()//A function used to take several measurements of accel
 		for(int H=0; H<10; H++)
 		{
 			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
-			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+			AHRSupdate(0,0,0,&ax,&ay,&az,0,0,0,&roll,&pitch,&yaw);
 
 		}
 			for(int H=0; H<30; H++)
 		{
 			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
-			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+			AHRSupdate(0,0,0,&ax,&ay,&az,0,0,0,&roll,&pitch,&yaw);
 		}
 	
 	MPU_Get_Accel(&iax1,&iay1,&iaz1,&ax1,&ay1,&az1);
@@ -561,7 +562,7 @@ static void Send( void )//TODO: Here is where the high level send function is
 //			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
 			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
 //			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
-			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+			AHRSupdate(0,0,0,&ax,&ay,&az,0,0,0,&roll,&pitch,&yaw);
 			olddata=newdata;
 			newdata=yaw;
 			CountTurns(&newdata,&olddata,&turns);
@@ -575,7 +576,7 @@ static void Send( void )//TODO: Here is where the high level send function is
 //			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
 			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
 //			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
-			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+			AHRSupdate(0,0,0,&ax,&ay,&az,0,0,0,&roll,&pitch,&yaw);
 			olddata=newdata;
 			newdata=yaw;
 			CountTurns(&newdata,&olddata,&turns);
@@ -1271,7 +1272,7 @@ void send_ALARM_data(void)
 *
 *
 */
-float invSqrt(float number)
+/*float invSqrt(float number)
 {
 	long i;
 	float x,y;
@@ -1284,7 +1285,7 @@ float invSqrt(float number)
 	y=*((float *)&i);
 	y=y*(f-(x*y*y));
 	return y;
-}
+}*/
 
 
 /*
@@ -1292,7 +1293,7 @@ float invSqrt(float number)
 *
 *
 */
-void AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz,float *roll,float *pitch,float *yaw)
+/*void AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz,float *roll,float *pitch,float *yaw)
 {
 	if(flag_2==1)
   {
@@ -1447,7 +1448,7 @@ void AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, floa
 					 *pitch = -asin(-2 * q1 * q3 + 2 * q0 * q2)* 57.3;	// pitch
 					 *roll  = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2 * q2 + 1)* 57.3;	// roll
 					 *yaw   = atan2(2*(q1*q2 + q0*q3),q0*q0+q1*q1-q2*q2-q3*q3) * 57.3;	//yaw
-}
+}*/
 
 /*
 *@功能：计算水平方向转的圈数
@@ -1494,7 +1495,7 @@ void CalibrateToZero(void)
 			MPU_Get_Gyro(&igx,&igy,&igz,&gx,&gy,&gz);
 			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
 			MPU_Get_Mag(&imx,&imy,&imz,&mx,&my,&mz);
-			AHRSupdate(gx,gy,gz,ax,ay,az,mx,my,mz,&roll,&pitch,&yaw);				
+			AHRSupdate(gx,gy,gz,&ax,&ay,&az,mx,my,mz,&roll,&pitch,&yaw);				
 //			delay_us(6430);
 				HAL_Delay(7);
 				if (t>=100)
