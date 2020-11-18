@@ -67,9 +67,42 @@ uint8_t My_MPU_Init(void)
 	  return 0;
 }
 
-uint8_t readFifo(void){
+uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
+	uint8_t buffer[6],res;  
 	
-}
+	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_CNTH_REG,2,buffer);//Read the count of the FIFO
+	
+	uint16_t fifoSize = (((uint16_t) (buffer[0]&0x0F)) <<8) + (((uint16_t) buffer[1]));//determine the total size of the fifo
+	short ax,ay,az;
+	float tmpx,tmpy,tmpz;
+	short fifoFrameSize = 6 ;
+	MPU_Set_Rate(1000);//Increase rate for high speed data read out
+
+	for (size_t i=0; i < fifoSize/fifoFrameSize && (i < (sizeof *axArr/ sizeof axArr[0])); i++) {//While we have not read through the whole fifo
+		res = 	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,fifoFrameSize,buffer);
+    // grab the data from the MPU9250
+		if (res < 0) {
+      return -1;
+		}
+		
+		if(res==0)
+		{
+			ay=(((uint16_t)buffer[0]<<8)|buffer[1]);  
+			ax=(((uint16_t)buffer[2]<<8)|buffer[3]);  
+			az=(((uint16_t)buffer[4]<<8)|buffer[5]);
+			ax=-ax;
+			
+			tmpx=LPF2pApply_1((float)(ax)*accel_scale-accoffsetx);
+			tmpy=LPF2pApply_2((float)(ay)*accel_scale-accoffsety);
+			tmpz=LPF2pApply_3((float)(az)*accel_scale-accoffsetz);
+			axArr[i] = tmpx;
+			ayArr[i] = tmpy;
+			azArr[i] = tmpz;
+			
+		}
+  }
+	return 0;
+} 
 
 uint8_t MPU_Init(void)
 {

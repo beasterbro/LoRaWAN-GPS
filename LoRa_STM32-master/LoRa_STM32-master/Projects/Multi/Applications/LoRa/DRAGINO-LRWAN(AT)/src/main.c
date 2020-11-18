@@ -279,7 +279,7 @@ void CalibrateToZero(void);
 	uint8_t flag_2=1;	
 	void RecordAccel();
 	void BufferAccelData();
-	void PerformCalculation();
+  void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *index);
 	void ResetAccelBuff();
 
   int BufferAccel_flag = 0;
@@ -289,16 +289,15 @@ void CalibrateToZero(void);
   int res = 0;
   int temp_time = 0;
   int Pitch_tot = 0;
-int buff_size = 101;
+	int buff_size = 101;
 	int TimeSecond = 0;
 	int oneSecTimer = 0;
-	int PitchBuff [1001];//These should be equal to buff_size, but I am not allowed to set it directly
-	int RollBuff [1001];
-	int Roll_tot = 0;//TODO: Gotta use values no instantiated in main to get proper returns
+	float axArr[500],ayArr[500],azArr[500];
 	int result[2] ;
 	int startTime = -1;
-	int iterator = 0;
+	int *iterator = 0;
 	int FIFO_flag;
+	float axTotal;
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -375,82 +374,31 @@ int main( void )
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
-			  PRINTF("Click");
-				MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);//Reset and Re enable FIFO
-			  in1 = 0;
-			  HAL_Delay(200);
-				if(in1== 1){
+			PRINTF("Click");
+			//MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);//Reset and Re enable FIFO
+			 RecordAccel();
+			in1 = 0;
+			HAL_Delay(200);	
+			if(in1== 1){
 					HAL_Delay(10);
-					BufferAccel_flag = 1;
-			    PRINTF("Buffer Flag on\n\r");
+					FIFO_flag = 1;
+			    PRINTF("FIFO Flag on\n\r");
 					in1 = 0;
 
-				}
-		
-				
+			}
 		}
 		
 		if(FIFO_flag){
-			
-		    uint8_t buf[6],countL,buf3[6];  
-		    short temp, count,ax,ay,az;//TODO: Reading from fifo here for now
-				//res=MPU_Read_Len(MPU9250_ADDR,MPU_ACCEL_XOUTH_REG,6,buf);//Buff stores the real info
-        countL=MPU_Read_Byte(MPU9250_ADDR,MPU_FIFO_CNTL_REG);
-			  RecordAccel(1);
-			  //MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,6,buf);//This is a status code value
-				/*ay=(((uint16_t)buf[0]<<8)|buf[1]);  
-				ax=(((uint16_t)buf[2]<<8)|buf[3]);  
-				az=(((uint16_t)buf[4]<<8)|buf[5]);
-				temp=(((uint16_t)buf[0]<<8)|buf[1]);  //should be ay actual stored value from buffer
-			  float accvalX =LPF2pApply_1((float)(ax)*accel_scale-accoffsetx);
-		 	  float accvalY =LPF2pApply_2((float)(ay)*accel_scale-accoffsety);
-			  float accvalZ =LPF2pApply_3((float)(az)*accel_scale-accoffsetz); */
-
-
-        //PRINTF("\n\r FIFO: count: %u accvalx: %f accvaly: %f accvalz: %f \n\r",countL,accvalX,accvalY,accvalZ);
-			  //FIFO_flag = 0;
-			  PRINTF("FIFO Count: %u \n\r",countL);
+			readFifo(axArr,ayArr,azArr);
+			PerformCalculation_flag = 1;
+			FIFO_flag = 0;
 		}
-		if(BufferAccel_flag == 1)
-	  {
-			
-			if(startTime == -1 )
-			{
-				PRINTF("Timer Started At: %d \n\r",TimeSecond);
-					startTime = TimeSecond;
 
-			}
-			int currentTime = TimeSecond;
-			
-		  if((currentTime - startTime) <= 5 && iterator < buff_size)
-	    {
-			  RecordAccel(iterator);
-				iterator++;
-		  }
-			else
-			{
-				ResetAccelBuff();
-			}
-		
-		}
 		if(PerformCalculation_flag == 1)
 		{
-	    if( i < buff_size-1)//TODO: This section of code performs the calculation instead of the method to lower complexity
-	    {
-				i++;
-		    Pitch_tot += PitchBuff[i];
-		    Roll_tot += RollBuff[i];
-	    }
-			else
-			{
-				result[0] = Pitch_tot/buff_size;
-				result[1] = Roll_tot/buff_size;
-				i = 0;
-				PerformCalculation_flag = 0;
-				finishedCalc_flag = 1;
-				PRINTF("Finished Calc Flash\n\r");
-			}
-	       
+			*iterator+=1;
+			PerformCalculation(axArr,ayArr,azArr,iterator);
+			PRINTF("Total: %f",axTotal/500);
 		}
 			if(finishedCalc_flag == 1)//TODO: This is done flag does not work
 			{
@@ -505,43 +453,24 @@ static void LORA_HasJoined( void )
 	AT_PRINTF("Please using AT+SEND or AT+SENDB to send you data!\n\r");
 	#endif
 }
-static void ResetAccelBuff()
-{
-				startTime = -1;
-				iterator = 0;
-				BufferAccel_flag = 0;
-				PerformCalculation_flag = 1;
-				PRINTF("Finished Record Flash\n\r");
-}
+
 /*
 A Placeholder function for the real function that will perform an oporation on the data and then output some info to send to the server
 */
-static void PerformCalculation(int PitchBuff[], int RollBuff[],int length)
+static void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *index)
 {
-	int Pitch_tot = 0;
-	int Roll_tot = 0;
-	for(int i =0; i < length-1;i++)
-	{
-		Pitch_tot += PitchBuff[i];
-		Roll_tot += RollBuff[i];
+	axTotal += axArr[*index];
+	if(*index >= 499){
+	*index = 0;
+	PerformCalculation_flag = 0;  
 	}
-	result[0] = Pitch_tot/length;
-	result[1] = Roll_tot/length;
-	
 }
 
 /* 
 A function made to store 5 seconds worth of acceleration data inside of the inputted arrays
 After this function runs each of the inputted arrays should be populated with Pitch and Roll data respectivly
 */
-static void BufferAccelData(int PitchBuff[], int RollBuff[], int length)
-	{
-	int time = 0;
-		while(time < 5 * TimeSecond && time < length)
-		{
-			RecordAccel(PitchBuff[time],RollBuff[time]);
-		}
-	}
+
 /*
 A private function to record acceleration data and store it
 Ideally this is to be used instead of send when gps is not available
@@ -558,7 +487,6 @@ static void RecordAccel()//TODO: Here is where the high level send function is
 	float zval = az1;
 
 	PRINTF("x1: %f \n\r",xval);
-	
 	PRINTF("y1: %f \n\r",yval);
 	PRINTF("z1: %f \n\r",zval);
 }
