@@ -82,7 +82,8 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 	
 	MPU_Set_Rate(HS_RATE);//Increase rate for high speed data read out
 
-	size_t i=0;
+	
+	size_t i=0;//Iterator for loop
 	for (; i < fifoSize/fifoFrameSize && (i < 499); i++) {//While we have not read through the whole fifo
 		res = 	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,fifoFrameSize,buffer);
     // grab the data from the MPU9250
@@ -91,7 +92,36 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
       return -1;
 		}
 		
+		/*float ax1,ay1,az1;
+			short iax1,iay1,iaz1;
+			sensor_t sensor_data;
+			BSP_sensor_Read( &sensor_data );
+	
+			MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//Resets all IO and sets clock to fastest speed
+			MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X07);//Enables all sensors on 0x00 on 0x07 Gyro disabled
 
+			for(int H=0; H<10; H++)
+			{
+				MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
+				AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+
+			}
+			for(int H=0; H<30; H++)
+			{
+				MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
+				AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+			}
+	
+			MPU_Get_Accel(&iax1,&iay1,&iaz1,&ax1,&ay1,&az1);
+
+			float xval = ax1;
+			float yval = ay1;
+			float zval = az1;
+
+			PRINTF("x1: %f \n\r",xval);
+			PRINTF("y1: %f \n\r",yval);
+			PRINTF("z1: %f \n\r",zval); */
+		
 			ay=(((uint16_t)buffer[0]<<8)|buffer[1]);  
 			ax=(((uint16_t)buffer[2]<<8)|buffer[3]);  
 			az=(((uint16_t)buffer[4]<<8)|buffer[5]);
@@ -217,8 +247,8 @@ void calibrate1(void)
 	float ax2,ay2,az2;
 	float gx2,gy2,gz2,sumx=0,sumy=0,sumz=0,sumx1=0,sumy1=0,sumz1=0;
 	
-	MPU_Write_Byte(MPU9250_ADDR,0x6B,0X00);//»½ÐÑ
-  MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);
+	MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//Resets everything and sets clock to fastest speed
+  MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X00);//Enable all device on 0x00 only enable accel on 0x07;
 	
 	for (t=0;t<300;t++)
 	{

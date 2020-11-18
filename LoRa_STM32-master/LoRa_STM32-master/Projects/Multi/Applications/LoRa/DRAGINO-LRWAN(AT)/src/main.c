@@ -483,10 +483,27 @@ After this function runs each of the inputted arrays should be populated with Pi
 A private function to record acceleration data and store it
 Ideally this is to be used instead of send when gps is not available
 */
-static void RecordAccel()//TODO: Here is where the high level send function is
+static void RecordAccel()//A function used to take several measurements of accel and average them to get an accurate result and then print that result
 {
-	short iax1,iay1,iaz1;
 	float ax1,ay1,az1;
+	short iax1,iay1,iaz1;
+	sensor_t sensor_data;
+	BSP_sensor_Read( &sensor_data );
+	
+	  MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//Resets all IO and sets clock to fastest speed
+    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X07);//Enables all sensors on 0x00 on 0x07 Gyro disabled
+
+		for(int H=0; H<10; H++)
+		{
+			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
+			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+
+		}
+			for(int H=0; H<30; H++)
+		{
+			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
+			AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+		}
 	
 	MPU_Get_Accel(&iax1,&iay1,&iaz1,&ax1,&ay1,&az1);
 
