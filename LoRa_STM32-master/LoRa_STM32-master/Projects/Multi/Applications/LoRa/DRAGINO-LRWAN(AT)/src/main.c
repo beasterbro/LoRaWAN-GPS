@@ -398,7 +398,7 @@ int main( void )
 		{
 			iterator++;
 			PerformCalculation(axArr,ayArr,azArr,&iterator);//The PerformCalculation_flag is reset in this method
-			PRINTF("Total x y z: %f %f %f i: %d",axTotal/sizeof &axTotal*10,ayTotal/sizeof &ayTotal*10,azTotal/sizeof &azTotal*10,iterator);
+			PRINTF("Total x y z: %f %f %f i: %d\n\r",axTotal/sizeof &axTotal*10,ayTotal/sizeof &ayTotal*10,azTotal/sizeof &azTotal*10,iterator);
 		}
 			
 		if(s_gm == 1)
@@ -454,7 +454,7 @@ A Placeholder function for the real function that will perform an oporation on t
 static void PerformCalculation(float axArr[], float ayArr[],float azArr[],int *index)
 {
 	if(*index >= 499 || axArr[*index] == NULL){
-		PRINTF("Reset iter");
+		PRINTF("Reset iter\n\r");
 		*index = 0;
 		PerformCalculation_flag = 0;  
 	}

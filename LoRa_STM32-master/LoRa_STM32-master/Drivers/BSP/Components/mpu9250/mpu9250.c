@@ -100,7 +100,7 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 			ayArr[i] = tmpy;
 			azArr[i] = tmpz;
   }
-	PRINTF("Done With Loop FIFO: %d len is: %zu /n/r",fifoSize,fifoSize/fifoFrameSize);
+	PRINTF("Done With Loop FIFO: %d len is: %zu \n\r",fifoSize,fifoSize/fifoFrameSize);
 	MPU_Set_Rate(100);
 	return 0;
 } 
