@@ -103,7 +103,7 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 			
 			tmpx=LPF2pApply_1((float)(ax)*accel_scale-accoffsetx);
 			tmpy=LPF2pApply_2((float)(ay)*accel_scale-accoffsety);
-			tmpz=LPF2pApply_3((float)(az)*accel_scale-accoffsetz);
+			tmpz=LPF2pApply_3((float)(az)*accel_scale-accoffsetz);//With 18 val it iterates 3 times 18/6 = 3 Number of frames stored
 			//axArr[i] = tmpx;
 			//ayArr[i] = tmpy;
 			//azArr[i] = tmpz;
