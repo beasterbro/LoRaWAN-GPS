@@ -43,7 +43,7 @@ short magoldx,magoldy,magoldz;
 short gyrooldx,gyrooldy,gyrooldz;
 
 
-
+//A function that initializes the MPU to store accelerometer readings to the fifo so that it can be read from at a later date
 uint8_t My_MPU_Init(void)
 {
 
@@ -71,58 +71,31 @@ uint8_t My_MPU_Init(void)
 	  return 0;
 }
 
+//This method reads the Accelerometer from the FIFO in the MPU and stores it in the inputted arrays
 uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
-	uint8_t buffer[6],res;  
+	uint8_t buffer[6],res;  //TODO: Turn this into getFifoSize
+	uint16_t fifoSize = 0;
 	
-	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_CNTH_REG,2,buffer);//Read the count of the FIFO
-	
-	uint16_t fifoSize = (((uint16_t) (buffer[0]&0x0F)) <<8) + (((uint16_t) buffer[1]));//determine the total size of the fifo
 	short ax,ay,az;
 	float tmpx,tmpy,tmpz;
 	short fifoFrameSize = 6 ;
 	
-	MPU_Set_Rate(HS_RATE);//Increase rate for high speed data read out
-
-			float ax1,ay1,az1;
-			short iax1,iay1,iaz1;
-			sensor_t sensor_data;
-			BSP_sensor_Read( &sensor_data );
+	float ax1,ay1,az1;
+	short iax1,iay1,iaz1;
 	
-			MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//Resets all IO and sets clock to fastest speed
-			MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X07);//Enables all sensors on 0x00 on 0x07 Gyro disabled
-
-			for(int H=0; H<10; H++)
-			{
-				MPU_Get_Accel(&iax1,&iay1,&iaz1,&ax1,&ay1,&az1);
-				AHRSupdate(0,0,0,&ax1,&ay1,&az1,0,0,0,0,0,0);
-
-			}
-			for(int H=0; H<30; H++)
-			{
-				MPU_Get_Accel(&iax1,&iay1,&iaz1,&ax1,&ay1,&az1);
-				AHRSupdate(0,0,0,&ax1,&ay1,&az1,0,0,0,0,0,0);
-			}
-	
-			//MPU_Get_Accel(&iax1,&iay1,&iaz1,&ax1,&ay1,&az1);
-
-			float xval = ax1;
-			float yval = ay1;
-			float zval = az1;
-
-			PRINTF("x1: %f \n\r",xval);
-			PRINTF("y1: %f \n\r",yval);
-			PRINTF("z1: %f \n\r",zval); 
-	
+	while(fifoSize/fifoFrameSize < 10){
+	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_CNTH_REG,2,buffer);//Read the count of the FIFO
+	fifoSize = (((uint16_t) (buffer[0]&0x0F)) <<8) + (((uint16_t) buffer[1]));//determine the total size of the fifo
+	PRINTF("Fifo Size: %d",fifoSize);
+	}
 	size_t i=0;//Iterator for loop
-	for (; i < fifoSize/fifoFrameSize && (i < 499); i++) {//While we have not read through the whole fifo
+	for (; i < fifoSize/fifoFrameSize; i++) {//While we have not read through the whole fifo
 		res = 	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,fifoFrameSize,buffer);
     // grab the data from the MPU9250
 		if (res < 0) {
 			PRINTF("Early Return");
       return -1;
 		}
-		
-		
 		
 			ay=(((uint16_t)buffer[0]<<8)|buffer[1]);  
 			ax=(((uint16_t)buffer[2]<<8)|buffer[3]);  
@@ -132,209 +105,19 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 			tmpx=LPF2pApply_1((float)(ax)*accel_scale-accoffsetx);
 			tmpy=LPF2pApply_2((float)(ay)*accel_scale-accoffsety);
 			tmpz=LPF2pApply_3((float)(az)*accel_scale-accoffsetz);
-			AHRSupdate(0,0,0,&tmpx,&tmpy,&tmpz,0,0,0,0,0,0);
-			axArr[i] = tmpx;
-			ayArr[i] = tmpy;
-			azArr[i] = tmpz;
+			//axArr[i] = tmpx;
+			//ayArr[i] = tmpy;
+			//azArr[i] = tmpz;
+		PRINTF("Current Values: x y z %f %f %f i: %i\n\r",tmpx,tmpy,tmpz,i);
+
   }
-	PRINTF("Done With Loop FIFO: %d len is: %zu \n\r",fifoSize,fifoSize/fifoFrameSize);
-	MPU_Set_Rate(DEFAULT_RATE);
 	return 0;
 } 
 
-float invSqrt(float number)
-{
-	long i;
-	float x,y;
-	const float f=1.5f;
-	
-	x=number*0.5f;
-	y=number;
-	i=*((long*)&y);
-	i=0x5f375a86-(i>>1);
-	y=*((float *)&i);
-	y=y*(f-(x*y*y));
-	return y;
-}
 
-void AHRSupdate(float gx, float gy, float gz, float *ax, float *ay, float *az, float mx, float my, float mz,float *roll,float *pitch,float *yaw)
-{
-	float gx_old,gy_old,gz_old;
-	float ax_old,ay_old,az_old;
-	float mx_old,my_old,mz_old;
-	uint8_t flag_2=1;	
-	
-	static float q0=1.0f,q1=0.0f,q2=0.0f,q3=0.0f;
-	static float exInt = 0, eyInt = 0, ezInt = 0; 
-	
-	float Kp = 40.0f ;// proportional gain governs rate of convergence toaccelerometer/magnetometer
-	 //Kp比例增益 决定了加速度计和磁力计的收敛速度
-	float Ki = 0.02f;          // integral gain governs rate of convergenceof gyroscope biases
-		//Ki积分增益 决定了陀螺仪偏差的收敛速度
-	float halfT = 0.0048f  ;// half the sample period  
-		//halfT采样周期的一半
-	float dt = 0.0096f;	
-	
-	static float k10=0.0f,k11=0.0f,k12=0.0f,k13=0.0f;
-	static float k20=0.0f,k21=0.0f,k22=0.0f,k23=0.0f;
-	static float k30=0.0f,k31=0.0f,k32=0.0f,k33=0.0f;
-	static float k40=0.0f,k41=0.0f,k42=0.0f,k43=0.0f;
-	
-	if(flag_2==1)
-  {
-		flag_2=0;
-		ax_old=*ax;
-		ay_old=*ay;
-		az_old=*az;
-		
-		gx_old=gx;
-		gy_old=gy;
-		gz_old=gz;
-		
-		mx_old=mx;
-		my_old=my;
-		mz_old=mz;
-	}
 
-	*ax=(*ax+ax_old)/2.0;
-	*ay=(*ay+ay_old)/2.0;
-	*az=(*az+az_old)/2.0;
-	
-	gx=(gx+gx_old)/2.0;
-	gx=(gx+gx_old)/2.0;
-	gx=(gx+gx_old)/2.0;
-	
-	mx=(mx+mx_old)/2.0;
-	mx=(mx+mx_old)/2.0;
-	mx=(mx+mx_old)/2.0;
-	
-		ax_old=*ax;
-		ay_old=*ay;
-		az_old=*az;
-		
-		gx_old=gx;
-		gy_old=gy;
-		gz_old=gz;
-		
-		mx_old=mx;
-		my_old=my;
-		mz_old=mz;
-		
-           float norm;									//?????
-           float hx, hy, hz, bx, bz;		//
-           float vx, vy, vz, wx, wy, wz; 
-           float ex, ey, ez;
-//					 float tmp0,tmp1,tmp2,tmp3;
- 
-           // auxiliary variables to reduce number of repeated operations  ????????????
-           float q0q0 = q0*q0;
-           float q0q1 = q0*q1;
-           float q0q2 = q0*q2;
-           float q0q3 = q0*q3;
-           float q1q1 = q1*q1;
-           float q1q2 = q1*q2;
-           float q1q3 = q1*q3;
-           float q2q2 = q2*q2;
-           float q2q3 = q2*q3;
-           float q3q3 = q3*q3;
-          
-           // normalise the measurements  ????????????????
-           norm = invSqrt(*ax**ax + *ay**ay + *az**az);
-           *ax = *ax * norm;
-           *ay = *ay * norm;
-           *az = *az * norm;
-           norm = invSqrt(mx*mx + my*my + mz*mz);
-           mx = mx * norm;
-           my = my * norm;
-           mz = mz * norm;
-          
-           // compute reference direction of magnetic field  ?????????
-					 //hx,hy,hz?mx,my,mz?????????
-           hx = 2*mx*(0.50 - q2q2 - q3q3) + 2*my*(q1q2 - q0q3) + 2*mz*(q1q3 + q0q2);
-           hy = 2*mx*(q1q2 + q0q3) + 2*my*(0.50 - q1q1 - q3q3) + 2*mz*(q2q3 - q0q1);
-           hz = 2*mx*(q1q3 - q0q2) + 2*my*(q2q3 + q0q1) + 2*mz*(0.50 - q1q1 -q2q2);    
-						//bx,by,bz??????????????
-           bx = sqrt((hx*hx) + (hy*hy));
-           bz = hz;
-          
-// estimated direction of gravity and magnetic field (v and w)  //??????????
-//vx,vy,vz???????????????
-           vx = 2*(q1q3 - q0q2);
-           vy = 2*(q0q1 + q2q3);
-           vz = q0q0 - q1q1 - q2q2 + q3q3;
-					 //wx,wy,wz?????????????
-           wx = 2*bx*(0.5 - q2q2 - q3q3) + 2*bz*(q1q3 - q0q2);
-           wy = 2*bx*(q1q2 - q0q3) + 2*bz*(q0q1 + q2q3);
-           wz = 2*bx*(q0q2 + q1q3) + 2*bz*(0.5 - q1q1 - q2q2); 
-          
-// error is sum ofcross product between reference direction of fields and directionmeasured by sensors 
-//ex,ey,ez????????????????????????????????,????????,????????????????
-           ex = (*ay*vz - *az*vy) + (my*wz - mz*wy);
-           ey = (*az*vx - *ax*vz) + (mz*wx - mx*wz);
-           ez = (*ax*vy - *ay*vx) + (mx*wy - my*wx);
 
-           // integral error scaled integral gain
-					 //????
-           exInt = exInt + ex*Ki*dt;
-           eyInt = eyInt + ey*Ki*dt;
-           ezInt = ezInt + ez*Ki*dt;
-					// printf("exInt=%0.1f eyInt=%0.1f ezInt=%0.1f ",exInt,eyInt,ezInt);
-           // adjusted gyroscope measurements
-					 //PI???????
-           gx = gx + Kp*ex + exInt;
-           gy = gy + Kp*ey + eyInt;
-           gz = gz + Kp*ez + ezInt;
-					 //printf("gx=%0.1f gy=%0.1f gz=%0.1f",gx,gy,gz);
-          
-           // integrate quaernion rate aafnd normalaizle
-					 //????????
-//           tmp0 = q0 + (-q1*gx - q2*gy - q3*gz)*halfT;
-//           tmp1 = q1 + ( q0*gx + q2*gz - q3*gy)*halfT;
-//           tmp2 = q2 + ( q0*gy - q1*gz + q3*gx)*halfT;
-//           tmp3 = q3 + ( q0*gz + q1*gy - q2*gx)*halfT; 
-//					 q0=tmp0;
-//					 q1=tmp1;
-//					 q2=tmp2;
-//					 q3=tmp3;
-					 //printf("q0=%0.1f q1=%0.1f q2=%0.1f q3=%0.1f",q0,q1,q2,q3);
-////RUNGE_KUTTA ??????
-					  k10=0.5 * (-gx*q1 - gy*q2 - gz*q3);
-						k11=0.5 * ( gx*q0 + gz*q2 - gy*q3);
-						k12=0.5 * ( gy*q0 - gz*q1 + gx*q3);
-						k13=0.5 * ( gz*q0 + gy*q1 - gx*q2);
-						
-						k20=0.5 * (halfT*(q0+halfT*k10) + (halfT-gx)*(q1+halfT*k11) + (halfT-gy)*(q2+halfT*k12) + (halfT-gz)*(q3+halfT*k13));
-						k21=0.5 * ((halfT+gx)*(q0+halfT*k10) + halfT*(q1+halfT*k11) + (halfT+gz)*(q2+halfT*k12) + (halfT-gy)*(q3+halfT*k13));
-						k22=0.5 * ((halfT+gy)*(q0+halfT*k10) + (halfT-gz)*(q1+halfT*k11) + halfT*(q2+halfT*k12) + (halfT+gx)*(q3+halfT*k13));
-						k23=0.5 * ((halfT+gz)*(q0+halfT*k10) + (halfT+gy)*(q1+halfT*k11) + (halfT-gx)*(q2+halfT*k12) + halfT*(q3+halfT*k13));
-						
-						k30=0.5 * (halfT*(q0+halfT*k20) + (halfT-gx)*(q1+halfT*k21) + (halfT-gy)*(q2+halfT*k22) + (halfT-gz)*(q3+halfT*k23));
-						k31=0.5 * ((halfT+gx)*(q0+halfT*k20) + halfT*(q1+halfT*k21) + (halfT+gz)*(q2+halfT*k22) + (halfT-gy)*(q3+halfT*k23));
-						k32=0.5 * ((halfT+gy)*(q0+halfT*k20) + (halfT-gz)*(q1+halfT*k21) + halfT*(q2+halfT*k22) + (halfT+gx)*(q3+halfT*k23));
-						k33=0.5 * ((halfT+gz)*(q0+halfT*k20) + (halfT+gy)*(q1+halfT*k21) + (halfT-gx)*(q2+halfT*k22) + halfT*(q3+halfT*k23));
-						
-						k40=0.5 * (dt*(q0+dt*k30) + (dt-gx)*(q1+dt*k31) + (dt-gy)*(q2+dt*k32) + (dt-gz)*(q3+dt*k33));
-						k41=0.5 * ((dt+gx)*(q0+dt*k30) + dt*(q1+dt*k31) + (dt+gz)*(q2+dt*k32) + (dt-gy)*(q3+dt*k33));
-						k42=0.5 * ((dt+gy)*(q0+dt*k30) + (dt-gz)*(q1+dt*k31) + dt*(q2+dt*k32) + (dt+gx)*(q3+dt*k33));
-						k43=0.5 * ((dt+gz)*(q0+dt*k30) + (dt+gy)*(q1+dt*k31) + (dt-gx)*(q2+dt*k32) + dt*(q3+dt*k33));	
-						
-						q0=q0 + dt/6.0 * (k10+2*k20+2*k30+k40);
-						q1=q1 + dt/6.0 * (k11+2*k21+2*k31+k41);
-						q2=q2 + dt/6.0 * (k12+2*k22+2*k32+k42);
-						q3=q3 + dt/6.0 * (k13+2*k23+2*k33+k43);
-						
-           // normalise quaternion
-           norm = invSqrt(q0*q0 + q1*q1 + q2*q2 + q3*q3);
-           q0 = q0 * norm;
-           q1 = q1 * norm;
-           q2 = q2 * norm;
-           q3 = q3 * norm;
-					 
-					 *pitch = -asin(-2 * q1 * q3 + 2 * q0 * q2)* 57.3;	// pitch
-					 *roll  = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2 * q2 + 1)* 57.3;	// roll
-					 *yaw   = atan2(2*(q1*q2 + q0*q3),q0*q0+q1*q1-q2*q2-q3*q3) * 57.3;	//yaw
-}
-
+//This is the original MPU Init that is from firmware version 1.4
 uint8_t MPU_Init(void)
 {
     uint8_t res=0;
