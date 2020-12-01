@@ -83,11 +83,10 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 	float ax1,ay1,az1;
 	short iax1,iay1,iaz1;
 	
-	while(fifoSize/fifoFrameSize < 10){
 	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_CNTH_REG,2,buffer);//Read the count of the FIFO
 	fifoSize = (((uint16_t) (buffer[0]&0x0F)) <<8) + (((uint16_t) buffer[1]));//determine the total size of the fifo
-	PRINTF("Fifo Size: %d",fifoSize);
-	}
+	PRINTF("\n\r Fifo Size: %d",fifoSize);
+	
 	size_t i=0;//Iterator for loop
 	for (; i < fifoSize/fifoFrameSize; i++) {//While we have not read through the whole fifo
 		res = 	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,fifoFrameSize,buffer);

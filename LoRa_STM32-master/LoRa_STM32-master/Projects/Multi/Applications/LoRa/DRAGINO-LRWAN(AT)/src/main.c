@@ -381,7 +381,7 @@ int main( void )
 			HAL_Delay(200);	
 			if(in1== 1){
 					HAL_Delay(10);
-			    PRINTF("FIFO Flag on\n\r");
+			    PRINTF("Double Click");
 					in1 = 0;
 
 			}
@@ -389,6 +389,7 @@ int main( void )
 		
 		if(FIFO_flag){
 			MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0x44);//Enable Fifo and reset/clear it
+			RecordAccel();
 			readFifo(axArr,ayArr,azArr);
 			//PerformCalculation_flag = 1;
 			FIFO_flag = 0;
