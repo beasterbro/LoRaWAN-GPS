@@ -110,6 +110,7 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 		PRINTF("Current Values: x y z %f %f %f i: %i\n\r",tmpx,tmpy,tmpz,i);
 
   }
+	MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);//Must reset fifo or program crashes 
 	return 0;
 } 
 

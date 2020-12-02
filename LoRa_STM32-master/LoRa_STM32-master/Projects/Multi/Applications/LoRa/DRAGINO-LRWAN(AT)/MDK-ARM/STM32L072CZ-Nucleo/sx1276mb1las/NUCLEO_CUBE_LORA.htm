@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\sx1276mb1las\NUCLEO_CUBE_LORA.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\sx1276mb1las\NUCLEO_CUBE_LORA.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Dec 01 19:42:18 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Dec 01 20:14:46 2020
 <BR><P>
 <H3>Maximum Stack Usage =        820 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2854,7 +2854,8 @@ Global Symbols
 <LI><a href="#[1a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Start
 <LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SendByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;My_MPU_Init
+<BR>[Called By]<UL><LI><a href="#[2a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;readFifo
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;My_MPU_Init
 <LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Set_Rate
 <LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Set_LPF
 <LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Set_Accel_Fsr
@@ -5440,7 +5441,7 @@ Global Symbols
 <LI><a href="#[299]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lora_send
 </UL>
 
-<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 292 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 282 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 820<LI>Call Chain = main &rArr; lora_send &rArr; send_data &rArr; Send &rArr; LORA_send &rArr; LoRaMacMcpsRequest &rArr; Send &rArr; ScheduleTx &rArr; SendFrameOnChannel &rArr; RegionTxConfig &rArr; RegionUS915TxConfig &rArr; TraceSend &rArr; CircularQueue_Add &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_Init
@@ -5558,7 +5559,7 @@ Global Symbols
 <LI><a href="#[224]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RegionUS915GetPhyParam
 </UL>
 
-<P><STRONG><a name="[2a2]"></a>readFifo</STRONG> (Thumb, 274 bytes, Stack size 72 bytes, mpu9250.o(i.readFifo))
+<P><STRONG><a name="[2a2]"></a>readFifo</STRONG> (Thumb, 284 bytes, Stack size 72 bytes, mpu9250.o(i.readFifo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 460<LI>Call Chain = readFifo &rArr; TraceSend &rArr; CircularQueue_Add &rArr; __aeabi_uidivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
@@ -5567,6 +5568,7 @@ Global Symbols
 <LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TraceSend
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Byte
 <LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF2pApply_3
 <LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LPF2pApply_2

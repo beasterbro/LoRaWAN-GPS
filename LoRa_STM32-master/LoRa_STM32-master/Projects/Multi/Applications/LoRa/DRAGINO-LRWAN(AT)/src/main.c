@@ -390,7 +390,6 @@ int main( void )
 		if(FIFO_flag){
 			readFifo(axArr,ayArr,azArr);
 			//PerformCalculation_flag = 1;
-			MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);//Must reset fifo or program crashes 
 			FIFO_flag = 0;
 		}
 
