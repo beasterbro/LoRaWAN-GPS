@@ -56,7 +56,7 @@ uint8_t My_MPU_Init(void)
   	MPU_Write_Byte(MPU9250_ADDR,MPU_INTBP_CFG_REG,0X82);//Allows IC2 Bypass and sets INT pin as active high
 	
 		MPU_Write_Byte(MPU9250_ADDR,0x6B,0X00);//Wake
-		MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X40);//Enable FIFO in control register
+		MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);//Enable FIFO in control register and reset it
     MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X07);// Accel w/ power and Gyro no power
 		MPU_Write_Byte(MPU9250_ADDR,MPU_FIFO_EN_REG,0X08);//Enabling fifo for Accel
 	  MPU_Set_Accel_Fsr(2);//Set ACCEL scale to +- 16 g (default is 18)
