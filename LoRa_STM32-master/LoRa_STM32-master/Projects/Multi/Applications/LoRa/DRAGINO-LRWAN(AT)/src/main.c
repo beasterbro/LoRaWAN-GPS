@@ -375,8 +375,8 @@ int main( void )
 		/* Handle UART commands */
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
-			PRINTF("Click");	
-			FIFO_flag = 1;			
+			PRINTF("Click");
+			RecordAccel();		//Flag is set inside this method so that race conditions aren't created	
 			in1 = 0;
 			HAL_Delay(200);	
 			if(in1== 1){
@@ -389,9 +389,9 @@ int main( void )
 		
 		if(FIFO_flag){
 			//MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0x44);//Enable Fifo and reset/clear it
-			RecordAccel();
 			readFifo(axArr,ayArr,azArr);
 			//PerformCalculation_flag = 1;
+			MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);
 			FIFO_flag = 0;
 		}
 
@@ -496,14 +496,12 @@ static void RecordAccel()//A function used to take several measurements of accel
 
 		for(int H=0; H<10; H++)
 		{
-			//MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
-			//AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
 
 		}
 			for(int H=0; H<30; H++)
 		{
-			//MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
-			//AHRSupdate(0,0,0,ax,ay,az,0,0,0,&roll,&pitch,&yaw);
+			MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
 		}
 	
 	MPU_Get_Accel(&iax1,&iay1,&iaz1,&ax1,&ay1,&az1);
@@ -512,10 +510,11 @@ static void RecordAccel()//A function used to take several measurements of accel
 	float yval = ay1;
 	float zval = az1;
 
+	FIFO_flag = 1;			
+
 	PRINTF("x1: %f \n\r",xval);
 	PRINTF("y1: %f \n\r",yval);
 	PRINTF("z1: %f \n\r",zval);
-	MPU_Set_Rate(DEFAULT_RATE);//Reset rate here to solve print bugs hopefully
 }
 
 static void Send( void )//TODO: Here is where the high level send function is
