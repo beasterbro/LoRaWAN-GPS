@@ -367,7 +367,7 @@ int main( void )
 		global_time++;
 		oneSecTimer++;
 		if(oneSecTimer==3200)
-		{
+		{//This is unecessary and this timer was used for debugging
 			TimeSecond++;
 			PRINTF("One Second %d \n\r",TimeSecond);
 			oneSecTimer = 0;
@@ -388,10 +388,9 @@ int main( void )
 		}
 		
 		if(FIFO_flag){
-			//MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0x44);//Enable Fifo and reset/clear it
 			readFifo(axArr,ayArr,azArr);
 			//PerformCalculation_flag = 1;
-			MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);
+			MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);//Must reset fifo or program crashes 
 			FIFO_flag = 0;
 		}
 
