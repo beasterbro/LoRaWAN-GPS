@@ -297,7 +297,7 @@ int oneSecTimer = 0;
 float axArr[500],ayArr[500],azArr[500];
 int startTime = -1;
 int iterator = 0;
-int FIFO_flag;
+int FIFO_flag = 0;
 float axMax,ayMax,azMax;
 int meanDiv = 1;
 /* Private functions ---------------------------------------------------------*/
@@ -308,9 +308,7 @@ int meanDiv = 1;
   * @retval None
   */
 int main( void )
-{
-	FIFO_flag = 1;
-	
+{	
 
   /* STM32 HAL library initialization*/
   HAL_Init( );
@@ -376,7 +374,8 @@ int main( void )
     CMD_Process();
 		if(in1== 1){//TODO: adding check for button click here
 			PRINTF("Click");
-			RecordAccel();		//Flag is set inside this method so that race conditions aren't created	
+			//RecordAccel();		//Flag is set inside this method so that race conditions aren't created	
+			FIFO_flag = 1;
 			in1 = 0;
 			HAL_Delay(200);	
 			if(in1== 1){
