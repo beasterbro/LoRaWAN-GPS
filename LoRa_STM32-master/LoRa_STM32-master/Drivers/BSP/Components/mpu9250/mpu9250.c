@@ -72,7 +72,7 @@ uint8_t My_MPU_Init(void)
 }
 
 //This method reads the Accelerometer from the FIFO in the MPU and stores it in the inputted arrays
-uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
+uint8_t readFifo(float axArr[],float ayArr[],float azArr[],int size){
 	uint8_t buffer[6],res;  //TODO: Turn this into getFifoSize
 	uint16_t fifoSize = 0;
 	
@@ -84,11 +84,13 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 	short iax1,iay1,iaz1;
 	
 	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_CNTH_REG,2,buffer);//Read the count of the FIFO
-	fifoSize = (((uint16_t) (buffer[0]&0x0F)) <<8) + (((uint16_t) buffer[1]));//determine the total size of the fifo
 	PRINTF("\n\r Fifo Size: %d",fifoSize);
 	
-	size_t i=0;//Iterator for loop
-	for (; i < fifoSize/fifoFrameSize; i++) {//While we have not read through the whole fifo
+	size_t i=0;//Iterator for looping through current fifo data
+	int j = 0; //iterator for filling arrays
+	while(j <= size){
+	fifoSize = (((uint16_t) (buffer[0]&0x0F)) <<8) + (((uint16_t) buffer[1]));//determine the total size of the fifo
+	for (; i < fifoSize/fifoFrameSize; i++,j++) {//While we have not read through the whole fifo
 		res = 	MPU_Read_Len(MPU9250_ADDR,MPU_FIFO_RW_REG,fifoFrameSize,buffer);
     // grab the data from the MPU9250
 		if (res < 0) {
@@ -103,13 +105,15 @@ uint8_t readFifo(float axArr[],float ayArr[],float azArr[]){
 			
 			tmpx=LPF2pApply_1((float)(ax)*accel_scale-accoffsetx);
 			tmpy=LPF2pApply_2((float)(ay)*accel_scale-accoffsety);
-			tmpz=LPF2pApply_3((float)(az)*accel_scale-accoffsetz);//With 18 val it iterates 3 times 18/6 = 3 Number of frames stored
-			//axArr[i] = tmpx;
-			//ayArr[i] = tmpy;
-			//azArr[i] = tmpz;
-		PRINTF("Current Values: x y z %f %f %f i: %i\n\r",tmpx,tmpy,tmpz,i);
+			tmpz=LPF2pApply_3((float)(az)*accel_scale-accoffsetz);
+			axArr[j] = tmpx;
+			ayArr[j] = tmpy;
+			azArr[j] = tmpz;
+		  PRINTF("Current Values: x y z %f %f %f i: %i\n\r",tmpx,tmpy,tmpz,i);
 
   }
+	HAL_Delay(100);
+}
 	MPU_Write_Byte(MPU9250_ADDR,MPU_USER_CTRL_REG,0X44);//Must reset fifo or program crashes/bad data is given 
 	return 0;
 } 

@@ -488,25 +488,16 @@ static void RecordAccel()//A function used to take several measurements of accel
 	sensor_t sensor_data;
 	BSP_sensor_Read( &sensor_data );
 	
-	  MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//Resets all IO and sets clock to fastest speed
-    MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X07);//Enables all sensors on 0x00, on 0x07 Gyro disabled
+  MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT1_REG,0X00);//Resets all IO and sets clock to fastest speed
+  MPU_Write_Byte(MPU9250_ADDR,MPU_PWR_MGMT2_REG,0X07);//Enables all sensors on 0x00, on 0x07 Gyro disabled
 
-		for(int H=0; H<10; H++)
-		{
-		//	MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
-
-		}
-			for(int H=0; H<30; H++)
-		{
-			//MPU_Get_Accel(&iax,&iay,&iaz,&ax,&ay,&az);
-		}
-	
 	MPU_Get_Accel(&iax1,&iay1,&iaz1,&ax1,&ay1,&az1);
 
   float xval = ax1;
 	float yval = ay1;
 	float zval = az1;
-HAL_Delay(100);
+  
+	HAL_Delay(100);//Give fifo time to fill 
 	FIFO_flag = 1;			
 
 	PRINTF("x1: %f \n\r",xval);
